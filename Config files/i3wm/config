@@ -1,0 +1,201 @@
+### General ###
+
+## General behavior
+
+focus_follows_mouse no
+
+## Status bar
+
+bar {
+    status_command py3status -c ~/.i3/i3status.conf
+    output DVI-D-0
+	font pango:Ohsnap 10
+	colors {
+        background      #0a0a0a
+        statusline      #ff6500
+        separator       #767676
+
+		# class             border      background	    text
+		focused_workspace   #141414     #141414         #ff6500
+		active_workspace    #141414     #141414         #ff6500
+		inactive_workspace  #1e1e1e     #1e1e1e         #767676
+		urgent_workspace    #900000     #900000         #ffffff
+	}
+}
+
+bar {
+	status_command py3status -c ~/.i3/i3status.conf
+	output HDMI-0
+	tray_output none
+	font pango:Ohsnap 10
+	colors {
+		background		#0a0a0a
+		statusline		#ff6500
+		separator		#767676
+
+		# class             border      background      text
+		focused_workspace   #141414     #141414         #ff6500
+		active_workspace	#141414		#141414         #ff6500
+		inactive_workspace	#1e1e1e		#1e1e1e		    #767676
+		urgent_workspace	#900000		#900000		    #ffffff
+	}
+}
+
+
+## Font & colors
+
+font pango:Ohsnap 10
+
+# class			        border      background      text        indicator
+client.focused		    #141414		#141414		    #ff6500	    #ff6500
+client.focused_inactive	#0a0a0a		#0a0a0a		    #767676		#ff6500
+client.unfocused	    #0a0a0a		#0a0a0a		    #767676		#ff6500
+client.urgent	    	#900000		#900000		    #ffffff		#ff6500
+
+## Window assignments
+
+assign [class="Firefox"] 2 Web/RSS
+assign [title="Newsbeuter"] 2 Web/RSS
+assign [title="Turses"] 2 Web/RSS
+assign [class="Thunderbird"] 3 Mail
+assign [title="Irssi"] 4 IRC
+assign [title="URxvt"] 5 Terminal
+assign [title="Htop"] 5 Terminal
+assign [class="jd-Main"] 6 DL
+assign [title="Dev - "] 7 Dev
+assign [class="Steam"] 8 Gaming
+assign [class="VirtualBox"] 9 VBox
+
+## Window rules
+
+for_window [class="XTerm"] floating enable
+for_window [title="Fichier en cours de traitement"] floating enable
+for_window [title="Connexion à Steam"] floating enable
+for_window [title="Activation de produit"] floating enable
+for_window [title="Steam - En cours"] floating enable
+for_window [title="Steam - Erreur"] floating enable
+for_window [title="- Catégories"] floating enable
+for_window [class="Gnome-calculator"] floating enable
+for_window [class="Gsimplecal"] floating enable
+
+### Bindings ###
+
+## Modifiers
+
+set $mod Mod4
+floating_modifier $mod
+
+## Session management
+
+bindsym $mod+Ctrl+r restart
+bindsym $mod+Ctrl+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Ctrl+s exec oblogout
+
+## Window management
+
+# Layout
+
+bindsym $mod+a layout stacking
+bindsym $mod+q layout tabbed
+bindsym $mod+w layout toggle split
+bindsym $mod+Shift+f fullscreen
+bindsym $mod+Shift+space floating toggle
+
+# Splitting
+
+bindsym $mod+Shift+h split h
+bindsym $mod+Shift+v split v
+
+# Focusing
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+Shift+a focus parent
+
+# Moving
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Scratchpad
+
+bindsym $mod+Shift+BackSpace move scratchpad
+bindsym $mod+Shift+Return scratchpad show
+
+## Desktop management
+
+# Switching
+
+bindsym $mod+1 workspace 1 Libre
+bindsym $mod+2 workspace 2 Web/RSS
+bindsym $mod+3 workspace 3 Mail
+bindsym $mod+4 workspace 4 IRC
+bindsym $mod+5 workspace 5 Terminal
+bindsym $mod+6 workspace 6 DL
+bindsym $mod+7 workspace 7 Dev
+bindsym $mod+8 workspace 8 Gaming
+bindsym $mod+9 workspace 9 VBox
+bindsym $mod+0 workspace 10 Libre
+bindsym $mod+parenright workspace 11 Libre
+bindsym $mod+equal workspace 12 Écran 2
+
+# Switching with window
+
+bindsym $mod+Shift+1 move container to workspace 1 Libre
+bindsym $mod+Shift+2 move container to workspace 2 Web/RSS
+bindsym $mod+Shift+3 move container to workspace 3 Mail
+bindsym $mod+Shift+4 move container to workspace 4 IRC
+bindsym $mod+Shift+5 move container to workspace 5 Terminal
+bindsym $mod+Shift+6 move container to workspace 6 DL
+bindsym $mod+Shift+7 move container to workspace 7 Dev
+bindsym $mod+Shift+8 move container to workspace 8 Gaming
+bindsym $mod+Shift+9 move container to workspace 9 VBox
+bindsym $mod+Shift+0 move container to workspace 10 Libre
+bindsym $mod+Shift+parenright move container to workspace 11 Libre
+bindsym $mod+Shift+equal move container to workspace 12 Écran 2
+
+## Shortcuts
+
+# General
+
+bindsym $mod+t exec urxvt
+bindsym $mod+d exec dmenu_run -fn "-artwiz-snap-normal-*-normal-*-10-*-*-*-*-*-*-*" -nb "#0a0a0a" -nf "#767676" -sb "#141414" -sf "#ff6500"
+bindsym $mod+Ctrl+q kill
+
+# Various programs
+
+bindsym $mod+e exec gedit
+bindsym $mod+f exec thunar
+bindsym $mod+l exec xscreensaver-command -lock
+bindsym $mod+m exec urxvt -e mocp
+bindsym $mod+x exec xterm
+bindsym XF86Calculator exec gnome-calculator
+
+# ALSA
+
+bindsym XF86AudioMute exec amixer -q -c 0 sset Master toggle
+bindsym XF86AudioLowerVolume exec amixer -q -c 0 sset Master 5%-
+bindsym XF86AudioRaiseVolume exec amixer -q -c 0 sset Master 5%+
+
+# MOC
+
+bindsym XF86AudioPrev exec mocp -r
+bindsym XF86AudioPlay exec mocp -G
+bindsym XF86AudioNext exec mocp -f
+
+### Launch at i3 start ###
+
+exec xrandr --output DVI-D-0 --primary --mode 1920x1080 --output HDMI-0 --off
+exec setxkbmap fr
+exec numlockx on
+exec sleep 5 && feh --bg-fill ~/Other/Custo/Wallpapers/Sons\ Of\ Anarchy/Ireland.jpg
+exec amixer -q -c 0 sset Master 50%
+exec parcellite
+exec xrdb ~/.Xresources && urxvt -title 'URxvt'
+exec xscreensaver -no-splash
+exec sshfs -p 443 sudiukil@192.168.1.28:/var/lib/transmission/ /media/sudiukil/TR/

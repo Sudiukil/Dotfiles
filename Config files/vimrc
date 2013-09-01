@@ -1,0 +1,42 @@
+" General options
+
+set nocp "Vim mode only
+set bs=2 "Backspace available in insert mode
+set autoread "Refresh file if modifier outside of Vim
+
+" Display, colors, font, syntax and indent
+
+set nu "Line numbering
+
+set t_Co=256 "Terminal colors
+colorscheme vitamins
+
+set guifont="DejaVu Sans Mono"\ 10
+
+syntax on "Syntax highlighting
+
+filetype plugin indent on "Indent
+
+set showmatch
+
+" Search options
+
+set incsearch "Dynamic cursor while searching
+set ignorecase
+set smartcase
+
+" Tab options
+
+set expandtab "Tabs are spaces
+set smarttab
+set shiftwidth=4
+set tabstop=4
+
+" Mapping
+
+map j gj
+map k gk
+
+" Other
+
+autocmd FileType tex setlocal spell spelllang=fr
