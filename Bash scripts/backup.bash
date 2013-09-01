@@ -1,25 +1,26 @@
 #!/bin/bash
 
-cp ~/.xinitrc ~/Other/Custo/X/xinitrc
-cp ~/.zshrc ~/Other/Custo/Zsh/zshrc
-cp ~/.i3/config ~/Other/Custo/i3/config
-cp ~/.i3/i3status.conf ~/Other/Custo/i3/
-cp ~/.Xresources ~/Other/Custo/X/Xresources
-cp ~/.vimrc ~/Other/Custo/Vim/vimrc
-cp ~/.vim/colors/* ~/Other/Custo/Vim/
-cp -r ~/.thunderbird/* ~/Other/Backups/Mails/
-newsbeuter -e > ~/Other/Backups/feedlist.opml
+cp ~/.xinitrc ~/Autre/Custo/X/xinitrc
+cp ~/.zshrc ~/Autre/Custo/Zsh/zshrc
+cp ~/.i3/config ~/Autre/Custo/i3/config
+cp ~/.i3/i3status.conf ~/Autre/Custo/i3/
+cp ~/.Xresources ~/Autre/Custo/X/Xresources
+cp ~/.vimrc ~/Autre/Custo/Vim/vimrc
+cp ~/.vim/colors/* ~/Autre/Custo/Vim/
+cp -r ~/.thunderbird/* ~/Autre/Backups/Mails/
+newsbeuter -e > ~/Autre/Backups/feedlist.opml
+~/Autre/Scripts/mcbackup
 
-rsync -rltv --delete-after ~/Other/ /run/media/sudiukil/EHDD1To/Backup/Other/
-rsync -rltv --delete-after ~/Documents/ /run/media/sudiukil/EHDD1To/Backup/Documents/
-rsync -rltv --delete-after ~/Pictures/ /run/media/sudiukil/EHDD1To/Backup/Pictures/
-rsync -rltv --delete-after ~/Music/ /run/media/sudiukil/EHDD1To/Backup/Music/
-rsync -rltv --delete-after ~/Mess/ /run/media/sudiukil/EHDD1To/Backup/Mess/
-rsync -rltv --delete-after ~/Downloads/ /run/media/sudiukil/EHDD1To/Backup/Downloads/
-rsync -rltv --delete-after ~/Videos/ /run/media/sudiukil/EHDD1To/Backup/Videos/
-rsync -rltv --delete-after ~/.local/share/Steam/ /run/media/sudiukil/EHDD1To/Backup/Steam/
+rsync -rltv --delete-after ~/Autre/ /run/media/quentin/EHDD1To/Backup/Autre/
+rsync -rltv --delete-after ~/Documents/ /run/media/quentin/EHDD1To/Backup/Documents/
+rsync -rltv --delete-after ~/Images/ /run/media/quentin/EHDD1To/Backup/Images/
+rsync -rltv --delete-after ~/Musique/ /run/media/quentin/EHDD1To/Backup/Musique/
+rsync -rltv --delete-after ~/Tri/ /run/media/quentin/EHDD1To/Backup/Tri/
+rsync -rltv --delete-after ~/Téléchargements/ /run/media/quentin/EHDD1To/Backup/Téléchargements/
+rsync -rltv --delete-after ~/Vidéos/ /run/media/quentin/EHDD1To/Backup/Vidéos/
+rsync -rltv --delete-after ~/.local/share/Steam/ /run/media/quentin/EHDD1To/Backup/Steam/
 
-rm -r /run/media/sudiukil/EHDD1To/.Trash-*/
-umount /run/media/sudiukil/EHDD1To/
+rm -r /run/media/quentin/EHDD1To/.Trash-*/
+umount /run/media/quentin/EHDD1To/
 
 exit
