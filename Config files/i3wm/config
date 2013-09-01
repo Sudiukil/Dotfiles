@@ -7,19 +7,19 @@ focus_follows_mouse no
 ## Status bar
 
 bar {
-    status_command py3status -c ~/.i3/i3status.conf
-    output DVI-D-0
+	status_command py3status -c ~/.i3/i3status.conf
+	output DVI-D-0
 	font pango:Ohsnap 10
 	colors {
-        background      #0a0a0a
-        statusline      #ff6500
-        separator       #767676
+		background	#0a0a0a
+		statusline	#ff6500
+		separator	#767676
 
-		# class             border      background	    text
-		focused_workspace   #141414     #141414         #ff6500
-		active_workspace    #141414     #141414         #ff6500
-		inactive_workspace  #1e1e1e     #1e1e1e         #767676
-		urgent_workspace    #900000     #900000         #ffffff
+		# class			border		background	text
+		focused_workspace	#141414		#141414		#ff6500
+		active_workspace	#141414		#141414		#ff6500
+		inactive_workspace	#1e1e1e		#1e1e1e		#767676
+		urgent_workspace	#900000		#900000		#ffffff
 	}
 }
 
@@ -29,15 +29,15 @@ bar {
 	tray_output none
 	font pango:Ohsnap 10
 	colors {
-		background		#0a0a0a
-		statusline		#ff6500
-		separator		#767676
+		background	#0a0a0a
+		statusline	#ff6500
+		separator	#767676
 
-		# class             border      background      text
-		focused_workspace   #141414     #141414         #ff6500
+		# class			border		background	text
+		focused_workspace	#141414		#141414		#ff6500
 		active_workspace	#141414		#141414         #ff6500
-		inactive_workspace	#1e1e1e		#1e1e1e		    #767676
-		urgent_workspace	#900000		#900000		    #ffffff
+		inactive_workspace	#1e1e1e		#1e1e1e		#767676
+		urgent_workspace	#900000		#900000		#ffffff
 	}
 }
 
@@ -46,11 +46,11 @@ bar {
 
 font pango:Ohsnap 10
 
-# class			        border      background      text        indicator
-client.focused		    #141414		#141414		    #ff6500	    #ff6500
-client.focused_inactive	#0a0a0a		#0a0a0a		    #767676		#ff6500
-client.unfocused	    #0a0a0a		#0a0a0a		    #767676		#ff6500
-client.urgent	    	#900000		#900000		    #ffffff		#ff6500
+# class			border		background	text		indicator
+client.focused		#141414		#141414		#ff6500		#ff6500
+client.focused_inactive	#0a0a0a		#0a0a0a		#767676		#ff6500
+client.unfocused	#0a0a0a		#0a0a0a		#767676		#ff6500
+client.urgent		#900000		#900000		#ffffff		#ff6500
 
 ## Window assignments
 
@@ -193,9 +193,9 @@ bindsym XF86AudioNext exec mocp -f
 exec xrandr --output DVI-D-0 --primary --mode 1920x1080 --output HDMI-0 --off
 exec setxkbmap fr
 exec numlockx on
-exec sleep 5 && feh --bg-fill ~/Other/Custo/Wallpapers/Sons\ Of\ Anarchy/Ireland.jpg
+exec sleep 5 && feh --bg-fill ~/Autre/Custo/Wallpapers/Sons\ Of\ Anarchy/Ireland.jpg
 exec amixer -q -c 0 sset Master 50%
 exec parcellite
 exec xrdb ~/.Xresources && urxvt -title 'URxvt'
 exec xscreensaver -no-splash
-exec sshfs -p 443 sudiukil@192.168.1.28:/var/lib/transmission/ /media/sudiukil/TR/
+exec sshfs -p 443 quentin@192.168.1.28:/var/lib/transmission/ /media/quentin/TR/

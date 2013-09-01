@@ -25,13 +25,6 @@ set incsearch "Dynamic cursor while searching
 set ignorecase
 set smartcase
 
-" Tab options
-
-set expandtab "Tabs are spaces
-set smarttab
-set shiftwidth=4
-set tabstop=4
-
 " Mapping
 
 map j gj
