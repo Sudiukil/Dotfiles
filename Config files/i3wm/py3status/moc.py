@@ -1,6 +1,6 @@
 import os
 
-moduleName = "py3status MOC module 0.2"
+moduleName = "py3status MOC module 0.3"
 
 class Py3status:
 	def mainMethod(self, json, i3status_config):
