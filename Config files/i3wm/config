@@ -7,7 +7,7 @@ focus_follows_mouse no
 ## Status bar
 
 bar {
-	status_command py3status -c ~/.i3/i3status.conf
+	status_command py3status -c ~/.i3/i3status.conf -n 1 -t 1
 	output DVI-D-0
 	font pango:Ohsnap 10
 	colors {
@@ -24,7 +24,7 @@ bar {
 }
 
 bar {
-	status_command py3status -c ~/.i3/i3status.conf
+	status_command i3status -c ~/.i3/i3status.conf
 	output HDMI-0
 	tray_output none
 	font pango:Ohsnap 10
