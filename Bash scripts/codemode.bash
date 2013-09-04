@@ -10,7 +10,7 @@ elif [ "$1" == "-p" ]
 then
 	cd ~/Autre/Programmation/Python/
 	urxvt -title "Dev - Python - Code" & sleep 1
-	urxvt -title "Dev - Python - Interpreter" & sleep 1
+	urxvt -title "Dev - Python - Interpreter" -e python & sleep 1
 	i3-msg split v && urxvt -title "Dev - Python - Files & Execution" & sleep 1
 elif [ "$1" == "-h" ]
 then
