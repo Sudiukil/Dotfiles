@@ -1,6 +1,6 @@
 import os
 
-moduleName = "py3status MOC module 0.3"
+moduleName = "py3status MOC module 0.4"
 
 class Py3status:
 	def mainMethod(self, json, i3status_config):
@@ -9,8 +9,11 @@ class Py3status:
 			title = os.popen("mocp -Q %title").readline()[:-1]
 			currentTime = os.popen("mocp -Q %ct").readline()[:-1]
 			timeLeft = os.popen("mocp -Q %tl").readline()[:-1]
-			totalTime = os.popen("mocp -Q %tt").readline()[:-1]
-			display = "MOC: " + state + ': ' + title + ' ' + currentTime + '/' + timeLeft + ' [' + totalTime + ']'
+			if timeLeft == '':
+				display = "MOC: " + state + ": " + title + " (Radio)" + " [" + currentTime + ']'
+			else:
+				totalTime = os.popen("mocp -Q %tt").readline()[:-1]
+				display = "MOC: " + state + ": " + title + ' ' + currentTime + '/' + timeLeft + " [" + totalTime + ']'
 		else:
 			display = "MOC: " + state
 		return (0, {"full_text" : display, "name" : moduleName})
