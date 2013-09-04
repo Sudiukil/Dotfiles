@@ -2,8 +2,7 @@
 
 cp ~/.xinitrc ~/Autre/Custo/X/xinitrc
 cp ~/.zshrc ~/Autre/Custo/Zsh/zshrc
-cp ~/.i3/config ~/Autre/Custo/i3/config
-cp ~/.i3/i3status.conf ~/Autre/Custo/i3/
+cp -r ~/.i3/ ~/Autre/Custo/i3/
 cp ~/.Xresources ~/Autre/Custo/X/Xresources
 cp ~/.vimrc ~/Autre/Custo/Vim/vimrc
 cp ~/.vim/colors/* ~/Autre/Custo/Vim/
