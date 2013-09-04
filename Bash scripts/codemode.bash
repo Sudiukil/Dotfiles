@@ -20,7 +20,7 @@ then
 	i3-msg split v && urxvt -title "Dev - HTML/CSS - Files" & sleep 1
 
 else
-	echo "Merci de choisir un langage"
+	echo "Merci de choisir un langage."
 
 fi
 
