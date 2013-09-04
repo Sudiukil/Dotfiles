@@ -71,6 +71,7 @@ assign [class="VirtualBox"] 9 VBox
 for_window [class="XTerm"] floating enable
 for_window [title="Fichier en cours de traitement"] floating enable
 for_window [title="Connexion à Steam"] floating enable
+for_window [title="Steam - Mise à jour automatique"] floating enable
 for_window [title="Activation de produit"] floating enable
 for_window [title="Steam - En cours"] floating enable
 for_window [title="Steam - Erreur"] floating enable

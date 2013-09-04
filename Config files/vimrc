@@ -2,7 +2,7 @@
 
 set nocp "Vim mode only
 set bs=2 "Backspace available in insert mode
-set autoread "Refresh file if modifier outside of Vim
+set autoread "Refresh file if modified outside of Vim
 
 " Display, colors, font, syntax and indent
 
