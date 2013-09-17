@@ -68,16 +68,24 @@ assign [class="VirtualBox"] 9 VBox
 
 ## Window rules
 
+# General
+
 for_window [class="XTerm"] floating enable
 for_window [title="Fichier en cours de traitement"] floating enable
+for_window [class="Gnome-calculator"] floating enable
+for_window [class="Gsimplecal"] floating enable
+for_window [title="- OpenGL"] floating enable
+
+# Steam
+
 for_window [title="Connexion à Steam"] floating enable
+for_window [title="- Steam"] floating enable
 for_window [title="Steam - Mise à jour automatique"] floating enable
+for_window [title="Installer "] floating enable
 for_window [title="Activation de produit"] floating enable
 for_window [title="Steam - En cours"] floating enable
 for_window [title="Steam - Erreur"] floating enable
 for_window [title="- Catégories"] floating enable
-for_window [class="Gnome-calculator"] floating enable
-for_window [class="Gsimplecal"] floating enable
 
 ### Bindings ###
 
@@ -199,4 +207,5 @@ exec amixer -q -c 0 sset Master 50%
 exec parcellite
 exec xrdb ~/.Xresources && urxvt -title 'URxvt'
 exec xscreensaver -no-splash
-exec sshfs -p 443 quentin@192.168.1.28:/var/lib/transmission/ /media/quentin/TR/
+exec sshfs -p 21 quentin@192.168.1.28:/var/lib/transmission/ /media/quentin/TR/
+exec owncloud
