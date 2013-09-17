@@ -11,7 +11,7 @@ echo ""
 echo -e "Température HDD (/dev/sda):      "`nc localhost 7634 | cut -d '|' -f 4`".0°C"
 echo -e "Température HDD (/dev/sdb):      "`nc localhost 7634 | cut -d '|' -f 9`".0°C\n"
 
-ssh -x -p 443 quentin@192.168.1.28 '/opt/vc/bin/vcgencmd measure_temp' | sed 's/temp=/Température serveur:             /' | sed 's/'"'"'/°/'
+ssh -x -p 21 quentin@192.168.1.28 '/opt/vc/bin/vcgencmd measure_temp' | sed 's/temp=/Température serveur:             /' | sed 's/'"'"'/°/'
 echo ""
 
 exit

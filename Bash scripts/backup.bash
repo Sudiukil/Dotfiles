@@ -7,7 +7,7 @@ cp ~/.Xresources ~/Autre/Custo/X/Xresources
 cp ~/.vimrc ~/Autre/Custo/Vim/vimrc
 cp ~/.vim/colors/* ~/Autre/Custo/Vim/
 cp -r ~/.thunderbird/* ~/Autre/Backups/Mails/
-newsbeuter -e > ~/Autre/Backups/feedlist.opml
+cp ~/.newsbeuter/urls ~/Autre/Backup/rss-urls
 ~/Autre/Scripts/mcbackup
 
 rsync -rltv --delete-after ~/Autre/ /run/media/quentin/EHDD1To/Backup/Autre/
