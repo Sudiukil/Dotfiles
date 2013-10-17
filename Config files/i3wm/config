@@ -74,7 +74,8 @@ for_window [class="XTerm"] floating enable
 for_window [title="Fichier en cours de traitement"] floating enable
 for_window [class="Gnome-calculator"] floating enable
 for_window [class="Gsimplecal"] floating enable
-for_window [title="- OpenGL"] floating enable
+for_window [title="Préférences de Firefox"] floating enable
+for_window [title="Préférences de Thunderbird"] floating enable
 
 # Steam
 
@@ -206,6 +207,8 @@ exec sleep 5 && feh --bg-fill ~/Autre/Custo/Wallpapers/Sons\ Of\ Anarchy/Ireland
 exec amixer -q -c 0 sset Master 50%
 exec parcellite
 exec xrdb ~/.Xresources && urxvt -title 'URxvt'
+exec xset fp+ /usr/share/fonts/artwiz-fonts/
 exec xscreensaver -no-splash
 exec sshfs -p 21 quentin@192.168.1.28:/var/lib/transmission/ /media/quentin/TR/
 exec owncloud
+exec redshiftgui
