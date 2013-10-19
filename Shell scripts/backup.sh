@@ -30,5 +30,6 @@ then
 
 else
 	echo "Le disque n'est pas monté."
+fi
 
 exit
