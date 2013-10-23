@@ -7,7 +7,7 @@ focus_follows_mouse no
 ## Status bar
 
 bar {
-	status_command py3status -c ~/.i3/i3status.conf -n 1 -t 1
+	status_command ~/.i3/c3status.sh
 	output DVI-D-0
 	font pango:Ohsnap 10
 	colors {
@@ -24,7 +24,7 @@ bar {
 }
 
 bar {
-	status_command i3status -c ~/.i3/i3status.conf
+	status_command ~/.i3/c3status.sh
 	output HDMI-0
 	tray_output none
 	font pango:Ohsnap 10
@@ -72,7 +72,7 @@ assign [class="VirtualBox"] 9 VBox
 
 for_window [class="XTerm"] floating enable
 for_window [title="Fichier en cours de traitement"] floating enable
-for_window [class="Gnome-calculator"] floating enable
+for_window [class="Gcalctool"] floating enable
 for_window [class="Gsimplecal"] floating enable
 for_window [title="Préférences de Firefox"] floating enable
 for_window [title="Préférences de Thunderbird"] floating enable
