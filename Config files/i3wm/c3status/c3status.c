@@ -14,22 +14,55 @@ int main(int argc, char **argv) {
 	}
 
 	char *getVolume() {
-		FILE *amixerStdout = popen("amixer -c 0 get Master | grep '%' | cut -d '[' -f 2 | sed 's/] //g'", "r");
+		FILE *amixerStdout = popen("amixer get Master | grep \"Mono:\" | cut -d '[' -f 2 | sed -e 's/ //g' -e 's/]//'", "r");
 		char *volume = fgets(buffer, sizeof(buffer), amixerStdout);
 		pclose(amixerStdout);
 		volume[strlen(volume)-1] = '\0';
 		return volume;
 	}
 
+	int testVolumeState() {
+		FILE *amixerStdout = popen("amixer get Master | grep \"Mono:\" | cut -d '[' -f 4 | sed -e 's/on]/1/' -e 's/off]/0/'", "r");
+		char *state = fgets(buffer, sizeof(buffer), amixerStdout);
+		pclose(amixerStdout);
+		if((int)state[0]=='1') {
+			return 0;
+		}
+		else {
+			return 1;
+		}
+	}
+
 	char *getDiskUsage(char *disk) {
-		char command[106] = "disk=";
+		char command[111] = "disk=";
 		strcat(command, disk);
-		strcat(command, " && df -h --output=source,pcent | grep $disk | sed 's/ //g' | sed 's/'\"$disk\"'/'\"$disk: \"'/'");
+		strcat(command, " && df -h --output=target,source,pcent | grep $disk | sed -e 's/ //g' -e 's/\\/dev\\/'\"$disk\"'/: /'");
 		FILE *dfStdout = popen(command, "r");
 		char *usage = fgets(buffer, sizeof(buffer), dfStdout);
 		pclose(dfStdout);
 		usage[strlen(usage)-1] = '\0';
 		return usage;
+	}
+
+	int testDiskUsage(char *disk) {
+		char command[103] = "disk=";
+		strcat(command, disk);
+		strcat(command, " && df -h --output=pcent,source | grep $disk | sed -e 's/ //g' -e 's/%\\/dev\\/'\"$disk\"'//'");
+		FILE *dfStdout = popen(command, "r");
+		char *usage = fgets(buffer, sizeof(buffer), dfStdout);
+		pclose(dfStdout);
+		if(strlen(usage)==3 && (int)usage[0]<55) {
+			return 0;
+		}
+		else { if(strlen(usage)==2) {
+			return 0;
+		}
+		else { if(strlen(usage)==3 && (int)usage[0]>=55) {
+			return 1;
+		}
+		else {
+			return 2;
+		}}}
 	}
 
 	char *getPublicIp() {
@@ -50,8 +83,9 @@ int main(int argc, char **argv) {
 		return info;
 	}
 
-	void display(char *data, int priority, int last) {
+	void display(char *prefix, char *data, int priority, int last) {
 		char jsonStr[128] = "{\"full_text\":\"";
+		strcat(jsonStr, prefix);
 		strcat(jsonStr, data);
 		switch(priority) {
 			case 0:
@@ -71,14 +105,15 @@ int main(int argc, char **argv) {
 	}
 
 	puts("[");
-	display(getPublicIp(), 0, 0);
-	display(getDiskUsage("sda6"), 0, 0);
-	display(getDiskUsage("sda7"), 0, 0);
-	display(getDiskUsage("sda8"), 0, 0);
-	display(getDiskUsage("sda9"), 0, 0);
-	display(getDiskUsage("sda10"), 0, 0);
-	display(getDate(), 0, 0);
-	display(getVolume(), 0, 1);
+	display("IP Publique: ", getPublicIp(), 0, 0);
+	display("", getDiskUsage("sda6"), testDiskUsage("sda6"), 0);
+	display("", getDiskUsage("sda7"), testDiskUsage("sda7"), 0);
+	display("", getDiskUsage("sda8"), testDiskUsage("sda8"), 0);
+	display("", getDiskUsage("sda9"), testDiskUsage("sda9"), 0);
+	display("", getDiskUsage("sda10"), testDiskUsage("sda10"), 0);
+	display("", getDate(), 0, 0);
+	display("", getVolume(), testVolumeState(), 0);
+	display("", "", 0, 1);
 	puts("],");
 
 	return 0;
