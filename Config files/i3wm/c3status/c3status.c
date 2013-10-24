@@ -57,7 +57,7 @@ int main(int argc, char **argv) {
 		else { if(strlen(usage)==2) {
 			return 0;
 		}
-		else { if(strlen(usage)==3 && (int)usage[0]>=55) {
+		else { if(strlen(usage)==3 && (int)usage[0]>=55 && (int)usage[0]<57) {
 			return 1;
 		}
 		else {
