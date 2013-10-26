@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <string.h>
 
-char buffer[256];
+char buffer[256]; //buffer to get the shell commands standard output
 
 char *getDate() {
-	FILE *dateStdout = popen("date \"+%d/%m/%Y - %H:%M:%S\"", "r");
-	char *date = fgets(buffer, sizeof(buffer), dateStdout);
-	pclose(dateStdout);
-	date[strlen(date)-1] = '\0';
+	FILE *dateStdout = popen("date \"+%d/%m/%Y - %H:%M:%S\"", "r"); //getting de standard output of shell command...
+	char *date = fgets(buffer, sizeof(buffer), dateStdout); //... and putting it in a char* using the buffer
+	pclose(dateStdout); //closing the standard output "file"
+	date[strlen(date)-1] = '\0'; //removing the last annoying line break of the string
 	return date;
 }
 
@@ -19,7 +19,7 @@ char *getVolume() {
 	return volume;
 }
 
-int testVolumeState() {
+int testVolumeState() { //testing the volume state (muted or not) to define the display color of the volume percent
 	FILE *amixerStdout = popen("amixer get Master | grep \"Mono:\" | cut -d '[' -f 4 | sed -e 's/on]/1/' -e 's/off]/0/'", "r");
 	char *state = fgets(buffer, sizeof(buffer), amixerStdout);
 	pclose(amixerStdout);
@@ -35,7 +35,7 @@ char *getBattery() {
 	return battery;
 }
 
-int testBatteryPcent() {
+int testBatteryPcent() { //same goal than testVolumeState()
 	FILE *acpiStdout = popen("acpi -b | cut -d ' ' -f 4 | sed -e 's/%,//'", "r");
 	char *pcent = fgets(buffer, sizeof(buffer), acpiStdout);
 	pclose(acpiStdout);
@@ -55,7 +55,7 @@ char *getDiskUsage(char *disk) {
 	return usage;
 }
 
-int testDiskUsage(char *disk) {
+int testDiskUsage(char *disk) { //same goal than testVolumeState and testBatteryPcent
 	char command[103] = "disk=";
 	strcat(command, disk);
 	strcat(command, " && df -h --output=pcent,source | grep $disk | sed -e 's/ //g' -e 's/%\\/dev\\/'\"$disk\"'//'");
@@ -76,7 +76,7 @@ char *getPublicIp() {
 	return publicIp;
 }
 
-int testMocState() {
+int testMocState() { //check if MOC is running
 	FILE *psStdout = popen("ps -e | grep mocp > /dev/null; echo $?", "r");
 	char *returnCode = fgets(buffer, sizeof(buffer), psStdout);
 	pclose(psStdout);
@@ -84,7 +84,7 @@ int testMocState() {
 	else return 1;
 }
 
-char *getMocInfos(int returnCode) {
+char *getMocInfos(int returnCode) { //get infos from MOC only if it's running
 	if(returnCode==0) {
 		char command[46] = "mocp -Q %state:\\ %title\\ %ct\\/%tl\\ \\[%tt]";
 		FILE *mocpStdout = popen(command, "r");
@@ -99,7 +99,7 @@ char *getMocInfos(int returnCode) {
 	else return "STOP";
 }
 
-void display(char *prefix, char *data, int priority, int last) {
+void display(char *prefix, char *data, int priority, int last) { //append json parts, a prefix and a facultative color to a string and display it
 	char jsonStr[128] = "{\"full_text\":\"";
 	strcat(jsonStr, prefix);
 	strcat(jsonStr, data);
