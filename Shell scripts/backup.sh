@@ -15,6 +15,7 @@ then
 	cp -r ~/.thunderbird/* ~/Autre/Backups/Thunderbird/
 	cp ~/.newsbeuter/urls ~/Autre/Backups/rss-urls
 	~/Autre/Scripts/mcbackup
+	cp -r /home/wine/Documents/* ~/Autre/Backups/Wine/Documents/
 
 	rsync -rltv --delete-after ~/Autre/ $backupDir/Autre/
 	rsync -rltv --delete-after ~/Documents/ $backupDir/Documents/

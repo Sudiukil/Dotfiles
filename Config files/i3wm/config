@@ -7,7 +7,8 @@ focus_follows_mouse no
 ## Status bar
 
 bar {
-	status_command ~/.i3/c3status.sh
+	#status_command i3status -c ~/.i3/i3status.conf
+	status_command ~/.i3/c3status/c3status.sh
 	output DVI-D-0
 	font pango:Ohsnap 10
 	colors {
@@ -22,25 +23,6 @@ bar {
 		urgent_workspace	#900000		#900000		#ffffff
 	}
 }
-
-bar {
-	status_command ~/.i3/c3status.sh
-	output HDMI-0
-	tray_output none
-	font pango:Ohsnap 10
-	colors {
-		background	#0a0a0a
-		statusline	#ff6500
-		separator	#767676
-
-		# class			border		background	text
-		focused_workspace	#141414		#141414		#ff6500
-		active_workspace	#141414		#141414         #ff6500
-		inactive_workspace	#1e1e1e		#1e1e1e		#767676
-		urgent_workspace	#900000		#900000		#ffffff
-	}
-}
-
 
 ## Font & colors
 
@@ -62,8 +44,9 @@ assign [title="Irssi"] 4 IRC
 assign [title="URxvt"] 5 Terminal
 assign [title="Htop"] 5 Terminal
 assign [class="jd-Main"] 6 DL
-assign [title="Dev - "] 7 Dev
+assign [title="Dev -"] 7 Dev
 assign [class="Steam"] 8 Gaming
+assign [class="Desura"] 8 Gaming
 assign [class="VirtualBox"] 9 VBox
 
 ## Window rules
@@ -76,6 +59,9 @@ for_window [class="Gcalctool"] floating enable
 for_window [class="Gsimplecal"] floating enable
 for_window [title="Préférences de Firefox"] floating enable
 for_window [title="Préférences de Thunderbird"] floating enable
+for_window [title="Desura Update"] floating enable
+for_window [title="Desura Sign In"] floating enable
+for_window [title="Xnest"] floating enable
 
 # Steam
 
@@ -97,8 +83,8 @@ floating_modifier $mod
 
 ## Session management
 
-bindsym $mod+Ctrl+r restart
-bindsym $mod+Ctrl+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Ctrl+r exec i3-msg restart && ~/Autre/Scripts/c3statusupdate
+bindsym $mod+Ctrl+e exec "i3-nagbar -t warning -m 'Fermer i3 et tuer le serveur X ?' -b 'OK' 'i3-msg exit'"
 bindsym $mod+Ctrl+s exec oblogout
 
 ## Window management
