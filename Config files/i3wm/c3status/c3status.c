@@ -39,8 +39,12 @@ int testBatteryPcent() { //same goal than testVolumeState()
 	FILE *acpiStdout = popen("acpi -b | cut -d ' ' -f 4 | sed -e 's/%,//'", "r");
 	char *pcent = fgets(buffer, sizeof(buffer), acpiStdout);
 	pclose(acpiStdout);
-	if(strlen(pcent)==3 && (int)pcent[0]>=52 && (int)pcent[0]<=56) return 0;
-	else if(strlen(pcent)==3 && ((int)pcent[0]<52 || (int)pcent[0]>56)) return 1;
+	if(strlen(pcent)==3) {
+		if((int)pcent[0]>=52 && (int)pcent[0]<56) return 0;
+		else if((int)pcent[0]<52) return 1;
+		else if((int)pcent[0]>=56) return 1;
+		else return 2;
+	}
 	else return 2;
 }
 
@@ -62,9 +66,12 @@ int testDiskUsage(char *disk) { //same goal than testVolumeState and testBattery
 	FILE *dfStdout = popen(command, "r");
 	char *usage = fgets(buffer, sizeof(buffer), dfStdout);
 	pclose(dfStdout);
-	if(strlen(usage)==3 && (int)usage[0]<55) return 0;
+	if(strlen(usage)==3) {
+		if((int)usage[0]<55) return 0;
+		else if((int)usage[0]>=55 && (int)usage[0]<57) return 1;
+		else return 2;
+	}
 	else if(strlen(usage)==2) return 0;
-	else if(strlen(usage)==3 && (int)usage[0]>=55 && (int)usage[0]<57) return 1;
 	else return 2;
 }
 
@@ -99,18 +106,18 @@ char *getMocInfos(int returnCode) { //get infos from MOC only if it's running
 	else return "STOP";
 }
 
-void display(char *prefix, char *data, int priority, int last) { //append json parts, a prefix and a facultative color to a string and display it
+void display(char *prefix, char *data, int priority, int last) { //append json parts, a prefix and a facultative color to a string and print it
 	char jsonStr[128] = "{\"full_text\":\"";
 	strcat(jsonStr, prefix);
 	strcat(jsonStr, data);
 	switch(priority) {
-		case 0:
+		case 0: //dont colorize the output
 			strcat(jsonStr, "\"}");
 			break;
-		case 1:
+		case 1: //colorize in yellow
 			strcat(jsonStr, "\",\"color\":\"#ffff00\"}");
 			break;
-		case 2:
+		case 2: //colorize in red
 			strcat(jsonStr, "\",\"color\":\"#ff0000\"}");
 			break;
 	}
@@ -121,13 +128,14 @@ void display(char *prefix, char *data, int priority, int last) { //append json p
 int main(int argc, char **argv) {
 
 	puts("[");
-	display("MOC: ", getMocInfos(testMocState()), 0, 0);
-	display("IP Publique: ", getPublicIp(), 0, 0);
-	display("", getDiskUsage("sda6"), 0, 0);
-	display("", getDiskUsage("sda7"), 0, 0);
-	display("", getDiskUsage("sda8"), 0, 0);
-	display("", getDiskUsage("sda9"), 0, 0);
-	display("", getDiskUsage("sda10"), 0, 0);
+	//display("MOC: ", getMocInfos(testMocState()), 0, 0);
+	//display("IP Publique: ", getPublicIp(), 0, 0);
+	//display("", getDiskUsage("sda6"), testDiskUsage("sda6"), 0);
+	//display("", getDiskUsage("sda7"), testDiskUsage("sda7"), 0);
+	//display("", getDiskUsage("sda8"), testDiskUsage("sda8"), 0);
+	//display("", getDiskUsage("sda9"), testDiskUsage("sda9"), 0);
+	//display("", getDiskUsage("sda10"), testDiskUsage("sda10"), 0);
+	//display("", getBattery(), testBatteryPcent(), 0);
 	display("", getDate(), 0, 0);
 	display("", getVolume(), testVolumeState(),0);
 	display("", "", 0, 1);
