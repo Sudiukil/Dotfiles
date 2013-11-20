@@ -1,7 +1,0 @@
-char *getTime() {
-	FILE *dateStdout = popen("date \"+%d/%m/%Y - %H:%M:%S\"", "r");
-	fgets(buffer, sizeof(buffer), dateStdout);
-	pclose(dateStdout);
-	buffer[strlen(buffer)-1] = '\0';
-	return buffer;
-}

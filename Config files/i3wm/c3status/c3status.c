@@ -13,13 +13,13 @@ char buffer[256];
 
 int main(void) {
 	printf("[");
-	display("MOC: ", getMocInfos(testMocState()), 0, 0);
-	display("IP Publique: ", getPublicIp(), 0, 0);
-	display("", getDiskUsage("sda6"), testDiskUsage("sda6"), 0);
-	display("", getDiskUsage("sda7"), testDiskUsage("sda7"), 0);
-	display("", getDiskUsage("sda8"), testDiskUsage("sda8"), 0);
-	display("", getDiskUsage("sda9"), testDiskUsage("sda9"), 0);
-	display("", getDiskUsage("sda10"), testDiskUsage("sda10"), 0);
+	//display("MOC: ", getMocInfos(testMocState()), 0, 0);
+	//display("IP Publique: ", getPublicIp(), 0, 0);
+	//display("", getDiskUsage("sda6"), testDiskUsage("sda6"), 0);
+	//display("", getDiskUsage("sda7"), testDiskUsage("sda7"), 0);
+	//display("", getDiskUsage("sda8"), testDiskUsage("sda8"), 0);
+	//display("", getDiskUsage("sda9"), testDiskUsage("sda9"), 0);
+	//display("", getDiskUsage("sda10"), testDiskUsage("sda10"), 0);
 	//display("", getBattery(), testBatteryPcent(), 0);
 	display("", getTime(), 0, 0);
 	display("", getVolume(), testVolumeState(),1);
