@@ -8,7 +8,7 @@ focus_follows_mouse no
 
 bar {
 	#status_command i3status -c ~/.i3/i3status.conf
-	status_command ~/.i3/c3status/c3status.sh
+	status_command ~/.i3/c3status/launch-c3status.sh
 	output DVI-D-0
 	font pango:Ohsnap 10
 	colors {
@@ -17,10 +17,10 @@ bar {
 		separator	#767676
 
 		# class			border		background	text
-		focused_workspace	#141414		#141414		#ff6500
-		active_workspace	#141414		#141414		#ff6500
-		inactive_workspace	#1e1e1e		#1e1e1e		#767676
-		urgent_workspace	#900000		#900000		#ffffff
+		focused_workspace	#0a0a0a		#0a0a0a		#ff6500
+		active_workspace	#0a0a0a		#0a0a0a		#ff6500
+		inactive_workspace	#0a0a0a		#0a0a0a		#767676
+		urgent_workspace	#aa0000		#aa0000		#ffffff
 	}
 }
 
@@ -32,7 +32,7 @@ font pango:Ohsnap 10
 client.focused		#141414		#141414		#ff6500		#ff6500
 client.focused_inactive	#0a0a0a		#0a0a0a		#767676		#ff6500
 client.unfocused	#0a0a0a		#0a0a0a		#767676		#ff6500
-client.urgent		#900000		#900000		#ffffff		#ff6500
+client.urgent		#aa0000		#aa0000		#ffffff		#ff6500
 
 ## Window assignments
 
@@ -195,6 +195,4 @@ exec parcellite
 exec xrdb ~/.Xresources && urxvt -title 'URxvt'
 exec xset fp+ /usr/share/fonts/artwiz-fonts/
 exec xscreensaver -no-splash
-exec sshfs -p 21 quentin@192.168.1.28:/var/lib/transmission/ /media/quentin/TR/
 exec owncloud
-exec redshiftgui
