@@ -7,8 +7,7 @@ focus_follows_mouse no
 ## Status bar
 
 bar {
-	#status_command i3status -c ~/.i3/i3status.conf
-	status_command ~/.i3/c3status/launch-c3status.sh
+	status_command ~/.i3/c3status/c3status
 	output DVI-D-0
 	font pango:Ohsnap 10
 	colors {
@@ -68,7 +67,6 @@ for_window [title="Xnest"] floating enable
 for_window [title="Connexion à Steam"] floating enable
 for_window [title="- Steam"] floating enable
 for_window [title="Steam - Mise à jour automatique"] floating enable
-for_window [title="Installer "] floating enable
 for_window [title="Activation de produit"] floating enable
 for_window [title="Steam - En cours"] floating enable
 for_window [title="Steam - Erreur"] floating enable

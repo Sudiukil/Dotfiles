@@ -7,11 +7,6 @@ then
 	backupDir=$backupDisk/Backup
 	servDir=quentin@192.168.1.28:/var/www
 
-	if test ! -e $servDir/index.php
-	then
-		sshfs quentin@192.168.1.28:/var/www/ $servDir/
-	fi
-
 	cp ~/.zshrc ~/Autre/Custo/Zsh/zshrc
 	cp ~/.xinitrc ~/Autre/Custo/X/xinitrc
 	cp ~/.Xresources ~/Autre/Custo/X/Xresources
@@ -24,7 +19,8 @@ then
 	cp -r /home/wine/Documents/* ~/Autre/Backups/Wine/Documents/
 	pacman -Qe > ~/Autre/Backups/pkgs.list
 
-	cp $servDir/index.php ~/Autre/Backups/Serveur/
+	rsync -rltv --delete-after $servDir/index.php ~/Autre/Backups/Serveur/
+	rsync -rltv --delete-after $servDir/private/ ~/Autre/Backups/Serveur/private/
 	rsync -rltv --delete-after $servDir/scripts/ ~/Autre/Backups/Serveur/scripts/
 	rsync -rltv --delete-after $servDir/src/ ~/Autre/Backups/Serveur/src/
 	rsync -rltv --delete-after $servDir/style/ ~/Autre/Backups/Serveur/style/
@@ -40,9 +36,9 @@ then
 
 	rm -r $backupDisk/.Trash-*/
 	umount $backupDisk
+	exit 0
 
 else
 	echo "Le disque n'est pas monté."
+	exit 1
 fi
-
-exit
