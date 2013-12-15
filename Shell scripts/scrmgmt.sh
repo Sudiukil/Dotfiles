@@ -1,20 +1,28 @@
 #!/bin/bash
 
 case $1 in
-	--dual)
-		xrandr --output DVI-D-0 --primary --mode 1920x1080 --output HDMI-0 --mode 1440x900 --left-of DVI-D-0 &
+	--visual)
+		i3-nagbar -t warning -m ""\
+			-b "DVI" "scrmgmt --dvi"\
+			-b "DUAL" "scrmgmt --dual"\
+			-b "HDMI" "scrmgmt --hdmi" &
 		sleep 5
-		feh --bg-fill ~/Autre/Custo/Wallpapers/Sons\ Of\ Anarchy/Ireland.jpg &
+		killall i3-nagbar
+		exit 0;;
+	--dual)
+		xrandr --output DVI-D-0 --primary --mode 1920x1080 --output HDMI-0 --mode 1440x900 --left-of DVI-D-0
+		sleep 5
+		sh ~/.fehbg
 		exit 0;;
 	--dvi)
-		xrandr --output DVI-D-0 --primary --mode 1920x1080 --output HDMI-0 --off &
+		xrandr --output DVI-D-0 --primary --mode 1920x1080 --output HDMI-0 --off
 		sleep 5
-		feh --bg-fill ~/Autre/Custo/Wallpapers/Sons\ Of\ Anarchy/Ireland.jpg &
+		sh ~/.fehbg
 		exit 0;;
 	--hdmi)
-		xrandr --output HDMI-0 --primary --mode 1440x900 --output DVI-D-0 --off &
+		xrandr --output HDMI-0 --primary --mode 1440x900 --output DVI-D-0 --off
 		sleep 5
-		feh --bg-fill ~/Autre/Custo/Wallpapers/Sons\ Of\ Anarchy/Ireland.jpg &
+		sh ~/.fehbg
 		exit 0;;
 	*)
 		echo "Args:"

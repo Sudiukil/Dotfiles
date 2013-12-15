@@ -12,12 +12,12 @@ bar {
 	font pango:Ohsnap 10
 	colors {
 		background	#0a0a0a
-		statusline	#ff6500
+		statusline	#0080ff
 		separator	#767676
 
 		# class			border		background	text
-		focused_workspace	#0a0a0a		#0a0a0a		#ff6500
-		active_workspace	#0a0a0a		#0a0a0a		#ff6500
+		focused_workspace	#0a0a0a		#0a0a0a		#0080ff
+		active_workspace	#0a0a0a		#0a0a0a		#0080ff
 		inactive_workspace	#0a0a0a		#0a0a0a		#767676
 		urgent_workspace	#aa0000		#aa0000		#ffffff
 	}
@@ -28,10 +28,10 @@ bar {
 font pango:Ohsnap 10
 
 # class			border		background	text		indicator
-client.focused		#141414		#141414		#ff6500		#ff6500
-client.focused_inactive	#0a0a0a		#0a0a0a		#767676		#ff6500
-client.unfocused	#0a0a0a		#0a0a0a		#767676		#ff6500
-client.urgent		#aa0000		#aa0000		#ffffff		#ff6500
+client.focused		#141414		#141414		#0080ff		#0080ff
+client.focused_inactive	#0a0a0a		#0a0a0a		#767676		#0080ff
+client.unfocused	#0a0a0a		#0a0a0a		#767676		#0080ff
+client.urgent		#aa0000		#aa0000		#ffffff		#0080ff
 
 ## Window assignments
 
@@ -55,12 +55,10 @@ assign [class="VirtualBox"] 9 VBox
 for_window [class="XTerm"] floating enable
 for_window [title="Fichier en cours de traitement"] floating enable
 for_window [class="Gcalctool"] floating enable
-for_window [class="Gsimplecal"] floating enable
 for_window [title="Préférences de Firefox"] floating enable
 for_window [title="Préférences de Thunderbird"] floating enable
 for_window [title="Desura Update"] floating enable
 for_window [title="Desura Sign In"] floating enable
-for_window [title="Xnest"] floating enable
 
 # Steam
 
@@ -81,9 +79,8 @@ floating_modifier $mod
 
 ## Session management
 
-bindsym $mod+Ctrl+r exec i3-msg restart && ~/Autre/Scripts/c3statusupdate
-bindsym $mod+Ctrl+e exec "i3-nagbar -t warning -m 'Fermer i3 et tuer le serveur X ?' -b 'OK' 'i3-msg exit'"
-bindsym $mod+Ctrl+s exec oblogout
+bindsym $mod+Ctrl+r restart
+bindsym $mod+Ctrl+e exec ~/Autre/Scripts/quitbar
 
 ## Window management
 
@@ -158,15 +155,16 @@ bindsym $mod+Shift+equal move container to workspace 12 Écran 2
 # General
 
 bindsym $mod+t exec urxvt
-bindsym $mod+d exec dmenu_run -fn "-artwiz-snap-normal-*-normal-*-10-*-*-*-*-*-*-*" -nb "#0a0a0a" -nf "#767676" -sb "#141414" -sf "#ff6500"
+bindsym $mod+d exec dmenu_run -fn "-artwiz-snap-normal-*-normal-*-10-*-*-*-*-*-*-*" -nb "#0a0a0a" -nf "#767676" -sb "#141414" -sf "#0080ff"
 bindsym $mod+Ctrl+q kill
 
 # Various programs
 
 bindsym $mod+e exec gedit
 bindsym $mod+f exec thunar
-bindsym $mod+l exec xscreensaver-command -lock
+bindsym $mod+l exec i3lock -i ~/.lockscreen.png
 bindsym $mod+m exec urxvt -e mocp
+bindsym $mod+p exec ~/Autre/Scripts/scrmgmt --visual
 bindsym $mod+x exec xterm
 bindsym XF86Calculator exec gnome-calculator
 
@@ -187,10 +185,10 @@ bindsym XF86AudioNext exec mocp -f
 exec xrandr --output DVI-D-0 --primary --mode 1920x1080 --output HDMI-0 --off
 exec setxkbmap fr
 exec numlockx on
-exec sleep 5 && feh --bg-fill ~/Autre/Custo/Wallpapers/Sons\ Of\ Anarchy/Ireland.jpg
+exec sleep 5 && sh ~/.fehbg
 exec amixer -q -c 0 sset Master 50%
 exec parcellite
-exec xrdb ~/.Xresources && urxvt -title 'URxvt'
+exec xrdb ~/.Xresources
 exec xset fp+ /usr/share/fonts/artwiz-fonts/
-exec xscreensaver -no-splash
 exec owncloud
+exec redshiftgui
