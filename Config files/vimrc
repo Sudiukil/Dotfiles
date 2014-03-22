@@ -40,3 +40,12 @@ autocmd FileType php set tabstop=4|set shiftwidth=4|set expandtab
 autocmd FileType tex setlocal spell spelllang=fr
 autocmd FileType html setlocal spell spelllang=fr
 autocmd FileType php setlocal spell spelllang=fr
+
+" Abbreviations
+
+iab itemize \begin{itemize}<CR>\item<CR>\end{itemize}<Up>
+iab enumerate \begin{enumerate}<CR>\item<CR>\end{enumerate}<up>
+iab bold \textbf{
+iab emph \emph{
+iab noindent \noindent
+iab €€ \euro

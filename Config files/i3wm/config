@@ -27,11 +27,11 @@ bar {
 
 font pango:Ohsnap 10
 
-# class			border		background	text		indicator
-client.focused		#141414		#141414		#0080ff		#0080ff
-client.focused_inactive	#0a0a0a		#0a0a0a		#767676		#0080ff
-client.unfocused	#0a0a0a		#0a0a0a		#767676		#0080ff
-client.urgent		#aa0000		#aa0000		#ffffff		#0080ff
+# class				border		background	text		indicator
+client.focused			#141414		#141414		#0080ff		#0080ff
+client.focused_inactive		#0a0a0a		#0a0a0a		#767676		#0080ff
+client.unfocused		#0a0a0a		#0a0a0a		#767676		#0080ff
+client.urgent			#aa0000		#aa0000		#ffffff		#0080ff
 
 ## Window assignments
 
@@ -160,30 +160,31 @@ bindsym $mod+Ctrl+q kill
 
 # Various programs
 
-bindsym $mod+e exec gedit
-bindsym $mod+f exec thunar
-bindsym $mod+l exec i3lock -i ~/.lockscreen.png
+bindsym $mod+f exec urxvt -e ranger
+bindsym $mod+l exec i3lock -i ~/.lockscreen.png -t
+bindsym $mod+k exec ~/Autre/Scripts/switchkeymap
 bindsym $mod+m exec urxvt -e mocp
 bindsym $mod+p exec ~/Autre/Scripts/scrmgmt --visual
 bindsym $mod+x exec xterm
-bindsym XF86Calculator exec gnome-calculator
+bindsym $mod+Ctrl+f exec thunar
+bindsym $mod+Ctrl+l exec sleep 1 && xset dpms force off && i3lock -i ~/.lockscreen.png -t
 
 # ALSA
 
+bindsym XF86AudioRaiseVolume exec amixer -q -c 0 sset Master 2+
+bindsym XF86AudioLowerVolume exec amixer -q -c 0 sset Master 2-
 bindsym XF86AudioMute exec amixer -q -c 0 sset Master toggle
-bindsym XF86AudioLowerVolume exec amixer -q -c 0 sset Master 5%-
-bindsym XF86AudioRaiseVolume exec amixer -q -c 0 sset Master 5%+
 
 # MOC
 
-bindsym XF86AudioPrev exec mocp -r
 bindsym XF86AudioPlay exec mocp -G
+bindsym XF86AudioStop exec mocp -s
+bindsym XF86AudioPrev exec mocp -r
 bindsym XF86AudioNext exec mocp -f
 
 ### Launch at i3 start ###
 
 exec xrandr --output DVI-D-0 --primary --mode 1920x1080 --output HDMI-0 --off
-exec setxkbmap fr
 exec numlockx on
 exec sleep 5 && sh ~/.fehbg
 exec amixer -q -c 0 sset Master 50%
@@ -191,4 +192,4 @@ exec parcellite
 exec xrdb ~/.Xresources
 exec xset fp+ /usr/share/fonts/artwiz-fonts/
 exec owncloud
-exec redshiftgui
+exec devmon
