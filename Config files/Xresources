@@ -45,7 +45,7 @@ URxvt*.background: black
 URxvt*.transparent: true
 URxvt*.shading: 50
 
-! Else
+! Other
 
 URxvt*.scrollBar: false
 

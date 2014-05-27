@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 if !(test $2)
 then
@@ -35,9 +35,9 @@ case $1 in
 		i3-msg split v && urxvt -cd $dir -title "Dev - Python - Files & Execution" & sleep 1
 		exit 0;;
 	*)
-		echo "Args:"
+		echo -e "Usage:\n"
 		echo -e "C/C++:\t\t-c -c++"
 		echo -e "Web:\t\t-web -html -css -js -php"
 		echo -e "Python:\t\t-python -py"
-		exit 1;;
+		exit 0;;
 esac

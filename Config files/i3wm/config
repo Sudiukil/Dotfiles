@@ -3,6 +3,7 @@
 ## General behavior
 
 focus_follows_mouse no
+workspace "12 Écran 2" output HDMI-0
 
 ## Status bar
 
@@ -59,6 +60,7 @@ for_window [title="Préférences de Firefox"] floating enable
 for_window [title="Préférences de Thunderbird"] floating enable
 for_window [title="Desura Update"] floating enable
 for_window [title="Desura Sign In"] floating enable
+for_window [class="Pavucontrol"] floating enable
 
 # Steam
 
@@ -104,7 +106,7 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-bindsym $mod+Shift+a focus parent
+bindsym $mod+Shift+u focus parent
 
 # Moving
 
@@ -166,14 +168,14 @@ bindsym $mod+k exec ~/Autre/Scripts/switchkeymap
 bindsym $mod+m exec urxvt -e mocp
 bindsym $mod+p exec ~/Autre/Scripts/scrmgmt --visual
 bindsym $mod+x exec xterm
-bindsym $mod+Ctrl+f exec thunar
-bindsym $mod+Ctrl+l exec sleep 1 && xset dpms force off && i3lock -i ~/.lockscreen.png -t
+bindsym $mod+Shift+l exec sleep 1 && xset dpms force off && i3lock -i ~/.lockscreen.png -t
 
-# ALSA
+# Volume
 
-bindsym XF86AudioRaiseVolume exec amixer -q -c 0 sset Master 2+
-bindsym XF86AudioLowerVolume exec amixer -q -c 0 sset Master 2-
-bindsym XF86AudioMute exec amixer -q -c 0 sset Master toggle
+bindsym XF86AudioRaiseVolume exec amixer -q -c 0 -D pulse set Master 5%+
+bindsym XF86AudioLowerVolume exec amixer -q -c 0 -D pulse set Master 5%-
+bindsym XF86AudioMute exec amixer -q -c 0 -D pulse set Master toggle
+bindsym $mod+v exec pavucontrol
 
 # MOC
 
@@ -185,11 +187,14 @@ bindsym XF86AudioNext exec mocp -f
 ### Launch at i3 start ###
 
 exec xrandr --output DVI-D-0 --primary --mode 1920x1080 --output HDMI-0 --off
+#exec sleep 5 && sh ~/.fehbg
+exec ~/Autre/Scripts/caroussel -r "Autre/Custo/Wallpapers/Wallbase mix 1 - Mai 2014" 15
 exec numlockx on
-exec sleep 5 && sh ~/.fehbg
-exec amixer -q -c 0 sset Master 50%
-exec parcellite
-exec xrdb ~/.Xresources
+exec pulseaudio --start
+exec amixer -q -c 0 -D pulse set Master 35%
 exec xset fp+ /usr/share/fonts/artwiz-fonts/
-exec owncloud
+exec xrdb ~/.Xresources
 exec devmon
+exec clipit
+exec owncloud
+exec redshift -l 48:6

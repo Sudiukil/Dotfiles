@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 function setwallpaper() {
 	sleep 5
@@ -14,10 +14,6 @@ case $1 in
 		sleep 5
 		killall i3-nagbar
 		exit 0;;
-	--dual)
-		xrandr --output DVI-D-0 --primary --mode 1920x1080 --output HDMI-0 --mode 1440x900 --left-of DVI-D-0
-		setwallpaper
-		exit 0;;
 	--dvi)
 		xrandr --output DVI-D-0 --primary --mode 1920x1080 --output HDMI-0 --off
 		setwallpaper
@@ -26,10 +22,15 @@ case $1 in
 		xrandr --output HDMI-0 --primary --mode 1440x900 --output DVI-D-0 --off
 		setwallpaper
 		exit 0;;
+	--dual)
+		xrandr --output DVI-D-0 --primary --mode 1920x1080 --output HDMI-0 --mode 1440x900 --left-of DVI-D-0
+		setwallpaper
+		exit 0;;
 	*)
-		echo "Args:"
+		echo -e "Usage:\n"
 		echo -e "Dual:\t\t--dual"
 		echo -e "DVI:\t\t--dvi"
 		echo -e "HDMI:\t\t--hdmi"
-		exit 1;;
+		echo -e "Mode visuel:\t--visual"
+		exit 0;;
 esac
