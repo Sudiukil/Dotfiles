@@ -8,14 +8,12 @@ function print_usage() {
 if ! test $1 2> /dev/null
 then
 	print_usage
-fi
 
-if ! test "$2"
+elif ! test "$2"
 then
 	print_usage
-fi
 
-if ! test -d "$2"
+elif ! test -d "$2"
 then
 	echo "Wallpaper dir \"$2\" not found"
 	exit 2
