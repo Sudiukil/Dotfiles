@@ -10,30 +10,8 @@ workspace "12 Écran 2" output HDMI-0
 bindsym $mod+Shift+b bar mode toggle
 
 bar {
-	modifier mod4
-	output DVI-D-0
-	position bottom
-	mode hide
-	font pango:Ohsnap 10
-	colors {
-		background	#0a0a0a
-		statusline	#0080ff
-		separator	#767676
-
-		# class			border		background	text
-		focused_workspace	#0a0a0a		#0a0a0a		#0080ff
-		active_workspace	#0a0a0a		#0a0a0a		#767676
-		inactive_workspace	#0a0a0a		#0a0a0a		#767676
-		urgent_workspace	#aa0000		#aa0000		#ffffff
-	}
-}
-
-bar {
-	modifier mod3
 	status_command ~/.i3/c3status/c3status
 	output DVI-D-0
-	position top
-	mode hide
 	font pango:Ohsnap 10
 	colors {
 		background	#0a0a0a
@@ -46,8 +24,6 @@ bar {
 		inactive_workspace	#0a0a0a		#0a0a0a		#767676
 		urgent_workspace	#aa0000		#aa0000		#ffffff
 	}
-	workspace_buttons no
-	tray_output none
 }
 
 ## Font & colors
@@ -207,12 +183,12 @@ bindsym $mod+Ctrl+q kill
 # Various programs
 
 bindsym $mod+f exec urxvt -e ranger
-bindsym $mod+l exec i3lock -i ~/.lockscreen.png -t
+bindsym $mod+l exec i3lock -t -i "`cat ~/.fehbg | cut -d "'" -f 2`"
 bindsym $mod+k exec ~/Autre/Scripts/switchkeymap
 bindsym $mod+m exec urxvt -e mocp
 bindsym $mod+p exec ~/Autre/Scripts/scrmgmt --visual
 bindsym $mod+x exec xterm
-bindsym $mod+Shift+l exec sleep 1 && xset dpms force off && i3lock -i ~/.lockscreen.png -t
+bindsym $mod+Shift+l exec sleep 1 && xset dpms force off && i3lock -t -i "`cat ~/.fehbg | cut -d "'" -f 2`"
 
 # Volume
 
@@ -235,7 +211,6 @@ exec xrandr --output DVI-D-0 --primary --mode 1920x1080 --output HDMI-0 --off
 exec ~/Autre/Scripts/carousel -r "Autre/Custo/Wallpapers/Wallbase mix 1 - Mai 2014" 15
 
 exec numlockx on
-exec xmodmap -e 'clear mod3' -e 'add mod3 = Menu' -e 'keysym Menu = Hyper_L'
 
 exec pulseaudio --start
 exec amixer -q -c 0 -D pulse set Master 35%
