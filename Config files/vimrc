@@ -1,4 +1,6 @@
-" General options
+" General
+
+execute pathogen#infect()
 
 set nocp "Vim mode only
 set bs=2 "Backspace available in insert mode
@@ -10,8 +12,6 @@ set nu "Line numbering
 
 set t_Co=256 "Terminal colors
 colorscheme vitamins
-
-set guifont="DejaVu Sans Mono"\ 10
 
 syntax on "Syntax highlighting
 
@@ -25,12 +25,21 @@ set incsearch "Dynamic cursor while searching
 set ignorecase
 set smartcase
 
-" Mapping
+" Mapping (normal mode)
 
-map j gj
-map k gk
+nmap j gj
+nmap k gk
 
-" Tab options
+nmap <Space> :NERDTreeToggle<CR>
+
+nmap tt gt
+nmap TT gT
+nmap tn :tabnew<CR>
+nmap te :tabedit 
+nmap tc :tabclose<CR>
+nmap td :tab drop 
+
+" Indent options
 
 autocmd FileType html set tabstop=4|set shiftwidth=4|set expandtab
 autocmd FileType php set tabstop=4|set shiftwidth=4|set expandtab
@@ -40,6 +49,13 @@ autocmd FileType php set tabstop=4|set shiftwidth=4|set expandtab
 autocmd FileType tex setlocal spell spelllang=fr
 autocmd FileType html setlocal spell spelllang=fr
 autocmd FileType php setlocal spell spelllang=fr
+
+set pastetoggle=<F12>
+
+" Modules config
+
+" LightLine
+set laststatus=2 "Always visible
 
 " Abbreviations
 
@@ -56,8 +72,6 @@ iab underline \underline{
 iab bold \textbf{
 iab emph \emph{
 
-iab indent \indent
-iab indent2 \indent\indent
 iab noindent \noindent
 
 iab €€ \euro
