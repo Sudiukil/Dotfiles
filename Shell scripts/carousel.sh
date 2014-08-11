@@ -1,17 +1,24 @@
+# randomize wallpaper from a wallpaper directory
+
 #!/bin/sh
 
-function print_usage() {
-	echo "Usage: randomwall [-l|-r] [wallpapers dir] [timer] (timer is facultative (default to 10 minutes))"
-	exit 1
+function print_usage {
+	echo "Usage:"
+	echo -e "carousel -l <wallpapers dir> (timer)\tLinear mode (wallpapers will be set in the same order as in the folder)"
+	echo -e "carousel -r <wallpapers dir> (timer)\tRandom mode (wallpapers will be set in random order)"
+	echo -e "carousel -h\t\t\t\tPrint this help message"
+	echo "Info: timer is in seconds and is facultative (default to 10 minutes)"
 }
 
 if ! test $1 2> /dev/null
 then
 	print_usage
+	exit 1;
 
 elif ! test "$2"
 then
 	print_usage
+	exit 1;
 
 elif ! test -d "$2"
 then
@@ -21,7 +28,7 @@ fi
 
 if test $3
 then
-	timer=`echo "$3*60" | bc -l`
+	timer=$3
 else
 	timer=600
 fi
@@ -56,8 +63,12 @@ case $1 in
 			feh --bg-fill "`sed -n $random'p' /tmp/walllist`"
 			sleep $timer
 		done;;
+	-h)
+		print_usage
+		exit 0;;
 	*)
-		print_usage;;
+		print_usage
+		exit 1;;
 esac
 
 exit 0

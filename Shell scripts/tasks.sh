@@ -1,4 +1,16 @@
+# simple todo list/tasks manager
+
 #!/bin/sh
+
+function print_usage {
+	echo "Usage :"
+	echo -e "-a \"<nom>\"\t\tAjouter une tâche"
+	echo -e "-d <id>\t\t\tSupprimer une tâche"
+	echo -e "-m <id> \"<nom>\"\t\tRenommer une tâche"
+	echo -e "-p\t\t\tAfficher toutes les tâches"
+	echo -e "--purge\t\t\tSupprimer toutes les tâches"
+	echo -e "-h\t\t\tAffiche ce message d'aide"
+}
 
 case $1 in
 	-a)
@@ -96,15 +108,13 @@ case $1 in
 			*)
 				exit 1;;
 		esac;;
+	-h)
+		print_usage
+		exit 0;;
 	'')
 		tasks -p
 		exit 0;;
 	*)
-		echo -e "Usage:\n"
-		echo -e "-a \"<nom>\"\t\tAjouter une tâche"
-		echo -e "-d <id>\t\t\tSupprimer une tâche"
-		echo -e "-m <id> \"<nom>\"\t\tRenommer une tâche"
-		echo -e "-p\t\t\tAfficher toutes les tâches"
-		echo -e "--purge\t\t\tSupprimer toutes les tâches"
-		exit 0;;
+		print_usage
+		exit 1;;
 esac

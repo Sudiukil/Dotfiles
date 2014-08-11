@@ -1,6 +1,17 @@
+# handle screen management via xrandr
+
 #!/bin/sh
 
-function setwallpaper() {
+function print_usage {
+	echo "Usage:"
+	echo -e "Dual:\t\t--dual"
+	echo -e "DVI:\t\t--dvi"
+	echo -e "HDMI:\t\t--hdmi"
+	echo -e "Visual mode:\t--visual"
+	echo -e "Help: \t\t-h"
+}
+
+function setwallpaper {
 	sleep 5
 	sh ~/.fehbg
 }
@@ -26,11 +37,10 @@ case $1 in
 		xrandr --output DVI-D-0 --primary --mode 1920x1080 --output HDMI-0 --mode 1440x900 --left-of DVI-D-0
 		setwallpaper
 		exit 0;;
-	*)
-		echo -e "Usage:\n"
-		echo -e "Dual:\t\t--dual"
-		echo -e "DVI:\t\t--dvi"
-		echo -e "HDMI:\t\t--hdmi"
-		echo -e "Mode visuel:\t--visual"
+	-h)
+		print_usage
 		exit 0;;
+	*)
+		print_usage
+		exit 1;;
 esac

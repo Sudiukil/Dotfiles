@@ -1,4 +1,14 @@
+# extract or create various type of archive
+
 #!/bin/sh
+
+function print_usage {
+	echo "Usage:"
+	echo -e "-x <archive>\t\tExtract archive"
+	echo -e "-c <file> <archive>\tCreate archive (according to archive extension provided)"
+	echo -e "-h\t\t\tPrint this help message"
+	echo "Warning: only works for one archive and one file at a time"
+}
 
 case $1 in
 	-x|x)
@@ -21,11 +31,11 @@ case $1 in
 					7z x "$2"
 					exit 0;;
 				*)
-					echo "Erreur : format incorrect (supporté : tar(.*), zip, rar, jar, 7z)"
+					echo "Error: "$2": bad file type (compatible types: tar(.*), zip, rar, jar, 7z)"
 					exit 1;;
 			esac
 		else
-			echo "Archive non trouvée ou format non reconnu"
+			echo "Error: file "$2" not found or not a regular file"
 			exit 1
 		fi;;
 	-c|c)
@@ -45,17 +55,17 @@ case $1 in
 					7z a "$3" "$2"
 					exit 0;;
 				*)
-					echo "Erreur : format incorrect (supporté : tar(.*), zip, jar, 7z)"
+					echo "Error: "$3": bad file type (compatible types: tar(.*), zip, jar, 7z)"
 					exit 1;;
 			esac
 		else
-			echo "Fichier à compresser non trouvé ou commande incorrecte"
+			echo "Error: file "$2" not found"
 			exit 1
 		fi;;
-	*)
-		echo -e "Usage :\n"
-		echo -e "-x|x <archive>\t\t\tExtraire l'archive"
-		echo -e "-c|c <fichier> <archive>\tCompresser le fichier en archive (selon extension)"
-		echo -e "Attention : ne fonctionne que pour une archive et un fichier à la fois"
+	-h|h)
+		print_usage
 		exit 0;;
+	*)
+		print_usage
+		exit 1;;
 esac
