@@ -72,5 +72,3 @@ case $1 in
 esac
 
 exit 0
-
-#ajouter prise en compte d'images ajoutées pendant que script tourne
