@@ -39,6 +39,8 @@ nmap te :tabedit
 nmap tc :tabclose<CR>
 nmap td :tab drop 
 
+nmap il :0r ~/Documents/Licences/ISC/header.c
+
 " Indent options
 
 autocmd FileType html set tabstop=4|set shiftwidth=4|set expandtab
@@ -55,9 +57,14 @@ set pastetoggle=<F12>
 " Modules config
 
 " LightLine
+"
 set laststatus=2 "Always visible
 
-" Abbreviations
+" Commands abreviations
+
+cabbrev cil 0r ~/Documents/Licences/ISC/header.c
+
+" Abbreviations for LaTeX
 
 iab newp \part{
 iab news \section{
