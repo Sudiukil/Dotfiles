@@ -1,0 +1,133 @@
+### Modules
+
+autoload -U compinit promptinit colors
+compinit
+promptinit
+colors
+
+### History file
+
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+
+### Prompt
+
+setopt prompt_subst
+
+function set_host_color {
+	if [ $HOST != "GW" ]
+	then
+		echo "%{$fg[blue]}%%B%M%b%{$reset_color%}"
+	else
+		echo "%B%M%b"
+	fi
+}
+
+function set_user_color {
+	if [ $USER = "root" ]
+	then
+		echo "%{$fg[red]%}%B%n%b%{$reset_color%}"
+	else
+		echo "%B%n%b"
+	fi
+}
+
+function get_git_branch {
+	branch=`git symbolic-ref HEAD 2> /dev/null`
+	if [ $branch ]
+	then
+		echo "%{$fg[green]%}(${branch#refs/heads/})%{$reset_color%}"
+	fi
+}
+
+function set_return_code_color {
+	if [ $? != 0 ]
+	then
+		echo "%{$fg[red]%}%B%?%b%{$reset_color%}"
+	else
+		echo "%B%?%b"
+	fi
+}
+
+host='`set_host_color`'
+user='`set_user_color`'
+git_branch='`get_git_branch`'
+return_code='`set_return_code_color`'
+
+PROMPT="┌[$host]-[$user:%~]$git_branch
+└─────╸"
+RPROMPT="$return_code╺┘"
+
+### Environment variables
+
+export EDITOR="vim"
+export PATH=$PATH:~/Autre/Scripts/:~/Autre/Android/SDK/tools/:~/Autre/Android/SDK/platform-tools/
+
+### Aliases
+
+## Existing commands
+
+alias ls="ls --color=auto"
+alias rm="rm -I"
+alias su="su -"
+
+## Global
+
+alias mountmtp="mkdir ~/mtp/ && jmtpfs ~/mtp/"
+alias umountmtp="fusermount -u ~/mtp/ && rmdir ~/mtp/"
+alias schooldir="cd ~/Autre/Études/DUT/1A/"
+alias setproxy="source ~/Autre/Scripts/proxyfy"
+alias xinit="startx"
+
+## SSH
+
+alias tjssh="ssh quentin@192.168.1.27"
+alias trssh="ssh quentin@192.168.1.28"
+
+alias mounttj="sshfs quentin@192.168.1.27:/home/quentin/ /media/quentin/TJ/"
+alias mounttr="sshfs quentin@192.168.1.28:/home/quentin/ /media/quentin/TR/TR/ & sshfs quentin@192.168.1.28:/var/lib/transmission-daemon/downloads/ /media/quentin/TR/Transmission/ & sshfs quentin@192.168.1.28:/var/www/ /media/quentin/TR/WebSrv/"
+
+alias umounttj="fusermount -u /media/quentin/TJ/"
+alias umounttr="fusermount -u /media/quentin/TR/TR/ & fusermount -u /media/quentin/TR/Transmission/ & fusermount -u /media/quentin/TR/WebSrv"
+
+## Game servers
+
+alias mcserver="screen -S mcserver ~/Autre/Minecraft/Serveur/run.sh"
+alias pzserver="screen -S pzserver ~/.local/share/Steam/SteamApps/common/ProjectZomboid/projectzomboid-dedi-server.sh"
+alias sbserver="screen -S sbserver ~/.local/share/Steam/SteamApps/common/Starbound/linux64/starbound_server"
+
+### Functions
+
+function mkcd {
+	mkdir $1
+	cd $1
+}
+
+function mkddir {
+	mkdir "$1 (`date +'%d.%m.%Y'`)"
+}
+
+### User-specific conf
+
+if [ $USER = "quentin" ]
+then
+	fortune | cowsay -f /usr/share/cows/tux.cow
+	tasks
+fi
+
+if [ $USER = "root" ]
+then
+	alias startvpn="systemctl start openvpn@openvpn"
+	alias stopvpn="systemctl stop openvpn@openvpn"
+	alias restartvpn="systemctl restart openvpn@openvpn"
+
+	function ufwls {
+		j=1
+		ufw status | grep "^[0-9]" | while read i
+		do
+			echo $j".\t"$i
+			j=$((j+1))
+		done
+	}
+fi
