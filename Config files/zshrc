@@ -18,9 +18,9 @@ setopt prompt_subst
 function set_host_color {
 	if [ $HOST != "GW" ]
 	then
-		echo "%{$fg[blue]}%%B%M%b%{$reset_color%}"
+		echo "%{$fg[yellow]%}%B%M%b%{$reset_color%}"
 	else
-		echo "%B%M%b"
+		echo "%{$fg[blue]%}%B%M%b%{$reset_color%}"
 	fi
 }
 
@@ -29,7 +29,7 @@ function set_user_color {
 	then
 		echo "%{$fg[red]%}%B%n%b%{$reset_color%}"
 	else
-		echo "%B%n%b"
+		echo "%{$fg[cyan]%}%B%n%b%{$reset_color%}"
 	fi
 }
 
@@ -79,6 +79,15 @@ alias umountmtp="fusermount -u ~/mtp/ && rmdir ~/mtp/"
 alias schooldir="cd ~/Autre/Études/DUT/1A/"
 alias setproxy="source ~/Autre/Scripts/proxyfy"
 alias xinit="startx"
+
+## Git
+
+alias gs="git status"
+alias ga="git add"
+alias gr="git rm"
+alias gc="git commit -m"
+alias gp="git push"
+alias gP="git pull"
 
 ## SSH
 
