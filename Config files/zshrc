@@ -56,7 +56,7 @@ git_branch='`get_git_branch`'
 return_code='`set_return_code_color`'
 
 PROMPT="┌[$host]-[$user:%~]$git_branch
-└─────╸"
+└─────╸ "
 RPROMPT="$return_code╺┘"
 
 ### Environment variables

@@ -37,7 +37,8 @@ nmap TT gT
 nmap tn :tabnew<CR>
 nmap te :tabedit 
 nmap tc :tabclose<CR>
-nmap td :tab drop 
+nmap tm :tabmove 
+nmap td :tabdo 
 
 nmap il :0r ~/Documents/Licences/ISC/header.c
 
