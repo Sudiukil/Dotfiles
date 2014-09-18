@@ -15,7 +15,7 @@ colorscheme vitamins
 
 syntax on "Syntax highlighting
 
-filetype plugin indent on "Indent
+filetype plugin indent on "Auto indent
 
 set showmatch
 
@@ -40,12 +40,10 @@ nmap tc :tabclose<CR>
 nmap tm :tabmove 
 nmap td :tabdo 
 
-nmap il :0r ~/Documents/Licences/ISC/header.c
-
 " Indent options
 
-autocmd FileType html set tabstop=4|set shiftwidth=4|set expandtab
-autocmd FileType php set tabstop=4|set shiftwidth=4|set expandtab
+set shiftwidth=4
+set tabstop=4
 
 " Other
 

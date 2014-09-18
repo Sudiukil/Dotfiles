@@ -16,38 +16,38 @@ SAVEHIST=1000
 setopt prompt_subst
 
 function set_host_color {
-	if [ $HOST != "GW" ]
-	then
-		echo "%{$fg[yellow]%}%B%M%b%{$reset_color%}"
-	else
-		echo "%{$fg[blue]%}%B%M%b%{$reset_color%}"
-	fi
+if [ $HOST != "GW" ]
+then
+	echo "%{$fg[yellow]%}%B%M%b%{$reset_color%}"
+else
+	echo "%{$fg[blue]%}%B%M%b%{$reset_color%}"
+fi
 }
 
 function set_user_color {
-	if [ $USER = "root" ]
-	then
-		echo "%{$fg[red]%}%B%n%b%{$reset_color%}"
-	else
-		echo "%{$fg[cyan]%}%B%n%b%{$reset_color%}"
-	fi
+if [ $USER = "root" ]
+then
+	echo "%{$fg[red]%}%B%n%b%{$reset_color%}"
+else
+	echo "%{$fg[cyan]%}%B%n%b%{$reset_color%}"
+fi
 }
 
 function get_git_branch {
-	branch=`git symbolic-ref HEAD 2> /dev/null`
-	if [ $branch ]
-	then
-		echo "%{$fg[green]%}(${branch#refs/heads/})%{$reset_color%}"
-	fi
+branch=`git symbolic-ref HEAD 2> /dev/null`
+if [ $branch ]
+then
+	echo "%{$fg[green]%}(${branch#refs/heads/})%{$reset_color%}"
+fi
 }
 
 function set_return_code_color {
-	if [ $? != 0 ]
-	then
-		echo "%{$fg[red]%}%B%?%b%{$reset_color%}"
-	else
-		echo "%B%?%b"
-	fi
+if [ $? != 0 ]
+then
+	echo "%{$fg[red]%}%B%?%b%{$reset_color%}"
+else
+	echo "%B%?%b"
+fi
 }
 
 host='`set_host_color`'
@@ -57,12 +57,12 @@ return_code='`set_return_code_color`'
 
 PROMPT="┌[$host]-[$user:%~]$git_branch
 └─────╸ "
-RPROMPT="$return_code╺┘"
+RPROMPT="$return_code ╺┘"
 
 ### Environment variables
 
 export EDITOR="vim"
-export PATH=$PATH:~/Autre/Scripts/:~/Autre/Android/SDK/tools/:~/Autre/Android/SDK/platform-tools/
+export PATH=$PATH:~/Autre/Scripts/:~/Autre/Android/SDK/tools/:~/Autre/Android/SDK/platform-tools/:~/Autre/Jeux/Linux/Lanceurs/
 
 ### Aliases
 
@@ -76,8 +76,6 @@ alias su="su -"
 
 alias mountmtp="mkdir ~/mtp/ && jmtpfs ~/mtp/"
 alias umountmtp="fusermount -u ~/mtp/ && rmdir ~/mtp/"
-alias schooldir="cd ~/Autre/Études/DUT/1A/"
-alias setproxy="source ~/Autre/Scripts/proxyfy"
 alias xinit="startx"
 
 ## Git
@@ -108,13 +106,17 @@ alias sbserver="screen -S sbserver ~/.local/share/Steam/SteamApps/common/Starbou
 
 ### Functions
 
+function autoindent {
+vim -s ~/Documents/Vrac/indent.scr $1
+}
+
 function mkcd {
-	mkdir $1
-	cd $1
+mkdir $1
+cd $1
 }
 
 function mkddir {
-	mkdir "$1 (`date +'%d.%m.%Y'`)"
+mkdir "$1 (`date +'%d.%m.%Y'`)"
 }
 
 ### User-specific conf
@@ -132,11 +134,11 @@ then
 	alias restartvpn="systemctl restart openvpn@openvpn"
 
 	function ufwls {
-		j=1
-		ufw status | grep "^[0-9]" | while read i
-		do
-			echo $j".\t"$i
-			j=$((j+1))
-		done
+	j=1
+	ufw status | grep "^[0-9]" | while read i
+do
+	echo $j".\t"$i
+	j=$((j+1))
+done
 	}
 fi
