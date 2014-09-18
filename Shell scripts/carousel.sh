@@ -1,13 +1,13 @@
-# randomize wallpaper from a wallpaper directory
-
 #!/bin/sh
 
+# randomize wallpaper from a wallpaper directory
+
 function print_usage {
-	echo "Usage:"
-	echo -e "carousel -l <wallpapers dir> (timer)\tLinear mode (wallpapers will be set in the same order as in the folder)"
-	echo -e "carousel -r <wallpapers dir> (timer)\tRandom mode (wallpapers will be set in random order)"
-	echo -e "carousel -h\t\t\t\tPrint this help message"
-	echo "Info: timer is in seconds and is facultative (default to 10 minutes)"
+echo "Usage:"
+echo -e "carousel -l <wallpapers dir> (timer)\tLinear mode (wallpapers will be set in the same order as in the folder)"
+echo -e "carousel -r <wallpapers dir> (timer)\tRandom mode (wallpapers will be set in random order)"
+echo -e "carousel -h\t\t\t\tPrint this help message"
+echo "Info: timer is in seconds and is facultative (default to 10 minutes)"
 }
 
 if ! test $1 2> /dev/null

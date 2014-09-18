@@ -1,6 +1,6 @@
-# switch keymap between two layout
-
 #!/bin/sh
+
+# switch keymap between two layout
 
 keymap=`setxkbmap -query | grep layout | cut -d ':' -f 2 | sed -e 's/ //g'`
 

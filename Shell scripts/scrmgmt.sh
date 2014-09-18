@@ -1,19 +1,19 @@
-# handle screen management via xrandr
-
 #!/bin/sh
 
+# handle screen management via xrandr
+
 function print_usage {
-	echo "Usage:"
-	echo -e "Dual:\t\t--dual"
-	echo -e "DVI:\t\t--dvi"
-	echo -e "HDMI:\t\t--hdmi"
-	echo -e "Visual mode:\t--visual"
-	echo -e "Help: \t\t-h"
+echo "Usage:"
+echo -e "Dual:\t\t--dual"
+echo -e "DVI:\t\t--dvi"
+echo -e "HDMI:\t\t--hdmi"
+echo -e "Visual mode:\t--visual"
+echo -e "Help: \t\t-h"
 }
 
 function setwallpaper {
-	sleep 5
-	sh ~/.fehbg
+sleep 5
+sh ~/.fehbg
 }
 
 case $1 in

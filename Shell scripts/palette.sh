@@ -1,6 +1,6 @@
-# display terminal colors
-
 #!/bin/sh
+
+# display terminal colors
 
 echo -e "\033[40m     black1     \033[37;100m     black2     \033[0m"
 echo -e "\033[41m     red1       \033[101m     red2       \033[0m"

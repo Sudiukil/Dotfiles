@@ -1,13 +1,13 @@
-# extract or create various type of archive
-
 #!/bin/sh
 
+# extract or create various type of archive
+
 function print_usage {
-	echo "Usage:"
-	echo -e "-x <archive>\t\tExtract archive"
-	echo -e "-c <file> <archive>\tCreate archive (according to archive extension provided)"
-	echo -e "-h\t\t\tPrint this help message"
-	echo "Warning: only works for one archive and one file at a time"
+echo "Usage:"
+echo -e "-x <archive>\t\tExtract archive"
+echo -e "-c <file> <archive>\tCreate archive (according to archive extension provided)"
+echo -e "-h\t\t\tPrint this help message"
+echo "Warning: only works for one archive and one file at a time"
 }
 
 case $1 in
