@@ -4,29 +4,25 @@
 
 function print_usage {
 echo "Usage:"
-echo -e "carousel -l <wallpapers dir> (timer)\tLinear mode (wallpapers will be set in the same order as in the folder)"
-echo -e "carousel -r <wallpapers dir> (timer)\tRandom mode (wallpapers will be set in random order)"
-echo -e "carousel -h\t\t\t\tPrint this help message"
+echo -e "${0##*/} -l <wallpapers dir> (timer)\tLinear mode (wallpapers will be set in the same order as in the folder)"
+echo -e "${0##*/} -r <wallpapers dir> (timer)\tRandom mode (wallpapers will be set in random order)"
+echo -e "${0##*/} -h\t\t\t\tPrint this help message"
 echo "Info: timer is in seconds and is facultative (default to 10 minutes)"
 }
 
-if ! test $1 2> /dev/null
+if [ $# -lt 2 ]
 then
 	print_usage
-	exit 1;
+	exit 1
+fi
 
-elif ! test "$2"
+if ! [ -d "$2" ]
 then
-	print_usage
-	exit 1;
-
-elif ! test -d "$2"
-then
-	echo "Wallpaper dir \"$2\" not found"
+	echo "Wallpaper dir \"$2\" not found or not a directory"
 	exit 2
 fi
 
-if test $3
+if [ $3 ]
 then
 	timer=$3
 else
@@ -63,9 +59,7 @@ case $1 in
 			feh --bg-fill "`sed -n $random'p' /tmp/walllist`"
 			sleep $timer
 		done;;
-	-h)
-		print_usage
-		exit 0;;
+	-h) print_usage;;
 	*)
 		print_usage
 		exit 1;;

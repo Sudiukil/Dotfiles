@@ -12,13 +12,9 @@ case $1 in
 esac
 
 case $keymap in
-	fr)
-		setxkbmap us
-		exit 0;;
-	us)
-		setxkbmap fr
-		exit 0;;
-	*)
-		setxkbmap fr
-		exit 0;;
+	fr) setxkbmap us;;
+	us) setxkbmap fr;;
+	*) setxkbmap fr;;
 esac
+
+exit 0
