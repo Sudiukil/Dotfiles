@@ -104,6 +104,10 @@ alias mcserver="screen -S mcserver ~/Autre/Minecraft/Serveur/run.sh"
 alias pzserver="screen -S pzserver ~/.local/share/Steam/SteamApps/common/ProjectZomboid/projectzomboid-dedi-server.sh"
 alias sbserver="screen -S sbserver ~/.local/share/Steam/SteamApps/common/Starbound/linux64/starbound_server"
 
+## Other
+
+alias convert.py="python ~/Autre/Scripts/Python/convert.py"
+
 ### Functions
 
 function autoindent {

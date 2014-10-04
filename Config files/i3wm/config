@@ -49,7 +49,7 @@ new_float pixel
 assign [class="Firefox"] 2 Web
 assign [class="Thunderbird"] 3 Mail
 assign [title="Irssi"] 4 IRC
-assign [class="jd-Main"] 5 DL
+assign [class="JDownloader"] 5 DL
 assign [title="Dev -"] 6 Dev
 assign [class="Steam"] 7 Gaming
 
@@ -62,6 +62,7 @@ for_window [class="Gcalctool"] floating enable
 for_window [title="Préférences de Firefox"] floating enable
 for_window [title="Préférences de Thunderbird"] floating enable
 for_window [class="qemu-system-x86_64"] floating enable
+for_window [class="PPSSPPSDL"] floating enable
 
 # Steam
 

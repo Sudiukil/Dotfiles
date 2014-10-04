@@ -1,12 +1,10 @@
-" General
-
-execute pathogen#infect()
+" --- General ---
 
 set nocp "Vim mode only
 set bs=2 "Backspace available in insert mode
 set autoread "Refresh file if modified outside of Vim
 
-" Display, colors, font, syntax and indent
+" -- Display, colors, font, syntax and indent --
 
 set nu "Line numbering
 
@@ -17,20 +15,24 @@ syntax on "Syntax highlighting
 
 filetype plugin indent on "Auto indent
 
-set showmatch
+set showmatch "Show matching braces
 
-" Search options
+" -- Search options --
 
 set incsearch "Dynamic cursor while searching
 set ignorecase
 set smartcase
 
-" Mapping (normal mode)
+" -- Mapping (normal mode) --
+
+" - Global -
 
 nmap j gj
 nmap k gk
 
-nmap <Space> :NERDTreeToggle<CR>
+let mapleader = ","
+
+" - Tabs management -
 
 nmap tt gt
 nmap TT gT
@@ -40,12 +42,18 @@ nmap tc :tabclose<CR>
 nmap tm :tabmove 
 nmap td :tabdo 
 
-" Indent options
+" - Modules -
+
+nmap <Space> :NERDTreeToggle<CR>
+nmap <C-t> :TagbarToggle<CR>
+nmap <C-b> :Thumbnail -here<CR>
+
+" -- Indent options --
 
 set shiftwidth=4
 set tabstop=4
 
-" Other
+" -- Other --
 
 autocmd FileType tex setlocal spell spelllang=fr
 autocmd FileType html setlocal spell spelllang=fr
@@ -53,17 +61,13 @@ autocmd FileType php setlocal spell spelllang=fr
 
 set pastetoggle=<F12>
 
-" Modules config
-
-" LightLine
-"
-set laststatus=2 "Always visible
-
-" Commands abreviations
+" --- Commands abreviations ---
 
 cabbrev cil 0r ~/Documents/Licences/ISC/header.c
 
-" Abbreviations for LaTeX
+" --- Abbreviations ---
+
+" -- LaTeX --
 
 iab newp \part{
 iab news \section{
@@ -83,3 +87,12 @@ iab noindent \noindent
 iab €€ \euro
 
 iab resetsec \setcounter{section}{0}
+
+" --- Modules config ---
+
+"Enable pathogen
+execute pathogen#infect()
+
+" -- LightLine --
+
+set laststatus=2 "Always visible
