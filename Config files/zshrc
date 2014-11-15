@@ -62,7 +62,7 @@ RPROMPT="$return_code ╺┘"
 ### Environment variables
 
 export EDITOR="vim"
-export PATH=$PATH:~/Autre/Scripts/:~/Autre/Android/SDK/tools/:~/Autre/Android/SDK/platform-tools/:~/Autre/Jeux/Linux/Lanceurs/
+export PATH=$PATH:~/Autre/Scripts/:~/Autre/Android/SDK/tools/:~/Autre/Android/SDK/platform-tools/:~/Autre/Jeux/Linux/Lanceurs/:~/Autre/Wine/Lanceurs/:~/Autre/Logiciels/Modelio\ 3.1/
 
 ### Aliases
 
@@ -74,8 +74,8 @@ alias su="su -"
 
 ## Global
 
-alias mountmtp="mkdir ~/mtp/ && jmtpfs ~/mtp/"
-alias umountmtp="fusermount -u ~/mtp/ && rmdir ~/mtp/"
+alias mountmtp="mkdir /media/quentin/mtp/ && jmtpfs /media/quentin/mtp/"
+alias umountmtp="fusermount -u /media/quentin/mtp/ && rmdir /media/quentin/mtp/"
 alias xinit="startx"
 
 ## Git

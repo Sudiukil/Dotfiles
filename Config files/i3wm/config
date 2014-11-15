@@ -52,6 +52,7 @@ assign [title="Irssi"] 4 IRC
 assign [class="JDownloader"] 5 DL
 assign [title="Dev -"] 6 Dev
 assign [class="Steam"] 7 Gaming
+assign [title="ncmpcpp"] 8 Music
 
 ## Windows rules
 
@@ -62,6 +63,7 @@ for_window [class="Gcalctool"] floating enable
 for_window [title="Préférences de Firefox"] floating enable
 for_window [title="Préférences de Thunderbird"] floating enable
 for_window [class="qemu-system-x86_64"] floating enable
+for_window [class="qemu-system-i386"] floating enable
 for_window [class="PPSSPPSDL"] floating enable
 
 # Steam
@@ -204,7 +206,7 @@ bindsym $mod+v exec xterm -e alsamixer
 
 # MPD/ncmpcpp
 
-bindsym $mod+m exec urxvt -e ncmpcpp
+bindsym $mod+m exec urxvt -title ncmpcpp -e ncmpcpp
 bindsym XF86AudioPlay exec ncmpcpp toggle
 bindsym XF86AudioStop exec ncmpcpp stop
 bindsym XF86AudioPrev exec ncmpcpp prev
@@ -214,11 +216,11 @@ bindsym XF86AudioNext exec ncmpcpp next
 
 exec xrandr --output DVI-D-0 --primary --mode 1920x1080 --output HDMI-0 --off
 exec sleep 5 && sh ~/.fehbg
+exec xset dpms 600
 
 exec numlockx on
 
 exec sleep 2 && amixer -q -c 0 set Master 50%
-exec sleep 2 && amixer -q -c 0 set Capture 25%
 
 exec xset fp+ /usr/share/fonts/artwiz-fonts/
 exec xrdb ~/.Xresources
