@@ -11,19 +11,19 @@ bindsym $mod+Shift+b bar mode toggle
 
 bar {
 	id main-bar
-	status_command ~/.i3/c3status/c3status
+	status_command c3status
 	output DVI-D-0
 	font pango:Ohsnap 10
 	colors {
-		background	#0a0a0a
-		statusline	#cccccc
-		separator	#0a0a0a
+		background	#3d322c
+		statusline	#01aaeb
+		separator	#3d322c
 
 		# class				border		background	text
-		focused_workspace	#0a0a0a		#cccccc		#202020
-		active_workspace	#0a0a0a		#202020		#cccccc
-		inactive_workspace	#0a0a0a		#202020		#767676
-		urgent_workspace	#0a0a0a		#aa0000		#ffffff
+		focused_workspace	#3d322c		#3d322c		#01aaeb
+		active_workspace	#3d322c		#3d322c		#f5e72e
+		inactive_workspace	#3d322c		#3d322c		#808080
+		urgent_workspace	#3d322c		#aa0000		#ffffff
 	}
 	tray_output DVI-D-0
 	position top
@@ -34,10 +34,10 @@ bar {
 font pango:Ohsnap 10
 
 # class					border		background	text		indicator
-client.focused			#202020		#202020		#cccccc		#cccccc
-client.focused_inactive	#0a0a0a		#0a0a0a		#cccccc		#cccccc
-client.unfocused		#0a0a0a		#0a0a0a		#767676		#cccccc
-client.urgent			#aa0000		#aa0000		#ffffff		#cccccc
+client.focused			#3d322c		#3d322c		#01aaeb		#01aaeb
+client.focused_inactive	#3d322c		#3d322c		#f5e72e		#01aaeb
+client.unfocused		#000000		#000000		#808080		#01aaeb
+client.urgent			#aa0000		#aa0000		#ffffff		#01aaeb
 
 ## Windows look
 
@@ -183,7 +183,7 @@ bindsym $mod+Ctrl+equal move container to workspace number 12 Écran 2; workspac
 # General
 
 bindsym $mod+t exec urxvt
-bindsym $mod+d exec dmenu_run -p '>' -fn "-artwiz-snap-normal-*-normal-*-10-*-*-*-*-*-*-*" -nb "#0a0a0a" -nf "#767676" -sb "#141414" -sf "#cccccc"
+bindsym $mod+d exec dmenu_run -p '>' -fn "-artwiz-snap-normal-*-normal-*-10-*-*-*-*-*-*-*" -nb "#3d322c" -nf "#808080" -sb "#3d322c" -sf "#01aaeb"  -h 20
 bindsym $mod+Shift+d exec i3-input -F '%s' -P 'Command: '
 bindsym $mod+Ctrl+q kill
 

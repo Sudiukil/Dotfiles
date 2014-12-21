@@ -59,6 +59,10 @@ PROMPT="┌[$host]-[$user:%~]$git_branch
 └─────╸ "
 RPROMPT="$return_code ╺┘"
 
+### Colors
+
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 ### Environment variables
 
 export EDITOR="vim"
@@ -121,6 +125,17 @@ cd $1
 
 function mkddir {
 mkdir "$1 (`date +'%d.%m.%Y'`)"
+}
+
+function man {
+env LESS_TERMCAP_md=$'\033[1;34m' \
+	LESS_TERMCAP_us=$'\033[0;36m' \
+	LESS_TERMCAP_so=$'\033[1;30m' \
+	LESS_TERMCAP_mb=$'\033[0m' \
+	LESS_TERMCAP_me=$'\033[0m' \
+	LESS_TERMCAP_se=$'\033[0m' \
+	LESS_TERMCAP_ue=$'\033[0m' \
+	man "$@"
 }
 
 ### User-specific conf
