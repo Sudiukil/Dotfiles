@@ -1,4 +1,4 @@
-### General ###
+# General
 
 ## General behavior
 
@@ -50,13 +50,12 @@ assign [class="Firefox"] 2 Web
 assign [class="Thunderbird"] 3 Mail
 assign [title="Irssi"] 4 IRC
 assign [class="JDownloader"] 5 DL
-assign [title="Dev -"] 6 Dev
-assign [class="Steam"] 7 Gaming
-assign [title="ncmpcpp"] 8 Music
+assign [class="Steam"] 6 Gaming
+assign [title="ncmpcpp"] 7 Music
 
 ## Windows rules
 
-# General
+### General
 
 for_window [class="XTerm"] floating enable
 for_window [class="Gcalctool"] floating enable
@@ -66,7 +65,7 @@ for_window [class="qemu-system-x86_64"] floating enable
 for_window [class="qemu-system-i386"] floating enable
 for_window [class="PPSSPPSDL"] floating enable
 
-# Steam
+### Steam
 
 for_window [title="Connexion à Steam"] floating enable
 for_window [title="- Steam"] floating enable
@@ -76,7 +75,7 @@ for_window [title="Steam - En cours"] floating enable
 for_window [title="Steam - Erreur"] floating enable
 for_window [title="- Catégories"] floating enable
 
-### Bindings ###
+# Bindings
 
 ## Modifiers
 
@@ -90,12 +89,12 @@ bindsym $mod+Ctrl+e exec ~/Autre/Scripts/quitbar
 
 ## Windows management
 
-# Borders
+### Borders
 
 bindsym $mod+Shift+o border normal
 bindsym $mod+Shift+p border pixel
 
-# Layout
+### Layout
 
 bindsym $mod+a layout stacking
 bindsym $mod+q layout tabbed
@@ -103,12 +102,12 @@ bindsym $mod+w layout toggle split
 bindsym $mod+Shift+f fullscreen
 bindsym $mod+Shift+space floating toggle
 
-# Splitting
+### Splitting
 
 bindsym $mod+Shift+h split h
 bindsym $mod+Shift+v split v
 
-# Focusing
+### Focusing
 
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -117,14 +116,14 @@ bindsym $mod+Right focus right
 
 bindsym $mod+Shift+u focus parent
 
-# Moving
+### Moving
 
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# Scratchpad
+### Scratchpad
 
 bindsym $mod+Shift+BackSpace move scratchpad
 bindsym $mod+Shift+Return scratchpad show
@@ -133,45 +132,45 @@ bindsym $mod+Shift+Return scratchpad show
 
 bindsym $mod+Shift+n exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
 
-# Switching
+### Switching
 
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2 Web
 bindsym $mod+3 workspace number 3 Mail
 bindsym $mod+4 workspace number 4 IRC
 bindsym $mod+5 workspace number 5 DL
-bindsym $mod+6 workspace number 6 Dev
-bindsym $mod+7 workspace number 7 Gaming
+bindsym $mod+6 workspace number 6 Gaming
+bindsym $mod+7 workspace number 7 Music
 bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 bindsym $mod+0 workspace number 10
 bindsym $mod+parenright workspace number 11
 bindsym $mod+equal workspace number 12 Écran 2
 
-# Sending window to desktop
+### Sending window to desktop
 
 bindsym $mod+Shift+1 move container to workspace number 1
 bindsym $mod+Shift+2 move container to workspace number 2 Web
 bindsym $mod+Shift+3 move container to workspace number 3 Mail
 bindsym $mod+Shift+4 move container to workspace number 4 IRC
 bindsym $mod+Shift+5 move container to workspace number 5 DL
-bindsym $mod+Shift+6 move container to workspace number 6 Dev
-bindsym $mod+Shift+7 move container to workspace number 7 Gaming
+bindsym $mod+Shift+6 move container to workspace number 6 Gaming
+bindsym $mod+Shift+7 move container to workspace number 7 Music
 bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 bindsym $mod+Shift+parenright move container to workspace number 11
 bindsym $mod+Shift+equal move container to workspace number 12 Écran 2
 
-# Switching with window
+### Switching with window
 
 bindsym $mod+Ctrl+1 move container to workspace number 1; workspace number 1
 bindsym $mod+Ctrl+2 move container to workspace number 2 Web; workspace number 2 Web
 bindsym $mod+Ctrl+3 move container to workspace number 3 Mail; workspace number 3 Mail
 bindsym $mod+Ctrl+4 move container to workspace number 4 IRC; workspace number 4 IRC
 bindsym $mod+Ctrl+5 move container to workspace number 5 DL; workspace number 5 DL
-bindsym $mod+Ctrl+6 move container to workspace number 6 Dev; workspace number 6 Dev
-bindsym $mod+Ctrl+7 move container to workspace number 7 Gaming; workspace number 7 Gaming
+bindsym $mod+Ctrl+6 move container to workspace number 6 Dev; workspace number 6 Gaming
+bindsym $mod+Ctrl+7 move container to workspace number 7 Gaming; workspace number 7 Music
 bindsym $mod+Ctrl+8 move container to workspace number 8; workspace number 8
 bindsym $mod+Ctrl+9 move container to workspace number 9; workspace number 9
 bindsym $mod+Ctrl+0 move container to workspace number 10; workspace number 10
@@ -180,14 +179,14 @@ bindsym $mod+Ctrl+equal move container to workspace number 12 Écran 2; workspac
 
 ## Shortcuts
 
-# General
+### General
 
 bindsym $mod+t exec urxvt
 bindsym $mod+d exec dmenu_run -p '>' -fn "-artwiz-snap-normal-*-normal-*-10-*-*-*-*-*-*-*" -nb "#3d322c" -nf "#808080" -sb "#3d322c" -sf "#01aaeb"  -h 20
 bindsym $mod+Shift+d exec i3-input -F '%s' -P 'Command: '
 bindsym $mod+Ctrl+q kill
 
-# Various programs
+### Various programs
 
 bindsym $mod+f exec urxvt -e ranger
 bindsym $mod+l exec i3lock -t -i "`cat ~/.fehbg | cut -d "'" -f 2`"
@@ -197,14 +196,14 @@ bindsym $mod+r exec urxvt -e newsbeuter
 bindsym $mod+x exec xterm
 bindsym $mod+Shift+l exec sleep 1 && xset dpms force off && i3lock -t -i "`cat ~/.fehbg | cut -d "'" -f 2`"
 
-# Volume
+### Volume
 
 bindsym XF86AudioRaiseVolume exec amixer -q -c 0 set Master 5%+
 bindsym XF86AudioLowerVolume exec amixer -q -c 0 set Master 5%-
 bindsym XF86AudioMute exec amixer -q -c 0 set Master toggle
 bindsym $mod+v exec xterm -e alsamixer
 
-# MPD/ncmpcpp
+### MPD/ncmpcpp
 
 bindsym $mod+m exec urxvt -title ncmpcpp -e ncmpcpp
 bindsym XF86AudioPlay exec ncmpcpp toggle
@@ -212,7 +211,7 @@ bindsym XF86AudioStop exec ncmpcpp stop
 bindsym XF86AudioPrev exec ncmpcpp prev
 bindsym XF86AudioNext exec ncmpcpp next
 
-### Launch at i3 start ###
+# Launch at i3 start
 
 exec xrandr --output DVI-D-0 --primary --mode 1920x1080 --output HDMI-0 --off
 exec sleep 5 && sh ~/.fehbg
@@ -231,3 +230,4 @@ exec autocutsel -s PRIMARY
 exec owncloud
 exec redshift
 exec mpd
+exec dunst
