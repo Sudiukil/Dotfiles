@@ -1,11 +1,11 @@
-### Modules
+# Modules
 
 autoload -U compinit promptinit colors
 compinit
 promptinit
 colors
 
-### History file
+# History file
 
 HISTFILE=~/.histfile
 HISTSIZE=1000
@@ -13,7 +13,7 @@ SAVEHIST=1000
 
 setopt HIST_IGNORE_DUPS
 
-### Prompt
+# Prompt
 
 setopt prompt_subst
 
@@ -61,16 +61,16 @@ PROMPT="┌[$host]-[$user:%~]$git_branch
 └─────╸ "
 RPROMPT="$return_code ╺┘"
 
-### Colors
+# Colors
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-### Environment variables
+# Environment variables
 
 export EDITOR="vim"
-export PATH=$PATH:~/Autre/Scripts/:~/Autre/Android/SDK/tools/:~/Autre/Android/SDK/platform-tools/:~/Autre/Jeux/Linux/Lanceurs/:~/Autre/Wine/Lanceurs/:~/Autre/Logiciels/Modelio\ 3.1/
+export PATH=$PATH:~/Autre/Scripts/:~/Autre/Jeux/Linux/Lanceurs/:~/Autre/Android/SDK/tools/:~/Autre/Android/SDK/platform-tools/:~/Autre/Wine/Lanceurs/:~/Autre/Logiciels/Modelio\ 3.1/
 
-### Aliases
+# Aliases
 
 ## Existing commands
 
@@ -82,7 +82,7 @@ alias su="su -"
 
 alias mountmtp="mkdir /media/quentin/mtp/ && jmtpfs /media/quentin/mtp/"
 alias umountmtp="fusermount -u /media/quentin/mtp/ && rmdir /media/quentin/mtp/"
-alias xinit="startx"
+alias xinit="startx" #tmp
 
 ## Git
 
@@ -95,8 +95,9 @@ alias gP="git pull"
 
 ## SSH
 
-alias tjssh="ssh quentin@192.168.1.27"
-alias trssh="ssh quentin@192.168.1.28"
+alias ssh="sshautokey"
+alias trsshonline="ssh quentin@liquidus88.ddns.net"
+alias trtunnel="ssh -vTND 2222 quentin@liquidus88.ddns.net"
 
 alias mounttj="sshfs quentin@192.168.1.27:/home/quentin/ /media/quentin/TJ/"
 alias mounttr="sshfs quentin@192.168.1.28:/home/quentin/ /media/quentin/TR/TR/ & sshfs quentin@192.168.1.28:/var/lib/transmission-daemon/downloads/ /media/quentin/TR/Transmission/ & sshfs quentin@192.168.1.28:/var/www/ /media/quentin/TR/WebSrv/"
@@ -114,7 +115,7 @@ alias sbserver="screen -S sbserver ~/.local/share/Steam/SteamApps/common/Starbou
 
 alias convert.py="python ~/Autre/Scripts/Python/convert.py"
 
-### Functions
+# Functions
 
 function autoindent {
 vim -s ~/Documents/Vrac/indent.scr $1
@@ -132,7 +133,7 @@ mkdir "$1 (`date +'%d.%m.%Y'`)"
 function man {
 env LESS_TERMCAP_md=$'\033[1;34m' \
 	LESS_TERMCAP_us=$'\033[0;36m' \
-	LESS_TERMCAP_so=$'\033[1;30m' \
+	LESS_TERMCAP_so=$'\033[1;31m' \
 	LESS_TERMCAP_mb=$'\033[0m' \
 	LESS_TERMCAP_me=$'\033[0m' \
 	LESS_TERMCAP_se=$'\033[0m' \
@@ -140,7 +141,7 @@ env LESS_TERMCAP_md=$'\033[1;34m' \
 	man "$@"
 }
 
-### User-specific conf
+# User-specific conf
 
 if [ $USER = "quentin" ]
 then
@@ -154,12 +155,5 @@ then
 	alias stopvpn="systemctl stop openvpn@openvpn"
 	alias restartvpn="systemctl restart openvpn@openvpn"
 
-	function ufwls {
-	j=1
-	ufw status | grep "^[0-9]" | while read i
-do
-	echo $j".\t"$i
-	j=$((j+1))
-done
-	}
+	function ufwls { j=1; ufw status | grep "^[0-9]" | while read i; do echo $j".\t"$i; j=$((j+1)); done }
 fi
