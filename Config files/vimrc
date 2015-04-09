@@ -52,6 +52,8 @@ nmap <C-b> :Thumbnail -here<CR>
 
 set shiftwidth=4
 set tabstop=4
+set noexpandtab
+set softtabstop=0
 
 " -- Other --
 
@@ -81,8 +83,6 @@ iab item \item
 iab underline \underline{
 iab bold \textbf{
 iab emph \emph{
-
-iab noindent \noindent
 
 iab €€ \euro
 

@@ -41,6 +41,7 @@ URxvt*.color7: #cccccc
 URxvt*.color15: #767676
 
 URxvt*.foreground: grey80
+URxvt*.background: black
 URxvt*.transparent: true
 URxvt*.shading: 50
 
