@@ -228,7 +228,6 @@ exec xrdb ~/.Xresources
 exec devmon
 exec autocutsel
 exec autocutsel -s PRIMARY
-exec owncloud
 exec redshift
 exec mpd
 exec dunst
