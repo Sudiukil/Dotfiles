@@ -95,6 +95,9 @@ alias gc="git commit -m"
 alias gp="git push"
 alias gP="git pull"
 alias gf="git fetch"
+alias gm="git merge"
+alias gd="git diff"
+alias gl="git log"
 
 ## SSH
 
@@ -115,7 +118,6 @@ alias sbserver="cd ~/.local/share/Steam/SteamApps/common/Starbound/linux64/ && s
 
 ## Other
 
-alias convert.py="python ~/Autre/Scripts/Python/convert.py"
 alias winreboot="net rpc shutdown -r -I 192.168.1.26 -U quentin"
 
 # Functions
