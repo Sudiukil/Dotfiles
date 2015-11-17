@@ -16,6 +16,7 @@ Plugin 'rdnetto/YCM-Generator'
 Plugin 'Valloric/YouCompleteMe'
 
 " Plugin dependencies (Debian) :
+" - Git
 " - build-essential
 " - cmake
 " - python 2
