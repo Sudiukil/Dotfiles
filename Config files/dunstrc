@@ -1,5 +1,5 @@
 [global]
-    font = Ohsnap 10
+	font = Droid Sans Mono 9
 
     allow_markup = yes
     format = "<b>%s</b> (%a)\n%b\n%p"
@@ -43,26 +43,26 @@
     dmenu = /usr/bin/dmenu -p dunst:
     browser = /usr/bin/firefox -new-tab
 
-    icon_position = left
+    icon_position = off
     icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
 
 [frame]
     width = 3
-    color = "#808080"
+    color = "#3f3f3f"
 
 [shortcuts]
     close = mod1+Return
-    close_all = ctrl+mod1+Return
+    close_all = mod1+shift+Return
     history = mod1+BackSpace
 
 [urgency_low]
-    background = "#3d322c"
-    foreground = "#808080"
+    background = "#1f1f1f"
+    foreground = "#7e7e7e"
     timeout = 10
 
 [urgency_normal]
-    background = "#3d322c"
-    foreground = "#01aaeb"
+    background = "#1f1f1f"
+    foreground = "#00ba5e"
     timeout = 10
 
 [urgency_critical]

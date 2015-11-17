@@ -22,7 +22,7 @@ if [ $HOST != "GW" ]
 then
 	echo "%{$fg[yellow]%}%B%M%b%{$reset_color%}"
 else
-	echo "%{$fg[blue]%}%B%M%b%{$reset_color%}"
+	echo "%{$fg[cyan]%}%B%M%b%{$reset_color%}"
 fi
 }
 
@@ -31,7 +31,7 @@ if [ $USER = "root" ]
 then
 	echo "%{$fg[red]%}%B%n%b%{$reset_color%}"
 else
-	echo "%{$fg[cyan]%}%B%n%b%{$reset_color%}"
+	echo "%{$fg[green]%}%B%n%b%{$reset_color%}"
 fi
 }
 
@@ -39,7 +39,7 @@ function get_git_branch {
 branch=`git symbolic-ref HEAD 2> /dev/null`
 if [ $branch ]
 then
-	echo "%{$fg[green]%}(${branch#refs/heads/})%{$reset_color%}"
+	echo "%{$fg[blue]%}(${branch#refs/heads/})%{$reset_color%}"
 fi
 }
 
@@ -68,7 +68,7 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # Environment variables
 
 export EDITOR="vim"
-export PATH=$PATH:~/Autre/Scripts/:~/Autre/Jeux/Linux/Lanceurs/:~/Autre/Android/Dev/SDK/tools/:~/Autre/Android/Dev/SDK/platform-tools/:~/Autre/Android/Dev/Studio/bin/:~/Autre/Wine/Lanceurs/:~/Autre/Logiciels/Modelio\ 3.1/:~/.gem/ruby/2.2.0/bin
+export PATH=$PATH:/sbin/:/usr/sbin/:/home/quentin/Autre/Scripts/:/home/quentin/Autre/Android/Dev/SDK/tools/:/home/quentin/Autre/Android/Dev/SDK/platform-tools/:/home/quentin/Autre/Logiciels/Linux/yEd/:/home/quentin/Autre/Jeux/Linux/Lanceurs/
 
 eval `keychain --eval --agents ssh -Q --quiet`
 
@@ -77,27 +77,33 @@ eval `keychain --eval --agents ssh -Q --quiet`
 ## Existing commands
 
 alias ls="ls --color=auto"
+alias grep="grep --color=auto"
+alias egrep="egrep --color=auto"
 alias rm="rm -I"
 alias su="su -"
+alias mu="sh -c su"
 
 ## Global
 
 alias mountmtp="mkdir /media/quentin/mtp/ && jmtpfs /media/quentin/mtp/"
 alias umountmtp="fusermount -u /media/quentin/mtp/ && rmdir /media/quentin/mtp/"
-alias xinit="startx" #tmp
 
 ## Git
 
 alias gs="git status"
 alias ga="git add"
 alias gr="git rm"
-alias gc="git commit -m"
-alias gp="git push"
-alias gP="git pull"
-alias gf="git fetch"
-alias gm="git merge"
 alias gd="git diff"
 alias gl="git log"
+alias gc="git commit -m"
+alias gC="git checkout"
+alias gf="git fetch"
+alias gm="git merge"
+alias gp="git push"
+alias gP="git pull"
+alias gt="git tag"
+
+alias gcl="GIT_SSL_NO_VERIFY=1 git clone"
 
 ## SSH
 
@@ -106,9 +112,13 @@ alias scp="keychain --agents ssh --quiet id_rsa --timeout 15; scp"
 alias trsshonline="ssh quentin@liquidus88.ddns.net"
 alias trtunnel="ssh -vTND 2222 quentin@liquidus88.ddns.net"
 
-alias mounttr="sshfs quentin@192.168.1.28:/home/quentin/ /media/quentin/tr/home/ & sshfs quentin@192.168.1.28:/var/lib/transmission-daemon/downloaded/ /media/quentin/tr/transmission/ & sshfs quentin@192.168.1.28:/var/www/ /media/quentin/tr/www/"
-
+alias mounttr="sshfs quentin@192.168.1.28:/home/quentin/ /media/quentin/tr/home/ & sshfs quentin@192.168.1.28:/var/lib/transmission-daemon/downloads/ /media/quentin/tr/transmission/ & sshfs quentin@192.168.1.28:/var/www/ /media/quentin/tr/www/"
 alias umounttr="fusermount -u /media/quentin/tr/home/ & fusermount -u /media/quentin/tr/transmission/ & fusermount -u /media/quentin/tr/www/"
+alias mounttj="sshfs quentin@192.168.1.27:/home/quentin/ /media/quentin/tj/"
+alias umounttj="fusermount -u /media/quentin/tj/"
+
+alias mounttronline="sshfs quentin@liquidus88.ddns.net:/home/quentin/ /media/quentin/tr/home/ & sshfs quentin@liquidus88.ddns.net:/var/lib/transmission-daemon/downloads/ /media/quentin/tr/transmission/ & sshfs quentin@liquidus88.ddns.net:/var/www/ /media/quentin/tr/www/"
+alias umounttronline="fusermount -u /media/quentin/tr/home/ & fusermount -u /media/quentin/tr/transmission/ & fusermount -u /media/quentin/tr/www/"
 
 ## Game servers
 
@@ -131,10 +141,6 @@ mkdir $1
 cd $1
 }
 
-function mkddir {
-mkdir "$1 (`date +'%d.%m.%Y'`)"
-}
-
 function man {
 env LESS_TERMCAP_md=$'\033[1;34m' \
 	LESS_TERMCAP_us=$'\033[0;36m' \
@@ -148,17 +154,16 @@ env LESS_TERMCAP_md=$'\033[1;34m' \
 
 # User and machine specific conf
 
-if [ $USER = "quentin" -a $HOST = "GW" ]
+if [ $USER = "quentin" ]
 then
-	fortune | cowsay -f /usr/share/cows/tux.cow
+	if [ $HOST = "GW" ]
+	then
+		fortune | cowsay -f /usr/share/cows/tux.cow
+	fi
 	tasks
 fi
 
 if [ $USER = "root" ]
 then
-	alias startvpn="systemctl start openvpn@openvpn"
-	alias stopvpn="systemctl stop openvpn@openvpn"
-	alias restartvpn="systemctl restart openvpn@openvpn"
-
 	function ufwls { j=1; ufw status | grep "^[0-9]" | while read i; do echo $j".\t"$i; j=$((j+1)); done }
 fi

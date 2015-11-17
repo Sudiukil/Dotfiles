@@ -3,7 +3,29 @@
 ## General behavior
 
 focus_follows_mouse no
-workspace "12 Écran 2" output HDMI-0
+workspace_auto_back_and_forth yes
+
+## Windows look
+
+new_window pixel
+new_float pixel
+
+## Font & colors
+
+font pango:DroidSansMono 9
+
+set $b_color1 #1f1f1f
+set $b_color2 #3f3f3f
+set $t_color1 #00ba5e
+set $t_color2 #7e7e7e
+set $u_color1 #bd1f1f
+set $u_color2 #bdbdbd
+
+# class 					border 			background 		text 			indicator
+client.focused 				$b_color2		$b_color2		$t_color1		$t_color1
+client.focused_inactive 	$b_color1		$b_color1		$t_color2		$t_color1
+client.unfocused 			$b_color1		$b_color1		$t_color2		$t_color1
+client.urgent 				$u_color1		$u_color1		$u_color2		$t_color1
 
 ## Status bar
 
@@ -12,46 +34,67 @@ bindsym $mod+Shift+b bar mode toggle
 bar {
 	id main-bar
 	status_command c3status
-	output DVI-D-0
-	font pango:Ohsnap 10
+	font pango:DroidSansMono,Icons 9
 	colors {
-		background	#3d322c
-		statusline	#01aaeb
-		separator	#3d322c
+		background $b_color1
+		statusline $t_color1
+		separator $b_color1
 
-		# class				border		background	text
-		focused_workspace	#3d322c		#3d322c		#01aaeb
-		active_workspace	#3d322c		#3d322c		#f5e72e
-		inactive_workspace	#3d322c		#3d322c		#808080
-		urgent_workspace	#3d322c		#aa0000		#ffffff
+		# class 			border 			background 		text
+		focused_workspace 	$b_color1		$b_color1		$t_color1
+		active_workspace 	$b_color1		$b_color1		$t_color2
+		inactive_workspace 	$b_color1		$b_color1		$t_color2
+		urgent_workspace 	$u_color1		$u_color1		$u_color2
 	}
-	tray_output DVI-D-0
 	position top
 }
 
-## Font & colors
+#bar {
+	#id test-bar
+	#status_command ~/c3status/c3status
+	#font pango:DroidSansMono,Icons 9
+	#colors {
+		#background $b_color1
+		#statusline $t_color1
+		#separator $b_color1
 
-font pango:Ohsnap 10
+		# class 			border 			background 		text
+		#focused_workspace 	$b_color1		$b_color1		$t_color1
+		#active_workspace 	$b_color1		$b_color1		$t_color2
+		#inactive_workspace 	$b_color1		$b_color1		$t_color2
+		#urgent_workspace 	$u_color1		$u_color1		$u_color2
+	#}
+	#position bottom
+	#workspace_buttons no
+#}
 
-# class					border		background	text		indicator
-client.focused			#3d322c		#3d322c		#01aaeb		#01aaeb
-client.focused_inactive	#3d322c		#3d322c		#f5e72e		#01aaeb
-client.unfocused		#000000		#000000		#808080		#01aaeb
-client.urgent			#aa0000		#aa0000		#ffffff		#01aaeb
+## Workspaces
 
-## Windows look
-
-new_window pixel
-new_float pixel
+set $ws1 "1"
+set $ws2 "2 Web"
+set $ws3 "3 Mail"
+set $ws4 "4 IRC"
+set $ws5 "5 DL"
+set $ws6 "6 Gaming"
+set $ws7 "7 Music"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+set $ws11 "11"
+set $ws12 "12 Écran 2"
 
 ## Windows assignments
 
-assign [class="Firefox"] 2 Web
-assign [class="Thunderbird"] 3 Mail
-assign [title="Irssi"] 4 IRC
-assign [class="JDownloader"] 5 DL
-assign [class="Steam"] 6 Gaming
-assign [title="ncmpcpp"] 7 Music
+assign [class="Iceweasel"] $ws2
+assign [class="Icedove"] $ws3
+assign [title="Irssi"] $ws4
+assign [class="JDownloader"] $ws5
+assign [class="Steam"] $ws6
+assign [title="ncmpcpp"] $ws7
+
+## Workspaces assignments
+
+workspace $ws12 output HDMI1
 
 ## Windows rules
 
@@ -64,6 +107,7 @@ for_window [title="Préférences de Thunderbird"] floating enable
 for_window [class="qemu-system-x86_64"] floating enable
 for_window [class="qemu-system-i386"] floating enable
 for_window [class="qemu-system-arm"] floating enable
+for_window [class="Pavucontrol"] floating enable
 
 ### Steam
 
@@ -134,100 +178,107 @@ bindsym $mod+Shift+n exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
 
 ### Switching
 
-bindsym $mod+1 workspace number 1
-bindsym $mod+2 workspace number 2 Web
-bindsym $mod+3 workspace number 3 Mail
-bindsym $mod+4 workspace number 4 IRC
-bindsym $mod+5 workspace number 5 DL
-bindsym $mod+6 workspace number 6 Gaming
-bindsym $mod+7 workspace number 7 Music
-bindsym $mod+8 workspace number 8
-bindsym $mod+9 workspace number 9
-bindsym $mod+0 workspace number 10
-bindsym $mod+parenright workspace number 11
-bindsym $mod+equal workspace number 12 Écran 2
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+bindsym $mod+parenright workspace number $ws11
+bindsym $mod+equal workspace number $ws12
 
 ### Sending window to desktop
 
-bindsym $mod+Shift+1 move container to workspace number 1
-bindsym $mod+Shift+2 move container to workspace number 2 Web
-bindsym $mod+Shift+3 move container to workspace number 3 Mail
-bindsym $mod+Shift+4 move container to workspace number 4 IRC
-bindsym $mod+Shift+5 move container to workspace number 5 DL
-bindsym $mod+Shift+6 move container to workspace number 6 Gaming
-bindsym $mod+Shift+7 move container to workspace number 7 Music
-bindsym $mod+Shift+8 move container to workspace number 8
-bindsym $mod+Shift+9 move container to workspace number 9
-bindsym $mod+Shift+0 move container to workspace number 10
-bindsym $mod+Shift+parenright move container to workspace number 11
-bindsym $mod+Shift+equal move container to workspace number 12 Écran 2
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+bindsym $mod+Shift+parenright move container to workspace number $ws11
+bindsym $mod+Shift+equal move container to workspace number $ws12
 
 ### Switching with window
 
-bindsym $mod+Ctrl+1 move container to workspace number 1; workspace number 1
-bindsym $mod+Ctrl+2 move container to workspace number 2 Web; workspace number 2 Web
-bindsym $mod+Ctrl+3 move container to workspace number 3 Mail; workspace number 3 Mail
-bindsym $mod+Ctrl+4 move container to workspace number 4 IRC; workspace number 4 IRC
-bindsym $mod+Ctrl+5 move container to workspace number 5 DL; workspace number 5 DL
-bindsym $mod+Ctrl+6 move container to workspace number 6 Gaming; workspace number 6 Gaming
-bindsym $mod+Ctrl+7 move container to workspace number 7 Music; workspace number 7 Music
-bindsym $mod+Ctrl+8 move container to workspace number 8; workspace number 8
-bindsym $mod+Ctrl+9 move container to workspace number 9; workspace number 9
-bindsym $mod+Ctrl+0 move container to workspace number 10; workspace number 10
-bindsym $mod+Ctrl+parenright move container to workspace number 11; workspace number 11
-bindsym $mod+Ctrl+equal move container to workspace number 12 Écran 2; workspace number 12 Écran 2
+bindsym $mod+Ctrl+1 move container to workspace number $ws1; workspace number $ws1
+bindsym $mod+Ctrl+2 move container to workspace number $ws2; workspace number $ws2
+bindsym $mod+Ctrl+3 move container to workspace number $ws3; workspace number $ws3
+bindsym $mod+Ctrl+4 move container to workspace number $ws4; workspace number $ws4
+bindsym $mod+Ctrl+5 move container to workspace number $ws5; workspace number $ws5
+bindsym $mod+Ctrl+6 move container to workspace number $ws6; workspace number $ws6
+bindsym $mod+Ctrl+7 move container to workspace number $ws7; workspace number $ws7
+bindsym $mod+Ctrl+8 move container to workspace number $ws8; workspace number $ws8
+bindsym $mod+Ctrl+9 move container to workspace number $ws9; workspace number $ws9
+bindsym $mod+Ctrl+0 move container to workspace number $ws10; workspace number $ws10
+bindsym $mod+Ctrl+parenright move container to workspace number $ws11; workspace number $ws11
+bindsym $mod+Ctrl+equal move container to workspace number $ws12; workspace number $ws12
 
 ## Shortcuts
 
 ### General
 
 bindsym $mod+t exec urxvt
-bindsym $mod+d exec dmenu_run -p '>' -fn "-artwiz-snap-normal-*-normal-*-10-*-*-*-*-*-*-*" -nb "#3d322c" -nf "#808080" -sb "#3d322c" -sf "#01aaeb"  -h 20
+bindsym $mod+d exec dmenu_run -p '>' -fn "DroidSansMono-9:normal" -nb "$b_color1" -nf "$t_color2" -sb "$b_color1" -sf "$t_color1" -h 20
 bindsym $mod+Shift+d exec i3-input -F '%s' -P 'Command: '
 bindsym $mod+Ctrl+q kill
 
 ### Various programs
 
-bindsym $mod+c exec urxvt -title "urxvt - floating" -shading 0 -e wicd-curses
+bindsym $mod+c exec urxvt -title "urxvt - floating" -e wicd-curses
 bindsym $mod+f exec urxvt -e ranger
 bindsym $mod+l exec i3lock -t -i "`cat ~/.fehbg | cut -d "'" -f 2`"
 bindsym $mod+k exec ~/Autre/Scripts/switchkeymap
 bindsym $mod+p exec ~/Autre/Scripts/scrmgmt --visual
 bindsym $mod+r exec urxvt -e newsbeuter
-bindsym $mod+x exec urxvt -title "urxvt - floating" -shading 0
+bindsym $mod+x exec urxvt -title "urxvt - floating"
 bindsym $mod+Shift+l exec sleep 1 && xset dpms force off && i3lock -t -i "`cat ~/.fehbg | cut -d "'" -f 2`"
+bindsym $mod+Ctrl+p exec ~/Autre/Scripts/scrmgmt --hdmi
+bindsym $mod+Shift+x exec xterm
+bindsym $mod+Ctrl+space exec sleep 1 && xset dpms force off
 
 ### Volume
 
-bindsym XF86AudioRaiseVolume exec amixer -q -c 0 set Master 5%+
-bindsym XF86AudioLowerVolume exec amixer -q -c 0 set Master 5%-
-bindsym XF86AudioMute exec amixer -q -c 0 set Master toggle
-bindsym $mod+v exec urxvt -title "urxvt - floating" -shading 0 -e alsamixer
+bindsym XF86AudioRaiseVolume exec amixer -q -D pulse set Master 5%+ -M
+bindsym XF86AudioLowerVolume exec amixer -q -D pulse set Master 5%- -M
+bindsym XF86AudioMute exec amixer -q -D pulse set Master toggle
+bindsym $mod+v exec pavucontrol
 
 ### MPD/ncmpcpp
 
 bindsym $mod+m exec urxvt -title ncmpcpp -e ncmpcpp
 bindsym XF86AudioPlay exec ncmpcpp toggle
-bindsym XF86AudioStop exec ncmpcpp stop
+bindsym Shift+XF86AudioPlay exec ncmpcpp stop
 bindsym XF86AudioPrev exec ncmpcpp prev
 bindsym XF86AudioNext exec ncmpcpp next
+bindsym $mod+s exec ~/Autre/Scripts/gettitle
 
 # Launch at i3 start
 
-exec xrandr --output DVI-D-0 --primary --mode 1920x1080 --output HDMI-0 --off
-exec sleep 5 && sh ~/.fehbg
-exec xset dpms 600
-
+exec setxkbmap fr
 exec numlockx on
+exec syndaemon -d -t -k -i 2
 
-exec sleep 2 && amixer -q -c 0 set Master 50%
+exec xrandr --output LVDS1 --primary --mode 1366x768 --output HDMI1 --off --output VGA1 --off
+exec xinput --disable 'Atmel Atmel maXTouch Digitizer'
+exec xbacklight -set 50
+exec sleep 3 && sh ~/.fehbg
 
-exec xset fp+ /usr/share/fonts/artwiz-fonts/
+exec pulseaudio --start
+exec sleep 3 && amixer -q -D pulse set Master 25%
+
 exec xrdb ~/.Xresources
 
 exec devmon
 exec autocutsel
 exec autocutsel -s PRIMARY
 exec redshift
-exec mpd
 exec dunst
+exec mpd

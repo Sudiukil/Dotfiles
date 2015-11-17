@@ -1,10 +1,47 @@
+" --- Modules ---
+
+" -- Vundle --
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'itchyny/lightline.vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'shawncplus/phpcomplete.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'artur-shaik/vim-javacomplete2'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'rdnetto/YCM-Generator'
+Plugin 'Valloric/YouCompleteMe'
+
+" Plugin dependencies (Debian) :
+" - build-essential
+" - cmake
+" - python 2
+" - ctags
+" - clang
+
+call vundle#end()
+
+" -- Modules config --
+
+" - LightLine -
+
+set laststatus=2 "Always visible
+
+" - YCM -
+
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+let g:ycm_confirm_extra_conf = 0
+
 " --- General ---
 
 set nocp "Vim mode only
 set bs=2 "Backspace available in insert mode
-set autoread "Refresh file if modified outside of Vim
+filetype off "Required by Vundle
 
-" -- Display, colors, font, syntax and indent --
+" -- Display, colors, syntax --
 
 set nu "Line numbering
 
@@ -13,9 +50,30 @@ colorscheme vitamins
 
 syntax on "Syntax highlighting
 
-filetype plugin indent on "Auto indent
-
 set showmatch "Show matching braces
+
+set pastetoggle=<F12> "Toggle paste mode
+
+" -- Indent --
+
+filetype plugin indent on "Auto indent
+set noexpandtab "Use hard tabs
+set tabstop=4 "Tabs size
+set shiftwidth=4
+
+" -- Completion --
+
+" - Java -
+
+autocmd FileType java set omnifunc=javacomplete#Complete
+imap <F4> <Plug>(JavaComplete-Imports-Add)
+imap <F4> <Plug>(JavaComplete-Imports-RemoveUnused)
+nmap <F4> <Plug>(JavaComplete-Imports-Add)
+nmap <F4> <Plug>(JavaComplete-Imports-RemoveUnused)
+
+" - PHP -
+
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 
 " -- Search options --
 
@@ -34,34 +92,24 @@ let mapleader = ","
 
 " - Tabs management -
 
-nmap tt gt
-nmap TT gT
-nmap tn :tabnew<CR>
-nmap te :tabedit 
-nmap tc :tabclose<CR>
-nmap tm :tabmove 
-nmap td :tabdo 
+nmap t<left> gT
+nmap t<right> gt
+nmap t<down> :tabnew<CR>
+nmap tt<left> :tabmove -1<CR>
+nmap tt<right> :tabmove +1<CR>
+nmap t<Space> :tabnew<CR>:NERDTreeToggle<CR>
 
 " - Modules -
 
 nmap <Space> :NERDTreeToggle<CR>
-nmap <C-t> :TagbarToggle<CR>
-nmap <C-b> :Thumbnail -here<CR>
+nmap <C-t> :TagbarToggle<CR>:wincmd w<CR>
 
-" -- Indent options --
+" -- Spell checking --
 
-set shiftwidth=4
-set tabstop=4
-set noexpandtab
-set softtabstop=0
-
-" -- Other --
-
+autocmd FileType text setlocal spell spelllang=fr
 autocmd FileType tex setlocal spell spelllang=fr
 autocmd FileType html setlocal spell spelllang=fr
 autocmd FileType php setlocal spell spelllang=fr
-
-set pastetoggle=<F12>
 
 " --- Commands abreviations ---
 
@@ -71,28 +119,37 @@ cabbrev cil 0r ~/Documents/Licences/ISC/header.c
 
 " -- LaTeX --
 
-iab newp \part{
-iab news \section{
-iab newss \subsection{
-iab newsss \subsubsection{
+autocmd FileType plaintex set filetype=tex
 
-iab itemize \begin{itemize}<CR>\item<CR>\end{itemize}<Up>
-iab enumerate \begin{enumerate}<CR>\item<CR>\end{enumerate}<up>
-iab item \item
+autocmd FileType tex iab newp \part{
+autocmd FileType tex iab news \section{
+autocmd FileType tex iab newss \subsection{
+autocmd FileType tex iab newsss \subsubsection{
+autocmd FileType tex iab § \paragraph{
 
-iab underline \underline{
-iab bold \textbf{
-iab emph \emph{
+autocmd FileType tex iab itemize \begin{itemize}<CR>\item<CR>\end{itemize}<Up>
+autocmd FileType tex iab enumerate \begin{enumerate}<CR>\item<CR>\end{enumerate}<up>
+autocmd FileType tex iab item \item
 
-iab €€ \euro
+autocmd FileType tex iab underline \underline{
+autocmd FileType tex iab bold \textbf{
+autocmd FileType tex iab emph \emph{
 
-iab resetsec \setcounter{section}{0}
+autocmd FileType tex iab €€ \euro
 
-" --- Modules config ---
+autocmd FileType tex iab resetsec \setcounter{section}{0}
 
-"Enable pathogen
-execute pathogen#infect()
+autocmd FileType tex iab pause \pause~\\
 
-" -- LightLine --
+autocmd FileType tex iab -> \rightarrow
+autocmd FileType tex iab <- \leftarrow
+autocmd FileType tex iab $-> $\rightarrow
+autocmd FileType tex iab $<- $\leftarrow
 
-set laststatus=2 "Always visible
+autocmd FileType tex iab --> \Rightarrow
+autocmd FileType tex iab <-- \Leftarrow
+autocmd FileType tex iab $--> $\Rightarrow
+autocmd FileType tex iab $<-- $\Leftarrow
+
+map <F5> :w<CR>:!pdflatex % && pdflatex %<CR><CR>
+map <F6> :w<CR>:!xelatex % && xelatex %<CR><CR>

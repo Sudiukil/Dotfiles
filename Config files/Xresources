@@ -4,48 +4,51 @@
 
 URxvt*.perl-ext-common: default,matcher,tabbed
 
-URxvt*.font: xft:ohsnap:size=14
+URxvt*.font: xft:DroidSansMono:size=9
 
 ! Colors
 
 ! black
-URxvt*.color0: #2e3436
-URxvt*.color8: #555753
+URxvt*.color0: #1f1f1f
+URxvt*.color8: #1f1f1f
 
 ! red
-URxvt*.color1: #cc0000
-URxvt*.color9: #ef2929
+URxvt*.color1: #bd1f1f
+URxvt*.color9: #bd1f1f
 
 ! green
-URxvt*.color2: #4e9a06
-URxvt*.color10: #8ae234
+URxvt*.color2: #00ba5e
+URxvt*.color10: #00ba5e
 
 ! yellow
-URxvt*.color3: #ff6500
-URxvt*.color11: #fce94f
+URxvt*.color3: #bdbd3f
+URxvt*.color11: #bdbd3f
 
 ! blue
-URxvt*.color4: #3465a4
-URxvt*.color12: #729fcf
+URxvt*.color4: #3f7ebd
+URxvt*.color12: #3f7ebd
 
 ! magenta
-URxvt*.color5: #875487
-URxvt*.color13: #875487
+URxvt*.color5: #bd3fbd
+URxvt*.color13: #bd3fbd
 
 ! cyan
-URxvt*.color6: #06989a
-URxvt*.color14: #34e2e2
+URxvt*.color6: #3fbdbd
+URxvt*.color14: #3fbdbd
 
 ! white
-URxvt*.color7: #cccccc
-URxvt*.color15: #767676
+URxvt*.color7: #bdbdbd
+URxvt*.color15: #bdbdbd
 
-URxvt*.foreground: grey80
-URxvt*.background: black
-URxvt*.transparent: true
-URxvt*.shading: 50
+URxvt*.background: 0
+URxvt*.foreground: 7
 
 ! Other
+
+URxvt*.tabbed.tabbar-bg: 0
+URxvt*.tabbed.tabbar-fg: 7
+URxvt*.tabbed.tab-bg: 0
+URxvt*.tabbed.tab-fg: 2
 
 URxvt*.scrollBar: false
 

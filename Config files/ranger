@@ -534,8 +534,7 @@ copytmap <ESC> q Q w <C-c>
 # File creation and management
 map nf console touch 
 map nd console mkdir 
-map nts shell cp ~/Documents/LaTeX/base-article-simple.tex %d
-map ntc shell cp ~/Documents/LaTeX/base-article-code.tex %d
+map nt shell cp ~/Documents/LaTeX/base-article.tex %d
 map rr console rename 
 map rR eval fm.open_console('rename ' + fm.thisfile.basename)
 map o chain draw_possible_programs; console open_with 
