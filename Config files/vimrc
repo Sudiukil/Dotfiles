@@ -139,7 +139,7 @@ nmap <C-g> :GitGutterToggle<CR>
 
 " - Edit and reload Vim config
 
-nmap <leader>vc :vsplit ~/.vimrc<CR>:wincmd w<CR>
+nmap <leader>vc :vsplit ~/.vimrc<CR>
 nmap <leader>vr :source ~/.vimrc<CR>
 
 " -- Spell checking --
