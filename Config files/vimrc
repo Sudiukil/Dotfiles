@@ -5,23 +5,26 @@
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'itchyny/lightline.vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'shawncplus/phpcomplete.vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'artur-shaik/vim-javacomplete2'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'rdnetto/YCM-Generator'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'VundleVim/Vundle.vim' "Plugin installer
+Plugin 'itchyny/lightline.vim' "Status line
+Plugin 'scrooloose/nerdcommenter' "Easy commenting
+Plugin 'scrooloose/nerdtree' "Tree file explorer
+Plugin 'shawncplus/phpcomplete.vim' "Enhanced PHP completion
+Plugin 'scrooloose/syntastic' "Syntax checking
+Plugin 'majutsushi/tagbar' "Tags browser
+Plugin 'artur-shaik/vim-javacomplete2' "Enhanced Java completion
+Plugin 'airblade/vim-gitgutter' "Git diff integration
+Plugin 'terryma/vim-multiple-cursors' "Multiple cursors
+Plugin 'rdnetto/YCM-Generator' "YouCompleteMe extra config generator
+Plugin 'Valloric/YouCompleteMe' "Code completion
 
 " Plugin dependencies (Debian) :
-" - Git
+" - git
 " - build-essential
 " - cmake
-" - python 2
-" - ctags
+" - python-dev
 " - clang
+" - ctags
 
 call vundle#end()
 
@@ -31,10 +34,20 @@ call vundle#end()
 
 set laststatus=2 "Always visible
 
+" - Syntastic
+
+let g:syntastic_python_python_exec = '/usr/bin/python3'
+
+" - Vim Multiple Cursors
+
+let g:multi_cursor_next_key='<C-m>'
+
 " - YCM -
 
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
+let g:ycm_auto_trigger = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
 
 " --- General ---
 
@@ -93,17 +106,41 @@ let mapleader = ","
 
 " - Tabs management -
 
-nmap t<left> gT
-nmap t<right> gt
-nmap t<down> :tabnew<CR>
-nmap tt<left> :tabmove -1<CR>
-nmap tt<right> :tabmove +1<CR>
-nmap t<Space> :tabnew<CR>:NERDTreeToggle<CR>
+map <ESC>[a <S-up>
+map <ESC>[b <S-down>
+map <ESC>[c <S-right>
+map <ESC>[d <S-left>
+
+nmap <S-down> :tabnew<CR>
+nmap <S-right> gt
+nmap <S-left> gT
+
+" - Windows mancgement -
+
+map <ESC>Oa <C-up>
+map <ESC>Ob <C-down>
+map <ESC>Oc <C-right>
+map <ESC>Od <C-left>
+
+nmap <C-n> :vsplit<CR>:NERDTreeToggle<CR>
+nmap <C-n>v :vsplit<CR>:NERDTreeToggle<CR>
+nmap <C-n>h :split<CR>
+nmap <C-w> :close<CR>
+nmap <C-up> :wincmd k<CR>
+nmap <C-down> :wincmd j<CR>
+nmap <C-left> :wincmd h<CR>
+nmap <C-right> :wincmd l<CR>
 
 " - Modules -
 
 nmap <Space> :NERDTreeToggle<CR>
-nmap <C-t> :TagbarToggle<CR>:wincmd w<CR>
+nmap <C-o> :TagbarToggle<CR>:wincmd w<CR>
+nmap <C-g> :GitGutterToggle<CR>
+
+" - Edit and reload Vim config
+
+nmap <leader>vc :vsplit ~/.vimrc<CR>:wincmd w<CR>
+nmap <leader>vr :source ~/.vimrc<CR>
 
 " -- Spell checking --
 
