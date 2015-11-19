@@ -6,19 +6,23 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim' "Plugin installer
+Plugin 'othree/html5.vim' "Enhanced HTML5 completion
+Plugin 'pangloss/vim-javascript' "Enhanced JavaScript completion
 Plugin 'itchyny/lightline.vim' "Status line
 Plugin 'scrooloose/nerdcommenter' "Easy commenting
 Plugin 'scrooloose/nerdtree' "Tree file explorer
 Plugin 'shawncplus/phpcomplete.vim' "Enhanced PHP completion
 Plugin 'scrooloose/syntastic' "Syntax checking
 Plugin 'majutsushi/tagbar' "Tags browser
+Plugin 'alvan/vim-closetag' "Autoclose HTML tags
+Plugin 'npacker/vim-css3complete' "Enhanced CSS3 completion
 Plugin 'artur-shaik/vim-javacomplete2' "Enhanced Java completion
 Plugin 'airblade/vim-gitgutter' "Git diff integration
 Plugin 'terryma/vim-multiple-cursors' "Multiple cursors
 Plugin 'rdnetto/YCM-Generator' "YouCompleteMe extra config generator
 Plugin 'Valloric/YouCompleteMe' "Code completion
 
-" Plugin dependencies (Debian) :
+" Plugin dependencies (Debian):
 " - git
 " - build-essential
 " - cmake
@@ -37,10 +41,17 @@ set laststatus=2 "Always visible
 " - Syntastic
 
 let g:syntastic_python_python_exec = '/usr/bin/python3'
+let g:syntastic_javascript_closurecompiler_path = '/usr/share/java/closure-compiler.jar'
+let g:syntastic_javascript_checkers = ["closurecompiler"]
 
-" - Vim Multiple Cursors
-
-let g:multi_cursor_next_key='<C-m>'
+" Required for checking:
+" - GCC + Clang (C/C++)
+" - Python 2.x and/or 3.x (Python)
+" - JDK (Java)
+" - Tidy (HTML)
+" - PHP (PHP)
+" - Closure Compiler (Javascript)
+" - LaCheck (LaTeX)
 
 " - YCM -
 
@@ -54,6 +65,7 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 set nocp "Vim mode only
 set bs=2 "Backspace available in insert mode
 filetype off "Required by Vundle
+set mouse=n "Enable mouse in normal mode
 
 " -- Display, colors, syntax --
 
@@ -85,9 +97,14 @@ imap <F4> <Plug>(JavaComplete-Imports-RemoveUnused)
 nmap <F4> <Plug>(JavaComplete-Imports-Add)
 nmap <F4> <Plug>(JavaComplete-Imports-RemoveUnused)
 
-" - PHP -
+" - Web (HTML/CSS/PHP/JavaScript) -
 
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+
+" - LaTeX -
 
 " -- Search options --
 
@@ -102,6 +119,10 @@ set smartcase
 nmap j gj
 nmap k gk
 
+nmap <C-p> :setlocal spell spelllang=<CR>
+nmap <C-p>f :setlocal spell spelllang=fr<CR>
+nmap <C-p>e :setlocal spell spelllang=en<CR>
+
 let mapleader = ","
 
 " - Tabs management -
@@ -114,17 +135,18 @@ map <ESC>[d <S-left>
 nmap <S-down> :tabnew<CR>
 nmap <S-right> gt
 nmap <S-left> gT
+nmap <S-up><S-left> :tabmove -1<CR>
+nmap <S-up><S-right> :tabmove +1<CR>
 
-" - Windows mancgement -
+" - Windows management -
 
 map <ESC>Oa <C-up>
 map <ESC>Ob <C-down>
 map <ESC>Oc <C-right>
 map <ESC>Od <C-left>
 
-nmap <C-n> :vsplit<CR>:NERDTreeToggle<CR>
-nmap <C-n>v :vsplit<CR>:NERDTreeToggle<CR>
-nmap <C-n>h :split<CR>
+nmap <C-v> :vsplit<CR>:NERDTreeToggle<CR>
+nmap <C-h> :split<CR>:NERDTreeToggle<CR>
 nmap <C-w> :close<CR>
 nmap <C-up> :wincmd k<CR>
 nmap <C-down> :wincmd j<CR>
@@ -148,10 +170,6 @@ autocmd FileType text setlocal spell spelllang=fr
 autocmd FileType tex setlocal spell spelllang=fr
 autocmd FileType html setlocal spell spelllang=fr
 autocmd FileType php setlocal spell spelllang=fr
-
-" --- Commands abreviations ---
-
-cabbrev cil 0r ~/Documents/Licences/ISC/header.c
 
 " --- Abbreviations ---
 
