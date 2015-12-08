@@ -19,6 +19,8 @@ Plugin 'npacker/vim-css3complete' "Enhanced CSS3 completion
 Plugin 'artur-shaik/vim-javacomplete2' "Enhanced Java completion
 Plugin 'airblade/vim-gitgutter' "Git diff integration
 Plugin 'terryma/vim-multiple-cursors' "Multiple cursors
+Plugin 'peterhoeg/vim-qml' "QML syntax highlighting
+Plugin 'vim-scripts/vim-svngutter' "SVN diff integration
 Plugin 'rdnetto/YCM-Generator' "YouCompleteMe extra config generator
 Plugin 'Valloric/YouCompleteMe' "Code completion
 
@@ -34,6 +36,10 @@ call vundle#end()
 
 " -- Modules config --
 
+" - Closetag -
+
+let g:closetag_filenames = "*.html,*.xhtml,*.md,*.php"
+
 " - LightLine -
 
 set laststatus=2 "Always visible
@@ -41,6 +47,7 @@ set laststatus=2 "Always visible
 " - Syntastic
 
 let g:syntastic_python_python_exec = '/usr/bin/python3'
+let g:syntastic_php_php_exec = '/opt/lampp/bin/php'
 let g:syntastic_javascript_closurecompiler_path = '/usr/share/java/closure-compiler.jar'
 let g:syntastic_javascript_checkers = ["closurecompiler"]
 
@@ -152,6 +159,8 @@ nmap <C-up> :wincmd k<CR>
 nmap <C-down> :wincmd j<CR>
 nmap <C-left> :wincmd h<CR>
 nmap <C-right> :wincmd l<CR>
+nmap + :wincmd +<CR>
+nmap - :wincmd -<CR>
 
 " - Modules -
 
