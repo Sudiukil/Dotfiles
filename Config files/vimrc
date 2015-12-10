@@ -38,7 +38,7 @@ call vundle#end()
 
 " - Closetag -
 
-let g:closetag_filenames = "*.html,*.xhtml,*.md,*.php"
+let g:closetag_filenames = "*.html,*.xhtml,*.md,*.php,*.ctp"
 
 " - LightLine -
 
