@@ -44,6 +44,24 @@ let g:closetag_filenames = "*.html,*.xhtml,*.md,*.php,*.ctp"
 
 set laststatus=2 "Always visible
 
+" - Tagbar
+
+let g:tagbar_type_c = {
+    \ 'kinds' : [
+        \ 'd:macros:1:0',
+        \ 'p:prototypes:1:0',
+        \ 'g:enums',
+        \ 'e:enumerators:0:0',
+        \ 't:typedefs:0:0',
+        \ 's:structs',
+        \ 'u:unions',
+        \ 'm:members:0:0',
+        \ 'v:variables:0:0',
+        \ 'f:functions',
+		\ 'l:locals',
+    \ ],
+\ }
+
 " - Syntastic
 
 let g:syntastic_python_python_exec = '/usr/bin/python3'
@@ -57,7 +75,7 @@ let g:syntastic_javascript_checkers = ["closurecompiler"]
 " - JDK (Java)
 " - Tidy (HTML)
 " - PHP (PHP)
-" - Closure Compiler (Javascript)
+" - Closure Compiler (JavaScript)
 " - LaCheck (LaTeX)
 
 " - YCM -
@@ -159,8 +177,10 @@ nmap <C-up> :wincmd k<CR>
 nmap <C-down> :wincmd j<CR>
 nmap <C-left> :wincmd h<CR>
 nmap <C-right> :wincmd l<CR>
-nmap + :wincmd +<CR>
-nmap - :wincmd -<CR>
+
+nmap W+ :wincmd ><CR>
+nmap W- :wincmd <<CR>
+nmap W= :wincmd =<CR>
 
 " - Modules -
 

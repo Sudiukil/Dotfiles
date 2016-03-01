@@ -68,7 +68,7 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # Environment variables
 
 export EDITOR="vim"
-export PATH=$PATH:/sbin/:/usr/sbin/:/home/quentin/Autre/Scripts/:/home/quentin/Autre/Android/Dev/SDK/tools/:/home/quentin/Autre/Android/Dev/SDK/platform-tools/:/home/quentin/Autre/Logiciels/Linux/yEd/
+export PATH=$PATH:/sbin/:/usr/sbin/:/home/quentin/Autre/Scripts/:/home/quentin/Autre/Exec/:/opt/lampp/bin/
 
 eval `keychain --eval --agents ssh -Q --quiet`
 
@@ -93,23 +93,22 @@ alias umountmtp="fusermount -u /media/quentin/mtp/ && rmdir /media/quentin/mtp/"
 alias gs="git status"
 alias ga="git add"
 alias gr="git rm"
+alias gm="git mv"
 alias gd="git diff"
 alias gl="git log"
 alias gc="git commit -m"
 alias gC="git checkout"
-alias gf="git fetch --all"
-alias gm="git merge"
+alias gf="git fetch"
+alias gM="git merge"
 alias gp="git push"
 alias gP="git pull"
-alias gt="git tag"
-
-alias gcl="GIT_SSL_NO_VERIFY=1 git clone"
+alias gS="git stash"
 
 ## SSH
 
 alias ssh="keychain --agents ssh --quiet id_rsa --timeout 15; ssh"
 alias scp="keychain --agents ssh --quiet id_rsa --timeout 15; scp"
-alias trsshonline="ssh quentin@liquidus88.ddns.net"
+alias trssh="ssh quentin@liquidus88.ddns.net"
 alias trtunnel="ssh -vTND 2222 quentin@liquidus88.ddns.net"
 
 alias mounttr="sshfs quentin@192.168.1.28:/home/quentin/ /media/quentin/tr/home/ & sshfs quentin@192.168.1.28:/var/lib/transmission-daemon/downloads/ /media/quentin/tr/transmission/ & sshfs quentin@192.168.1.28:/var/www/ /media/quentin/tr/www/"
@@ -159,6 +158,8 @@ then
 	if [ $HOST = "GW" ]
 	then
 		fortune | cowsay -f /usr/share/cows/tux.cow
+		export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+		source ~/.zlogin
 	fi
 	tasks
 fi
@@ -167,5 +168,3 @@ if [ $USER = "root" ]
 then
 	function ufwls { j=1; ufw status | grep "^[0-9]" | while read i; do echo $j".\t"$i; j=$((j+1)); done }
 fi
-
-alias acdc="mplayer ~/Musique/Musique/ACDC/1979\ -\ Highway\ To\ Hell/01\ -\ Highway\ To\ Hell.mp3"

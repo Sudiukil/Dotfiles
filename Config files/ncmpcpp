@@ -16,12 +16,11 @@ mpd_crossfade_time = "5"
 
 ## Visualizer
 
-visualizer_in_stereo = "yes"
 visualizer_fifo_path = "/tmp/mpd.fifo"
 visualizer_output_name = "visualizer"
-visualizer_sync_interval = "30"
+visualizer_in_stereo = "yes"
 visualizer_type = "spectrum" (spectrum/wave)
-visualizer_look = "◆│"
+visualizer_look = "--"
 
 # Interface look & feel
 
@@ -33,9 +32,8 @@ message_delay_time = "5"
 ## Format & colors
 
 song_list_format = "{%a - }{%t}|{%f}$R{(%l)}"
-song_status_format = "{{%a{ \"%b\"{ (%y)}} - }{%t}}|{%f}"
+song_status_format = "{%n. }{%t}|{%f}{ - %a}{ (%b)}"
 song_library_format = "{%n - }{%t}|{%f}"
-tag_editor_album_format = "{(%y) }%b"
 
 alternative_header_first_line_format = "$b$1$aqqu$/a$9 {%t}|{%f} $1$atqq$/a$9$/b"
 alternative_header_second_line_format = "{{$8%a - $9}{$8%b$9 }{$8$b(%y)$/b$9}}|{%D}"
@@ -93,7 +91,6 @@ user_interface = "alternative" (classic/alternative)
 header_visibility = "yes"
 statusbar_visibility = "yes"
 titles_visibility = "yes"
-display_screens_numbers_on_start = "yes"
 locked_screen_width_part = "50"
 ask_for_locked_screen_width_part = "no"
 clock_display_seconds = "yes"
@@ -101,14 +98,10 @@ display_volume_level = "yes"
 display_bitrate = "yes"
 ignore_leading_the = "no"
 mouse_support = "no"
-media_library_display_date = "yes"
-media_library_display_empty_tag = "yes"
-media_library_disable_two_column_mode = "no"
 enable_window_title = "yes"
 
 ## Other
 
-allow_physical_files_deletion = "no"
-allow_physical_directories_deletion = "no"
+allow_for_physical_item_deletion = "no"
 external_editor = "vim"
 use_console_editor = "yes" (set to yes, if your editor is console app)
