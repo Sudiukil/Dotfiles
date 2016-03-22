@@ -9,39 +9,42 @@ URxvt.font: xft:DroidSansMono:size=9
 ! Colors
 
 ! black
-URxvt.color0: #1f1f1f
-URxvt.color8: #1f1f1f
+URxvt.color0: #34495e
+URxvt.color8: #2c3e50
 
 ! red
-URxvt.color1: #bd1f1f
-URxvt.color9: #bd1f1f
+URxvt.color1: #e74c3c
+URxvt.color9: #c0392b
 
 ! green
-URxvt.color2: #00ba5e
-URxvt.color10: #00ba5e
+URxvt.color2: #2ecc71
+URxvt.color10: #27ae60
 
 ! yellow
-URxvt.color3: #bdbd3f
-URxvt.color11: #bdbd3f
+URxvt.color3: #f1c40f
+URxvt.color11: #f39c12
 
 ! blue
-URxvt.color4: #3f7ebd
-URxvt.color12: #3f7ebd
+URxvt.color4: #3498db
+URxvt.color12: #2980b9
 
 ! magenta
-URxvt.color5: #bd3fbd
-URxvt.color13: #bd3fbd
+URxvt.color5: #9b59b6
+URxvt.color13: #8e44ad
 
 ! cyan
-URxvt.color6: #3fbdbd
-URxvt.color14: #3fbdbd
+URxvt.color6: #1abc9c
+URxvt.color14: #16a085
 
 ! white
-URxvt.color7: #bdbdbd
-URxvt.color15: #bdbdbd
+URxvt.color7: #ecf0f1
+URxvt.color15: #7f8c8d
 
-URxvt.background: 0
+URxvt.background: 8
 URxvt.foreground: 7
+
+!URxvt.transparent: true
+!URxvt.shading: 50
 
 ! Tabbedex
 

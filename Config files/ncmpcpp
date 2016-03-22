@@ -46,25 +46,25 @@ selected_item_suffix = "$9$/b"
 
 song_window_title_format = "{%n. %t}|{%f} - {%a} {(%b)}"
 
-song_columns_list_format = "(7)[]{l} (25)[cyan]{a} (40)[green]{t|f} (30)[yellow]{b}"
+song_columns_list_format = "(7)[]{l} (25)[cyan]{a} (40)[blue]{t|f} (30)[yellow]{b}"
 
 ## Colors
 
 colors_enabled = "yes"
 empty_tag_color = "yellow"
-header_window_color = "green"
-volume_color = "green"
+header_window_color = "blue"
+volume_color = "blue"
 state_line_color = "default"
-state_flags_color = "green"
+state_flags_color = "blue"
 main_window_color = "white"
 color1 = "white"
-color2 = "green"
-main_window_highlight_color = "green"
-progressbar_color = "green"
+color2 = "blue"
+main_window_highlight_color = "blue"
+progressbar_color = "blue"
 statusbar_color = "default"
 alternative_ui_separator_color = "black"
 active_column_color = "red"
-visualizer_color = "green"
+visualizer_color = "blue"
 window_border_color = "default"
 active_window_border = "default"
 

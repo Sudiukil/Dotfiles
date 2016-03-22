@@ -14,18 +14,35 @@ new_float pixel
 
 font pango:DroidSansMono 9
 
-set $b_color1 #1f1f1f
-set $b_color2 #3f3f3f
-set $t_color1 #00ba5e
-set $t_color2 #7e7e7e
-set $u_color1 #bd1f1f
-set $u_color2 #bdbdbd
+set $black1 #34495e
+set $black2 #2c3e50
 
-# class 					border 			background 		text 			indicator
-client.focused 				$b_color2		$b_color2		$t_color1		$t_color1
-client.focused_inactive 	$b_color1		$b_color1		$t_color2		$t_color1
-client.unfocused 			$b_color1		$b_color1		$t_color2		$t_color1
-client.urgent 				$u_color1		$u_color1		$u_color2		$t_color1
+set $red1 #e74c3c
+set $red2 #c0392b
+
+set $green1 #2ecc71
+set $green2 #27ae60
+
+set $yellow1 #f1c40f
+set $yellow2 #f39c12
+
+set $blue1 #3498db
+set $blue2 #2980b9
+
+set $magenta1 #9b59b6
+set $magenta2 #8e44ad
+
+set $cyan1 #1abc9c
+set $cyan2 #16a085
+
+set $white1 #ecf0f1
+set $white2 #7f8c8d
+
+# class 					border 			background 			text 			indicator
+client.focused 				$blue2 			$blue2 				$white1 		$green2
+client.focused_inactive 	$black1			$black1				$white2     	$white2
+client.unfocused 			$black1			$black1				$white2			$white2
+client.urgent 				$red1			$red1 				$white1			$green2
 
 ## Status bar
 
@@ -36,37 +53,18 @@ bar {
 	status_command c3status
 	font pango:DroidSansMono,Icons 9
 	colors {
-		background $b_color1
-		statusline $t_color1
-		separator $b_color1
+		background $black2
+		statusline $white1
+		separator $black2
 
 		# class 			border 			background 		text
-		focused_workspace 	$b_color1		$b_color1		$t_color1
-		active_workspace 	$b_color1		$b_color1		$t_color2
-		inactive_workspace 	$b_color1		$b_color1		$t_color2
-		urgent_workspace 	$u_color1		$u_color1		$u_color2
+		focused_workspace 	$black2			$black2			$blue1
+		active_workspace 	$black2			$black2			$white2
+		inactive_workspace 	$black2			$black2			$white2
+		urgent_workspace 	$red1			$red1			$white1
 	}
 	position top
 }
-
-#bar {
-	#id test-bar
-	#status_command ~/c3status/c3status
-	#font pango:DroidSansMono,Icons 9
-	#colors {
-		#background $b_color1
-		#statusline $t_color1
-		#separator $b_color1
-
-		# class 			border 			background 		text
-		#focused_workspace 	$b_color1		$b_color1		$t_color1
-		#active_workspace 	$b_color1		$b_color1		$t_color2
-		#inactive_workspace 	$b_color1		$b_color1		$t_color2
-		#urgent_workspace 	$u_color1		$u_color1		$u_color2
-	#}
-	#position bottom
-	#workspace_buttons no
-#}
 
 ## Workspaces
 
@@ -226,9 +224,9 @@ bindsym $mod+Ctrl+equal move container to workspace number $ws12; workspace numb
 ### General
 
 bindsym $mod+t exec urxvt
-bindsym $mod+d exec dmenu_run -p '>' -fn "DroidSansMono-9:normal" -nb "$b_color1" -nf "$t_color2" -sb "$b_color1" -sf "$t_color1" -h 20
+bindsym $mod+d exec dmenu_run -p '>' -fn "DroidSansMono-9:normal" -nb "$black2" -nf "$white2" -sb "$black2" -sf "$blue1" -h 20
 bindsym $mod+Shift+d exec i3-input -F '%s' -P 'Command: '
-bindsym $mod+Ctrl+q kill
+bindsym $mod+z kill
 
 ### Various programs
 
@@ -237,10 +235,8 @@ bindsym $mod+f exec urxvt -e ranger
 bindsym $mod+l exec i3lock -t -i "`cat ~/.fehbg | cut -d "'" -f 2`"
 bindsym $mod+k exec ~/Autre/Scripts/switchkeymap
 bindsym $mod+p exec ~/Autre/Scripts/scrmgmt --visual
-bindsym $mod+r exec urxvt -e newsbeuter
 bindsym $mod+x exec urxvt -title "urxvt - floating"
 bindsym $mod+Shift+l exec sleep 1 && xset dpms force off && i3lock -t -i "`cat ~/.fehbg | cut -d "'" -f 2`"
-bindsym $mod+Ctrl+p exec ~/Autre/Scripts/scrmgmt --hdmi
 bindsym $mod+Shift+x exec xterm
 bindsym $mod+Ctrl+space exec sleep 1 && xset dpms force off
 
@@ -259,16 +255,13 @@ bindsym Shift+XF86AudioPlay exec ncmpcpp stop
 bindsym XF86AudioPrev exec ncmpcpp prev
 bindsym XF86AudioNext exec ncmpcpp next
 bindsym $mod+s exec ~/Autre/Scripts/gettitle
+bindsym $mod+y exec ~/Autre/Scripts/musicsearch
 
 # Launch at i3 start
 
 exec setxkbmap fr
 exec numlockx on
-exec syndaemon -d -t -k -i 2
 
-exec xrandr --output LVDS1 --primary --mode 1366x768 --output HDMI1 --off --output VGA1 --off
-exec xinput --disable 'Atmel Atmel maXTouch Digitizer'
-exec xbacklight -set 50
 exec sleep 3 && sh ~/.fehbg
 
 exec pulseaudio --start
@@ -279,6 +272,5 @@ exec xrdb ~/.Xresources
 exec devmon
 exec autocutsel
 exec autocutsel -s PRIMARY
-exec redshift
 exec dunst
 exec mpd

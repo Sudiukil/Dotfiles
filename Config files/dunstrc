@@ -48,7 +48,7 @@
 
 [frame]
     width = 3
-    color = "#3f3f3f"
+    color = "#34495e"
 
 [shortcuts]
     close = mod1+Return
@@ -56,16 +56,16 @@
     history = mod1+BackSpace
 
 [urgency_low]
-    background = "#1f1f1f"
-    foreground = "#7e7e7e"
-    timeout = 10
+    background = "#2c3e50"
+    foreground = "#7f8c8d"
+    timeout = 5
 
 [urgency_normal]
-    background = "#1f1f1f"
-    foreground = "#00ba5e"
-    timeout = 10
+    background = "#2c3e50"
+    foreground = "#3498db"
+    timeout = 5
 
 [urgency_critical]
-    background = "#aa0000"
-    foreground = "#ffffff"
+    background = "#e74c3c"
+    foreground = "#ecf0f1"
     timeout = 0
