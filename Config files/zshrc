@@ -18,7 +18,7 @@ setopt HIST_IGNORE_DUPS
 setopt prompt_subst
 
 function set_host_color {
-if [ $HOST != "GW" ]
+if [ $HOST != "GW" -a $HOST != "GW-Mk2" ]
 then
 	echo "%{$fg[yellow]%}%B%M%b%{$reset_color%}"
 else
@@ -103,13 +103,15 @@ alias gM="git merge"
 alias gp="git push"
 alias gP="git pull"
 alias gS="git stash"
+alias gb="git branch -v"
 
 ## SSH
 
-alias ssh="keychain --agents ssh --quiet id_rsa --timeout 15; ssh"
-alias scp="keychain --agents ssh --quiet id_rsa --timeout 15; scp"
+alias ssh="keychain --agents ssh --quiet id_rsa --timeout 60; ssh"
+alias scp="keychain --agents ssh --quiet id_rsa --timeout 60; scp"
 alias trssh="ssh quentin@liquidus88.ddns.net"
 alias trtunnel="ssh -vTND 2222 quentin@liquidus88.ddns.net"
+alias sshavec="ssh -o PasswordAuthentication=yes quentin@10.0.0.10"
 
 alias mounttr="sshfs quentin@192.168.1.28:/home/quentin/ /media/quentin/tr/home/ & sshfs quentin@192.168.1.28:/var/lib/transmission-daemon/downloads/ /media/quentin/tr/transmission/ & sshfs quentin@192.168.1.28:/var/www/ /media/quentin/tr/www/"
 alias umounttr="fusermount -u /media/quentin/tr/home/ & fusermount -u /media/quentin/tr/transmission/ & fusermount -u /media/quentin/tr/www/"
@@ -155,13 +157,16 @@ env LESS_TERMCAP_md=$'\033[1;34m' \
 
 if [ $USER = "quentin" ]
 then
-	if [ $HOST = "GW" ]
+	if [ $HOST = "GW" -o $HOST = "GW-Mk2" ]
 	then
 		fortune | cowsay -f /usr/share/cows/tux.cow
-		export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-		source ~/.zlogin
 	fi
 	tasks
+	if [ -d $HOME/.rvm ]
+	then
+		export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+		source /home/quentin/.rvm/scripts/rvm
+	fi
 fi
 
 if [ $USER = "root" ]

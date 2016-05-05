@@ -251,6 +251,7 @@ bindsym $mod+v exec pavucontrol
 
 bindsym $mod+m exec urxvt -title ncmpcpp -e ncmpcpp
 bindsym XF86AudioPlay exec ncmpcpp toggle
+bindsym XF86AudioStop exec ncmpcpp stop
 bindsym Shift+XF86AudioPlay exec ncmpcpp stop
 bindsym XF86AudioPrev exec ncmpcpp prev
 bindsym XF86AudioNext exec ncmpcpp next

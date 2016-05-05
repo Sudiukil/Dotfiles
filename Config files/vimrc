@@ -5,24 +5,28 @@
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'VundleVim/Vundle.vim' "Plugin installer
-Plugin 'othree/html5.vim' "Enhanced HTML5 completion
-Plugin 'pangloss/vim-javascript' "Enhanced JavaScript completion
-Plugin 'itchyny/lightline.vim' "Status line
-Plugin 'scrooloose/nerdcommenter' "Easy commenting
-Plugin 'scrooloose/nerdtree' "Tree file explorer
-Plugin 'shawncplus/phpcomplete.vim' "Enhanced PHP completion
-Plugin 'scrooloose/syntastic' "Syntax checking
-Plugin 'majutsushi/tagbar' "Tags browser
-Plugin 'alvan/vim-closetag' "Autoclose HTML tags
-Plugin 'npacker/vim-css3complete' "Enhanced CSS3 completion
-Plugin 'artur-shaik/vim-javacomplete2' "Enhanced Java completion
-Plugin 'airblade/vim-gitgutter' "Git diff integration
-Plugin 'terryma/vim-multiple-cursors' "Multiple cursors
-Plugin 'peterhoeg/vim-qml' "QML syntax highlighting
-Plugin 'vim-scripts/vim-svngutter' "SVN diff integration
-Plugin 'rdnetto/YCM-Generator' "YouCompleteMe extra config generator
-Plugin 'Valloric/YouCompleteMe' "Code completion
+Plugin 'VundleVim/Vundle.vim' 			"Plugin installer
+Plugin 'othree/html5.vim' 				"Enhanced HTML5 completion
+Plugin 'Yggdroot/indentLine' 			"Indentation guides
+Plugin 'itchyny/lightline.vim' 			"Status line
+Plugin 'scrooloose/nerdcommenter' 		"Easy commenting
+Plugin 'scrooloose/nerdtree' 			"Tree file explorer
+Plugin 'shawncplus/phpcomplete.vim' 	"Enhanced PHP completion
+Plugin 'scrooloose/syntastic' 			"Syntax checking
+Plugin 'majutsushi/tagbar' 				"Tags browser
+Plugin 'alvan/vim-closetag' 			"Autoclose HTML tags
+Plugin 'npacker/vim-css3complete' 		"Enhanced CSS3 completion
+Plugin 'Sudiukil/vim-fuzzyfinder' 		"FuzzyFinder
+Plugin 'airblade/vim-gitgutter' 		"Git diff integration
+Plugin 'artur-shaik/vim-javacomplete2' 	"Enhanced Java completion
+Plugin 'pangloss/vim-javascript' 		"Enhanced JavaScript completion
+Plugin 'Sudiukil/vim-l9' 				"L9 library
+Plugin 'terryma/vim-multiple-cursors' 	"Multiple cursors
+Plugin 'peterhoeg/vim-qml' 				"QML syntax highlighting
+Plugin 'tpope/vim-rails' 				"Ruby on Rails integration
+Plugin 'vim-scripts/vim-svngutter' 		"SVN diff integration
+Plugin 'rdnetto/YCM-Generator' 			"YouCompleteMe extra config generator
+Plugin 'Valloric/YouCompleteMe' 		"Code completion
 
 " Plugin dependencies (Debian):
 " - git
@@ -39,6 +43,11 @@ call vundle#end()
 " - Closetag -
 
 let g:closetag_filenames = "*.html,*.xhtml,*.md,*.php,*.ctp"
+
+" - IndentLine -
+
+let g:indentLine_char = '|'
+let g:indentLine_enabled = 0
 
 " - LightLine -
 
@@ -122,7 +131,7 @@ imap <F4> <Plug>(JavaComplete-Imports-RemoveUnused)
 nmap <F4> <Plug>(JavaComplete-Imports-Add)
 nmap <F4> <Plug>(JavaComplete-Imports-RemoveUnused)
 
-" - Web (HTML/CSS/PHP/JavaScript) -
+" - Web (HTML/CSS/PHP/JavaScript/RoR) -
 
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
@@ -170,8 +179,8 @@ map <ESC>Ob <C-down>
 map <ESC>Oc <C-right>
 map <ESC>Od <C-left>
 
-nmap <C-v> :vsplit<CR>:NERDTreeToggle<CR>
-nmap <C-h> :split<CR>:NERDTreeToggle<CR>
+nmap <C-v> :vsplit<CR>
+nmap <C-h> :split<CR>
 nmap <C-w> :close<CR>
 nmap <C-up> :wincmd k<CR>
 nmap <C-down> :wincmd j<CR>
@@ -185,8 +194,10 @@ nmap W= :wincmd =<CR>
 " - Modules -
 
 nmap <Space> :NERDTreeToggle<CR>
+nmap ff :FufCoverageFile<CR>
 nmap <C-o> :TagbarToggle<CR>:wincmd w<CR>
 nmap <C-g> :GitGutterToggle<CR>
+nmap <C-i> :IndentLinesToggle<CR>
 
 " - Edit and reload Vim config
 
