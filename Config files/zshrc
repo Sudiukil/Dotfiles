@@ -87,6 +87,8 @@ alias mu="sh -c su"
 
 alias mountmtp="mkdir /media/quentin/mtp/ && jmtpfs /media/quentin/mtp/"
 alias umountmtp="fusermount -u /media/quentin/mtp/ && rmdir /media/quentin/mtp/"
+alias mountseedbox="sshfs seedbox: /media/quentin/seedbox/ -o follow_symlinks,transform_symlinks"
+alias umountseedbox="fusermount -u /media/quentin/seedbox/"
 
 ## Git
 
@@ -103,7 +105,7 @@ alias gM="git merge"
 alias gp="git push"
 alias gP="git pull"
 alias gS="git stash"
-alias gb="git branch -v"
+alias gb="git branch -vv"
 
 ## SSH
 
@@ -121,15 +123,15 @@ alias umounttj="fusermount -u /media/quentin/tj/"
 alias mounttronline="sshfs quentin@liquidus88.ddns.net:/home/quentin/ /media/quentin/tr/home/ & sshfs quentin@liquidus88.ddns.net:/var/lib/transmission-daemon/downloads/ /media/quentin/tr/transmission/ & sshfs quentin@liquidus88.ddns.net:/var/www/ /media/quentin/tr/www/"
 alias umounttronline="fusermount -u /media/quentin/tr/home/ & fusermount -u /media/quentin/tr/transmission/ & fusermount -u /media/quentin/tr/www/"
 
-## Game servers
-
-alias mcserver="screen -S mcserver ~/Autre/Minecraft/Serveur/run.sh"
-alias pzserver="screen -S pzserver ~/.local/share/Steam/SteamApps/common/ProjectZomboid/projectzomboid-dedi-server.sh"
-alias sbserver="cd ~/.local/share/Steam/SteamApps/common/Starbound/linux64/ && screen -S sbserver ./starbound_server"
-
 ## Other
 
 alias winreboot="net rpc shutdown -r -I 192.168.1.26 -U quentin"
+alias resound="killall mpd && killall pulseaudio && pulseaudio --start && mpd"
+alias convsubs="vim -p *.srt '+tabdo set ff=unix' '+tabdo set fileencoding=utf8' '+wqall'"
+
+## Temporary aliases
+
+alias mana="$HOME/.i3/workspaces/mana; exit"
 
 # Functions
 
@@ -159,13 +161,13 @@ if [ $USER = "quentin" ]
 then
 	if [ $HOST = "GW" -o $HOST = "GW-Mk2" ]
 	then
-		fortune | cowsay -f /usr/share/cows/tux.cow
+		fortune fr -s -o | cowsay -f /usr/share/cowsay/cows/unipony-smaller.cow
+		tasky
 	fi
-	tasks
 	if [ -d $HOME/.rvm ]
 	then
 		export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-		source /home/quentin/.rvm/scripts/rvm
+		source $HOME/.rvm/scripts/rvm
 	fi
 fi
 

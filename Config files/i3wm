@@ -64,6 +64,7 @@ bar {
 		urgent_workspace 	$red1			$red1			$white1
 	}
 	position top
+	tray_output HDMI-0
 }
 
 ## Workspaces
@@ -77,9 +78,9 @@ set $ws6 "6 Gaming"
 set $ws7 "7 Music"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "10"
-set $ws11 "11"
-set $ws12 "12 Écran 2"
+set $ws10 "10 MANA"
+set $ws11 "11 Franz"
+set $ws12 "12"
 
 ## Windows assignments
 
@@ -89,10 +90,21 @@ assign [title="Irssi"] $ws4
 assign [class="JDownloader"] $ws5
 assign [class="Steam"] $ws6
 assign [title="ncmpcpp"] $ws7
+assign [title="MANAWeb"] $ws10
+assign [class="Franz"] $ws11
 
 ## Workspaces assignments
 
-workspace $ws12 output HDMI1
+workspace $ws1 output HDMI-0
+workspace $ws2 output HDMI-0
+workspace $ws3 output HDMI-0
+workspace $ws4 output HDMI-0
+workspace $ws5 output HDMI-0
+workspace $ws6 output HDMI-0
+workspace $ws7 output HDMI-0
+workspace $ws10 output DVI-D-0
+workspace $ws11 output DVI-D-0
+workspace $ws12 output DVI-D-0
 
 ## Windows rules
 
@@ -219,6 +231,11 @@ bindsym $mod+Ctrl+0 move container to workspace number $ws10; workspace number $
 bindsym $mod+Ctrl+parenright move container to workspace number $ws11; workspace number $ws11
 bindsym $mod+Ctrl+equal move container to workspace number $ws12; workspace number $ws12
 
+### Switching desktop to screen
+
+bindsym $mod+Ctrl+Left move workspace to output left
+bindsym $mod+Ctrl+Right move workspace to output right
+
 ## Shortcuts
 
 ### General
@@ -237,6 +254,7 @@ bindsym $mod+k exec ~/Autre/Scripts/switchkeymap
 bindsym $mod+p exec ~/Autre/Scripts/scrmgmt --visual
 bindsym $mod+x exec urxvt -title "urxvt - floating"
 bindsym $mod+Shift+l exec sleep 1 && xset dpms force off && i3lock -t -i "`cat ~/.fehbg | cut -d "'" -f 2`"
+bindsym $mod+Shift+c exec compton -b --backend glx --vsync opengl
 bindsym $mod+Shift+x exec xterm
 bindsym $mod+Ctrl+space exec sleep 1 && xset dpms force off
 
@@ -246,6 +264,7 @@ bindsym XF86AudioRaiseVolume exec amixer -q -D pulse set Master 5%+ -M
 bindsym XF86AudioLowerVolume exec amixer -q -D pulse set Master 5%- -M
 bindsym XF86AudioMute exec amixer -q -D pulse set Master toggle
 bindsym $mod+v exec pavucontrol
+bindsym $mod+b exec pulseaudio-equalizer-gtk
 
 ### MPD/ncmpcpp
 
@@ -263,6 +282,7 @@ bindsym $mod+y exec ~/Autre/Scripts/musicsearch
 exec setxkbmap fr
 exec numlockx on
 
+exec xrandr --output HDMI-0 --auto --output DVI-D-0 --auto --right-of HDMI-0
 exec sleep 3 && sh ~/.fehbg
 
 exec pulseaudio --start
@@ -275,3 +295,4 @@ exec autocutsel
 exec autocutsel -s PRIMARY
 exec dunst
 exec mpd
+exec redshift
