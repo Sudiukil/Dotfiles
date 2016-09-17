@@ -51,7 +51,7 @@ bindsym $mod+Shift+b bar mode toggle
 bar {
 	id main-bar
 	status_command c3status
-	font pango:DroidSansMono,Icons 9
+	font pango:DroidSansMono,FontAwesome 9
 	colors {
 		background $black2
 		statusline $white1
@@ -72,38 +72,33 @@ bar {
 set $ws1 "1"
 set $ws2 "2 Web"
 set $ws3 "3 Mail"
-set $ws4 "4 IRC"
+set $ws4 "4 Chat"
 set $ws5 "5 DL"
-set $ws6 "6 Gaming"
-set $ws7 "7 Music"
+set $ws6 "6 Music"
+set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "10 MANA"
-set $ws11 "11 Franz"
+set $ws10 "10"
+set $ws11 "11"
 set $ws12 "12"
 
 ## Windows assignments
 
 assign [class="Iceweasel"] $ws2
 assign [class="Icedove"] $ws3
-assign [title="Irssi"] $ws4
+assign [class="Franz"] $ws4
 assign [class="JDownloader"] $ws5
-assign [class="Steam"] $ws6
-assign [title="ncmpcpp"] $ws7
-assign [title="MANAWeb"] $ws10
-assign [class="Franz"] $ws11
+assign [title="ncmpcpp"] $ws6
 
 ## Workspaces assignments
 
 workspace $ws1 output HDMI-0
 workspace $ws2 output HDMI-0
 workspace $ws3 output HDMI-0
-workspace $ws4 output HDMI-0
+workspace $ws4 output DVI-D-0
 workspace $ws5 output HDMI-0
 workspace $ws6 output HDMI-0
 workspace $ws7 output HDMI-0
-workspace $ws10 output DVI-D-0
-workspace $ws11 output DVI-D-0
 workspace $ws12 output DVI-D-0
 
 ## Windows rules
@@ -111,23 +106,9 @@ workspace $ws12 output DVI-D-0
 ### General
 
 for_window [title="urxvt - floating"] floating enable
-for_window [class="Gcalctool"] floating enable
 for_window [title="Préférences de Firefox"] floating enable
 for_window [title="Préférences de Thunderbird"] floating enable
-for_window [class="qemu-system-x86_64"] floating enable
-for_window [class="qemu-system-i386"] floating enable
-for_window [class="qemu-system-arm"] floating enable
 for_window [class="Pavucontrol"] floating enable
-
-### Steam
-
-for_window [title="Connexion à Steam"] floating enable
-for_window [title="- Steam"] floating enable
-for_window [title="Steam - Mise à jour automatique"] floating enable
-for_window [title="Activation de produit"] floating enable
-for_window [title="Steam - En cours"] floating enable
-for_window [title="Steam - Erreur"] floating enable
-for_window [title="- Catégories"] floating enable
 
 # Bindings
 
@@ -251,7 +232,6 @@ bindsym $mod+c exec urxvt -title "urxvt - floating" -e wicd-curses
 bindsym $mod+f exec urxvt -e ranger
 bindsym $mod+l exec i3lock -t -i "`cat ~/.fehbg | cut -d "'" -f 2`"
 bindsym $mod+k exec ~/Autre/Scripts/switchkeymap
-bindsym $mod+p exec ~/Autre/Scripts/scrmgmt --visual
 bindsym $mod+x exec urxvt -title "urxvt - floating"
 bindsym $mod+Shift+l exec sleep 1 && xset dpms force off && i3lock -t -i "`cat ~/.fehbg | cut -d "'" -f 2`"
 bindsym $mod+Shift+c exec compton -b --backend glx --vsync opengl
@@ -264,11 +244,10 @@ bindsym XF86AudioRaiseVolume exec amixer -q -D pulse set Master 5%+ -M
 bindsym XF86AudioLowerVolume exec amixer -q -D pulse set Master 5%- -M
 bindsym XF86AudioMute exec amixer -q -D pulse set Master toggle
 bindsym $mod+v exec pavucontrol
-bindsym $mod+b exec pulseaudio-equalizer-gtk
 
 ### MPD/ncmpcpp
 
-bindsym $mod+m exec urxvt -title ncmpcpp -e ncmpcpp
+bindsym $mod+m exec urxvt -title ncmpcpp -e ncmpcpp -c ~/.config/ncmpcpp/config
 bindsym XF86AudioPlay exec ncmpcpp toggle
 bindsym XF86AudioStop exec ncmpcpp stop
 bindsym Shift+XF86AudioPlay exec ncmpcpp stop
