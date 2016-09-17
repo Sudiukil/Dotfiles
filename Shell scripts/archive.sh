@@ -2,11 +2,11 @@
 
 # extract or create various type of archive
 
-function print_usage {
+print_usage() {
 echo "Usage:"
-echo -e "${0##*/} -x <archive>\t\tExtract archive"
-echo -e "${0##*/} -c <file> <archive>\tCreate archive (according to archive extension provided)"
-echo -e "${0##*/} -h\t\t\tPrint this help message"
+echo "${0##*/} -x <archive>\t\tExtract archive"
+echo "${0##*/} -c <file> <archive>\tCreate archive (according to archive extension provided)"
+echo "${0##*/} -h\t\t\tPrint this help message"
 echo "Warning: only works for one archive and one file at a time"
 }
 

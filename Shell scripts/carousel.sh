@@ -2,11 +2,11 @@
 
 # randomize wallpaper from a wallpaper directory
 
-function print_usage {
+print_usage() {
 echo "Usage:"
-echo -e "${0##*/} -l <wallpapers dir> (timer)\tLinear mode (wallpapers will be set in the same order as in the folder)"
-echo -e "${0##*/} -r <wallpapers dir> (timer)\tRandom mode (wallpapers will be set in random order)"
-echo -e "${0##*/} -h\t\t\t\tPrint this help message"
+echo "${0##*/} -l <wallpapers dir> (timer)\tLinear mode (wallpapers will be set in the same order as in the folder)"
+echo "${0##*/} -r <wallpapers dir> (timer)\tRandom mode (wallpapers will be set in random order)"
+echo "${0##*/} -h\t\t\t\tPrint this help message"
 echo "Info: timer is in seconds and is facultative (default to 10 minutes)"
 }
 
