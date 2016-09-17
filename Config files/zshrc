@@ -68,70 +68,13 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # Environment variables
 
 export EDITOR="vim"
-export PATH=$PATH:/sbin/:/usr/sbin/:/home/quentin/.bin/:/home/quentin/Autre/Scripts/:/opt/lampp/bin/
+#export PATH=$PATH:/sbin/:/usr/sbin/:/home/quentin/.bin/:/home/quentin/Autre/Scripts/:/opt/lampp/bin/
 
 eval `keychain --eval --agents ssh -Q --quiet`
 
 # Aliases
 
-## Existing commands
-
-alias ls="ls --color=auto"
-alias grep="grep --color=auto"
-alias egrep="egrep --color=auto"
-alias rm="rm -I"
-alias su="su -"
-alias mu="sh -c su"
-
-## Global
-
-alias mountmtp="mkdir /media/quentin/mtp/ && jmtpfs /media/quentin/mtp/"
-alias umountmtp="fusermount -u /media/quentin/mtp/ && rmdir /media/quentin/mtp/"
-alias mountseedbox="sshfs seedbox: /media/quentin/seedbox/ -o follow_symlinks,transform_symlinks"
-alias umountseedbox="fusermount -u /media/quentin/seedbox/"
-
-## Git
-
-alias gs="git status"
-alias ga="git add"
-alias gr="git rm"
-alias gm="git mv"
-alias gd="git diff"
-alias gl="git log"
-alias gc="git commit -m"
-alias gC="git checkout"
-alias gf="git fetch"
-alias gM="git merge"
-alias gp="git push"
-alias gP="git pull"
-alias gS="git stash"
-alias gb="git branch -vv"
-
-## SSH
-
-alias ssh="keychain --agents ssh --quiet id_rsa --timeout 60; ssh"
-alias scp="keychain --agents ssh --quiet id_rsa --timeout 60; scp"
-alias trssh="ssh quentin@liquidus88.ddns.net"
-alias trtunnel="ssh -vTND 2222 quentin@liquidus88.ddns.net"
-alias sshavec="ssh -o PasswordAuthentication=yes quentin@10.0.0.10"
-
-alias mounttr="sshfs quentin@192.168.1.28:/home/quentin/ /media/quentin/tr/home/ & sshfs quentin@192.168.1.28:/var/lib/transmission-daemon/downloads/ /media/quentin/tr/transmission/ & sshfs quentin@192.168.1.28:/var/www/ /media/quentin/tr/www/"
-alias umounttr="fusermount -u /media/quentin/tr/home/ & fusermount -u /media/quentin/tr/transmission/ & fusermount -u /media/quentin/tr/www/"
-alias mounttj="sshfs quentin@192.168.1.27:/home/quentin/ /media/quentin/tj/"
-alias umounttj="fusermount -u /media/quentin/tj/"
-
-alias mounttronline="sshfs quentin@liquidus88.ddns.net:/home/quentin/ /media/quentin/tr/home/ & sshfs quentin@liquidus88.ddns.net:/var/lib/transmission-daemon/downloads/ /media/quentin/tr/transmission/ & sshfs quentin@liquidus88.ddns.net:/var/www/ /media/quentin/tr/www/"
-alias umounttronline="fusermount -u /media/quentin/tr/home/ & fusermount -u /media/quentin/tr/transmission/ & fusermount -u /media/quentin/tr/www/"
-
-## Other
-
-alias winreboot="net rpc shutdown -r -I 192.168.1.26 -U quentin"
-alias resound="killall mpd && killall pulseaudio && pulseaudio --start && mpd"
-alias convsubs="vim -p *.srt '+tabdo set ff=unix' '+tabdo set fileencoding=utf8' '+wqall'"
-
-## Temporary aliases
-
-alias mana="$HOME/.i3/workspaces/mana; exit"
+source $HOME/.aliases
 
 # Functions
 
@@ -164,14 +107,15 @@ then
 		fortune fr -s -o | cowsay -f /usr/share/cowsay/cows/unipony-smaller.cow
 		tasky
 	fi
-	if [ -d $HOME/.rvm ]
-	then
-		export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-		source $HOME/.rvm/scripts/rvm
-	fi
 fi
 
 if [ $USER = "root" ]
 then
 	function ufwls { j=1; ufw status | grep "^[0-9]" | while read i; do echo $j".\t"$i; j=$((j+1)); done }
+fi
+
+if [ -d "$HOME/.rvm" ]
+then
+	export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+	source /home/quentin/.rvm/scripts/rvm
 fi
