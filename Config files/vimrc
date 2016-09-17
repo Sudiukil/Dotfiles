@@ -121,6 +121,12 @@ set noexpandtab "Use hard tabs
 set tabstop=4 "Tabs size
 set shiftwidth=4
 
+" -- Search options --
+
+set incsearch "Dynamic cursor while searching
+set ignorecase
+set smartcase
+
 " -- Completion --
 
 " - Java -
@@ -137,14 +143,6 @@ autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-
-" - LaTeX -
-
-" -- Search options --
-
-set incsearch "Dynamic cursor while searching
-set ignorecase
-set smartcase
 
 " -- Mapping (normal mode) --
 
