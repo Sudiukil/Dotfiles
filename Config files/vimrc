@@ -18,7 +18,6 @@ Plugin 'majutsushi/tagbar'              "Tags browser
 Plugin 'alvan/vim-closetag'             "Autoclose HTML tags
 Plugin 'xolox/vim-easytags'             "Easy tags highlighting
 Plugin 'airblade/vim-gitgutter'         "Git diff integration
-Plugin 'Sudiukil/vim-l9'                "L9 library
 Plugin 'xolox/vim-misc'                 "Vim misc
 Plugin 'crusoexia/vim-monokai'          "Monokai colorscheme
 Plugin 'matze/vim-move'                 "vim-move
