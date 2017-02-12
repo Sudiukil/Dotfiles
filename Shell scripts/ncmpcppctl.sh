@@ -21,9 +21,21 @@ case $1 in
 	-next|next)
 		ncmpcpp next;;
 	-info|info)
-		echo $(ncmpcpp --now-playing "{%n. }{%t}|{%f}{ - %a}{ (%b)}");;
+		info=$(ncmpcpp --now-playing "{%n. }{%t}|{%f}{ - %a}{ (%b)}")
+		if [ "$info" ]
+		then
+			echo $info
+		else
+			echo "stopped"
+		fi;;
 	-rawinfo|rawinfo)
-		echo $(ncmpcpp --now-playing "{%t %a}");;
+		rawinfo=$(ncmpcpp --now-playing "{%t %a}")
+		if [ "rawinfo" ]
+		then
+			echo $info
+		else
+			echo "stopped"
+		fi;;
 	*)
 		print_usage
 		exit 1;;

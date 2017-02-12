@@ -22,7 +22,12 @@ spotify_info() {
 		trackNumber="0$trackNumber"
 	fi
 
-	echo "$trackNumber. $title - $artist ($album)"
+	if [ "$title" != "(null)" ]
+	then
+		echo "$trackNumber. $title - $artist ($album)"
+	else
+		echo "stopped"
+	fi
 }
 
 spotify_raw_info() {
