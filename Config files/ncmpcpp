@@ -2,8 +2,8 @@
 
 ## Directories
 
-ncmpcpp_directory = "~/.config/ncmpcpp"
-lyrics_directory = "~/.config/ncmpcpp/lyrics"
+ncmpcpp_directory = "~/.config/ncmpcpp/"
+lyrics_directory = "~/.config/ncmpcpp/lyrics/"
 
 ## MPD
 

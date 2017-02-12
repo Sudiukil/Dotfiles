@@ -68,7 +68,6 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # Environment variables
 
 export EDITOR="vim"
-#export PATH=$PATH:/sbin/:/usr/sbin/:/home/quentin/.bin/:/home/quentin/Autre/Scripts/:/opt/lampp/bin/
 
 eval `keychain --eval --agents ssh -Q --quiet`
 

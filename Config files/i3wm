@@ -64,6 +64,8 @@ bar {
 		urgent_workspace 	$red1			$red1			$white1
 	}
 	position top
+	output HDMI-0
+	output DVI-D-0
 	tray_output HDMI-0
 }
 
@@ -84,11 +86,13 @@ set $ws12 "12"
 
 ## Windows assignments
 
-assign [class="Iceweasel"] $ws2
+assign [class="Firefox"] $ws2
 assign [class="Icedove"] $ws3
-assign [class="Franz"] $ws4
+assign [class="Rambox"] $ws4
 assign [class="JDownloader"] $ws5
 assign [title="ncmpcpp"] $ws6
+assign [class="Spotify"] $ws6
+for_window [class="Spotify"] move to workspace $ws6
 
 ## Workspaces assignments
 
@@ -97,7 +101,7 @@ workspace $ws2 output HDMI-0
 workspace $ws3 output HDMI-0
 workspace $ws4 output DVI-D-0
 workspace $ws5 output HDMI-0
-workspace $ws6 output HDMI-0
+workspace $ws6 output DVI-D-0
 workspace $ws7 output HDMI-0
 workspace $ws12 output DVI-D-0
 
@@ -240,20 +244,21 @@ bindsym $mod+Ctrl+space exec sleep 1 && xset dpms force off
 
 ### Volume
 
-bindsym XF86AudioRaiseVolume exec amixer -q -D pulse set Master 5%+ -M
-bindsym XF86AudioLowerVolume exec amixer -q -D pulse set Master 5%- -M
+bindsym XF86AudioRaiseVolume exec amixer -q -D pulse set Master 2%+ -M
+bindsym XF86AudioLowerVolume exec amixer -q -D pulse set Master 2%- -M
 bindsym XF86AudioMute exec amixer -q -D pulse set Master toggle
 bindsym $mod+v exec pavucontrol
 
 ### MPD/ncmpcpp
 
-bindsym $mod+m exec urxvt -title ncmpcpp -e ncmpcpp -c ~/.config/ncmpcpp/config
-bindsym XF86AudioPlay exec ncmpcpp toggle
-bindsym XF86AudioStop exec ncmpcpp stop
-bindsym Shift+XF86AudioPlay exec ncmpcpp stop
-bindsym XF86AudioPrev exec ncmpcpp prev
-bindsym XF86AudioNext exec ncmpcpp next
-bindsym $mod+s exec ~/Autre/Scripts/gettitle
+bindsym $mod+n exec urxvt -title ncmpcpp -e ncmpcpp -c ~/.config/ncmpcpp/config
+bindsym $mod+s exec spotify
+bindsym XF86AudioPlay exec ~/Autre/Scripts/mediactl toggle
+bindsym XF86AudioStop exec ~/Autre/Scripts/mediactl stop
+bindsym Shift+XF86AudioPlay exec ~/Autre/Scripts/mediactl stop
+bindsym XF86AudioPrev exec ~/Autre/Scripts/mediactl prev
+bindsym XF86AudioNext exec ~/Autre/Scripts/mediactl next
+bindsym $mod+m exec ~/Autre/Scripts/savetitle
 bindsym $mod+y exec ~/Autre/Scripts/musicsearch
 
 # Launch at i3 start
@@ -265,7 +270,7 @@ exec xrandr --output HDMI-0 --auto --output DVI-D-0 --auto --right-of HDMI-0
 exec sleep 3 && sh ~/.fehbg
 
 exec pulseaudio --start
-exec sleep 3 && amixer -q -D pulse set Master 25%
+exec sleep 3 && amixer -q -D pulse set Master 30%
 
 exec xrdb ~/.Xresources
 
