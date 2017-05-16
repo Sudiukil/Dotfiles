@@ -30,9 +30,9 @@ case $1 in
 		fi;;
 	-rawinfo|rawinfo)
 		rawinfo=$(ncmpcpp --now-playing "{%t %a}")
-		if [ "rawinfo" ]
+		if [ "$rawinfo" ]
 		then
-			echo $info
+			echo $rawinfo
 		else
 			echo "stopped"
 		fi;;
