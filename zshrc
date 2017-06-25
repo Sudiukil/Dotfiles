@@ -77,15 +77,6 @@ source $HOME/.aliases
 
 # Functions
 
-function autoindent {
-vim -s ~/Documents/Vrac/indent.scr $1
-}
-
-function mkcd {
-mkdir $1
-cd $1
-}
-
 function man {
 env LESS_TERMCAP_md=$'\033[1;34m' \
 	LESS_TERMCAP_us=$'\033[0;36m' \
@@ -99,22 +90,19 @@ env LESS_TERMCAP_md=$'\033[1;34m' \
 
 # User and machine specific conf
 
-if [ $USER = "quentin" ]
+if [ $USER != "root" ]
 then
-	if [ $HOST = "GW" -o $HOST = "GW-Mk2" ]
+	tasky | cowsay -f /usr/share/cowsay/cows/unipony-smaller.cow -n
+
+	if [ -d "$HOME/.rvm" ]
 	then
-		fortune fr -s -o | cowsay -f /usr/share/cowsay/cows/unipony-smaller.cow
-		tasky
+		export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 	fi
-fi
 
-if [ $USER = "root" ]
-then
-	function ufwls { j=1; ufw status | grep "^[0-9]" | while read i; do echo $j".\t"$i; j=$((j+1)); done }
-fi
-
-if [ -d "$HOME/.rvm" ]
-then
-	export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-	source /home/quentin/.rvm/scripts/rvm
+	if [ -d "$HOME/.nvm" ]
+	then
+		export NVM_DIR="$HOME/.nvm"
+		[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+		[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+	fi
 fi

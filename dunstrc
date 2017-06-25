@@ -46,23 +46,23 @@
     icon_position = off
     icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
 
-[frame]
-    width = 3
-    color = "#34495e"
-
 [shortcuts]
     close = mod1+Return
     close_all = mod1+shift+Return
     history = mod1+BackSpace
 
+[frame]
+    width = 2
+    color = "#4084d6"
+
 [urgency_low]
-    background = "#2c3e50"
+    background = "#383c4a"
     foreground = "#7f8c8d"
     timeout = 5
 
 [urgency_normal]
-    background = "#2c3e50"
-    foreground = "#3498db"
+    background = "#383c4a"
+    foreground = "#4084d6"
     timeout = 5
 
 [urgency_critical]

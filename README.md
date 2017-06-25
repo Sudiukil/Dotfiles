@@ -1,8 +1,9 @@
-Welcome to my mess !
+# Dotfiles
 
-The goal of this repo is to share the (often very simple) scripts, modules and config files (and probably other things) i've made.
-Most of them were made for my personal use only and are probably useless to you without slight modifications, but i hope they'll be usefull or inspiring...
+This repo contains some of my dotfiles (config files). They are probably useless as is but should be easily reusable.
 
-Everything in this repo is licensed under the WTFPL 2.0 license, see LICENSE for complete copy.
+Everything in this repo is licensed under the WTFPL 2.0 license, see [LICENSE](https://github.com/Sudiukil/Dotfiles/blob/master/LICENSE) for complete copy.
 
-Note: Sorry for the french (cocorico !) non-translated parts in scripts/modules/config/whatever, it's painful to check it all every time i update them. However, comments will always be written in english :)
+## "Mess"
+
+This repo used to be called "Mess" and contained scripts as well. They have been moved to the [Scripts repo](https://github.com/Sudiukil/Scripts).

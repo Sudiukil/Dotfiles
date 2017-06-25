@@ -15,7 +15,7 @@ new_float pixel
 font pango:DroidSansMono 9
 
 set $black1 #34495e
-set $black2 #2c3e50
+set $black2 #383c4a
 
 set $red1 #e74c3c
 set $red2 #c0392b
@@ -26,7 +26,7 @@ set $green2 #27ae60
 set $yellow1 #f1c40f
 set $yellow2 #f39c12
 
-set $blue1 #3498db
+set $blue1 #4084d6
 set $blue2 #2980b9
 
 set $magenta1 #9b59b6
@@ -38,10 +38,16 @@ set $cyan2 #16a085
 set $white1 #ecf0f1
 set $white2 #7f8c8d
 
+set $transparent50 #0000007f
+set $transparent100 #00000000
+
+# "Fake" transparent (equivalent to transparent above my background, used for dmenu)
+set $fake_transparent50 #1c1e25
+
 # class 					border 			background 			text 			indicator
 client.focused 				$blue2 			$blue2 				$white1 		$green2
-client.focused_inactive 	$black1			$black1				$white2     	$white2
-client.unfocused 			$black1			$black1				$white2			$white2
+client.focused_inactive 	$transparent50	$transparent50		$white2     	$white2
+client.unfocused 			$transparent50	$transparent50		$white2			$white2
 client.urgent 				$red1			$red1 				$white1			$green2
 
 ## Status bar
@@ -50,22 +56,22 @@ bindsym $mod+Shift+b bar mode toggle
 
 bar {
 	id main-bar
+	i3bar_command i3bar -t
 	status_command c3status
-	font pango:DroidSansMono,FontAwesome 9
+	font pango:DroidSansMono 9
 	colors {
-		background $black2
+		#background $black2
+		background $transparent50
 		statusline $white1
-		separator $black2
+		separator $transparent50
 
 		# class 			border 			background 		text
-		focused_workspace 	$black2			$black2			$blue1
-		active_workspace 	$black2			$black2			$white2
-		inactive_workspace 	$black2			$black2			$white2
+		focused_workspace 	$transparent50	$transparent50	$blue1
+		active_workspace 	$transparent50	$transparent50	$white2
+		inactive_workspace 	$transparent50	$transparent50	$white2
 		urgent_workspace 	$red1			$red1			$white1
 	}
 	position top
-	output HDMI-0
-	output DVI-D-0
 	tray_output HDMI-0
 }
 
@@ -91,8 +97,6 @@ assign [class="Icedove"] $ws3
 assign [class="Rambox"] $ws4
 assign [class="JDownloader"] $ws5
 assign [title="ncmpcpp"] $ws6
-assign [class="Spotify"] $ws6
-for_window [class="Spotify"] move to workspace $ws6
 
 ## Workspaces assignments
 
@@ -130,12 +134,12 @@ bindsym $mod+Ctrl+e exec ~/Autre/Scripts/quitbar
 
 ### Borders
 
-bindsym $mod+Shift+o border normal
-bindsym $mod+Shift+p border pixel
+bindsym $mod+Shift+o border normal 1
+bindsym $mod+Shift+p border pixel 1
 
 ### Layout
 
-bindsym $mod+a layout stacking
+#bindsym $mod+a layout stacking
 bindsym $mod+q layout tabbed
 bindsym $mod+w layout toggle split
 bindsym $mod+Shift+f fullscreen
@@ -226,27 +230,27 @@ bindsym $mod+Ctrl+Right move workspace to output right
 ### General
 
 bindsym $mod+t exec urxvt
-bindsym $mod+d exec dmenu_run -p '>' -fn "DroidSansMono-9:normal" -nb "$black2" -nf "$white2" -sb "$black2" -sf "$blue1" -h 20
+bindsym $mod+d exec dmenu_run -p '>' -fn "DroidSansMono-9:normal" -nb "$fake_transparent50" -nf "$white2" -sb "$fake_transparent50" -sf "$blue1" -h 20
 bindsym $mod+Shift+d exec i3-input -F '%s' -P 'Command: '
 bindsym $mod+z kill
 
 ### Various programs
 
-bindsym $mod+c exec urxvt -title "urxvt - floating" -e wicd-curses
+bindsym $mod+a exec atom
 bindsym $mod+f exec urxvt -e ranger
 bindsym $mod+l exec i3lock -t -i "`cat ~/.fehbg | cut -d "'" -f 2`"
 bindsym $mod+k exec ~/Autre/Scripts/switchkeymap
-bindsym $mod+x exec urxvt -title "urxvt - floating"
+bindsym $mod+x exec urxvt -title "urxvt - floating" -bg "[90]#000000"
 bindsym $mod+Shift+l exec sleep 1 && xset dpms force off && i3lock -t -i "`cat ~/.fehbg | cut -d "'" -f 2`"
-bindsym $mod+Shift+c exec compton -b --backend glx --vsync opengl
+bindsym $mod+Shift+c exec killall compton && compton -b --backend glx --vsync opengl
 bindsym $mod+Shift+x exec xterm
-bindsym $mod+Ctrl+space exec sleep 1 && xset dpms force off
 
 ### Volume
 
 bindsym XF86AudioRaiseVolume exec amixer -q -D pulse set Master 2%+ -M
 bindsym XF86AudioLowerVolume exec amixer -q -D pulse set Master 2%- -M
 bindsym XF86AudioMute exec amixer -q -D pulse set Master toggle
+bindsym $mod+c exec ~/Autre/Scripts/paswitch -c
 bindsym $mod+v exec pavucontrol
 
 ### MPD/ncmpcpp
@@ -280,3 +284,52 @@ exec autocutsel -s PRIMARY
 exec dunst
 exec mpd
 exec redshift
+exec compton -b --backend glx --vsync opengl
+
+### i3-gaps stuff ###
+
+# Necessary for i3-gaps to work properly (pixel can be any value)
+for_window [class="^.*"] border pixel 1
+
+# Set inner/outer gaps
+gaps inner 12
+gaps outer -2
+
+# Gaps mode
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}

@@ -19,7 +19,7 @@ Plugin 'alvan/vim-closetag'             "Autoclose HTML tags
 Plugin 'xolox/vim-easytags'             "Easy tags highlighting
 Plugin 'airblade/vim-gitgutter'         "Git diff integration
 Plugin 'xolox/vim-misc'                 "Vim misc
-Plugin 'crusoexia/vim-monokai'          "Monokai colorscheme
+Plugin 'tomasr/molokai'					"Monokai colorscheme
 Plugin 'matze/vim-move'                 "vim-move
 Plugin 'terryma/vim-multiple-cursors'   "Multiple cursors
 Plugin 'sheerun/vim-polyglot'           "Language pack
@@ -101,7 +101,7 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 
 " - vim-closetag -
 
-let g:closetag_filenames = "*.html,*.xhtml,*.md,*.php,*.ctp"
+let g:closetag_filenames = "*.html,*.xhtml,*.md,*.php,*.ctp,*.xml,*.opml,*.nml"
 
 " - vim-easytags -
 
@@ -131,7 +131,7 @@ set scrolloff=5 "Line scrolling offset
 set nu "Line numbering
 
 set t_Co=256 "Terminal colors
-colorscheme monokai
+colorscheme molokai
 
 syntax on "Syntax highlighting
 
@@ -141,7 +141,7 @@ set pastetoggle=<F12> "Toggle paste mode
 
 " -- Indent --
 
-filetype plugin indent on "Auto indent
+filetype indent on "Auto indent
 set autoindent
 set shiftwidth=4
 
@@ -159,8 +159,8 @@ set smartcase
 
 " -- Completion options --
 
-filetype plugin on
-set omnifunc=syntaxcomplete#Complete
+filetype plugin on "Completion support
+set omnifunc=syntaxcomplete#Complete "Omni completion
 
 " -- Mapping (normal mode) --
 
@@ -221,49 +221,8 @@ nmap <leader>vr :source ~/.vimrc<CR>
 autocmd FileType text setlocal spell spelllang=fr
 autocmd FileType markdown setlocal spell spelllang=fr
 autocmd FileType tex setlocal spell spelllang=fr
-autocmd FileType html setlocal spell spelllang=fr
-autocmd FileType php setlocal spell spelllang=fr
 
-" --- Abbreviations ---
+" --- Other ---
 
-" -- LaTeX --
-
-autocmd FileType plaintex set filetype=tex
-
-autocmd FileType tex iab newp \part{
-autocmd FileType tex iab news \section{
-autocmd FileType tex iab newss \subsection{
-autocmd FileType tex iab newsss \subsubsection{
-autocmd FileType tex iab § \paragraph{
-
-autocmd FileType tex iab itemize \begin{itemize}<CR>\item<CR>\end{itemize}<Up>
-autocmd FileType tex iab enumerate \begin{enumerate}<CR>\item<CR>\end{enumerate}<up>
-autocmd FileType tex iab item \item
-
-autocmd FileType tex iab underline \underline{
-autocmd FileType tex iab bold \textbf{
-autocmd FileType tex iab italic \textit{
-autocmd FileType tex iab emph \emph{
-
-autocmd FileType tex iab €€ \euro
-
-autocmd FileType tex iab resetsec \setcounter{section}{0}
-
-autocmd FileType tex iab pause \pause~\\
-
-autocmd FileType tex iab -> \rightarrow
-autocmd FileType tex iab <- \leftarrow
-autocmd FileType tex iab $-> $\rightarrow
-autocmd FileType tex iab $<- $\leftarrow
-
-autocmd FileType tex iab --> \Rightarrow
-autocmd FileType tex iab <-- \Leftarrow
-autocmd FileType tex iab $--> $\Rightarrow
-autocmd FileType tex iab $<-- $\Leftarrow
-
-autocmd FileType tex iab bcenter \begin{center}<CR><CR>\end{center}<Up>
-autocmd FileType tex iab verbatim \begin{verbatim}<CR><CR>\end{verbatim}<Up>
-autocmd FileType tex iab verb \verb\|
-
-map <F5> :w<CR>:!pdflatex % && pdflatex %<CR><CR>
-map <F6> :w<CR>:!xelatex % && xelatex %<CR><CR>
+autocmd FileType tex map <F5> :w<CR>:!buildtex %<CR><CR>
+autocmd FileType markdown map <F5> :w<CR>:!gimli %<CR><CR>
