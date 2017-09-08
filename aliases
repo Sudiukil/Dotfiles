@@ -1,0 +1,63 @@
+## Existing commands
+
+alias ls="ls --color=auto"
+alias grep="grep --color=auto"
+alias egrep="egrep --color=auto"
+alias rm="rm -I"
+alias su="su -"
+alias mu="sh -c su"
+
+# URXVT
+
+alias respawn='urxvt -cd $PWD & disown; exit'
+alias clone='urxvt -cd $PWD & disown'
+
+## Git
+
+alias gs="git status"
+alias ga="git add"
+alias gr="git rm"
+alias gm="git mv"
+alias gd="git diff"
+alias gl="git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gL="git log origin/${$(git symbolic-ref HEAD 2> /dev/null)#refs/heads/}..${$(git symbolic-ref HEAD 2> /dev/null)#refs/heads/}"
+alias gc="git commit -m"
+alias gC="git checkout"
+alias gf="git fetch"
+alias gM="git merge"
+alias gp="git push"
+alias gP="git pull"
+alias gS="git stash"
+alias gb="git branch -vv"
+alias gt="git tag"
+alias github='xdg-open `git remote show -n origin | grep github | cut -d ":" -f 2- | uniq`'
+alias gsd="git status | git diff"
+alias gi="echo $1 >> .gitignore"
+alias gA="git commit --amend"
+alias gR="git reset"
+
+## SSH
+
+alias ssh="keychain --agents ssh --quiet id_rsa --timeout 60; ssh"
+alias scp="keychain --agents ssh --quiet id_rsa --timeout 60; scp"
+
+# Web dev stuff
+
+alias getrvm="\curl -sSL https://get.rvm.io | bash -s stable"
+alias getnvm="\curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash"
+
+## Other
+
+alias resound="killall mpd && killall pulseaudio && pulseaudio --start && mpd"
+alias ufwls="ufw status | nl -v -2"
+
+alias convsubs="vim -p *.srt '+tabdo set ff=unix' '+tabdo set fileencoding=utf8' '+wqall'"
+alias playall='ls mkv | while read i; do mplayer -noconsolecontrols "mkv/$i" -sub "srt/$(basename $i .mkv).srt" -utf8; done'
+alias mergeall='ls mkv | while read i; do mkvmerge "mkv/$i" --default-track 0 --language 0:en "srt/$(basename $i .mkv).srt" -o "out/$i"; done 2>&1 | tee log'
+alias sortsrt="mkdir srt && mv *.srt srt"
+alias sortmkv="mkdir mkv && mv *.mkv mkv"
+alias wgetrnpndnh='wget -r -np -nd -nH --reject="index.html*"'
+
+## i3 workspaces
+
+alias prophetdev="$HOME/.i3/workspaces/prophet; exit"

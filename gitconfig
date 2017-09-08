@@ -1,0 +1,15 @@
+[user]
+	name = Sudiukil
+	email = sudiukil@gmx.fr
+[core]
+	editor = vim
+[merge]
+	tool = vimdiff
+[credential]
+	helper = cache --timeout 7200
+[http]
+	sslVerify = false
+[log]
+	date = short
+[push]
+	default = simple
