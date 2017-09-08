@@ -90,6 +90,11 @@ set $ws10 "10"
 set $ws11 "11"
 set $ws12 "12"
 
+## Screens
+
+set $scr1 HDMI-0
+set $scr2 DVI-D-0
+
 ## Windows assignments
 
 assign [class="Firefox"] $ws2
@@ -100,14 +105,11 @@ assign [title="ncmpcpp"] $ws6
 
 ## Workspaces assignments
 
-workspace $ws1 output HDMI-0
-workspace $ws2 output HDMI-0
-workspace $ws3 output HDMI-0
-workspace $ws4 output DVI-D-0
-workspace $ws5 output HDMI-0
-workspace $ws6 output DVI-D-0
-workspace $ws7 output HDMI-0
-workspace $ws12 output DVI-D-0
+workspace $ws1 output $scr1
+workspace $ws2 output $scr1
+workspace $ws3 output $scr1
+workspace $ws4 output $scr2
+workspace $ws12 output $scr2
 
 ## Windows rules
 
@@ -238,18 +240,17 @@ bindsym $mod+z kill
 
 bindsym $mod+a exec atom
 bindsym $mod+f exec urxvt -e ranger
-bindsym $mod+l exec i3lock -t -i "`cat ~/.fehbg | cut -d "'" -f 2`"
-bindsym $mod+k exec ~/Autre/Scripts/switchkeymap
+bindsym $mod+l exec i3lock -t -i "`grep '^feh' ~/.fehbg | cut -d "'" -f 2`"
 bindsym $mod+x exec urxvt -title "urxvt - floating" -bg "[90]#000000"
-bindsym $mod+Shift+l exec sleep 1 && xset dpms force off && i3lock -t -i "`cat ~/.fehbg | cut -d "'" -f 2`"
+bindsym $mod+Shift+l exec sleep 1 && xset dpms force off && i3lock -t -i "`grep '^feh' ~/.fehbg | cut -d "'" -f 2`"
 bindsym $mod+Shift+c exec killall compton && compton -b --backend glx --vsync opengl
 bindsym $mod+Shift+x exec xterm
 
 ### Volume
 
-bindsym XF86AudioRaiseVolume exec amixer -q -D pulse set Master 2%+ -M
-bindsym XF86AudioLowerVolume exec amixer -q -D pulse set Master 2%- -M
-bindsym XF86AudioMute exec amixer -q -D pulse set Master toggle
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 2%+ -M
+bindsym XF86AudioLowerVolume exec amixer -q set Master 2%- -M
+bindsym XF86AudioMute exec amixer -q set Master toggle
 bindsym $mod+c exec ~/Autre/Scripts/paswitch -c
 bindsym $mod+v exec pavucontrol
 
@@ -267,14 +268,22 @@ bindsym $mod+y exec ~/Autre/Scripts/musicsearch
 
 # Launch at i3 start
 
+## Keyboard
+
 exec setxkbmap fr
 exec numlockx on
+
+## Display
 
 exec xrandr --output HDMI-0 --auto --output DVI-D-0 --auto --right-of HDMI-0
 exec sleep 3 && sh ~/.fehbg
 
+## Audio
+
 exec pulseaudio --start
-exec sleep 3 && amixer -q -D pulse set Master 30%
+exec sleep 3 && amixer -q set Master 30%
+
+## Others
 
 exec xrdb ~/.Xresources
 
@@ -286,7 +295,7 @@ exec mpd
 exec redshift
 exec compton -b --backend glx --vsync opengl
 
-### i3-gaps stuff ###
+# i3-gaps config
 
 # Necessary for i3-gaps to work properly (pixel can be any value)
 for_window [class="^.*"] border pixel 1
