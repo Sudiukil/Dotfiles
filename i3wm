@@ -98,7 +98,7 @@ set $scr2 DVI-D-0
 ## Windows assignments
 
 assign [class="Firefox"] $ws2
-assign [class="Firefox"] $ws3
+assign [class="Thunderbird"] $ws3
 assign [class="Rambox"] $ws4
 assign [class="JDownloader"] $ws5
 assign [title="ncmpcpp"] $ws6

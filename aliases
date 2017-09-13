@@ -36,6 +36,21 @@ alias gi="echo $1 >> .gitignore"
 alias gA="git commit --amend"
 alias gR="git reset"
 
+## Docker
+
+alias docker="sudo docker"
+alias db="sudo docker build"
+alias di="sudo docker images"
+alias dr="sudo docker run"
+alias dp="sudo docker ps"
+alias ds="sudo docker stop"
+alias de="sudo docker exec"
+
+## Docker Compose
+
+alias docker-compose="sudo docker-compose"
+alias dcu="sudo docker-compose up"
+
 ## SSH
 
 alias ssh="keychain --agents ssh --quiet id_rsa --timeout 60; ssh"
