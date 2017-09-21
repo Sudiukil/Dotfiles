@@ -239,22 +239,22 @@ bindsym $mod+z kill
 ### Various programs
 
 bindsym $mod+a exec atom
+bindsym $mod+e exec thunar
 bindsym $mod+f exec urxvt -e ranger
 bindsym $mod+l exec i3lock -t -i "`grep '^feh' ~/.fehbg | cut -d "'" -f 2`"
 bindsym $mod+x exec urxvt -title "urxvt - floating" -bg "[90]#000000"
 bindsym $mod+Shift+l exec sleep 1 && xset dpms force off && i3lock -t -i "`grep '^feh' ~/.fehbg | cut -d "'" -f 2`"
-bindsym $mod+Shift+c exec killall compton && compton -b --backend glx --vsync opengl
 bindsym $mod+Shift+x exec xterm
 
 ### Volume
 
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 2%+ -M
-bindsym XF86AudioLowerVolume exec amixer -q set Master 2%- -M
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 2%+
+bindsym XF86AudioLowerVolume exec amixer -q set Master 2%-
 bindsym XF86AudioMute exec amixer -q set Master toggle
 bindsym $mod+c exec ~/Autre/Scripts/paswitch -c
 bindsym $mod+v exec pavucontrol
 
-### MPD/ncmpcpp
+### Music
 
 bindsym $mod+n exec urxvt -title ncmpcpp -e ncmpcpp -c ~/.config/ncmpcpp/config
 bindsym $mod+s exec spotify

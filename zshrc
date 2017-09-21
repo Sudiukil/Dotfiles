@@ -17,16 +17,16 @@ setopt HIST_IGNORE_DUPS
 
 setopt prompt_subst
 
-function set_host_color {
-if [ $HOST != "GW" -a $HOST != "GW-Mk2" ]
-then
-	echo "%{$fg[yellow]%}%B%M%b%{$reset_color%}"
-else
-	echo "%{$fg[cyan]%}%B%M%b%{$reset_color%}"
-fi
+function host {
+	if [ $SSH_CLIENT ]
+	then
+		echo "%{$fg[yellow]%}%B%M (remote)%b%{$reset_color%}"
+	else
+		echo "%{$fg[cyan]%}%B%M%b%{$reset_color%}"
+	fi
 }
 
-function set_user_color {
+function u_color {
 if [ $USER = "root" ]
 then
 	echo "%{$fg[red]%}%B%n%b%{$reset_color%}"
@@ -35,15 +35,15 @@ else
 fi
 }
 
-function get_git_branch {
-branch=`git symbolic-ref HEAD 2> /dev/null`
-if [ $branch ]
-then
-	echo "%{$fg[blue]%}(${branch#refs/heads/})%{$reset_color%}"
-fi
+function git_branch {
+	branch=$(git symbolic-ref --short HEAD 2> /dev/null)
+	if [ $branch ]
+	then
+		echo "%{$fg[blue]%}($branch)%{$reset_color%}"
+	fi
 }
 
-function set_return_code_color {
+function c_ret_code {
 if [ $? != 0 ]
 then
 	echo "%{$fg[red]%}%B%?%b%{$reset_color%}"
@@ -52,14 +52,9 @@ else
 fi
 }
 
-host='`set_host_color`'
-user='`set_user_color`'
-git_branch='`get_git_branch`'
-return_code='`set_return_code_color`'
-
-PROMPT="┌[$host]-[$user:%~]$git_branch
+PROMPT="┌[$(host)]-[$(u_color):%~]"'$(git_branch)'"
 └─────╸ "
-RPROMPT="$return_code ╺┘"
+RPROMPT='$(c_ret_code)'" ╺┘"
 
 # Colors
 
@@ -68,6 +63,7 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # Environment variables
 
 export EDITOR="vim"
+
 
 eval `keychain --eval --agents ssh -Q --quiet`
 
@@ -90,21 +86,34 @@ env LESS_TERMCAP_md=$'\033[1;34m' \
 
 # User and machine specific conf
 
-if [ $USER != "root" ]
+if [ $USER != "root" -a ! $SSH_CLIENT ]
 then
 	tasky | cowsay -f /usr/share/cowsay/cows/unipony-smaller.cow -n
-
-	if [ -d "$HOME/.rvm" ]
-	then
-		export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-	fi
-
-	if [ -d "$HOME/.nvm" ]
-	then
-		export NVM_DIR="$HOME/.nvm"
-		[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-		[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-	fi
 fi
 
-source ~/.zlogin
+# RVM/Ruby/Gem lazy loading
+function rvm_load() {
+	unalias rvm
+	unalias ruby
+	unalias gem
+	export PATH="$PATH:$HOME/.rvm/bin"
+	[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+	eval "$@"
+}
+alias rvm="rvm_load rvm"
+alias ruby="rvm_load ruby"
+alias gem="rvm_load gem"
+
+# NVM/Node/NPM lazy loading
+function nvm_load {
+	unalias nvm
+	unalias npm
+	unalias node
+	export NVM_DIR="$HOME/.nvm"
+	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+	eval "$@"
+}
+alias nvm="nvm_load nvm"
+alias npm="nvm_load npm"
+alias node="nvm_load node"
