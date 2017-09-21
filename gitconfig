@@ -13,3 +13,4 @@
 	date = short
 [push]
 	default = simple
+	followTags = true
