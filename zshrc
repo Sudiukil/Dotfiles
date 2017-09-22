@@ -94,12 +94,14 @@ if [ -d $HOME/.rvm ]
 then
 	function rvm_load() {
 		unalias rvm
+		unalias atom
 		for i in $(echo $rvm_bins); do unalias $i 2> /dev/null; done
 		export PATH="$PATH:$HOME/.rvm/bin"
 		[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 		eval "$@"
 	}
 	alias rvm="rvm_load rvm"
+  alias atom="rvm_load atom"
 	rvm_bins=$(find ~/.rvm/{gems,rubies}/*/bin/* -printf "%f\n" | uniq)
 	for i in $(echo $rvm_bins); do alias $i="rvm_load $i"; done
 fi

@@ -35,6 +35,7 @@ alias gsd="git status | git diff"
 alias gi="echo $1 >> .gitignore"
 alias gA="git commit --amend"
 alias gR="git reset"
+alias git-garbage="gs -s | rev | cut -d ' ' -f 1 | rev | xargs"
 
 ## Docker
 
@@ -45,6 +46,8 @@ alias dr="sudo docker run"
 alias dp="sudo docker ps"
 alias ds="sudo docker stop"
 alias de="sudo docker exec"
+alias drm="sudo docker rm"
+alias drmi="sudo docker rmi"
 
 ## Docker Compose
 
@@ -60,6 +63,7 @@ alias scp="keychain --agents ssh --quiet id_rsa --timeout 60; scp"
 
 alias getrvm="\curl -sSL https://get.rvm.io | bash -s stable"
 alias getnvm="\curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash"
+alias artisan="php artisan"
 
 ## Other
 
