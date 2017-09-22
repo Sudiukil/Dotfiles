@@ -64,9 +64,6 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 export EDITOR="vim"
 
-
-eval `keychain --eval --agents ssh -Q --quiet`
-
 # Aliases
 
 source $HOME/.aliases
@@ -86,34 +83,39 @@ env LESS_TERMCAP_md=$'\033[1;34m' \
 
 # User and machine specific conf
 
-if [ $USER != "root" -a ! $SSH_CLIENT ]
+if [ $USER != "root" ] && [ ! $SSH_CLIENT ]
 then
 	tasky | cowsay -f /usr/share/cowsay/cows/unipony-smaller.cow -n
+	eval `keychain --eval --agents ssh -Q --quiet`
 fi
 
 # RVM/Ruby/Gem lazy loading
-function rvm_load() {
-	unalias rvm
-	unalias ruby
-	unalias gem
-	export PATH="$PATH:$HOME/.rvm/bin"
-	[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-	eval "$@"
-}
-alias rvm="rvm_load rvm"
-alias ruby="rvm_load ruby"
-alias gem="rvm_load gem"
+if [ -d $HOME/.rvm ]
+then
+	function rvm_load() {
+		unalias rvm
+		for i in $(echo $rvm_bins); do unalias $i 2> /dev/null; done
+		export PATH="$PATH:$HOME/.rvm/bin"
+		[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+		eval "$@"
+	}
+	alias rvm="rvm_load rvm"
+	rvm_bins=$(find ~/.rvm/{gems,rubies}/*/bin/* -printf "%f\n" | uniq)
+	for i in $(echo $rvm_bins); do alias $i="rvm_load $i"; done
+fi
 
-# NVM/Node/NPM lazy loading
-function nvm_load {
-	unalias nvm
-	unalias npm
-	unalias node
-	export NVM_DIR="$HOME/.nvm"
-	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-	eval "$@"
-}
-alias nvm="nvm_load nvm"
-alias npm="nvm_load npm"
-alias node="nvm_load node"
+if [ -d $HOME/.nvm ]
+then
+	# NVM/Node/NPM lazy loading
+	function nvm_load {
+		unalias nvm
+		for i in $(echo $nvm_bins); do unalias $i 2> /dev/null; done
+		export NVM_DIR="$HOME/.nvm"
+		[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+		[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+		eval "$@"
+	}
+	alias nvm="nvm_load nvm"
+	nvm_bins=$(find ~/.nvm/versions/node/*/bin/* -printf "%f\n" | uniq)
+	for i in $(echo $nvm_bins); do alias $i="nvm_load $i"; done
+fi
