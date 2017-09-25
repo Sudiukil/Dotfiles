@@ -64,6 +64,7 @@ alias scp="keychain --agents ssh --quiet id_rsa --timeout 60; scp"
 alias getrvm="\curl -sSL https://get.rvm.io | bash -s stable"
 alias getnvm="\curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash"
 alias artisan="php artisan"
+alias composer="php composer.phar"
 
 ## Other
 
