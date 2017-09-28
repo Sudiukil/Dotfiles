@@ -67,6 +67,7 @@ alias xamppenv="export PATH=$PATH:/opt/lampp/bin/"
 alias composer="php composer.phar"
 alias drush="php drush.phar"
 alias artisan="php artisan"
+alias composer="php composer.phar"
 
 ## Other
 
