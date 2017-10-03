@@ -93,15 +93,19 @@ fi
 if [ -d $HOME/.rvm ]
 then
 	function rvm_load() {
+		# Remove aliases
 		unalias rvm
-		unalias atom
 		for i in $(echo $rvm_bins); do unalias $i 2> /dev/null; done
+
+		# Load RVM
 		export PATH="$PATH:$HOME/.rvm/bin"
 		[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+		# Chain original command
 		eval "$@"
 	}
+	# Aliases for all RVM/Ruby/Gem bins
 	alias rvm="rvm_load rvm"
-  alias atom="rvm_load atom"
 	rvm_bins=$(find ~/.rvm/{gems,rubies}/*/bin/* -printf "%f\n" | uniq)
 	for i in $(echo $rvm_bins); do alias $i="rvm_load $i"; done
 fi
@@ -110,14 +114,29 @@ if [ -d $HOME/.nvm ]
 then
 	# NVM/Node/NPM lazy loading
 	function nvm_load {
+		# Remove aliases
 		unalias nvm
 		for i in $(echo $nvm_bins); do unalias $i 2> /dev/null; done
-		export NVM_DIR="$HOME/.nvm"
+
+		# Load NVM
+    export NVM_DIR="$HOME/.nvm"
 		[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 		[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+		# Chain original command
 		eval "$@"
 	}
+	# Aliases for all NVM/Node bins
 	alias nvm="nvm_load nvm"
 	nvm_bins=$(find ~/.nvm/versions/node/*/bin/* -printf "%f\n" | uniq)
 	for i in $(echo $nvm_bins); do alias $i="nvm_load $i"; done
 fi
+
+function atom_load() {
+	unalias atom
+	rvm_load
+	nvm_load
+	eval "atom $@"
+}
+
+alias atom="atom_load"
