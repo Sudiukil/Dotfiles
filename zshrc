@@ -94,7 +94,7 @@ if [ -d $HOME/.rvm ]
 then
 	function rvm_load() {
 		# Remove aliases
-		unalias rvm
+		unalias rvm 2> /dev/null
 		for i in $(echo $rvm_bins); do unalias $i 2> /dev/null; done
 
 		# Load RVM
@@ -115,7 +115,7 @@ then
 	# NVM/Node/NPM lazy loading
 	function nvm_load {
 		# Remove aliases
-		unalias nvm
+		unalias nvm 2> /dev/null
 		for i in $(echo $nvm_bins); do unalias $i 2> /dev/null; done
 
 		# Load NVM
