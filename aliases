@@ -35,7 +35,6 @@ alias gsd="git status | git diff"
 alias gi="echo $1 >> .gitignore"
 alias gA="git commit --amend"
 alias gR="git reset"
-alias git-garbage="gs -s | rev | cut -d ' ' -f 1 | rev | xargs"
 
 ## Docker
 
@@ -48,6 +47,7 @@ alias ds="sudo docker stop"
 alias de="sudo docker exec"
 alias drm="sudo docker rm"
 alias drmi="sudo docker rmi"
+alias dn="sudo docker network"
 
 ## Docker Compose
 
@@ -59,13 +59,14 @@ alias dcu="sudo docker-compose up"
 alias ssh="keychain --agents ssh --quiet id_rsa --timeout 60; ssh"
 alias scp="keychain --agents ssh --quiet id_rsa --timeout 60; scp"
 
-# Web dev stuff
+# Dev stuff
 
 alias getrvm="\curl -sSL https://get.rvm.io | bash -s stable"
-alias getnvm="\curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash"
-alias composer="php composer.phar"
-alias drush="php drush.phar"
+alias getnvm="\curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash"
+alias getpyenv="curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash"
+
 alias artisan="php artisan"
+alias composer="php composer.phar"
 
 ## Other
 
@@ -78,7 +79,3 @@ alias mergeall='ls mkv | while read i; do mkvmerge "mkv/$i" --default-track 0 --
 alias sortsrt="mkdir srt && mv *.srt srt"
 alias sortmkv="mkdir mkv && mv *.mkv mkv"
 alias wgetrnpndnh='wget -r -np -nd -nH --reject="index.html*"'
-
-## i3 workspaces
-
-alias prophetdev="$HOME/.i3/workspaces/prophet; exit"

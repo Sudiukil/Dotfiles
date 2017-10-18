@@ -7,7 +7,7 @@ colors
 
 # History file
 
-HISTFILE=~/.histfile
+HISTFILE=$HOME/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 
@@ -67,6 +67,7 @@ export EDITOR="vim"
 # Aliases
 
 source $HOME/.aliases
+source $HOME/.aliases.work
 
 # Functions
 
@@ -106,20 +107,20 @@ then
 	}
 	# Aliases for all RVM/Ruby/Gem bins
 	alias rvm="rvm_load rvm"
-	rvm_bins=$(find ~/.rvm/{gems,rubies}/*/bin/* -printf "%f\n" | uniq)
+	rvm_bins=$(find $HOME/.rvm/{gems,rubies}/*/bin/* -printf "%f\n" | uniq)
 	for i in $(echo $rvm_bins); do alias $i="rvm_load $i"; done
 fi
 
+# NVM/Node/NPM lazy loading
 if [ -d $HOME/.nvm ]
 then
-	# NVM/Node/NPM lazy loading
 	function nvm_load {
 		# Remove aliases
 		unalias nvm 2> /dev/null
 		for i in $(echo $nvm_bins); do unalias $i 2> /dev/null; done
 
 		# Load NVM
-    export NVM_DIR="$HOME/.nvm"
+		export NVM_DIR="$HOME/.nvm"
 		[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 		[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
@@ -128,8 +129,15 @@ then
 	}
 	# Aliases for all NVM/Node bins
 	alias nvm="nvm_load nvm"
-	nvm_bins=$(find ~/.nvm/versions/node/*/bin/* -printf "%f\n" | uniq)
+	nvm_bins=$(find $HOME/.nvm/versions/node/*/bin/* -printf "%f\n" | uniq)
 	for i in $(echo $nvm_bins); do alias $i="nvm_load $i"; done
+fi
+
+if [ -d $HOME/.pyenv ]
+then
+	export PATH="/home/sonrelq/.pyenv/bin:$PATH"
+	eval "$(pyenv init -)"
+	eval "$(pyenv virtualenv-init -)"
 fi
 
 function atom_load() {
@@ -138,5 +146,4 @@ function atom_load() {
 	nvm_load
 	eval "atom $@"
 }
-
 alias atom="atom_load"
