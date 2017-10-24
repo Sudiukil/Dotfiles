@@ -67,7 +67,6 @@ export EDITOR="vim"
 # Aliases
 
 source $HOME/.aliases
-source $HOME/.aliases.work
 
 # Functions
 
