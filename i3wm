@@ -79,10 +79,10 @@ bar {
 
 set $ws1 "1"
 set $ws2 "2 Web"
-set $ws3 "3 Mail"
-set $ws4 "4 Chat"
+set $ws3 "3 Chat/mail"
+set $ws4 "4 Music"
 set $ws5 "5 DL"
-set $ws6 "6 Music"
+set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
@@ -98,10 +98,12 @@ set $scr2 DVI-D-0
 ## Windows assignments
 
 assign [class="Firefox"] $ws2
+assign [class="Rambox"] $ws3
 assign [class="Thunderbird"] $ws3
-assign [class="Rambox"] $ws4
+assign [class="Icedove"] $ws3
+assign [title="ncmpcpp"] $ws4
+assign [class="Spotify"] $ws4
 assign [class="JDownloader"] $ws5
-assign [title="ncmpcpp"] $ws6
 
 ## Workspaces assignments
 
@@ -238,7 +240,6 @@ bindsym $mod+z kill
 
 ### Various programs
 
-bindsym $mod+a exec atom
 bindsym $mod+e exec thunar
 bindsym $mod+f exec urxvt -e ranger
 bindsym $mod+l exec i3lock -t -i "`grep '^feh' ~/.fehbg | cut -d "'" -f 2`"
