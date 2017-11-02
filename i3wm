@@ -109,7 +109,7 @@ assign [class="JDownloader"] $ws5
 
 workspace $ws1 output $scr1
 workspace $ws2 output $scr1
-workspace $ws3 output $scr1
+workspace $ws3 output $scr2
 workspace $ws4 output $scr2
 workspace $ws12 output $scr2
 
