@@ -72,6 +72,7 @@ alias sortmkv="mkdir mkv && mv *.mkv mkv"
 alias convsubs="vim -p *.srt '+tabdo set ff=unix' '+tabdo set fileencoding=utf8' '+wqall'"
 alias mergeall='ls mkv | while read i; do mkvmerge "mkv/$i" --default-track 0 --language 0:en "srt/$(basename $i .mkv).srt" -o "out/$i"; done 2>&1 | tee log'
 alias playall='ls mkv | while read i; do mplayer -noconsolecontrols "mkv/$i" -sub "srt/$(basename $i .mkv).srt" -utf8; done'
+alias x265ize='mkdir x265; for i in *.mkv; do ffmpeg -i "$i" -c:v libx265 -c:a aac -c:s copy "x265/$i"; done'
 
 ## Other
 
