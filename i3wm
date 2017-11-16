@@ -12,43 +12,34 @@ new_float pixel
 
 ## Font & colors
 
-font pango:DroidSansMono 9
+font pango:Inconsolata 11
 
-set $black1 #34495e
-set $black2 #383c4a
-
-set $red1 #e74c3c
-set $red2 #c0392b
-
-set $green1 #2ecc71
-set $green2 #27ae60
-
-set $yellow1 #f1c40f
-set $yellow2 #f39c12
-
-set $blue1 #4084d6
-set $blue2 #2980b9
-
-set $magenta1 #9b59b6
-set $magenta2 #8e44ad
-
-set $cyan1 #1abc9c
-set $cyan2 #16a085
-
-set $white1 #ecf0f1
-set $white2 #7f8c8d
-
-set $transparent50 #0000007f
-set $transparent100 #00000000
-
-# "Fake" transparent (equivalent to transparent above my background, used for dmenu)
-set $fake_transparent50 #1c1e25
+set $color0		 #282a2e
+set $color8		 #373b41
+set $color1		 #a54242
+set $color9		 #cc6666
+set $color2		 #8c9440
+set $color10	 #b5bd68
+set $color3		 #de935f
+set $color11	 #f0c674
+set $color4		 #5f819d
+set $color12	 #81a2be
+set $color5		 #85678f
+set $color13	 #b294bb
+set $color6		 #5e8d87
+set $color14	 #8abeb7
+set $color7		 #707880
+set $color15	 #c5c8c6
 
 # class 					border 			background 			text 			indicator
-client.focused 				$blue2 			$blue2 				$white1 		$green2
-client.focused_inactive 	$transparent50	$transparent50		$white2     	$white2
-client.unfocused 			$transparent50	$transparent50		$white2			$white2
-client.urgent 				$red1			$red1 				$white1			$green2
+client.focused 				$color4 		$color4 			$color15 		$color2
+client.focused_inactive 	$color0		 	$color0 			$color15     	$color15
+client.unfocused 			$color0		 	$color0 			$color15		$color15
+client.urgent 				$color1			$color1				$color15		$color2
+
+## Monitors
+
+set $mon1 HDMI-1
 
 ## Status bar
 
@@ -58,21 +49,21 @@ bar {
 	id main-bar
 	i3bar_command i3bar -t
 	status_command c3status
-	font pango:DroidSansMono 9
+	font pango:Inconsolata 11
 	colors {
 		#background $black2
-		background $transparent50
-		statusline $white1
-		separator $transparent50
+		background $color0
+		statusline $color15
+		separator $color0
 
 		# class 			border 			background 		text
-		focused_workspace 	$transparent50	$transparent50	$blue1
-		active_workspace 	$transparent50	$transparent50	$white2
-		inactive_workspace 	$transparent50	$transparent50	$white2
-		urgent_workspace 	$red1			$red1			$white1
+		focused_workspace 	$color0			$color0			$color4
+		active_workspace 	$color0			$color0			$color15
+		inactive_workspace 	$color0			$color0			$color15
+		urgent_workspace 	$color1			$color1			$color15
 	}
 	position top
-	tray_output HDMI-0
+	tray_output $mon1
 }
 
 ## Workspaces
@@ -89,11 +80,6 @@ set $ws9 "9"
 set $ws10 "10"
 set $ws11 "11"
 set $ws12 "12"
-
-## Screens
-
-set $scr1 HDMI-0
-set $scr2 DVI-D-0
 
 ## Windows assignments
 
@@ -234,17 +220,16 @@ bindsym $mod+Ctrl+Right move workspace to output right
 ### General
 
 bindsym $mod+t exec urxvt
-bindsym $mod+d exec dmenu_run -p '>' -fn "DroidSansMono-9:normal" -nb "$fake_transparent50" -nf "$white2" -sb "$fake_transparent50" -sf "$blue1" -h 20
+bindsym $mod+d exec dmenu_run -p '>' -fn "Inconsolata-11:normal" -nb "$color0" -nf "$color15" -sb "$color0" -sf "$color4" -h 20
 bindsym $mod+Shift+d exec i3-input -F '%s' -P 'Command: '
 bindsym $mod+z kill
 
 ### Various programs
 
-bindsym $mod+e exec thunar
+bindsym $mod+e exec nautilus
 bindsym $mod+f exec urxvt -e ranger
 bindsym $mod+l exec i3lock -t -i "`grep '^feh' ~/.fehbg | cut -d "'" -f 2`"
-bindsym $mod+x exec urxvt -title "urxvt - floating" -bg "[90]#000000"
-bindsym $mod+Shift+l exec sleep 1 && xset dpms force off && i3lock -t -i "`grep '^feh' ~/.fehbg | cut -d "'" -f 2`"
+bindsym $mod+x exec urxvt -title "urxvt - floating"
 bindsym $mod+Shift+x exec xterm
 
 ### Volume
@@ -292,14 +277,24 @@ exec devmon
 exec autocutsel
 exec autocutsel -s PRIMARY
 exec dunst
-exec mpd
 exec redshift
-exec compton -b --backend glx --vsync opengl
 
 # i3-gaps config
 
+### i3-gaps stuff ###
+
 # Necessary for i3-gaps to work properly (pixel can be any value)
 for_window [class="^.*"] border pixel 1
+
+# Smart Gaps
+#smart_gaps on
+
+# Smart Borders
+#smart_borders on
+
+# Some color adjustments
+#client.focused_inactive #000000 #000000 #000000 #000000 #000000
+#client.unfocused        #000000 #000000 #000000 #000000 #000000
 
 # Set inner/outer gaps
 gaps inner 12

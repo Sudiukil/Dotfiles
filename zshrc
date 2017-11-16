@@ -85,7 +85,6 @@ env LESS_TERMCAP_md=$'\033[1;34m' \
 
 if [ $USER != "root" ] && [ ! $SSH_CLIENT ]
 then
-	tasky | cowsay -f /usr/share/cowsay/cows/unipony-smaller.cow -n
 	eval `keychain --eval --agents ssh -Q --quiet`
 fi
 

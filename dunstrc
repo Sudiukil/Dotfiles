@@ -53,19 +53,19 @@
 
 [frame]
     width = 2
-    color = "#4084d6"
+    color = "#5f819d"
 
 [urgency_low]
-    background = "#383c4a"
-    foreground = "#7f8c8d"
+    background = "#282a2e"
+    foreground = "#c5c8c6"
     timeout = 5
 
 [urgency_normal]
-    background = "#383c4a"
-    foreground = "#4084d6"
+    background = "#282a2e"
+    foreground = "#5f819d"
     timeout = 5
 
 [urgency_critical]
-    background = "#e74c3c"
-    foreground = "#ecf0f1"
+    background = "#282a2e"
+    foreground = "#a54242"
     timeout = 0
