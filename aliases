@@ -20,7 +20,7 @@ alias gr="git rm"
 alias gm="git mv"
 alias gd="git diff"
 alias gl="git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-alias gL="git log origin/${$(git symbolic-ref HEAD 2> /dev/null)#refs/heads/}..${$(git symbolic-ref HEAD 2> /dev/null)#refs/heads/}"
+alias gL="gl origin/${$(git symbolic-ref HEAD 2> /dev/null)#refs/heads/}..${$(git symbolic-ref HEAD 2> /dev/null)#refs/heads/}"
 alias gc="git commit -m"
 alias gC="git checkout"
 alias gf="git fetch"
@@ -38,10 +38,7 @@ alias gR="git reset"
 
 ## Docker
 
-alias docker="sudo docker"
-alias db="sudo docker build"
 alias di="sudo docker images"
-alias dr="sudo docker run"
 alias dp="sudo docker ps"
 alias ds="sudo docker stop"
 alias de="sudo docker exec"
@@ -51,7 +48,6 @@ alias dn="sudo docker network"
 
 ## Docker Compose
 
-alias docker-compose="sudo docker-compose"
 alias dcu="sudo docker-compose up"
 
 ## SSH
