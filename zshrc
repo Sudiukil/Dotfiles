@@ -131,6 +131,7 @@ then
 	for i in $(echo $nvm_bins); do alias $i="nvm_load $i"; done
 fi
 
+# Pyenv loading
 if [ -d $HOME/.pyenv ]
 then
 	export PATH="$HOME/.pyenv/bin:$PATH"
@@ -138,6 +139,7 @@ then
 	eval "$(pyenv virtualenv-init -)"
 fi
 
+# Load Atom with RVM and NPM lazy loading
 function atom_load() {
 	unalias atom
 	rvm_load
