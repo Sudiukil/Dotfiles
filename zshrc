@@ -155,3 +155,20 @@ function mem() {
 		ps -eo "rss,cmd" | grep "$1" | sed -e 's/^[ \t]*//' | cut -d ' ' -f 1 | while read i; do echo "+$(($i/1024)) Mio"; sum=$((sum+i)); done; echo "$1 mem usage : $((sum/1024)) Mio"; sum=0
 	fi
 }
+
+# GitHub Pull Request
+function pr() {
+	git_dir=$(git rev-parse --git-dir 2> /dev/null)
+
+	if [ "$git_dir" ]; then
+		if [ "$#" -lt 1 ]; then; echo "Usage: pr <branch to merge> [branch to merge onto]"
+		else
+			if [ "$2" ]; then; onto="$2"
+			else; onto="master"
+			fi
+
+			echo "$(git config --get remote.origin.url)/compare/$onto...$1"
+		fi
+	else; echo "Not in a Git repo"
+	fi
+}

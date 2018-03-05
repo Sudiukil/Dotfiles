@@ -1,4 +1,4 @@
-## Existing commands
+# Existing commands
 
 alias ls="ls --color=auto"
 alias grep="grep --color=auto"
@@ -12,31 +12,48 @@ alias mu="sh -c su"
 alias respawn='urxvt -cd $PWD & disown; exit'
 alias clone='urxvt -cd $PWD & disown'
 
-## Git
+# Git
 
-alias gs="git status"
+## Track files
+
 alias ga="git add"
 alias gr="git rm"
 alias gm="git mv"
+
+## Review changes
+
+alias gs="git status"
 alias gd="git diff"
 alias gl="git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-alias gL="gl origin/${$(git symbolic-ref HEAD 2> /dev/null)#refs/heads/}..${$(git symbolic-ref HEAD 2> /dev/null)#refs/heads/}"
+alias gL='gl origin/$(git symbolic-ref --short HEAD)..$(git symbolic-ref --short HEAD)'
+
+## Commit and pull/push
+
 alias gc="git commit -m"
-alias gC="git checkout"
+alias gA="git commit --amend"
 alias gf="git fetch"
 alias gM="git merge"
-alias gp="git push"
 alias gP="git pull"
-alias gS="git stash"
+alias gp="git push"
+
+## Branches
+
+alias gC="git checkout"
 alias gb="git branch -vv"
+
+## Other
+
+alias gS="git stash"
 alias gt="git tag"
-alias github='xdg-open `git remote show -n origin | grep github | cut -d ":" -f 2- | uniq`'
+alias gR="git reset"
 alias gsd="git status | git diff"
 alias gi="echo $1 >> .gitignore"
-alias gA="git commit --amend"
-alias gR="git reset"
 
-## SSH
+## GitHub specific
+
+alias github='xdg-open $(git config --get remote.origin.url)'
+
+# SSH / Keychain
 
 alias ssh="keychain --agents ssh --quiet id_rsa --timeout 60; ssh"
 alias scp="keychain --agents ssh --quiet id_rsa --timeout 60; scp"
@@ -47,7 +64,7 @@ alias getrvm="\curl -sSL https://get.rvm.io | bash -s stable"
 alias getnvm="\curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash"
 alias getpyenv="curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash"
 
-## TV shows stuff
+# TV shows stuff
 
 alias sortsrt="mkdir srt && mv *.srt srt"
 alias sortmkv="mkdir mkv && mv *.mkv mkv"
@@ -56,7 +73,7 @@ alias mergeall='ls mkv | while read i; do mkvmerge "mkv/$i" --default-track 0 --
 alias playall='ls mkv | while read i; do mplayer -noconsolecontrols "mkv/$i" -sub "srt/$(basename $i .mkv).srt" -utf8; done'
 alias x265ize='mkdir x265; for i in *.mkv; do ffmpeg -i "$i" -c:v libx265 -c:a aac -c:s copy "x265/$i"; done'
 
-## Other
+# Other
 
 alias resound="killall mpd && killall pulseaudio && pulseaudio --start && mpd"
 alias ufwls="ufw status | nl -v -2"

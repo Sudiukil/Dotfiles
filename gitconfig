@@ -14,3 +14,5 @@
 [push]
 	default = simple
 	followTags = true
+[url "https://"]
+	insteadOf = git://
