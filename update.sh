@@ -9,5 +9,6 @@ cp -r ~/.config/ranger/rc.conf ranger-rc.conf
 cp ~/.vimrc vim
 cp ~/.Xresources Xresources
 cp ~/.zshrc zshrc
+cp ~/.shellfuncs/*.sh zsh-functions/
 
 exit 0
