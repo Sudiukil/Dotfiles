@@ -39,7 +39,9 @@ client.urgent 				$color1			$color1				$color15		$color2
 
 ## Monitors
 
-set $mon1 HDMI-1
+set $mon1 DP-1
+set $mon2 DVI-D-0
+set $mon3 HDMI-0
 
 ## Status bar
 
@@ -47,7 +49,7 @@ bindsym $mod+Shift+b bar mode toggle
 
 bar {
 	id main-bar
-	i3bar_command i3bar -t
+	i3bar_command i3bar
 	status_command c3status
 	font pango:Inconsolata 11
 	colors {
@@ -70,9 +72,9 @@ bar {
 
 set $ws1 "1"
 set $ws2 "2 Web"
-set $ws3 "3 Chat/mail"
+set $ws3 "3 Chat"
 set $ws4 "4 Music"
-set $ws5 "5 DL"
+set $ws5 "5 Glances"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
@@ -84,20 +86,17 @@ set $ws12 "12"
 ## Windows assignments
 
 assign [class="Firefox"] $ws2
-assign [class="Rambox"] $ws3
-assign [class="Thunderbird"] $ws3
-assign [class="Icedove"] $ws3
-assign [title="ncmpcpp"] $ws4
+assign [class="Franz"] $ws3
 assign [class="Spotify"] $ws4
-assign [class="JDownloader"] $ws5
+assign [title="Glances"] $ws5
 
 ## Workspaces assignments
 
-workspace $ws1 output $scr1
-workspace $ws2 output $scr1
-workspace $ws3 output $scr2
-workspace $ws4 output $scr2
-workspace $ws12 output $scr2
+workspace $ws1 output $mon1
+workspace $ws2 output $mon1
+workspace $ws3 output $mon2
+workspace $ws4 output $mon2
+workspace $ws5 output $mon3
 
 ## Windows rules
 
@@ -118,7 +117,7 @@ floating_modifier $mod
 ## Session management
 
 bindsym $mod+Ctrl+r restart
-bindsym $mod+Ctrl+e exec ~/Autre/Scripts/quitbar
+bindsym $mod+Ctrl+e exec quitbar
 
 ## Windows management
 
@@ -179,6 +178,7 @@ bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 bindsym $mod+parenright workspace number $ws11
 bindsym $mod+equal workspace number $ws12
+bindsym $mod+n exec ~/Autre/Scripts/Ruby/i3_new_workspace.rb
 
 ### Sending window to desktop
 
@@ -220,7 +220,7 @@ bindsym $mod+Ctrl+Right move workspace to output right
 ### General
 
 bindsym $mod+t exec urxvt
-bindsym $mod+d exec dmenu_run -p '>' -fn "Inconsolata-11:normal" -nb "$color0" -nf "$color15" -sb "$color0" -sf "$color4" -h 20
+bindsym $mod+d exec dmenu_run -p '>' -fn "Inconsolata-11:normal" -nb "$color0" -nf "$color15" -sb "$color0" -sf "$color4"
 bindsym $mod+Shift+d exec i3-input -F '%s' -P 'Command: '
 bindsym $mod+z kill
 
@@ -237,20 +237,17 @@ bindsym $mod+Shift+x exec xterm
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2%+
 bindsym XF86AudioLowerVolume exec amixer -q set Master 2%-
 bindsym XF86AudioMute exec amixer -q set Master toggle
-bindsym $mod+c exec ~/Autre/Scripts/paswitch -c
+bindsym $mod+c exec paswitch -c
 bindsym $mod+v exec pavucontrol
 
 ### Music
 
-bindsym $mod+n exec urxvt -title ncmpcpp -e ncmpcpp -c ~/.config/ncmpcpp/config
-bindsym $mod+s exec spotify
-bindsym XF86AudioPlay exec ~/Autre/Scripts/mediactl toggle
-bindsym XF86AudioStop exec ~/Autre/Scripts/mediactl stop
-bindsym Shift+XF86AudioPlay exec ~/Autre/Scripts/mediactl stop
-bindsym XF86AudioPrev exec ~/Autre/Scripts/mediactl prev
-bindsym XF86AudioNext exec ~/Autre/Scripts/mediactl next
-bindsym $mod+m exec ~/Autre/Scripts/savetitle
-bindsym $mod+y exec ~/Autre/Scripts/musicsearch
+bindsym $mod+s exec ~/Autre/Scripts/Ruby/i3_spotify.rb
+bindsym XF86AudioPlay exec mediactl toggle
+bindsym XF86AudioStop exec mediactl stop
+bindsym Shift+XF86AudioPlay exec mediactl stop
+bindsym XF86AudioPrev exec mediactl prev
+bindsym XF86AudioNext exec mediactl next
 
 # Launch at i3 start
 
@@ -261,7 +258,7 @@ exec numlockx on
 
 ## Display
 
-exec xrandr --output HDMI-0 --auto --output DVI-D-0 --auto --right-of HDMI-0
+exec xrandr --output $mon1 --auto --primary --output $mon2 --auto --right-of $mon1 --output $mon3 --auto --left-of $mon1
 exec sleep 3 && sh ~/.fehbg
 
 ## Audio
@@ -278,10 +275,11 @@ exec autocutsel
 exec autocutsel -s PRIMARY
 exec dunst
 exec redshift
+exec nextcloud
+
+exec sleep 2 && progs
 
 # i3-gaps config
-
-### i3-gaps stuff ###
 
 # Necessary for i3-gaps to work properly (pixel can be any value)
 for_window [class="^.*"] border pixel 1
@@ -307,34 +305,34 @@ set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
 bindsym $mod+Shift+g mode "$mode_gaps"
 
 mode "$mode_gaps" {
-        bindsym o      mode "$mode_gaps_outer"
-        bindsym i      mode "$mode_gaps_inner"
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+		bindsym o      mode "$mode_gaps_outer"
+		bindsym i      mode "$mode_gaps_inner"
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
 }
 
 mode "$mode_gaps_inner" {
-        bindsym plus  gaps inner current plus 5
-        bindsym minus gaps inner current minus 5
-        bindsym 0     gaps inner current set 0
+		bindsym plus  gaps inner current plus 5
+		bindsym minus gaps inner current minus 5
+		bindsym 0     gaps inner current set 0
 
-        bindsym Shift+plus  gaps inner all plus 5
-        bindsym Shift+minus gaps inner all minus 5
-        bindsym Shift+0     gaps inner all set 0
+		bindsym Shift+plus  gaps inner all plus 5
+		bindsym Shift+minus gaps inner all minus 5
+		bindsym Shift+0     gaps inner all set 0
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
 }
 
 mode "$mode_gaps_outer" {
-        bindsym plus  gaps outer current plus 5
-        bindsym minus gaps outer current minus 5
-        bindsym 0     gaps outer current set 0
+		bindsym plus  gaps outer current plus 5
+		bindsym minus gaps outer current minus 5
+		bindsym 0     gaps outer current set 0
 
-        bindsym Shift+plus  gaps outer all plus 5
-        bindsym Shift+minus gaps outer all minus 5
-        bindsym Shift+0     gaps outer all set 0
+		bindsym Shift+plus  gaps outer all plus 5
+		bindsym Shift+minus gaps outer all minus 5
+		bindsym Shift+0     gaps outer all set 0
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
 }

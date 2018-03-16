@@ -67,7 +67,9 @@ export EDITOR="vim"
 # Aliases and functions
 
 source $HOME/.aliases
-for i in $HOME/.shellfuncs/*.sh; do source $i; done
+if [ -d $HOME/.shellfuncs ]; then
+	for i in $HOME/.shellfuncs/*.sh; do source $i; done
+fi
 
 # User and machine specific conf
 
