@@ -88,6 +88,7 @@ set $ws12 "12"
 assign [class="Firefox"] $ws2
 assign [class="Franz"] $ws3
 assign [class="Spotify"] $ws4
+assign [title="ncmpcpp"] $ws4
 assign [title="Glances"] $ws5
 
 ## Workspaces assignments
@@ -226,7 +227,7 @@ bindsym $mod+z kill
 
 ### Various programs
 
-bindsym $mod+e exec nautilus
+bindsym $mod+e exec nautilus -w
 bindsym $mod+f exec urxvt -e ranger
 bindsym $mod+l exec i3lock -t -i "`grep '^feh' ~/.fehbg | cut -d "'" -f 2`"
 bindsym $mod+x exec urxvt -title "urxvt - floating"
@@ -243,6 +244,7 @@ bindsym $mod+v exec pavucontrol
 ### Music
 
 bindsym $mod+s exec ~/Autre/Scripts/Ruby/i3_spotify.rb
+bindsym $mod+m exec urxvt -title ncmpcpp -e ncmpcpp
 bindsym XF86AudioPlay exec mediactl toggle
 bindsym XF86AudioStop exec mediactl stop
 bindsym Shift+XF86AudioPlay exec mediactl stop
