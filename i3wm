@@ -278,6 +278,7 @@ exec autocutsel -s PRIMARY
 exec dunst
 exec redshift
 exec nextcloud
+exec mpd
 
 exec sleep 2 && progs
 
