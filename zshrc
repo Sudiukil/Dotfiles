@@ -83,6 +83,3 @@ if [ $USER != "root" ] && [ ! $SSH_CLIENT ]
 then
 	eval "$(keychain --eval --agents ssh -Q --quiet)"
 fi
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"

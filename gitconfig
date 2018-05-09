@@ -3,6 +3,7 @@
 	email = sudiukil@gmx.fr
 [core]
 	editor = vim
+	pager = less
 [merge]
 	tool = vimdiff
 [credential]
