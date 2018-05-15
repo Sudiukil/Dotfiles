@@ -43,7 +43,7 @@ function git_branch {
 	fi
 }
 
-function c_ret_code {
+function ret_code {
 if [ $? != 0 ]
 then
 	echo "%{$fg[red]%}%B%?%b%{$reset_color%}"
@@ -52,9 +52,16 @@ else
 fi
 }
 
-export PROMPT="┌[$(host)]-[$(u_color):%~]"'$(git_branch)'"
+function ror_env {
+	if [ $RAILS_ENV ]
+	then
+		echo "%{$fg[red]%}($RAILS_ENV)%{$reset_color%}"
+	fi
+}
+
+export PROMPT="┌[$(host)]-[$(u_color):%~]"'$(git_branch)'""'$(ror_env)'"
 └─────╸ "
-export RPROMPT='$(c_ret_code)'" ╺┘"
+export RPROMPT='$(ret_code)'" ╺┘"
 
 # Plugins
 
