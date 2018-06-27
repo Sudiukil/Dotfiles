@@ -77,12 +77,5 @@ alias x265ize='mkdir x265; for i in *.mkv; do ffmpeg -i "$i" -c:v hevc_nvenc -c:
 
 # Other
 
-alias resound="killall mpd && killall pulseaudio && pulseaudio --start && mpd"
 alias ufwls="ufw status | nl -v -2"
-
-alias wgetrnpndnh='wget -r -np -nd -nH --reject="index.html*"'
-
-alias sss="sudo systemctl suspend"
-alias ssr="sudo systemctl reboot"
-
 alias vnc="x11vnc -forever -display :0 -clip 1920x1080+1920+0 -ncache 10"

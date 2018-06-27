@@ -75,7 +75,7 @@ set $ws2 "2 Web"
 set $ws3 "3 Chat"
 set $ws4 "4 Music"
 set $ws5 "5 Glances"
-set $ws6 "6"
+set $ws6 "6 Torrent"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
@@ -87,9 +87,11 @@ set $ws12 "12"
 
 assign [class="Firefox"] $ws2
 assign [class="Franz"] $ws3
+assign [class="discord"] $ws3
 assign [class="Spotify"] $ws4
 assign [title="ncmpcpp"] $ws4
 assign [title="Glances"] $ws5
+assign [class="Transmission-remote-gtk"] $ws6
 
 ## Workspaces assignments
 
@@ -98,6 +100,7 @@ workspace $ws2 output $mon1
 workspace $ws3 output $mon2
 workspace $ws4 output $mon2
 workspace $ws5 output $mon3
+workspace $ws6 output $mon3
 
 ## Windows rules
 
@@ -266,7 +269,7 @@ exec sleep 3 && sh ~/.fehbg
 ## Audio
 
 exec pulseaudio --start
-exec sleep 3 && amixer -q set Master 30%
+exec sleep 3 && amixer -q set Master 100%
 
 ## Others
 
