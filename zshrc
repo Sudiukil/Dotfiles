@@ -76,10 +76,6 @@ export EDITOR="vim"
 
 source $HOME/.aliases
 
-if [ -f $HOME/.privaliases ]; then
-	source $HOME/.privaliases
-fi
-
 if [ -d $HOME/.shellfuncs ]; then
 	for i in $HOME/.shellfuncs/*.sh; do source $i; done
 fi
