@@ -110,6 +110,7 @@ for_window [title="urxvt - floating"] floating enable
 for_window [title="Préférences de Firefox"] floating enable
 for_window [title="Préférences de Thunderbird"] floating enable
 for_window [class="Pavucontrol"] floating enable
+for_window [class="Bitwarden"] floating enable
 
 # Bindings
 
@@ -230,9 +231,10 @@ bindsym $mod+z kill
 
 ### Various programs
 
+bindsym $mod+b exec bitwarden
 bindsym $mod+e exec nautilus -w
 bindsym $mod+f exec urxvt -e ranger
-bindsym $mod+l exec i3lock -t -i "`grep '^feh' ~/.fehbg | cut -d "'" -f 2`"
+bindsym $mod+l exec ~/Autre/Scripts/lock
 bindsym $mod+x exec urxvt -title "urxvt - floating"
 bindsym $mod+Shift+x exec xterm
 
