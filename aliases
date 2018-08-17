@@ -48,6 +48,7 @@ alias gt="git tag"
 alias gR="git reset"
 alias gsd="git status | git diff"
 alias gi="echo $1 >> .gitignore"
+alias gB="git blame"
 
 ## GitHub specific
 
