@@ -1,6 +1,8 @@
 # Existing commands
 
-alias ls="ls --color=auto"
+#alias ls="ls --color=auto"
+alias ls="exa -l --group-directories-first --git"
+alias cat="bat"
 alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
 alias rm="rm -I"
