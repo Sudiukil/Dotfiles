@@ -83,3 +83,8 @@ alias numberlist='nl list -n rz -w 2 -s " - "'
 
 alias ufwls="ufw status | nl -v -2"
 alias vnc="x11vnc -forever -display :0 -clip 1920x1080+1920+0 -ncache 10"
+
+# Power management
+alias ssp="sudo systemctl poweroff"
+alias ssr="sudo systemctl reboot"
+alias sss="sudo systemctl suspend"
