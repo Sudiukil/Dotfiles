@@ -1,3 +1,1 @@
-if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-	exec xinit
-fi
+[ ! $DISPLAY ] && [ $XDG_VTNR -eq 1 ] && exec xinit

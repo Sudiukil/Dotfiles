@@ -183,7 +183,7 @@ bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 bindsym $mod+parenright workspace number $ws11
 bindsym $mod+equal workspace number $ws12
-bindsym $mod+n exec ~/Autre/Scripts/Ruby/i3_new_workspace.rb
+bindsym $mod+n exec ~/.bin/ruby/i3_new_workspace.rb
 
 ### Sending window to desktop
 
@@ -234,7 +234,7 @@ bindsym $mod+z kill
 bindsym $mod+b exec bitwarden
 bindsym $mod+e exec nautilus -w
 bindsym $mod+f exec urxvt -e ranger
-bindsym $mod+l exec ~/Autre/Scripts/lock
+bindsym $mod+l exec lock
 bindsym $mod+x exec urxvt -title "urxvt - floating"
 bindsym $mod+Shift+x exec xterm
 
@@ -248,7 +248,7 @@ bindsym $mod+v exec pavucontrol
 
 ### Music
 
-bindsym $mod+s exec ~/Autre/Scripts/Ruby/i3_spotify.rb
+bindsym $mod+s exec ~/.bin/ruby/i3_spotify.rb
 bindsym $mod+m exec urxvt -title ncmpcpp -e ncmpcpp
 bindsym XF86AudioPlay exec mediactl toggle
 bindsym XF86AudioStop exec mediactl stop
@@ -279,7 +279,6 @@ exec xrdb ~/.Xresources
 
 exec devmon
 exec autocutsel
-exec autocutsel -s PRIMARY
 exec dunst
 exec redshift
 exec nextcloud

@@ -65,24 +65,13 @@ export RPROMPT='$(ret_code)'" ╺┘"
 
 # Plugins
 
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+. /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Environment variables
 
-export VISUAL="vim"
-export EDITOR="vim"
+[ -f $HOME/.envrc ] && ! [ $ENV_RC ] && . $HOME/.envrc
 
 # Aliases and functions
 
-source $HOME/.aliases
-
-if [ -d $HOME/.shellfuncs ]; then
-	for i in $HOME/.shellfuncs/*.sh; do source $i; done
-fi
-
-# User and machine specific conf
-
-if [ $USER != "root" ] && [ ! $SSH_CLIENT ]
-then
-	eval "$(keychain --eval --agents ssh -Q --quiet)"
-fi
+[ -f $HOME/.aliases ] && . $HOME/.aliases
+[ -d $HOME/.functions ] && for i in $HOME/.functions/*.sh; do . $i; done

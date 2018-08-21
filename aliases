@@ -56,11 +56,6 @@ alias gB="git blame"
 
 alias github='xdg-open $(git config --get remote.origin.url)'
 
-# SSH / Keychain
-
-alias ssh="keychain --agents ssh --quiet id_rsa --timeout 60; ssh"
-alias scp="keychain --agents ssh --quiet id_rsa --timeout 60; scp"
-
 # Dev stuff
 
 alias getrvm="\curl -sSL https://get.rvm.io | bash -s stable"
@@ -79,12 +74,13 @@ alias playall='ls mkv | while read i; do mplayer -noconsolecontrols "mkv/$i" -su
 alias x265ize='mkdir x265; for i in *.mkv; do ffmpeg -i "$i" -c:v hevc_nvenc -c:a aac -c:s copy "x265/$i"; done'
 alias numberlist='nl list -n rz -w 2 -s " - "'
 
-# Other
-
-alias ufwls="ufw status | nl -v -2"
-alias vnc="x11vnc -forever -display :0 -clip 1920x1080+1920+0 -ncache 10"
-
 # Power management
 alias ssp="sudo systemctl poweroff"
 alias ssr="sudo systemctl reboot"
 alias sss="sudo systemctl suspend"
+
+# Other
+
+alias path='echo $PATH'
+alias ufwls="ufw status | nl -v -2"
+alias vnc="x11vnc -forever -display :0 -clip 1920x1080+1920+0 -ncache 10"
