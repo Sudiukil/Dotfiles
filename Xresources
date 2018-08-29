@@ -9,41 +9,41 @@ URxvt.font: xft:Inconsolata:size=11
 ! Colors
 
 ! special
-*.foreground:   #c5c8c6
-*.background:   #1d1f21
-*.cursorColor:  #c5c8c6
+*.foreground:   #dedded
+*.background:   #151516
+*.cursorColor:  #dedded
 
 ! black
-*.color0:       #282a2e
-*.color8:       #373b41
+*.color0:       #151516
+*.color8:       #151516
 
 ! red
-*.color1:       #a54242
-*.color9:       #cc6666
+*.color1:       #9b2811
+*.color9:       #b52e13
 
 ! green
-*.color2:       #8c9440
-*.color10:      #b5bd68
+*.color2:       #739211
+*.color10:      #87aa12
 
 ! yellow
-*.color3:       #de935f
-*.color11:      #f0c674
+*.color3:       #f0ba22
+*.color11:      #ffc423
 
 ! blue
-*.color4:       #5f819d
-*.color12:      #81a2be
+*.color4:       #266393
+*.color12:      #2d75ad
 
 ! magenta
-*.color5:       #85678f
-*.color13:      #b294bb
+*.color5:       #c18ba4
+*.color13:      #ffb7d7
 
 ! cyan
-*.color6:       #5e8d87
-*.color14:      #8abeb7
+*.color6:       #99f5a4
+*.color14:      #9effa9
 
 ! white
-*.color7:       #707880
-*.color15:      #c5c8c6
+*.color7:       #dedded
+*.color15:      #dedded
 
 ! Other
 
