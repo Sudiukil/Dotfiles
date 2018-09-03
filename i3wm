@@ -12,30 +12,30 @@ new_float pixel
 
 ## Font & colors
 
-font pango:Inconsolata 11
+font pango:Fira Sans 10
 
-set $color0		 #282a2e
-set $color8		 #373b41
-set $color1		 #a54242
-set $color9		 #cc6666
-set $color2		 #8c9440
-set $color10	 #b5bd68
-set $color3		 #de935f
-set $color11	 #f0c674
-set $color4		 #5f819d
-set $color12	 #81a2be
-set $color5		 #85678f
-set $color13	 #b294bb
-set $color6		 #5e8d87
-set $color14	 #8abeb7
-set $color7		 #707880
-set $color15	 #c5c8c6
+set $color0       #191919
+set $color8       #333333
+set $color1       #8f4327
+set $color9       #9b4222
+set $color2       #3f7c58
+set $color10      #3f895e
+set $color3       #a5a385
+set $color11      #b2b087
+set $color4       #3f617a
+set $color12      #3f6987
+set $color5       #a48d99
+set $color13      #af8e9f
+set $color6       #519fa5
+set $color14      #4eabb2
+set $color7       #7f7f7f
+set $color15      #bfbfbf
 
-# class 					border 			background 			text 			indicator
-client.focused 				$color4 		$color4 			$color15 		$color2
-client.focused_inactive 	$color0		 	$color0 			$color15     	$color15
-client.unfocused 			$color0		 	$color0 			$color15		$color15
-client.urgent 				$color1			$color1				$color15		$color2
+# class 					      border 			background 			text 			indicator
+client.focused 				  $color4 		$color4 			  $color15 	$color6
+client.focused_inactive $color8		 	$color8 			  $color15  $color6
+client.unfocused 			  $color8		 	$color8 			  $color15  $color6
+client.urgent 				  $color1			$color1				  $color15	$color6
 
 ## Monitors
 
@@ -51,18 +51,17 @@ bar {
 	id main-bar
 	i3bar_command i3bar
 	status_command c3status
-	font pango:Inconsolata 11
+	font pango:Fira Sans 10
 	colors {
-		#background $black2
 		background $color0
 		statusline $color15
 		separator $color0
 
-		# class 			border 			background 		text
-		focused_workspace 	$color0			$color0			$color4
-		active_workspace 	$color0			$color0			$color15
-		inactive_workspace 	$color0			$color0			$color15
-		urgent_workspace 	$color1			$color1			$color15
+		# class 			      border 			background 		text
+		focused_workspace 	$color0			$color0			  $color4
+		active_workspace 	  $color0			$color0			  $color15
+		inactive_workspace 	$color0			$color0			  $color15
+		urgent_workspace 	  $color1			$color1			  $color15
 	}
 	position top
 	tray_output $mon1
