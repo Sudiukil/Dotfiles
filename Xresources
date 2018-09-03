@@ -4,7 +4,7 @@
 
 URxvt.perl-ext-common: default,matcher
 
-URxvt.font: xft:Inconsolata:size=11
+URxvt.font: xft:Fira Mono:size=10
 
 ! Colors
 
