@@ -15,7 +15,7 @@ URxvt.font: xft:Fira Mono:size=10
 
 ! black
 *.color0:       #191919
-*.color8:       #7f7f7f
+*.color8:       #333333
 
 ! red
 *.color1:       #8f4327
