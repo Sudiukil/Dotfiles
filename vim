@@ -3,9 +3,9 @@ colorscheme molokai " Color theme
 syntax on " Syntax highlighting
 
 " Tabs/spaces config
-set tabstop=2 " Tab width show
-set softtabstop=2 " Tab width inserted
 set expandtab " Spaces as tab, as it should be
+set tabstop=2 " Tab width shown
+set shiftwidth=2 " Tab width inserted
 
 " UI
 set number " Line numbering
@@ -45,7 +45,7 @@ set splitbelow " Same but bellow for horizontal
 source ~/.vimrc.mappings
 
 " fzf config
-set rtp+=~/.fzf
+set rtp+=~/.vim/pack/git-plugins/start/fzf
 
 " Lightline config
 set laststatus=2

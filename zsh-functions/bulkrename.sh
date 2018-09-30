@@ -6,6 +6,6 @@ function bulkrename() {
 	else
 		arg1="$(echo $1 | sed -e 's/\[/\\[/' -e 's/\]/\\]/')"
 		arg2="$(echo $2 | sed -e 's/\[/\\[/' -e 's/\]/\\]/')"
-		ls | while read i; do mv "$i" "$(echo $i | sed -e 's/'"$arg1"'/'"$arg2"'/')"; done
+		\ls | while read i; do mv "$i" "$(echo $i | sed -e 's/'"$arg1"'/'"$arg2"'/')"; done
 	fi
 }

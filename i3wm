@@ -234,8 +234,10 @@ bindsym $mod+b exec bitwarden
 bindsym $mod+e exec nautilus -w
 bindsym $mod+f exec urxvt -e ranger
 bindsym $mod+l exec lock
+bindsym $mod+p exec sclip
 bindsym $mod+x exec urxvt -title "urxvt - floating"
 bindsym $mod+Shift+x exec xterm
+bindsym $mod+space exec emoji-keyboard -s
 
 ### Volume
 
@@ -282,6 +284,7 @@ exec dunst
 exec redshift
 exec nextcloud
 exec mpd
+exec emoji-keyboard
 
 exec sleep 2 && progs
 
