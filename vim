@@ -1,5 +1,5 @@
 " Colors config
-colorscheme molokai " Color theme
+colorscheme gruvbox
 syntax on " Syntax highlighting
 
 " Tabs/spaces config
@@ -46,22 +46,16 @@ source ~/.vimrc.mappings
 
 " fzf config
 set rtp+=~/.vim/pack/git-plugins/start/fzf
+" let g:fzf_action = {
+"   \ 'return': 'tab split',
+" \ }
 
-" Lightline config
-set laststatus=2
-let g:lightline = {
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'gitbranch#name'
-      \ },
-      \ }
+" Airline config
+let g:airline_theme = 'gruvbox'
 
 " ALE
 let b:ale_fixers = {
-\	'ruby': ['rubocop'],
+\ 'ruby': ['rubocop'],
 \ }
 let g:ale_completion_enabled = 1
 
