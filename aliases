@@ -26,6 +26,7 @@ alias gm="git mv"
 
 alias gs="git status"
 alias gd="git diff"
+alias gD="git difftool"
 alias gl="git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gL='gl origin/$(git symbolic-ref --short HEAD)..$(git symbolic-ref --short HEAD)'
 
