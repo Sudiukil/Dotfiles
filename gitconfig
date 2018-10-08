@@ -17,3 +17,5 @@
 	followTags = true
 [url "https://"]
 	insteadOf = git://
+[diff]
+	tool = vimdiff
