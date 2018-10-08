@@ -272,7 +272,7 @@ exec sleep 3 && sh ~/.fehbg
 ## Audio
 
 exec pulseaudio --start
-exec sleep 3 && amixer -q set Master 100%
+exec amixer -q set Master 100%
 
 ## Others
 
