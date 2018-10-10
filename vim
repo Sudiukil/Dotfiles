@@ -9,12 +9,14 @@ set shiftwidth=2 " Tab width inserted
 
 " UI
 set number " Line numbering
-set cursorline " Highlight current line
+"set cursorline " Highlight current line
 filetype plugin on " Filetype detection
 filetype indent on " Filetype detection
 set wildmenu " Command menu autocompletion
 set lazyredraw " Redraw UI less often
 set showmatch " Show matching brackets and such
+set ttyfast " For performance
+set norelativenumber " For performance
 
 " Search
 set incsearch " Incremental search (while typing)
@@ -31,6 +33,9 @@ set noswapfile
 set autoindent " Automatic indent
 set smartindent " Smart indent
 
+" Folding
+set nofoldenable
+
 " Other
 set mouse=a " Enable mouse
 set backspace=2 " Allow backspace in insert mode
@@ -40,6 +45,7 @@ set autoread " Reload if file is modified from outside
 set pastetoggle=<F12> " Toggle paste mode
 set splitright " Put new window on the right when splitting vertically
 set splitbelow " Same but bellow for horizontal
+set re=1 " Use old regex engine (more efficient in some cases, such as Ruby)
 
 " Mappings
 source ~/.vimrc.mappings
@@ -57,7 +63,7 @@ let g:airline_theme = 'gruvbox'
 let b:ale_fixers = {
 \ 'ruby': ['rubocop'],
 \ }
-let g:ale_completion_enabled = 1
+let g:ale_completion_enabled = 0
 
 " Plugins and help
 packloadall
