@@ -5,6 +5,7 @@
 URxvt.perl-ext-common: default,matcher
 
 URxvt.font: xft:Fira Mono:size=10
+URxvt.letterSpace: -1
 
 ! Colors
 

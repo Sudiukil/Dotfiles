@@ -74,4 +74,5 @@ export RPROMPT='$(ret_code)'" ╺┘"
 # Aliases and functions
 
 [ -f $HOME/.aliases ] && . $HOME/.aliases
+[ -f $HOME/.aliases.local ] && . $HOME/.aliases.local
 [ -d $HOME/.functions ] && for i in $HOME/.functions/*.sh; do . $i; done
