@@ -7,11 +7,15 @@ colors
 
 # History file
 
-export HISTFILE=$HOME/.histfile
 export HISTSIZE=1000
 export SAVEHIST=1000
+export HISTFILE=$HOME/.histfile
 
 setopt HIST_IGNORE_DUPS
+
+# Key bindings
+
+bindkey '^R' history-incremental-search-backward
 
 # Prompt
 
