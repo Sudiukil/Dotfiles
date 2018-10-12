@@ -65,7 +65,7 @@ export RPROMPT='$(ret_code)'" ╺┘"
 
 # Plugins
 
-. /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+. /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Environment variables
 
