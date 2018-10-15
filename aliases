@@ -9,6 +9,7 @@ alias rm="rm -I"
 alias su="su -"
 alias mu="sh -c su"
 alias xclip="xclip -selection clipboard"
+alias wget="wget -q --show-progress"
 
 # URXVT
 
