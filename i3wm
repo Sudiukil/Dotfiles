@@ -39,9 +39,9 @@ client.urgent 				  $color1			$color1				  $color15	$color6
 
 ## Monitors
 
-set $mon1 DP-1
-set $mon2 DVI-D-0
-set $mon3 HDMI-0
+set $center_mon DP-1
+set $right_mon DVI-D-0
+set $left_mon HDMI-0
 
 ## Status bar
 
@@ -64,7 +64,7 @@ bar {
 		urgent_workspace 	  $color1			$color1			  $color15
 	}
 	position top
-	tray_output $mon1
+	tray_output $center_mon
 }
 
 ## Workspaces
@@ -94,12 +94,12 @@ assign [class="Transmission-remote-gtk"] $ws6
 
 ## Workspaces assignments
 
-workspace $ws1 output $mon1
-workspace $ws2 output $mon1
-workspace $ws3 output $mon2
-workspace $ws4 output $mon2
-workspace $ws5 output $mon3
-workspace $ws6 output $mon3
+workspace $ws1 output $center_mon
+workspace $ws2 output $center_mon
+workspace $ws3 output $right_mon
+workspace $ws4 output $right_mon
+workspace $ws5 output $left_mon
+workspace $ws6 output $left_mon
 
 ## Windows rules
 
@@ -224,7 +224,7 @@ bindsym $mod+Ctrl+Right move workspace to output right
 ### General
 
 bindsym $mod+t exec urxvt
-bindsym $mod+d exec dmenu_run -p '>' -fn "Inconsolata-11:normal" -nb "$color0" -nf "$color15" -sb "$color0" -sf "$color4"
+bindsym $mod+d exec dmenu_run -p '>' -fn "FiraSans-10" -nb "$color0" -nf "$color15" -sb "$color0" -sf "$color4"
 bindsym $mod+Shift+d exec i3-input -F '%s' -P 'Command: '
 bindsym $mod+z kill
 
@@ -266,7 +266,7 @@ exec numlockx on
 
 ## Display
 
-exec xrandr --output $mon1 --auto --primary --output $mon2 --auto --right-of $mon1 --output $mon3 --auto --left-of $mon1
+exec xrandr --output $center_mon --auto --primary --output $right_mon --auto --right-of $center_mon --output $left_mon --auto --left-of $center_mon
 exec sleep 3 && sh ~/.fehbg
 
 ## Audio
