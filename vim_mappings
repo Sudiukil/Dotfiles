@@ -35,6 +35,7 @@ map <C-down> :wincmd j<CR>
 " Plugins
 map <C-p> :FZF<CR>
 map <C-space> :NERDTreeToggle<CR>
+map <leader>ff :ALEFix<CR>
 
 " Vim config
 map <leader>, :tabedit ~/.vimrc<CR>

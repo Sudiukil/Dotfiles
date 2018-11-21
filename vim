@@ -60,7 +60,7 @@ set rtp+=~/.vim/pack/git-plugins/start/fzf
 let g:airline_theme = 'gruvbox'
 
 " ALE
-let b:ale_fixers = {
+let g:ale_fixers = {
 \ 'ruby': ['rubocop'],
 \ }
 let g:ale_completion_enabled = 0

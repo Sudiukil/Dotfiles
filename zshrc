@@ -22,45 +22,45 @@ bindkey '^R' history-incremental-search-backward
 setopt prompt_subst
 
 function host {
-	if [ $SSH_CLIENT ]
-	then
-		echo "%{$fg[yellow]%}%B%M (remote)%b%{$reset_color%}"
-	else
-		echo "%{$fg[cyan]%}%B%M%b%{$reset_color%}"
-	fi
+  if [ $SSH_CLIENT ]
+  then
+    echo "%{$fg[yellow]%}%B%M (remote)%b%{$reset_color%}"
+  else
+    echo "%{$fg[cyan]%}%B%M%b%{$reset_color%}"
+  fi
 }
 
 function u_color {
-if [ $USER = "root" ]
-then
-	echo "%{$fg[red]%}%B%n%b%{$reset_color%}"
-else
-	echo "%{$fg[green]%}%B%n%b%{$reset_color%}"
-fi
+  if [ $USER = "root" ]
+  then
+    echo "%{$fg[red]%}%B%n%b%{$reset_color%}"
+  else
+    echo "%{$fg[green]%}%B%n%b%{$reset_color%}"
+  fi
 }
 
 function git_branch {
-	branch="$(git symbolic-ref --short HEAD 2> /dev/null)"
-	if [ $branch ]
-	then
-		echo "%{$fg[blue]%}($branch)%{$reset_color%}"
-	fi
+  branch="$(git symbolic-ref --short HEAD 2> /dev/null)"
+  if [ $branch ]
+  then
+    echo "%{$fg[blue]%}($branch)%{$reset_color%}"
+  fi
 }
 
 function ret_code {
-if [ $? != 0 ]
-then
-	echo "%{$fg[red]%}%B%?%b%{$reset_color%}"
-else
-	echo "%B%?%b"
-fi
+  if [ $? != 0 ]
+  then
+    echo "%{$fg[red]%}%B%?%b%{$reset_color%}"
+  else
+    echo "%B%?%b"
+  fi
 }
 
 function ror_env {
-	if [ $RAILS_ENV ]
-	then
-		echo "%{$fg[red]%}($RAILS_ENV)%{$reset_color%}"
-	fi
+  if [ $RAILS_ENV ]
+  then
+    echo "%{$fg[red]%}($RAILS_ENV)%{$reset_color%}"
+  fi
 }
 
 export PROMPT="┌[$(host)]-[$(u_color):%~]"'$(git_branch)'""'$(ror_env)'"

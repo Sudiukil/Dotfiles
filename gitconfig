@@ -1,21 +1,21 @@
 [user]
-	name = Sudiukil
-	email = sudiukil@gmx.fr
+  name = Sudiukil
+  email = sudiukil@gmx.fr
 [core]
-	editor = vim
-	pager = less
+  editor = vim
+  pager = less
 [merge]
-	tool = vimdiff
+  tool = vimdiff
 [credential]
-	helper = cache --timeout 7200
+  helper = cache --timeout 7200
 [http]
-	sslVerify = false
+  sslVerify = false
 [log]
-	date = short
+  date = short
 [push]
-	default = simple
-	followTags = true
+  default = simple
+  followTags = true
 [url "https://"]
-	insteadOf = git://
+  insteadOf = git://
 [diff]
-	tool = vimdiff
+  tool = vimdiff

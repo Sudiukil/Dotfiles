@@ -1,71 +1,71 @@
 [global]
-	font = Droid Sans Mono 9
+  font = Droid Sans Mono 9
 
-    allow_markup = yes
-    format = "<b>%s</b> (%a)\n%b\n%p"
-    
-    sort = yes
-    indicate_hidden = yes
-    
-    alignment = left
-    
-    word_wrap = yes
-    ignore_newline = no
-    bounce_freq = 0
-    
-    show_age_threshold = 60
+  allow_markup = yes
+  format = "<b>%s</b> (%a)\n%b\n%p"
 
-    geometry = "300x5-30+30"
-    shrink = no
-    
-    transparency = 0
-    
-    idle_threshold = 120
-    
-    monitor = 0
-    follow = mouse
-    
-    sticky_history = yes
-    
-    history_length = 20
-    
-    show_indicators = no
-    
-    line_height = 0
-    separator_height = 2
-    padding = 8
-    horizontal_padding = 8
-    
-    separator_color = frame
-    
-    startup_notification = true
-    
-    dmenu = /usr/bin/dmenu -p dunst:
-    browser = /usr/bin/firefox -new-tab
+  sort = yes
+  indicate_hidden = yes
 
-    icon_position = off
-    icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+  alignment = left
+
+  word_wrap = yes
+  ignore_newline = no
+  bounce_freq = 0
+
+  show_age_threshold = 60
+
+  geometry = "300x5-30+30"
+  shrink = no
+
+  transparency = 0
+
+  idle_threshold = 120
+
+  monitor = 0
+  follow = mouse
+
+  sticky_history = yes
+
+  history_length = 20
+
+  show_indicators = no
+
+  line_height = 0
+  separator_height = 2
+  padding = 8
+  horizontal_padding = 8
+
+  separator_color = frame
+
+  startup_notification = true
+
+  dmenu = /usr/bin/dmenu -p dunst:
+  browser = /usr/bin/firefox -new-tab
+
+  icon_position = off
+  icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
 
 [shortcuts]
-    close = mod1+Return
-    close_all = mod1+shift+Return
-    history = mod1+BackSpace
+  close = mod1+Return
+  close_all = mod1+shift+Return
+  history = mod1+BackSpace
 
 [frame]
-    width = 2
-    color = "#5f819d"
+  width = 2
+  color = "#5f819d"
 
 [urgency_low]
-    background = "#282a2e"
-    foreground = "#c5c8c6"
-    timeout = 5
+  background = "#282a2e"
+  foreground = "#c5c8c6"
+  timeout = 5
 
 [urgency_normal]
-    background = "#282a2e"
-    foreground = "#5f819d"
-    timeout = 5
+  background = "#282a2e"
+  foreground = "#5f819d"
+  timeout = 5
 
 [urgency_critical]
-    background = "#282a2e"
-    foreground = "#a54242"
-    timeout = 0
+  background = "#282a2e"
+  foreground = "#a54242"
+  timeout = 0
