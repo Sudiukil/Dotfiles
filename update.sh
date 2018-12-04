@@ -35,4 +35,6 @@ mv ~/.vim/pack/git-plugins/start/list vim_plugins
 cp ~/.config/mpd/mpd.conf mpd
 cp ~/.config/ncmpcpp/config ncmpcpp
 
+git status
+
 exit 0
