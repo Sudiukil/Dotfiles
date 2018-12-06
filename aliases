@@ -87,3 +87,5 @@ alias sss="sudo systemctl suspend"
 alias path='echo $PATH'
 alias ufwls="ufw status | nl -v -2"
 alias vnc="x11vnc -forever -display :0 -clip 1920x1080+1920+0 -ncache 10"
+alias clcl="echo -n | xclip && echo -n | \xclip"
+alias shrug="echo -n '¯\_(ツ)_/¯' | xclip"
