@@ -6,6 +6,5 @@ function man {
     LESS_TERMCAP_me=$'\033[0m' \
     LESS_TERMCAP_se=$'\033[0m' \
     LESS_TERMCAP_ue=$'\033[0m' \
-
-  man "$@"
+    man "$@"
 }
