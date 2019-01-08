@@ -41,3 +41,11 @@ map <leader>ff :ALEFix<CR>
 map <leader>, :tabedit ~/.vimrc<CR>
 map <leader>. :tabedit ~/.vimrc.mappings<CR>
 map <F5> :source ~/.vimrc<CR>
+
+" Other
+map <leader>c :set cursorline!<Bar>set cursorcolumn!<CR>
+
+" Git ops
+map gs :tabnew .<CR>:Gstatus<CR>:wincmd k<CR>:q<CR>
+map gd <CR>:Gdiff<CR>
+map ga :Gwrite<CR>

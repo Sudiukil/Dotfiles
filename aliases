@@ -1,13 +1,10 @@
 # Existing commands
 
-#alias ls="ls --color=auto"
 alias ls="exa -l --group-directories-first --git"
 alias cat="bat"
-alias grep="grep --color=auto"
-alias egrep="egrep --color=auto"
+alias grep="rg"
+alias find="fd"
 alias rm="rm -I"
-alias su="su -"
-alias mu="sh -c su"
 alias xclip="xclip -selection clipboard"
 alias wget="wget -q --show-progress"
 
@@ -71,13 +68,14 @@ alias renamefromlist='n=1; \ls | while read i; do if [ "$i" != "list" ]; then mv
 alias sortsrt="mkdir srt && mv *.srt srt"
 alias sortmkv="mkdir mkv && mv *.mkv mkv"
 alias convsubs="vim -p *.srt '+tabdo set ff=unix' '+tabdo set fileencoding=utf8' '+wqall'"
-alias mergeall='\ls mkv | while read i; do mkvmerge "mkv/$i" --default-track 0 --language 0:en "srt/$(basename $i .mkv).srt" -o "out/$i"; done 2>&1 | tee log'
+alias mergeallmkv='\ls mkv | while read i; do mkvmerge "mkv/$i" --default-track 0 --language 0:en "srt/$(basename $i .mkv).srt" -o "out/$i"; done 2>&1 | tee log'
 alias mergeallavi='\ls avi | while read i; do mkvmerge "avi/$i" --default-track 0 --language 0:en "srt/$(basename $i .avi).srt" -o "out/$(basename $i .avi).mkv"; done 2>&1 | tee log'
 alias playall='\ls mkv | while read i; do mplayer -noconsolecontrols "mkv/$i" -sub "srt/$(basename $i .mkv).srt" -utf8; done'
 alias x265ize='mkdir x265; for i in *.mkv; do ffmpeg -i "$i" -c:v hevc_nvenc -c:a aac -c:s copy "x265/$i"; done'
 alias numberlist='nl list -n rz -w 2 -s " - "'
 
 # Power management
+
 alias ssp="sudo systemctl poweroff"
 alias ssr="sudo systemctl reboot"
 alias sss="sudo systemctl suspend"
@@ -86,6 +84,4 @@ alias sss="sudo systemctl suspend"
 
 alias path='echo $PATH'
 alias ufwls="ufw status | nl -v -2"
-alias vnc="x11vnc -forever -display :0 -clip 1920x1080+1920+0 -ncache 10"
 alias clcl="echo -n | xclip && echo -n | \xclip"
-alias shrug="echo -n '¯\_(ツ)_/¯' | xclip"

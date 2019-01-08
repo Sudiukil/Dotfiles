@@ -16,6 +16,6 @@ then
   
   # Aliases for all RVM/Ruby/Gem bins
   alias rvm="rvm_load rvm"
-  rvm_bins=$(find $HOME/.rvm/{gems,rubies}/*/bin/* -printf "%f\n" | uniq)
+  rvm_bins=$(\find $HOME/.rvm/{gems,rubies}/*/bin/* -printf "%f\n" | uniq)
   for i in $(echo $rvm_bins); do alias $i="rvm_load $i"; done
 fi

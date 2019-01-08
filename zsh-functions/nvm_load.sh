@@ -17,6 +17,6 @@ then
   
   # Aliases for all NVM/Node bins
   alias nvm="nvm_load nvm"
-  nvm_bins=$(find $HOME/.nvm/versions/node/*/bin/* -printf "%f\n" | uniq)
+  nvm_bins=$(\find $HOME/.nvm/versions/node/*/bin/* -printf "%f\n" | uniq)
   for i in $(echo $nvm_bins); do alias $i="nvm_load $i"; done
 fi
