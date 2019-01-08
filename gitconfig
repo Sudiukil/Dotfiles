@@ -18,4 +18,6 @@
 [url "https://"]
   insteadOf = git://
 [diff]
-  tool = vimdiff
+	tool = vimdiff
+[difftool]
+	prompt = false

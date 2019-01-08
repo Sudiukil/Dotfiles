@@ -9,7 +9,7 @@ set shiftwidth=2 " Tab width inserted
 
 " UI
 set number " Line numbering
-"set cursorline " Highlight current line
+"set cursorline " Highlight current line (disable for linting performance)
 filetype plugin on " Filetype detection
 filetype indent on " Filetype detection
 set wildmenu " Command menu autocompletion
