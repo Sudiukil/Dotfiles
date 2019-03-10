@@ -3,9 +3,8 @@
 
 # Gnome keyring
 dbus-update-activation-environment --systemd DISPLAY
-eval $(gnome-keyring-daemon -S)
-export GNOME_KEYRING_CONTROL
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
 
 # WM/DE
-exec i3
+exec dbus-launch i3
