@@ -39,7 +39,7 @@ client.urgent 				  $color1			$color1				  $color15	$color6
 
 ## Monitors
 
-set $center_mon DP-5
+set $center_mon DP-3
 set $right_mon DVI-D-0
 set $left_mon HDMI-0
 

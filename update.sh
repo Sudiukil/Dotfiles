@@ -21,7 +21,7 @@ cp -r ~/.config/ranger/rc.conf ranger-rc.conf
 
 # Vim plugins
 this_dir=$(pwd)
-cd ~/.vim/pack/git-plugins/start
+cd ~/.vim/pack/plugins/start
 [ -f list ] && rm list
 ls | while read i; do
   cd $i
@@ -29,7 +29,7 @@ ls | while read i; do
   cd ..
 done
 cd $this_dir
-mv ~/.vim/pack/git-plugins/start/list vim_plugins
+mv ~/.vim/pack/plugins/start/list vim_plugins
 
 # Multimedia
 cp ~/.config/mpd/mpd.conf mpd
