@@ -1,6 +1,7 @@
 # Existing commands
 
 alias ls="ls --color=auto"
+alias grep="grep --color -E"
 alias rm="rm -I"
 alias xclip="xclip -selection clipboard"
 alias wget="wget -q --show-progress"
