@@ -1,9 +1,5 @@
 # Existing commands
 
-alias ls="exa -l --group-directories-first --git"
-alias cat="bat"
-alias grep="rg"
-alias find="fd"
 alias rm="rm -I"
 alias xclip="xclip -selection clipboard"
 alias wget="wget -q --show-progress"
@@ -67,7 +63,7 @@ alias getpyenv="curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/
 alias renamefromlist='n=1; \ls | while read i; do if [ "$i" != "list" ]; then mv "$i" "$(sed -n $n"p" list)"; n=$((n+1)); fi; done; rm list'
 alias sortsrt="mkdir srt && mv *.srt srt"
 alias sortmkv="mkdir mkv && mv *.mkv mkv"
-alias convsubs="vim -p *.srt '+tabdo set ff=unix' '+tabdo set fileencoding=utf8' '+wqall'"
+alias convsubs='vim -p *.srt "+tabdo set ff=unix" "+tabdo set fileencoding=utf8" "+wqall"'
 alias mergeallmkv='\ls mkv | while read i; do mkvmerge "mkv/$i" --default-track 0 --language 0:en "srt/$(basename $i .mkv).srt" -o "out/$i"; done 2>&1 | tee log'
 alias mergeallmp4='\ls mp4 | while read i; do mkvmerge "mp4/$i" --default-track 0 --language 0:en "srt/$(basename $i .mp4).srt" -o "out/$(basename $i .mp4).mkv"; done 2>&1 | tee log'
 alias mergeallavi='\ls avi | while read i; do mkvmerge "avi/$i" --default-track 0 --language 0:en "srt/$(basename $i .avi).srt" -o "out/$(basename $i .avi).mkv"; done 2>&1 | tee log'
