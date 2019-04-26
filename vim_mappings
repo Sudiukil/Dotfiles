@@ -48,4 +48,4 @@ map <leader>c :set cursorline!<Bar>set cursorcolumn!<CR>
 " Git ops
 map gs :tabnew .<CR>:Gstatus<CR>:wincmd k<CR>:q<CR>
 map gd <CR>:Gdiff<CR>
-map ga :Gwrite<CR>
+map ga :Gwrite<CR>:close<CR>:close<CR>

@@ -65,6 +65,10 @@ let g:ale_fixers = {
 \ }
 let g:ale_completion_enabled = 0
 
+" Mardown preview
+let vim_markdown_preview_github=1
+let vim_markdown_preview_hotkey='<C-m>'
+
 " Plugins and help
 packloadall
 silent! helptags ALL

@@ -74,7 +74,7 @@ export RPROMPT='$(ret_code)'" ╺┘"
 
 # Environment variables
 
-[ -f $HOME/.envrc ] && ! [ $ENV_RC ] && . $HOME/.envrc
+[ -f $HOME/.envrc ] && [ "$ENV_USER" != "$USER" ] && . $HOME/.envrc
 
 # Aliases and functions
 
