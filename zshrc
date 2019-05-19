@@ -56,14 +56,7 @@ function ret_code {
   fi
 }
 
-function ror_env {
-  if [ $RAILS_ENV ]
-  then
-    echo "%{$fg[red]%}($RAILS_ENV)%{$reset_color%}"
-  fi
-}
-
-export PROMPT="┌[$(host)]-[$(u_color):%~]"'$(git_branch)'""'$(ror_env)'"
+export PROMPT="┌[$(host)]-[$(u_color):%~]"'$(git_branch)'"
 └─────╸ "
 export RPROMPT='$(ret_code)'" ╺┘"
 

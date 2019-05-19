@@ -7,7 +7,8 @@ cp ~/.zprofile zprofile
 cp ~/.xinitrc xinitrc
 cp ~/.envrc envrc
 cp ~/.aliases aliases
-cp ~/.functions/*.sh zsh-functions/
+rm -r zsh-functions
+cp ~/.functions/ zsh-functions/
 
 # Graphical env
 cp ~/.config/i3/config i3wm

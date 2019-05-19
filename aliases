@@ -84,3 +84,4 @@ alias sss="sudo systemctl suspend"
 alias path='echo $PATH'
 alias ufwls="ufw status | nl -v -2"
 alias clcl="echo -n | xclip && echo -n | \xclip"
+alias ..="source $HOME/.zshrc"
