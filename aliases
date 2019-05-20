@@ -49,6 +49,7 @@ alias gR="git reset"
 alias gsd="git status | git diff"
 alias gi="echo $1 >> .gitignore"
 alias gB="git blame"
+alias cdg='cd $(git rev-parse --show-toplevel)'
 
 ## GitHub specific
 
