@@ -1,4 +1,5 @@
 " Colors config
+set background=dark
 colorscheme gruvbox
 syntax on " Syntax highlighting
 
