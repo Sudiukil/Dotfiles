@@ -1,6 +1,6 @@
 [user]
   name = Sudiukil
-  email = sudiukil@gmx.fr
+  email = contact@sudiukil.dev
 [core]
   editor = vim
   pager = less
@@ -18,6 +18,6 @@
 [url "https://"]
   insteadOf = git://
 [diff]
-	tool = vimdiff
+  tool = vimdiff
 [difftool]
-	prompt = false
+  prompt = false
