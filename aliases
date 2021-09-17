@@ -6,11 +6,6 @@ alias rm="rm -I"
 alias xclip="xclip -selection clipboard"
 alias wget="wget -q --show-progress"
 
-# URXVT
-
-alias respawn='urxvt -cd $PWD & disown; exit'
-alias clone='urxvt -cd $PWD & disown'
-
 # Git
 
 ## Track files
@@ -59,20 +54,8 @@ alias github='xdg-open $(git config --get remote.origin.url)'
 
 alias getrvm="\curl -sSL https://get.rvm.io | bash -s stable"
 alias getnvm="\curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash"
-alias getpyenv="curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash"
-
-# TV shows stuff
-
-alias renamefromlist='n=1; \ls | while read i; do if [ "$i" != "list" ]; then mv "$i" "$(sed -n $n"p" list)"; n=$((n+1)); fi; done; rm list'
-alias sortsrt="mkdir srt && mv *.srt srt"
-alias sortmkv="mkdir mkv && mv *.mkv mkv"
-alias convsubs='vim -p *.srt "+tabdo set ff=unix" "+tabdo set fileencoding=utf8" "+wqall"'
-alias mergeallmkv='\ls mkv | while read i; do mkvmerge "mkv/$i" --default-track 0 --language 0:en "srt/$(basename $i .mkv).srt" -o "out/$i"; done 2>&1 | tee log'
-alias mergeallmp4='\ls mp4 | while read i; do mkvmerge "mp4/$i" --default-track 0 --language 0:en "srt/$(basename $i .mp4).srt" -o "out/$(basename $i .mp4).mkv"; done 2>&1 | tee log'
-alias mergeallavi='\ls avi | while read i; do mkvmerge "avi/$i" --default-track 0 --language 0:en "srt/$(basename $i .avi).srt" -o "out/$(basename $i .avi).mkv"; done 2>&1 | tee log'
-alias playall='\ls mkv | while read i; do mplayer -noconsolecontrols "mkv/$i" -sub "srt/$(basename $i .mkv).srt" -utf8; done'
-alias x265ize='mkdir x265; for i in *.mkv; do ffmpeg -i "$i" -c:v hevc_nvenc -c:a aac -c:s copy "x265/$i"; done'
-alias numberlist='nl list -n rz -w 2 -s " - "'
+alias getpyenv="\curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash"
+alias getstarship="\curl -fsSL https://starship.rs/install.sh | bash"
 
 # Power management
 
@@ -88,3 +71,4 @@ alias clcl="echo -n | xclip && echo -n | \xclip"
 alias ..="source $HOME/.zshrc"
 alias s='sudo'
 alias p='proxychains'
+alias t="ssh -vTND 2222 sudiukil.dev"
