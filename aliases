@@ -1,10 +1,33 @@
-# Existing commands
+# General
+
+## Existing commands
 
 alias ls="ls --color=auto"
 alias grep="grep --color -E"
 alias rm="rm -I"
 alias xclip="xclip -selection clipboard"
 alias wget="wget -q --show-progress"
+
+## Shell QoL
+
+alias ..="source $HOME/.zshrc"
+alias path='echo $PATH'
+alias s='sudo'
+alias p='proxychains'
+alias wcd="cd $USERPROFILE"
+alias clcl="echo -n | xclip && echo -n | \xclip"
+
+## Power management
+
+alias ssp="sudo systemctl poweroff"
+alias ssr="sudo systemctl reboot"
+alias sss="sudo systemctl suspend"
+
+## SSH
+
+alias stun="ssh -vTND 2222"
+alias kc="keychain --clear"
+alias ka="keychain ~/.ssh/rsa/*"
 
 # Git
 
@@ -56,19 +79,3 @@ alias getrvm="\curl -sSL https://get.rvm.io | bash -s stable"
 alias getnvm="\curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash"
 alias getpyenv="\curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash"
 alias getstarship="\curl -fsSL https://starship.rs/install.sh | bash"
-
-# Power management
-
-alias ssp="sudo systemctl poweroff"
-alias ssr="sudo systemctl reboot"
-alias sss="sudo systemctl suspend"
-
-# Other
-
-alias path='echo $PATH'
-alias ufwls="ufw status | nl -v -2"
-alias clcl="echo -n | xclip && echo -n | \xclip"
-alias ..="source $HOME/.zshrc"
-alias s='sudo'
-alias p='proxychains'
-alias t="ssh -vTND 2222 sudiukil.dev"
