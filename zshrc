@@ -21,10 +21,6 @@ bindkey '^R' history-incremental-search-backward
 
 . /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# Environment variables
-
-[ -f $HOME/.envrc ] && [ "$ENV_USER" != "$USER" ] && . $HOME/.envrc
-
 # Aliases and functions
 
 [ -f $HOME/.aliases ] && . $HOME/.aliases
@@ -35,4 +31,7 @@ bindkey '^R' history-incremental-search-backward
 eval "$(starship init zsh)"
 
 # Keychain config
-eval "$(keychain --eval --agents ssh)"
+eval "$(keychain --eval --agents ssh --quiet)"
+
+# WSL specific
+[ $PWD = $USERPROFILE ] && cd $HOME

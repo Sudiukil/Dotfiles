@@ -1,3 +1,17 @@
+# Token
+export ENV_USER=$USER
+
+# Path
+export PATH=/bin:/sbin
+export PATH=$PATH:/usr/bin:/usr/sbin
+export PATH=$PATH:/usr/local/bin:/usr/local/sbin
+export PATH=$PATH:$HOME/.local/bin
+
+# Others
+export EDITOR=vim
+export ANDROID_HOME=/opt/android-sdk
+export OSNAME="WSL/$WSL_DISTRO_NAME"
+
 # Ruby Version Manager
 export PATH="$PATH:$HOME/.rvm/bin"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
