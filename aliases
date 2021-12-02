@@ -33,26 +33,25 @@ alias ka="keychain ~/.ssh/rsa/*"
 
 ## Track files
 
-alias ga="git add"
-alias gr="git rm"
-alias gm="git mv"
+alias gadd="git add"
+alias grm="git rm"
+alias gmv="git mv"
 
 ## Review changes
 
 alias gs="git status"
 alias gd="git diff"
-alias gD="git difftool"
 alias gl="git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gL='gl origin/$(git symbolic-ref --short HEAD)..$(git symbolic-ref --short HEAD)'
 
 ## Commit and pull/push
 
-alias gc="git commit -m"
-alias gA="git commit --amend"
+alias gc="git commit"
+alias ga="git commit --amend"
 alias gf="git fetch"
-alias gM="git merge"
-alias gP="git pull"
+alias gm="git merge"
 alias gp="git push"
+alias gP="git pull"
 
 ## Branches
 
@@ -63,15 +62,11 @@ alias gb="git branch -vv"
 
 alias gS="git stash"
 alias gt="git tag"
+alias gr="git rebase"
 alias gR="git reset"
-alias gsd="git status | git diff"
 alias gi="echo $1 >> .gitignore"
 alias gB="git blame"
 alias cdg='cd $(git rev-parse --show-toplevel)'
-
-## GitHub specific
-
-alias github='xdg-open $(git config --get remote.origin.url)'
 
 # Dev stuff
 

@@ -34,4 +34,4 @@ eval "$(starship init zsh)"
 eval "$(keychain --eval --agents ssh --quiet)"
 
 # WSL specific
-[ $PWD = $USERPROFILE ] && cd $HOME
+[ "$PWD" = "$USERPROFILE" ] && cd $HOME
