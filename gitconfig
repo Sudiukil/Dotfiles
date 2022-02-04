@@ -6,8 +6,10 @@
   pager = less
 [merge]
   tool = vimdiff
-[credential]
-  helper = cache --timeout 7200
+[diff]
+  tool = vimdiff
+[difftool]
+  prompt = false
 [http]
   sslVerify = false
 [log]
@@ -15,9 +17,5 @@
 [push]
   default = simple
   followTags = true
-[url "https://"]
-  insteadOf = git://
-[diff]
-  tool = vimdiff
-[difftool]
-  prompt = false
+[remote "origin"]
+	prune = true
