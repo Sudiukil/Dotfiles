@@ -1,6 +1,3 @@
-[user]
-  name = Sudiukil
-  email = contact@sudiukil.dev
 [core]
   editor = vim
   pager = less
@@ -18,4 +15,4 @@
   default = simple
   followTags = true
 [remote "origin"]
-	prune = true
+  prune = true
