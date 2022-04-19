@@ -1,18 +1,11 @@
 [core]
-  editor = vim
-  pager = less
-[merge]
-  tool = vimdiff
+    editor = code --wait
+    whitespace = -trailing-space
 [diff]
-  tool = vimdiff
-[difftool]
-  prompt = false
-[http]
-  sslVerify = false
-[log]
-  date = short
-[push]
-  default = simple
-  followTags = true
-[remote "origin"]
-  prune = true
+    tool = vscode
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+[format]
+    pretty = format:%Cred%h %<(100,trunc)%Creset%s %<(20,trunc)%Cgreen%an %Cblue%as
+[alias]
+	root = rev-parse --show-toplevel
