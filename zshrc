@@ -25,7 +25,6 @@ bindkey '^R' history-incremental-search-backward
 
 [ -f $HOME/.aliases ] && . $HOME/.aliases
 [ -f $HOME/.aliases.local ] && . $HOME/.aliases.local
-[ -d $HOME/.functions ] && for i in $HOME/.functions/*.sh; do . $i; done
 
 # Starship prompt
 eval "$(starship init zsh)"

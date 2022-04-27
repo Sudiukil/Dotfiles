@@ -5,11 +5,10 @@ export ENV_USER=$USER
 export PATH=/bin:/sbin
 export PATH=$PATH:/usr/bin:/usr/sbin
 export PATH=$PATH:/usr/local/bin:/usr/local/sbin
-export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.bin
 
 # Others
 export EDITOR=vim
-export JAVA_HOME=/usr/lib/jvm/java-1.17.0-openjdk-amd64
 export ANDROID_HOME=/opt/android-sdk
 export OSNAME="WSL/$WSL_DISTRO_NAME"
 

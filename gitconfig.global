@@ -1,0 +1,10 @@
+[core]
+  whitespace = -trailing-space
+[format]
+  pretty = format:%Cred%h %<(100,trunc)%Creset%s %<(20,trunc)%Cgreen%an %Cblue%as
+[alias]
+  root = rev-parse --show-toplevel
+  wipe = reset --hard HEAD
+  safeclean = clean -fdx -e .vscode
+  nuke = !git wipe && git safeclean
+  patch = apply --reject

@@ -1,0 +1,8 @@
+[include]
+  path = .gitconfig.global
+[core]
+  editor = code
+[diff]
+  tool = vscode
+[difftool]
+  cmd = code --wait --diff $LOCAL $REMOTE
