@@ -16,6 +16,7 @@ alias wget="wget -q --show-progress"
 alias path='echo $PATH'
 alias s='sudo'
 alias p='proxychains'
+alias cs="cheatsheet" # See functions
 
 ## Power management
 
@@ -26,6 +27,7 @@ alias sss="sudo systemctl suspend"
 ## SSH
 
 alias stun="ssh -vTND 2222"
+alias sstun="screen -S stun ssh -vTND 2222"
 alias kc="keychain --clear"
 alias ka="keychain ~/.ssh/rsa/*"
 
