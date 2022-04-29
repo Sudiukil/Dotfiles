@@ -1,5 +1,12 @@
 #!/bin/sh
 
+# Does a two way sync of the Dotfiles by:
+# - Pulling git changes and updating the links/copies to the local system
+# - Pushing git changes to the repo (this requires git to use SSH with a key)
+
+# Update from the repo
+git pull
+
 # Checkup
 mkdir -p $HOME/.config
 ! [ -d "$USERPROFILE" ] && echo "ERROR: can't access Windows drive, aborting." && exit 1
@@ -25,5 +32,10 @@ echo "\nWARNING: Some files need to be copied/linked manually (possibly as root)
 - windows_terminal.json -> via Windows Terminal"
 
 echo "Reminder: some files were copied (not linked) and will need to be updated manually."
+
+# Update to the repo
+git add -A
+git commit -m "Update"
+git push
 
 exit 0
