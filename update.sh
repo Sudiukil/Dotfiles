@@ -5,7 +5,7 @@
 # - Pushing git changes to the repo (this requires git to use SSH with a key)
 
 # Update from the repo
-git pull
+git pull -q
 
 # Checkup
 mkdir -p $HOME/.config
@@ -36,6 +36,6 @@ echo "Reminder: some files were copied (not linked) and will need to be updated 
 # Update to the repo
 git add -A
 git commit -m "Update"
-git push
+git push -q
 
 exit 0
