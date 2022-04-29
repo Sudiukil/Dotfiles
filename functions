@@ -1,3 +1,12 @@
 #!/bin/zsh
 
+# cheat.sh shortcut
 function cheatsheet { curl http://cheat.sh/$1 }
+
+# SSH tunnel QoL
+# Params: server URL
+function sstun {
+  [ -z $1 ] && echo "ERROR: No host specified." && return
+  ssh $1 exit # Just to trigger credentials caching if any (e.g. keychain)
+  screen -dmS stun ssh -vTND 2222 $1
+}

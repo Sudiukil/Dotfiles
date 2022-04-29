@@ -12,6 +12,9 @@ export EDITOR=vim
 export ANDROID_HOME=/opt/android-sdk
 export OSNAME="WSL/$WSL_DISTRO_NAME"
 
+# WSL specific
+export SCREENDIR=$HOME/.screen
+
 # Ruby Version Manager
 export PATH="$PATH:$HOME/.rvm/bin"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
