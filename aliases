@@ -9,17 +9,13 @@ alias ealiases="$EDITOR ~/.aliases && source ~/.aliases"
 alias ls="ls --color=auto"
 alias grep="grep --color -E"
 alias rm="rm -I"
-alias xclip="xclip -selection clipboard"
 alias wget="wget -q --show-progress"
 
 ## Shell QoL
 
-alias ..="source $HOME/.zshrc"
 alias path='echo $PATH'
 alias s='sudo'
 alias p='proxychains'
-alias wcd="cd $USERPROFILE"
-alias clcl="echo -n | xclip && echo -n | \xclip"
 
 ## Power management
 

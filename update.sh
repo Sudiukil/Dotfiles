@@ -15,6 +15,7 @@ mkdir -p $HOME/.config
 ln -sf $PWD/zshrc $HOME/.zshrc
 ln -sf $PWD/zshenv $HOME/.zshenv
 ln -sf $PWD/aliases $HOME/.aliases
+ln -sf $PWD/functions $HOME/.functions
 ln -sf $PWD/gitconfig.linux $HOME/.gitconfig
 
 # Windows

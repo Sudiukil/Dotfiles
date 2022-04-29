@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+function cheatsheet { curl http://cheat.sh/$1 }
