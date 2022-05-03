@@ -4,6 +4,7 @@
   pretty = format:%Cred%h %Cblue%as %Cgreen%<(21,trunc)%an %Creset%s %Cred%d
 [alias]
   root = rev-parse --show-toplevel
+  head = symbolic-ref --short HEAD
   wipe = reset --hard HEAD
   safeclean = clean -fdx -e .vscode
   nuke = !git wipe && git safeclean

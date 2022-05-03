@@ -1,7 +1,3 @@
-# Edit aliases and reload immediately
-
-alias ealiases="$EDITOR ~/.aliases && source ~/.aliases"
-
 # General
 
 ## Existing commands
@@ -17,12 +13,6 @@ alias path='echo $PATH'
 alias s='sudo'
 alias p='proxychains'
 alias cs="cheatsheet" # See functions
-
-## Power management
-
-alias ssp="sudo systemctl poweroff"
-alias ssr="sudo systemctl reboot"
-alias sss="sudo systemctl suspend"
 
 ## SSH
 
@@ -42,8 +32,8 @@ alias gmv="git mv"
 
 alias gs="git status"
 alias gd="git diff"
-alias gl="git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-alias gL='gl origin/$(git symbolic-ref --short HEAD)..$(git symbolic-ref --short HEAD)'
+alias gl="git log"
+alias gL='git log origin/$(git head)..$(git head)' # See gitconfig.global
 
 ## Commit and pull/push
 
@@ -57,7 +47,7 @@ alias gP="git pull"
 ## Branches
 
 alias gC="git checkout"
-alias gb="git branch -vv -a"
+alias gb="git branch -vva"
 
 ## Other
 
@@ -65,8 +55,8 @@ alias gS="git stash"
 alias gt="git tag"
 alias gr="git rebase"
 alias gR="git reset"
-alias gi="echo $1 >> .gitignore"
-alias cdg='cd $(git rev-parse --show-toplevel)'
+alias gi="! [ -z $1 ] && echo $1 >> .gitignore"
+alias cdg='cd $(git root)' # See gitconfig.global
 
 # Docker
 
@@ -78,6 +68,7 @@ alias dps="docker ps"
 ## Images
 
 alias di="docker image"
+alias dls="docker image ls"
 
 ## System
 
@@ -96,6 +87,4 @@ alias getrvm="\curl -sSL https://get.rvm.io | bash -s stable"
 alias getnvm="\curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash"
 alias getpyenv="\curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash"
 alias getstarship="\curl -fsSL https://starship.rs/install.sh | bash"
-alias ccs="sudo sh -c 'sync; echo 1 > /proc/sys/vm/drop_caches'"
-alias ccd="sudo sh -c 'sync; echo 3 > /proc/sys/vm/drop_caches'"
 alias gradle="sh ./gradlew"
