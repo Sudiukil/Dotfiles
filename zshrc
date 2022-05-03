@@ -36,3 +36,6 @@ eval "$(keychain --eval --agents ssh --quiet)"
 # WSL specific
 [ "$PWD" = "$USERPROFILE" ] && cd $HOME
 ! [ -d $SCREENDIR ] && mkdir -p -m 700 $SCREENDIR
+
+# Message queue (see scripts)
+messages -c
