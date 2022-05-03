@@ -81,6 +81,13 @@ alias dC="docker-compose"
 alias dCu="docker-compose up -d"
 alias dCd="docker-compose down"
 
+# Screen
+
+alias sl="screen -ls"
+alias ss="screen -S"
+alias sd="screen -dmS"
+alias sr="screen -r"
+
 # Dev stuff
 
 alias getrvm="\curl -sSL https://get.rvm.io | bash -s stable"
