@@ -33,7 +33,8 @@ echo "\nWARNING: Some files need to be copied/linked manually (possibly as root)
 - wsl.conf -> /etc/wsl.conf
 - windows_terminal.json -> via Windows Terminal"
 
-echo "Reminder: some files were copied (not linked) and will need to be updated manually.\n"
+echo "Reminder: some files were copied (not linked) and will need to be updated manually."
+echo "Also remember to correctly set WSLENV (Windows side, should include USERPROFILE and windir).\n"
 
 # Update to the repo
 git add -A
