@@ -11,6 +11,7 @@ export PATH=$PATH:$HOME/.bin
 export EDITOR=vim
 export ANDROID_HOME=/opt/android-sdk
 export OSNAME="WSL/$WSL_DISTRO_NAME"
+export PROJECTS_DIR="$HOME/Projets/"
 
 # WSL specific
 export SCREENDIR=$HOME/.screen
