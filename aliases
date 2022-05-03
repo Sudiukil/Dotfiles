@@ -87,6 +87,7 @@ alias sl="screen -ls"
 alias ss="screen -S"
 alias sd="screen -dmS"
 alias sr="screen -r"
+alias sw="screen -wipe"
 
 # Dev stuff
 
