@@ -38,4 +38,4 @@ eval "$(keychain --eval --agents ssh --quiet)"
 ! [ -d $SCREENDIR ] && mkdir -p -m 700 $SCREENDIR
 
 # Message queue (see scripts)
-messages -c
+[ "$USER" != "root" ] && messages -c
