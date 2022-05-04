@@ -1,6 +1,3 @@
-# Token
-export ENV_USER=$USER
-
 # Path
 export PATH=/bin:/sbin
 export PATH=$PATH:/usr/bin:/usr/sbin
