@@ -9,6 +9,7 @@ alias wget="wget -q --show-progress"
 
 ## Shell QoL
 
+alias renv="source ~/.zshenv"
 alias path='echo $PATH'
 alias s='sudo'
 alias p='proxychains'
