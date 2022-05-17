@@ -14,6 +14,7 @@ alias path='echo $PATH'
 alias s='sudo'
 alias p='proxychains'
 alias cs="cheatsheet" # See functions
+alias tdl="transmission-cli"
 
 ## SSH
 
