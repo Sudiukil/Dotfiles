@@ -6,17 +6,17 @@ export PATH=$PATH:$HOME/.bin
 
 # Others
 export EDITOR=vim
-[ -x $(which java) ] && export JAVA_HOME=$(java -XshowSettings:properties -version 2>&1 | grep "java.home" | cut -d '=' -f 2 | sed -e 's/ //g')
 export ANDROID_HOME=/opt/android-sdk
-export OSNAME="WSL/$WSL_DISTRO_NAME"
 export PROJECTS_DIR="$HOME/Projets/"
+[ -x "$(which java)" ] && export JAVA_HOME=$(java -XshowSettings:properties -version 2>&1 | grep "java.home" | cut -d '=' -f 2 | sed -e 's/ //g')
+[ -n "$WSL_DISTRO_NAME" ] && export OSNAME="WSL/$WSL_DISTRO_NAME"
 
 # WSL specific
 export SCREENDIR=$HOME/.screen
 
 # Ruby Version Manager
 export PATH="$PATH:$HOME/.rvm/bin"
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+[ -s "$HOME/.rvm/scripts/rvm" ] && source "$HOME/.rvm/scripts/rvm"
 
 # Node Version Manager
 export NVM_DIR="$HOME/.nvm"
