@@ -36,7 +36,7 @@ printf "\nWARNING: Some files need to be copied/linked manually (possibly as roo
 Reminder: some files were copied (not linked) and will need to be updated manually.
 Also remember to correctly set WSLENV (Windows side, should include USERPROFILE and windir).
 
-Tip: run this script via crontab!\n"
+Tip: run this script via crontab!\n\n"
 
 # Update to the repo
 git add -A
