@@ -1,5 +1,11 @@
 command_timeout = 1000
 
+right_format="""$env_var"""
+
+[env_var.OSNAME]
+variable = "OSNAME"
+format = "[on $env_value](white dimmed)"
+
 [shell]
 zsh_indicator = "ZSH"
 powershell_indicator = "PSH"
