@@ -3,7 +3,7 @@
 # Does a two way sync of the dotfiles by:
 # - Pulling git changes and updating the links/copies to the local system
 # - Pushing git changes to the repo (this requires git to use SSH with a key)
-# To ensure a perfect sync, make sure to always edit you dotfiles from this repo
+# To ensure a perfect sync, make sure to always edit your dotfiles from this repo
 
 # Update from the repo
 git pull -q
