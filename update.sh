@@ -8,26 +8,31 @@
 # Update from the repo
 git pull -q
 
-# Checkup
-mkdir -p "$HOME/.config"
-! [ -d "$USERPROFILE" ] && echo "ERROR: can't access Windows drive, aborting." && exit 1
-
 # Linux
+mkdir -p "$HOME/.config"
 ln -sf "$PWD/zshrc" "$HOME/.zshrc"
 ln -sf "$PWD/zshenv" "$HOME/.zshenv"
 ln -sf "$PWD/aliases" "$HOME/.aliases"
 ln -sf "$PWD/functions" "$HOME/.functions"
 ln -sf "$PWD/gitconfig.linux" "$HOME/.gitconfig"
 
-# Windows
-cp ./Microsoft.PowerShell_profile.ps1 "$USERPROFILE/Documents/PowerShell/"
-cp ./starship.toml "$USERPROFILE/.config/"
-cp ./gitconfig.windows "$USERPROFILE/.gitconfig"
-cp ./gitconfig.global "$USERPROFILE/.gitconfig.global"
+if [ -d "$USERPROFILE" ]; then
+  # Windows
+  cp ./Microsoft.PowerShell_profile.ps1 "$USERPROFILE/Documents/PowerShell/"
+  cp ./starship.toml "$USERPROFILE/.config/"
+  cp ./gitconfig.windows "$USERPROFILE/.gitconfig"
+  cp ./gitconfig.global "$USERPROFILE/.gitconfig.global"
 
-# Windows <=> WSL sync
-ln -sf "$USERPROFILE/.config/starship.toml" "$HOME/.config/starship.toml"
-ln -sf "$USERPROFILE/.gitconfig.global" "$HOME/.gitconfig.global"
+  # Windows <=> WSL sync
+  ln -sf "$USERPROFILE/.config/starship.toml" "$HOME/.config/starship.toml"
+  ln -sf "$USERPROFILE/.gitconfig.global" "$HOME/.gitconfig.global"
+else
+  # Linux only if WSL isn't detected
+  echo "WARNING: can't access Windows drive, linking Linux files only..."
+  
+  ln -sf "$PWD/starship.toml" "$HOME/.config/starship.toml"
+  ln -sf "$PWD/gitconfig.global" "$HOME/.gitconfig.global"
+fi
 
 printf "\nWARNING: Some files need to be copied/linked manually (possibly as root):
 - wsl.conf -> /etc/wsl.conf
