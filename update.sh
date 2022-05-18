@@ -38,7 +38,7 @@ Also remember to correctly set WSLENV (Windows side, should include USERPROFILE 
 
 Tip: run this script via crontab!\n"
 
-Update to the repo
+# Update to the repo
 git add -A
 git commit -m "Update"
 git push -q
