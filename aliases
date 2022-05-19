@@ -49,7 +49,7 @@ alias gP="git pull"
 ## Branches
 
 alias gC="git checkout"
-alias gb="git branch -vva"
+alias gb="git branch -vv"
 
 ## Other
 
@@ -57,7 +57,7 @@ alias gS="git stash"
 alias gt="git tag"
 alias gr="git rebase"
 alias gR="git reset"
-alias gi="! [ -z $1 ] && echo $1 >> .gitignore"
+alias gi="git ignore" # See gitconfig.global
 alias cdg='cd $(git root)' # See gitconfig.global
 
 # Docker

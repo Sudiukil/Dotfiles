@@ -44,6 +44,7 @@ Also remember to correctly set WSLENV (Windows side, should include USERPROFILE 
 Tip: run this script via crontab!\n\n"
 
 # Update to the repo
+[ "$1" = "-n" ] && exit 0 # lazy
 git add -A
 git commit -m "Update"
 git push -q
