@@ -1,11 +1,11 @@
 #!/bin/sh
 
-# Does a two way sync of the dotfiles by:
-# - Pulling git changes and updating the links/copies to the local system
-# - Pushing git changes to the repo (this requires git to use SSH with a key)
-# To ensure a perfect sync, make sure to always edit your dotfiles from this repo
+# Does a two way sync of the dotfiles using git by:
+# - Pulling remote changes and updating the links/copies on the local system
+# - Pushing local changes to the repo (works best with a passwordless SSH key)
+# To ensure a perfect sync, always edit the dotfiles from this repo and run this script to update them
 
-# Update from the repo
+# Pull updates
 git pull -q
 
 # Linux
@@ -17,13 +17,15 @@ ln -sf "$PWD/functions" "$HOME/.functions"
 ln -sf "$PWD/gitconfig.linux" "$HOME/.gitconfig"
 
 if [ -d "$USERPROFILE" ]; then
-  # Windows
+  # Windows only files
   cp ./Microsoft.PowerShell_profile.ps1 "$USERPROFILE/Documents/PowerShell/"
-  cp ./starship.toml "$USERPROFILE/.config/"
   cp ./gitconfig.windows "$USERPROFILE/.gitconfig"
+
+  # Common files
+  cp ./starship.toml "$USERPROFILE/.config/"
   cp ./gitconfig.global "$USERPROFILE/.gitconfig.global"
 
-  # Windows <=> WSL sync
+  # Windows <=> Linux sync for the above files
   ln -sf "$USERPROFILE/.config/starship.toml" "$HOME/.config/starship.toml"
   ln -sf "$USERPROFILE/.gitconfig.global" "$HOME/.gitconfig.global"
 else
@@ -34,19 +36,24 @@ else
   ln -sf "$PWD/gitconfig.global" "$HOME/.gitconfig.global"
 fi
 
-printf "\nWARNING: Some files need to be copied/linked manually (possibly as root):
+printf "\nWARNING: Some files need to be copied/linked manually (possibly as root/admin):
 - wsl.conf -> /etc/wsl.conf
 - windows_terminal.json -> via Windows Terminal
 
-Reminder: some files were copied (not linked) and will need to be updated manually.
-Also remember to correctly set WSLENV (Windows side, should include USERPROFILE and windir).
+WARNING: some files were copied (not linked) and should be handled accordingly.
+INFO: remember to correctly set WSLENV (should include 'USERPROFILE/p').
+INFO: if using WSL, you might want to sync SSH keys too.
+INFO: put this in crontab!\n"
 
-Tip: run this script via crontab!\n\n"
+# "Commit mode". Commits current changes before pushing.
+# Allows for finer control of the sync (current state vs. staged state).
+if [ "$1" = "-c" ]; then
+  printf "\n"
+  git add -A
+  git commit -m "Update: $(git status --porcelain | cut -c 4- | xargs | sed -e 's/ /, /g')"
+fi
 
-# Update to the repo
-[ "$1" = "-n" ] && exit 0 # lazy
-git add -A
-git commit -m "Update"
+# Push updates
 git push -q
 
 exit 0
