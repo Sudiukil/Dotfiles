@@ -22,3 +22,11 @@ Function Start-Docker {
     Write-Output "Starting Docker Desktop (wait for GUI)..."
     & "C:\Program Files\Docker\Docker\Docker Desktop.exe"
 }
+
+Function Stop-DailyProcess {
+    ps code | kill
+    ps firefox | kill
+    wsl kc
+    wsl --shutdown
+}
+New-Alias -Name bye -Value Stop-DailyProcess
