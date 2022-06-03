@@ -15,6 +15,7 @@ alias s='sudo'
 alias p='proxychains'
 alias cs="cheatsheet" # See functions
 alias tdl="transmission-cli"
+alias syslog="tail -f /var/log/syslog"
 
 ## SSH
 

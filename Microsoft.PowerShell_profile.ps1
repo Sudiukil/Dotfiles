@@ -26,7 +26,7 @@ Function Start-Docker {
 Function Stop-DailyProcess {
     ps code | kill
     ps firefox | kill
-    wsl kc
+    wsl keychain --clear
     wsl --shutdown
 }
 New-Alias -Name bye -Value Stop-DailyProcess
