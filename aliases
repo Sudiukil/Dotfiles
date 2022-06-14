@@ -15,7 +15,7 @@ alias s='sudo'
 alias p='proxychains'
 alias cs="cheatsheet" # See functions
 alias tdl="transmission-cli"
-alias expose="python3 -m http.server 8080"
+alias serve="python3 -m http.server 8080"
 alias syslog="tail -f /var/log/syslog"
 
 ## SSH
@@ -23,6 +23,14 @@ alias syslog="tail -f /var/log/syslog"
 alias stun="ssh -vTND 2222"
 alias kc="keychain --clear"
 alias ka="keychain ~/.ssh/rsa/*"
+
+## Screen
+
+alias sl="screen -ls"
+alias ss="screen -S"
+alias sd="screen -dmS"
+alias sr="screen -r"
+alias sw="screen -wipe"
 
 # Git
 
@@ -84,14 +92,6 @@ alias dsp="docker system prune --volumes -a"
 alias dC="docker-compose"
 alias dCu="docker-compose up -d"
 alias dCd="docker-compose down"
-
-# Screen
-
-alias sl="screen -ls"
-alias ss="screen -S"
-alias sd="screen -dmS"
-alias sr="screen -r"
-alias sw="screen -wipe"
 
 # Dev stuff
 
