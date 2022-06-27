@@ -23,11 +23,6 @@ Function Start-Docker {
     & "C:\Program Files\Docker\Docker\Docker Desktop.exe"
 }
 
-Function Stop-DailyProcess {
-    ps code | kill
-    ps firefox | kill
-    Stop-Docker
-    wsl keychain --clear
-    wsl --shutdown
+Function Update-PowerShell {
+    winget install --id Microsoft.PowerShell --source winget
 }
-New-Alias -Name bye -Value Stop-DailyProcess
