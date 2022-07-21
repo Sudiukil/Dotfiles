@@ -18,6 +18,7 @@ function Set-JavaVersion {
   }
 
   Update-Path
+  java -version
 }
 
 # Exit on Ctrl+D
