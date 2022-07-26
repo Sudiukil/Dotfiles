@@ -22,7 +22,7 @@ alias syslog="tail -f /var/log/syslog"
 
 alias stun="ssh -vTND 2222"
 alias kc="keychain --clear"
-alias ka="keychain ~/.ssh/rsa/*"
+alias ka="find ~/.ssh/rsa -type f ! -name \"*.pub\" | xargs keychain"
 
 ## Screen
 
