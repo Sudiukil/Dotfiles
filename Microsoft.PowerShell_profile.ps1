@@ -29,21 +29,24 @@ function Set-JavaVersion {
 # Seriously, Microsoft?
 function ln {
   param(
-    [string] $Source,
-    [string] $Symlink
+    [Parameter(Mandatory)] [string] $Source,
+    [Parameter(Mandatory)] [string] $Symlink
   )
 
   New-Item -ItemType SymbolicLink -Path "$Symlink" -Target "$Source" -Force
 }
 
-# For which hunting commands
+# which hunting...
 function which {
   param(
-    [string] $cmd
+    [Parameter(Mandatory)] [string] $Command
   )
 
-  (Get-Command $cmd).path
+  (Get-Command $Command).path
 }
+
+# *deep sigh*
+Set-Alias -name grep -Value Select-String
 
 # Exit on Ctrl+D
 Set-PSReadlineKeyHandler -Key ctrl+d -Function ViExit
