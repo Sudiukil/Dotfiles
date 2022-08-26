@@ -8,8 +8,10 @@
             {
                 "action": "copy",
                 "singleLine": false
-            },
-            "keys": "ctrl+c"
+            }
+        },
+        {
+            "command": "paste"
         },
         {
             "command": "unbound",
@@ -20,16 +22,12 @@
             "keys": "alt+shift+6"
         },
         {
-            "command": "paste",
+            "command": "unbound",
             "keys": "ctrl+v"
         },
         {
-            "command": 
-            {
-                "action": "splitPane",
-                "split": "right"
-            },
-            "keys": "ctrl+*"
+            "command": "unbound",
+            "keys": "ctrl+c"
         },
         {
             "command": "find",
@@ -39,7 +37,17 @@
             "command": 
             {
                 "action": "splitPane",
-                "split": "down"
+                "split": "right",
+                "splitMode": "duplicate"
+            },
+            "keys": "ctrl+*"
+        },
+        {
+            "command": 
+            {
+                "action": "splitPane",
+                "split": "down",
+                "splitMode": "duplicate"
             },
             "keys": "ctrl+shift+*"
         },
