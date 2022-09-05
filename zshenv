@@ -15,8 +15,8 @@ export PROJECTS_DIR="$HOME/Projets/"
 export SCREENDIR=$HOME/.screen
 
 # Ruby Version Manager
-export PATH="$PATH:$HOME/.rvm/bin"
-[ -s "$HOME/.rvm/scripts/rvm" ] && source "$HOME/.rvm/scripts/rvm"
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 # Node Version Manager
 export NVM_DIR="$HOME/.nvm"
