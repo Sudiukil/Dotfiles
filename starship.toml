@@ -10,3 +10,6 @@ format = "[on $env_value](white dimmed)"
 zsh_indicator = "ZSH"
 powershell_indicator = "PSH"
 disabled = false
+
+[ruby]
+detect_variables = []
