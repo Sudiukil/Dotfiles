@@ -5,6 +5,7 @@
 [fetch]
   prune = true
 [alias]
+  slog = "log -n 10"
   root = "rev-parse --show-toplevel"
   head = "symbolic-ref --short HEAD"
   wipe = "reset --hard HEAD"
