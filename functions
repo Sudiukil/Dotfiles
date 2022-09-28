@@ -13,3 +13,7 @@ function sstun {
   ssh "$1" exit # Just to trigger credentials caching if any (e.g. keychain)
   screen -dmS stun ssh -vTND 2222 "$1"
 }
+
+function git-snip {
+  git branch -v | grep "\[gone\]" | tr -s ' ' | cut -d ' ' -f 2
+}

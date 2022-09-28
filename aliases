@@ -33,67 +33,6 @@ alias sd="screen -dmS"
 alias sr="screen -r"
 alias sw="screen -wipe"
 
-# Git
-
-## Track files
-
-alias gadd="git add"
-alias grm="git rm"
-alias gmv="git mv"
-
-## Review changes
-
-alias gs="git status"
-alias gd="git diff"
-alias gl="git log"
-alias gL='git log origin/$(git head)..$(git head)' # See gitconfig.global
-
-## Commit and pull/push
-
-alias gc="git commit"
-alias ga="git commit --amend"
-alias gf="git fetch"
-alias gm="git merge"
-alias gp="git push"
-alias gP="git pull"
-
-## Branches
-
-alias gC="git checkout"
-alias gb="git branch -vv"
-
-## Other
-
-alias gS="git stash"
-alias gt="git tag"
-alias gr="git rebase"
-alias gR="git reset"
-alias gi="git ignore" # See gitconfig.global
-alias cdg='cd $(git root)' # See gitconfig.global
-
-# Docker
-
-## Containers
-
-alias dc="docker container"
-alias dps="docker ps"
-
-## Images
-
-alias di="docker image"
-alias dls="docker image ls"
-
-## System
-
-alias ds="docker system"
-alias dsp="docker system prune --volumes -a"
-
-## Compose
-
-alias dC="docker-compose"
-alias dCu="docker-compose up -d"
-alias dCd="docker-compose down"
-
 # Dev stuff
 
 alias getrvm="\curl -sSL https://get.rvm.io | bash -s stable"
