@@ -36,6 +36,7 @@ eval "$(keychain --eval --agents ssh --quiet)"
 # WSL specific
 [ "$PWD" = "$USERPROFILE" ] && cd $HOME
 ! [ -d $SCREENDIR ] && mkdir -p -m 700 $SCREENDIR
+sed -e '/credsStore/d' -i $HOME/.docker/config.json
 
 # Message queue (see scripts)
 [ "$USER" != "root" ] && messages -c
