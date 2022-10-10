@@ -34,9 +34,9 @@ eval "$(starship init zsh)"
 eval "$(keychain --eval --agents ssh --quiet)"
 
 # WSL specific
-[ "$PWD" = "$USERPROFILE" ] && cd $HOME
-! [ -d $SCREENDIR ] && mkdir -p -m 700 $SCREENDIR
-sed -e '/credsStore/d' -i $HOME/.docker/config.json
+[ "$PWD" = "$USERPROFILE" ] && cd $HOME # Prevents starting in USERPROFILE
+! [ -d $SCREENDIR ] && mkdir -p -m 700 $SCREENDIR # Fix for screen not working out-of-the-box
+sed -e 's/desktop.exe/pass/g' -i ~/.docker/config.json # Fix for Docker commands hanging
 
 # Message queue (see scripts)
 [ "$USER" != "root" ] && messages -c
