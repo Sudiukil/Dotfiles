@@ -11,8 +11,6 @@ alias wget="wget -q --show-progress"
 
 alias renv="source ~/.zshenv"
 alias path='echo $PATH'
-alias s='sudo'
-alias p='proxychains'
 alias cs="cheatsheet" # See functions
 alias tdl="transmission-cli"
 alias serve="python3 -m http.server 8080"
@@ -22,8 +20,7 @@ alias cdw="cd $USERPROFILE"
 ## SSH
 
 alias stun="ssh -vTND 2222"
-alias kc="keychain --clear"
-alias ka="find ~/.ssh/rsa -type f ! -name \"*.pub\" | xargs keychain"
+alias lock="keychain --clear" # See unlock in functions
 
 ## Screen
 
@@ -40,3 +37,4 @@ alias getnvm="\curl -o- https://raw.githubusercontent.com/creationix/nvm/master/
 alias getpyenv="\curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash"
 alias getstarship="\curl -fsSL https://starship.rs/install.sh | sh"
 alias gradle="sh ./gradlew"
+alias killcode="ps -aux | grep code | grep -v grep | tr -s ' ' | cut -d ' ' -f 2 | xargs -r kill"

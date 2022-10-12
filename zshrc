@@ -31,7 +31,7 @@ bindkey '^R' history-incremental-search-backward
 eval "$(starship init zsh)"
 
 # Keychain config
-eval "$(keychain --eval --agents ssh --quiet)"
+eval "$(keychain --eval --agents "ssh,gpg" --quiet)"
 
 # WSL specific
 [ "$PWD" = "$USERPROFILE" ] && cd $HOME # Prevents starting in USERPROFILE

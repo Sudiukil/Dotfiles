@@ -14,6 +14,9 @@ function sstun {
   screen -dmS stun ssh -vTND 2222 "$1"
 }
 
-function git-snip {
-  git branch -v | grep "\[gone\]" | tr -s ' ' | cut -d ' ' -f 2
+function unlock {
+  eval $(keychain --eval --agents 'ssh,gpg' $(gpg -k | grep "^ " | sed -e 's/ //g'))
+  find "$HOME/.ssh/rsa" -type f ! -name "*.pub" | while read -r i; do
+    SSH_ASKPASS="$HOME/.ssh/askpass.sh" ssh-add "$i" <<< $(pass "ssh_$(basename $i)")
+  done
 }
