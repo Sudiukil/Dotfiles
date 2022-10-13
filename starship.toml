@@ -1,5 +1,6 @@
 command_timeout = 1000
 
+format = "${custom.screen}$all"
 right_format="""$env_var"""
 
 [env_var.OSNAME]
@@ -13,3 +14,14 @@ disabled = false
 
 [ruby]
 detect_variables = []
+
+# custom command for printing wether or not you are in a screen
+# there is no actual command, only the condition and format matters
+# also, using sh for improved performance (not sure why)
+[custom.screen]
+os = "linux"
+shell = ["sh", "-c"]
+use_stdin = false
+when = """ echo $TERM | grep -q "^screen" """
+format = "[screen ]($style)"
+style = "bold green"

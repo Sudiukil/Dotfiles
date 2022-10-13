@@ -36,7 +36,7 @@ eval "$(keychain --eval --agents "ssh,gpg" --quiet)"
 # WSL specific
 [ "$PWD" = "$USERPROFILE" ] && cd $HOME # Prevents starting in USERPROFILE
 ! [ -d $SCREENDIR ] && mkdir -p -m 700 $SCREENDIR # Fix for screen not working out-of-the-box
-sed -e 's/desktop.exe/pass/g' -i ~/.docker/config.json # Fix for Docker commands hanging
+[ "$USER" != "root" ] && sed -e 's/desktop.exe/pass/g' -i ~/.docker/config.json # Fix for Docker commands hanging
 
 # Message queue (see scripts)
 [ "$USER" != "root" ] && messages -c
