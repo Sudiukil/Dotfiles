@@ -21,7 +21,7 @@ alias trim="cut -c \"1-\$COLUMNS\""
 ## SSH
 
 alias stun="ssh -vTND 2222"
-alias lock="keychain --clear" # See unlock in functions
+alias lock="keychain --agents \"ssh,gpg\" --clear" # See unlock in functions
 
 ## Screen
 
