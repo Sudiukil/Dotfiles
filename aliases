@@ -9,7 +9,7 @@ alias wget="wget -q --show-progress"
 
 ## Shell QoL
 
-alias renv="source ~/.zshenv"
+alias renv="source ~/.zshenv && source ~/.zshrc"
 alias path='echo $PATH'
 alias syslog="tail -f /var/log/syslog"
 alias cdw="cd \$USERPROFILE"
@@ -21,7 +21,7 @@ alias trim="cut -c \"1-\$COLUMNS\""
 ## SSH
 
 alias stun="ssh -vTND 2222"
-alias lock="keychain --agents \"ssh,gpg\" --clear" # See unlock in functions
+alias lock="keychain --agents \"ssh,gpg\" --clear && killall ssh" # See unlock in functions
 
 ## Screen
 
