@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Modules
 
 autoload -U compinit promptinit colors
@@ -9,7 +11,7 @@ colors
 
 export HISTSIZE=1000
 export SAVEHIST=1000
-export HISTFILE=$HOME/.histfile
+export HISTFILE="$HOME/.histfile"
 
 setopt HIST_IGNORE_DUPS
 
@@ -23,9 +25,9 @@ bindkey '^R' history-incremental-search-backward
 
 # Aliases and functions
 
-[ -f $HOME/.aliases ] && . $HOME/.aliases
-[ -f $HOME/.aliases.local ] && . $HOME/.aliases.local
-[ -f $HOME/.functions ] && . $HOME/.functions
+[ -f "$HOME/.aliases" ] && . "$HOME/.aliases"
+[ -f "$HOME/.aliases.local" ] && . "$HOME/.aliases.local"
+[ -f "$HOME/.functions" ] && . "$HOME/.functions"
 
 # Starship prompt
 eval "$(starship init zsh)"
@@ -34,9 +36,7 @@ eval "$(starship init zsh)"
 eval "$(keychain --eval --agents "ssh,gpg" --quiet)"
 
 # WSL specific
-[ "$PWD" = "$USERPROFILE" ] && cd $HOME # Prevents starting in USERPROFILE
-! [ -d $SCREENDIR ] && mkdir -p -m 700 $SCREENDIR # Fix for screen not working out-of-the-box
-[ "$USER" != "root" ] && sed -e 's/desktop.exe/pass/g' -i ~/.docker/config.json # Fix for Docker commands hanging
+[ -f "$HOME/.zshrc.wsl" ] && . "$HOME/.zshrc.wsl"
 
 # Message queue (see scripts)
-[ "$USER" != "root" ] && messages -c
+[ "$USER" != "root" ] && [ -x "$(which messages)" ] && messages -c

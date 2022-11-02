@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Fix for Screen not working out-of-the-box
+! [ -d "$SCREENDIR" ] && mkdir -p "$SCREENDIR"
+chmod 700 "$SCREENDIR"
+
+# Fix for Docker commands hanging
+[ "$USER" != "root" ] && sed -e 's/desktop.exe/pass/g' -i ~/.docker/config.json
