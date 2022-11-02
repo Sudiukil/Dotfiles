@@ -4,10 +4,11 @@
 function cheatsheet { curl http://cheat.sh/$1 }
 
 # Unlock all GPG + SSH keys using keychain
+# TODO: revamp
 function unlock {
-  eval $(keychain --eval --agents 'ssh,gpg' $(gpg -k | grep "^ " | sed -e 's/ //g'))
+  keychain --agents "gpg" --quiet "$GPG_MAIN_KEY"
   find "$HOME/.ssh/rsa" -type f ! -name "*.pub" | while read -r i; do
-    SSH_ASKPASS="$HOME/.ssh/askpass.sh" ssh-add "$i" <<< $(pass "ssh_$(basename $i)")
+    pass "ssh_$(basename $i)" | SSH_ASKPASS="$HOME/.ssh/askpass.sh" ssh-add "$i"
   done
 }
 

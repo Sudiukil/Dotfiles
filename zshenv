@@ -11,6 +11,7 @@ export EDITOR=vim
 export ANDROID_HOME=/opt/android-sdk
 export PROJECTS_DIR="$HOME/Projets/"
 [ -x "$(which java)" ] && JAVA_HOME=$(java -XshowSettings:properties -version 2>&1 | grep "java.home" | cut -d '=' -f 2 | sed -e 's/ //g') && export JAVA_HOME
+GPG_MAIN_KEY="$(gpg -k Sudiukil | grep "^sub" | cut -d '/' -f 2 | cut -d ' ' -f 1)" && export GPG_MAIN_KEY
 
 # WSL specific
 [ -n "$WSL_DISTRO_NAME" ] && export OSNAME="WSL/$WSL_DISTRO_NAME"
