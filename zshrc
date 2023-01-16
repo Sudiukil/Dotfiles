@@ -17,7 +17,8 @@ setopt HIST_IGNORE_DUPS
 
 # Key bindings
 
-bindkey '^R' history-incremental-search-backward
+zle -N fzf-file-widget
+bindkey '^P' fzf-file-widget
 
 # Plugins
 
@@ -40,3 +41,6 @@ eval "$(keychain --eval --agents "ssh,gpg" --quiet)"
 
 # Message queue (see scripts)
 [ "$USER" != "root" ] && [ -x "$(which messages)" ] && messages -c
+
+# Fuzzy Finder
+[ -f ~/.fzf.zsh ] && . "$HOME/.fzf.zsh"
