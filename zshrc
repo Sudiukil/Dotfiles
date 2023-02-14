@@ -30,17 +30,11 @@ bindkey '^P' fzf-file-widget
 [ -f "$HOME/.aliases.local" ] && . "$HOME/.aliases.local"
 [ -f "$HOME/.functions" ] && . "$HOME/.functions"
 
-# Starship prompt
-eval "$(starship init zsh)"
-
-# Keychain config
-eval "$(keychain --eval --agents "ssh,gpg" --quiet)"
+# Tools
+eval "$(starship init zsh)" # Starship
+eval "$(direnv hook zsh)" # Direnv
+eval "$(keychain --eval --agents "ssh,gpg" --quiet)" # Keychain
+[ -f ~/.fzf.zsh ] && . "$HOME/.fzf.zsh" # Fuzzy Finder
 
 # WSL specific
 [ -f "$HOME/.zshrc.wsl" ] && . "$HOME/.zshrc.wsl"
-
-# Message queue (see scripts)
-[ "$USER" != "root" ] && [ -x "$(which messages)" ] && messages -c
-
-# Fuzzy Finder
-[ -f ~/.fzf.zsh ] && . "$HOME/.fzf.zsh"
