@@ -33,7 +33,7 @@ bindkey '^P' fzf-file-widget
 # Tools
 eval "$(starship init zsh)" # Starship
 eval "$(direnv hook zsh)" # Direnv
-eval "$(keychain --eval --agents "ssh,gpg" --quiet)" # Keychain
+eval "$(keychain --eval --agents "ssh" --quiet)" # Keychain
 [ -f ~/.fzf.zsh ] && . "$HOME/.fzf.zsh" # Fuzzy Finder
 
 # WSL specific

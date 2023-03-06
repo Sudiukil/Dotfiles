@@ -23,7 +23,8 @@ alias trim="cut -c \"1-\$COLUMNS\""
 ## SSH
 
 alias stun="ssh -vTND 2222"
-alias lock="keychain --agents \"ssh,gpg\" --clear && killall ssh" # See unlock in functions
+alias unlock='bw get password "$USER@$HOSTNAME" | SSH_ASKPASS="$HOME/.ssh/askpass.sh" ssh-add "$HOME/.ssh/id_ed25519"'
+alias lock="keychain --agents \"ssh\" --clear && killall ssh"
 
 ## Screen
 
@@ -40,4 +41,3 @@ alias getnvm="\curl -o- https://raw.githubusercontent.com/creationix/nvm/master/
 alias getpyenv="\curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash"
 alias getsdkman="\curl -s 'https://get.sdkman.io?rcupdate=false' | bash"
 alias getstarship="\curl -fsSL https://starship.rs/install.sh | sh"
-alias killcode="ps -aux | grep code | grep -v grep | tr -s ' ' | cut -d ' ' -f 2 | xargs -r kill"
