@@ -23,7 +23,7 @@ alias trim="cut -c \"1-\$COLUMNS\""
 ## SSH
 
 alias stun="ssh -vTND 2222"
-alias unlock='bw get password "$USER@$HOST" | SSH_ASKPASS="$HOME/.ssh/askpass.sh" ssh-add "$HOME/.ssh/id_ed25519"'
+alias unlock='bw get password "$USER@$HOST" | DISPLAY=:0 SSH_ASKPASS="$HOME/.ssh/askpass.sh" ssh-add "$HOME/.ssh/id_ed25519"'
 alias lock="keychain --agents \"ssh\" --clear && killall ssh"
 
 ## Screen
