@@ -53,6 +53,3 @@ Set-PSReadlineKeyHandler -Key ctrl+d -Function ViExit
 
 # Starship Shell
 Invoke-Expression (&starship init powershell)
-
-# I miss Linux
-$env:GIT_SSH=$((Get-Command ssh).Path)
