@@ -34,7 +34,11 @@ bindkey '^P' fzf-file-widget
 eval "$(starship init zsh)" # Starship
 eval "$(direnv hook zsh)" # Direnv
 eval "$(keychain --eval --agents "ssh" --quiet)" # Keychain
-[ -f ~/.fzf.zsh ] && . "$HOME/.fzf.zsh" # Fuzzy Finder
+. /usr/share/doc/fzf/examples/key-bindings.zsh
 
 # WSL specific
 [ -f "$HOME/.zshrc.wsl" ] && . "$HOME/.zshrc.wsl"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
