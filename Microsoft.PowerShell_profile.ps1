@@ -4,28 +4,6 @@ function Update-Path {
 }
 Update-Path
 
-# Java shenanigans
-function Set-JavaVersion {
-  param(
-    [string] $Version,
-    [switch] $Persist
-  )
-
-  switch ($Version) {
-    default { echo "Missing or invalid Java version. Available versions: 8, 11"; return }
-    8 { $env:JAVA_HOME = "C:\\Program Files\\Amazon Corretto\\8" }
-    11 { $env:JAVA_HOME = "C:\\Program Files\\Amazon Corretto\\11" }
-    17 { $env:JAVA_HOME = "C:\\Program Files\\Amazon Corretto\\17" }
-  }
-
-  if ($Persist) {
-    New-Item -ItemType SymbolicLink -Path "C:\Program Files\Amazon Corretto\default" -Target $env:JAVA_HOME -Force
-  }
-
-  Update-Path
-  java -version
-}
-
 # Seriously, Microsoft?
 function ln {
   param(
@@ -45,7 +23,7 @@ function which {
   (Get-Command $Command).path
 }
 
-# *deep sigh*
+# Aliases (I miss Linux...)
 Set-Alias -name grep -Value Select-String
 
 # Exit on Ctrl+D
