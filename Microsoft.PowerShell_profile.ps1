@@ -31,3 +31,6 @@ Set-PSReadlineKeyHandler -Key ctrl+d -Function ViExit
 
 # Starship Shell
 Invoke-Expression (&starship init powershell)
+
+# Aliases
+Set-Alias -name jq -Value jq-win64.exe
