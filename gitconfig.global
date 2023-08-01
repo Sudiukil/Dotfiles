@@ -16,4 +16,4 @@
   makepatch = "format-patch -1"
   patch = "apply --reject"
   unpatch = "apply -R"
-  ready = "!git checkout develop; git fetch -p; git pull; git snip"
+  prep = "!git checkout develop; git fetch -p; git pull; git snip"
