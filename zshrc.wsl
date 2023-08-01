@@ -1,8 +1,8 @@
 #!/bin/sh
 
-# Fix for Screen not working out-of-the-box
-! [ -d "$SCREENDIR" ] && mkdir -p "$SCREENDIR"
-chmod 700 "$SCREENDIR"
+ # Used for Starship
+[ -n "$WSL_DISTRO_NAME" ] && export OSNAME="WSL/$WSL_DISTRO_NAME"
 
-# Fix for Docker commands hanging
-[ "$USER" != "root" ] && sed -e 's/desktop.exe/pass/g' -i ~/.docker/config.json
+# Fix for Screen not working out-of-the-box
+export SCREENDIR="$HOME/.screen"
+! [ -d "$SCREENDIR" ] && mkdir -p "$SCREENDIR" && chmod 700 "$SCREENDIR"

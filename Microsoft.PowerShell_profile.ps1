@@ -4,6 +4,9 @@ function Update-Path {
 }
 Update-Path
 
+# Exit on Ctrl+D
+Set-PSReadlineKeyHandler -Key ctrl+d -Function ViExit
+
 # Seriously, Microsoft?
 function ln {
   param(
@@ -23,14 +26,9 @@ function which {
   (Get-Command $Command).path
 }
 
-# Aliases (I miss Linux...)
+# Aliases
 Set-Alias -name grep -Value Select-String
-
-# Exit on Ctrl+D
-Set-PSReadlineKeyHandler -Key ctrl+d -Function ViExit
+Set-Alias -name jq -Value jq-win64.exe
 
 # Starship Shell
 Invoke-Expression (&starship init powershell)
-
-# Aliases
-Set-Alias -name jq -Value jq-win64.exe
