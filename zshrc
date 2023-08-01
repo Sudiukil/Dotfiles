@@ -38,3 +38,6 @@ eval "$(keychain --eval --agents "ssh" --quiet)" # Keychain
 
 # WSL specific
 [ -f "$HOME/.zshrc.wsl" ] && . "$HOME/.zshrc.wsl"
+
+# Current machine only
+[ -f "$HOME/.zshrc.local"] && . "$HOME/.zshrc.local"
