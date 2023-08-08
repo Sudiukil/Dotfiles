@@ -28,7 +28,7 @@ function which {
 
 # Aliases
 Set-Alias -name grep -Value Select-String
-Set-Alias -name jq -Value jq-win64.exe
+Set-Alias -name jq -Value jq.exe
 
 # Starship Shell
 Invoke-Expression (&starship init powershell)
