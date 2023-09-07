@@ -18,3 +18,4 @@
   unpatch = "apply -R"
   prep = "!git checkout develop; git fetch -p; git pull; git snip"
   branches = "!git branch -la | tr -s ' ' | cut -d ' ' -f 2 | sed -e 's;remotes/origin/;;' -e '/renovate/d' | sort | uniq"
+  compare = "!git-compare"
