@@ -1,9 +1,11 @@
 {
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions": [
+    "actions": 
+    [
         {
-            "command": {
+            "command": 
+            {
                 "action": "splitPane",
                 "split": "right",
                 "splitMode": "duplicate"
@@ -11,7 +13,8 @@
             "keys": "ctrl+*"
         },
         {
-            "command": {
+            "command": 
+            {
                 "action": "copy",
                 "singleLine": false
             },
@@ -26,7 +29,8 @@
             "keys": "ctrl+shift+f"
         },
         {
-            "command": {
+            "command": 
+            {
                 "action": "splitPane",
                 "split": "down",
                 "splitMode": "duplicate"
@@ -42,7 +46,8 @@
             "keys": "alt+shift+6"
         },
         {
-            "command": {
+            "command": 
+            {
                 "action": "splitPane",
                 "split": "auto",
                 "splitMode": "duplicate"
@@ -50,35 +55,42 @@
             "keys": "alt+shift+d"
         }
     ],
+    "confirmCloseAllTabs": false,
     "copyFormatting": "none",
-    "copyOnSelect": true,
+    "copyOnSelect": false,
     "defaultProfile": "{0264a82f-da11-4825-9b1b-91947f4e8fd8}",
-    "newTabMenu": [
+    "newTabMenu": 
+    [
         {
             "type": "remainingProfiles"
         }
     ],
-    "profiles": {
-        "defaults": {
+    "profiles": 
+    {
+        "defaults": 
+        {
             "bellStyle": "none",
             "colorScheme": "Monokai Pro (Filter Octagon)",
-            "font": {
-                "face": "FiraCode NF",
+            "cursorShape": "filledBox",
+            "font": 
+            {
+                "face": "FiraCode Nerd Font",
                 "size": 10.0
             },
             "intenseTextStyle": "all",
             "startingDirectory": "~"
         },
-        "list": [
+        "list": 
+        [
             {
-                "commandline": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+                "commandline": "pwsh.exe",
                 "guid": "{0264a82f-da11-4825-9b1b-91947f4e8fd8}",
                 "hidden": false,
                 "icon": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
                 "name": "PowerShell"
             },
             {
-                "commandline": "wsl.exe -d Ubuntu-22.04",
+                "commandline": "wsl.exe -d Ubuntu",
                 "guid": "{c18ac099-804f-4ec1-a97e-8a48d9a7a5be}",
                 "hidden": false,
                 "icon": "C:\\Windows\\System32\\wsl.exe",
@@ -86,7 +98,8 @@
             }
         ]
     },
-    "schemes": [
+    "schemes": 
+    [
         {
             "background": "#0C0C0C",
             "black": "#0C0C0C",
@@ -318,6 +331,29 @@
             "yellow": "#A2734C"
         },
         {
+            "background": "#300A24",
+            "black": "#171421",
+            "blue": "#0037DA",
+            "brightBlack": "#767676",
+            "brightBlue": "#08458F",
+            "brightCyan": "#2C9FB3",
+            "brightGreen": "#26A269",
+            "brightPurple": "#A347BA",
+            "brightRed": "#C01C28",
+            "brightWhite": "#F2F2F2",
+            "brightYellow": "#A2734C",
+            "cursorColor": "#FFFFFF",
+            "cyan": "#3A96DD",
+            "foreground": "#FFFFFF",
+            "green": "#26A269",
+            "name": "Ubuntu-ColorScheme",
+            "purple": "#881798",
+            "red": "#C21A23",
+            "selectionBackground": "#FFFFFF",
+            "white": "#CCCCCC",
+            "yellow": "#A2734C"
+        },
+        {
             "background": "#000000",
             "black": "#000000",
             "blue": "#000080",
@@ -342,39 +378,46 @@
         }
     ],
     "tabSwitcherMode": "disabled",
-    "themes": [
+    "themes": 
+    [
         {
             "name": "legacyDark",
-            "tab": {
+            "tab": 
+            {
                 "background": null,
                 "showCloseButton": "always",
                 "unfocusedBackground": null
             },
-            "window": {
+            "window": 
+            {
                 "applicationTheme": "dark",
                 "useMica": false
             }
         },
         {
             "name": "legacyLight",
-            "tab": {
+            "tab": 
+            {
                 "background": null,
                 "showCloseButton": "always",
                 "unfocusedBackground": null
             },
-            "window": {
+            "window": 
+            {
                 "applicationTheme": "light",
                 "useMica": false
             }
         },
         {
             "name": "legacySystem",
-            "tab": {
+            "tab": 
+            {
                 "background": null,
                 "showCloseButton": "always",
                 "unfocusedBackground": null
             },
-            "window": {
+            "window": 
+            {
                 "applicationTheme": "system",
                 "useMica": false
             }
