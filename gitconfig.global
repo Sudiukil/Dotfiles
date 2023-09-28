@@ -8,8 +8,7 @@
   aliases = "config --get-regexp alias"
   slog = "log -n 10"
   root = "rev-parse --show-toplevel"
-  head = "symbolic-ref --short HEAD"
-  rollback = "revert HEAD -n" # Reverts last commit
+  rollback = "revert HEAD -n" # Reverts last commit without commiting
   uncommit = "reset --soft HEAD~1" # Undoes last commit
   unstage = "reset HEAD" # Unstages all changes
   snip = "!git branch -v | grep --fixed-strings '[gone]' | tr -s ' ' | cut -d ' ' -f 2 | xargs -r git branch -D" # Removes "gone" branches
@@ -17,5 +16,5 @@
   patch = "apply --reject"
   unpatch = "apply -R"
   prep = "!git checkout develop; git fetch -p; git pull; git snip"
-  branches = "!git branch -la | tr -s ' ' | cut -d ' ' -f 2 | sed -e 's;remotes/origin/;;' -e '/renovate/d' | sort | uniq"
-  compare = "!git-compare"
+  branches = "!git branch -a | tr -s ' '  | cut -d ' ' -f 2 | grep -v "remotes/origin/HEAD" | sed -e 's;remotes/origin/;;g' | sort | uniq"
+  compare = "!git-compare" # git-compare is a shell script
