@@ -15,6 +15,4 @@
   makepatch = "format-patch -1"
   patch = "apply --reject"
   unpatch = "apply -R"
-  prep = "!git checkout develop; git fetch -p; git pull; git snip"
   branches = "!git branch -a | tr -s ' '  | cut -d ' ' -f 2 | grep -v "remotes/origin/HEAD" | sed -e 's;remotes/origin/;;g' | sort | uniq"
-  compare = "!git-compare" # git-compare is a shell script
