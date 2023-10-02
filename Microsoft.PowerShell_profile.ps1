@@ -28,7 +28,7 @@ function which {
 
 # Aliases
 Set-Alias -name grep -Value Select-String
-Set-Alias -name jq -Value jq-windows-amd64.exe
+Set-Alias -name clip -Value Set-Clipboard
 
 # Starship Shell
 Invoke-Expression (&starship init powershell)

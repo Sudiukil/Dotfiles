@@ -16,8 +16,6 @@ alias path='echo $PATH'
 alias syslog="tail -f /var/log/syslog"
 alias cdw="cd \$USERPROFILE"
 alias cs="cheatsheet" # See functions
-alias tdl="transmission-cli"
-alias serve="python3 -m http.server 8080"
 alias trim="cut -c \"1-\$COLUMNS\""
 
 ## SSH
