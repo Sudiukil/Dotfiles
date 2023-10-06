@@ -1,14 +1,18 @@
-#!/bin/zsh
+#!/bin/sh
 
 # cheat.sh shortcut
-function cheatsheet { curl http://cheat.sh/$1 }
+cheatsheet() {
+  curl "http://cheat.sh/$1"
+}
 
 # Grep processes, excluding the grep process with grep (grep!)
-function pgrep {
-  ps -aux | grep $1 | grep -v grep | trim # see aliases
+pgrep() {
+  ps -axo "user,pid,%cpu,%mem,start,command" | head -n 1 # for the header
+  # shellcheck disable=SC2009
+  ps -axo "user,pid,%cpu,%mem,start,command" | grep -v grep | grep "$1" | trim # see aliases for trim
 }
 
 # Cut space-separated columns easily
-function col {
-  tr -s ' ' | cut -d ' ' -f $1
+col() {
+  tr -s ' ' | cut -d ' ' -f "$1"
 }
