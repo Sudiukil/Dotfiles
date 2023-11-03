@@ -16,3 +16,4 @@
   patch = "apply --reject"
   unpatch = "apply -R"
   branches = "!git branch -a | tr -s ' '  | cut -d ' ' -f 2 | grep -v "remotes/origin/HEAD" | sed -e 's;remotes/origin/;;g' | sort | uniq"
+  head = "branch --show-current"
