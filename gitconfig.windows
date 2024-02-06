@@ -2,8 +2,6 @@
   path = .gitconfig.global
 [core]
   editor = code
-  eol = lf
-  autocrlf = true
 [diff]
   tool = vscode
 [difftool]

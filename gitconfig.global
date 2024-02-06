@@ -1,5 +1,7 @@
 [core]
   whitespace = -trailing-space
+  eol = lf
+  autocrlf = input
 [format]
   pretty = format:%Cred%h %Cblue%as %Cgreen%<(21,trunc)%an %Creset%s %Cred%d
 [fetch]
