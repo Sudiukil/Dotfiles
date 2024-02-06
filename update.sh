@@ -43,9 +43,7 @@ printf "\nWARNING: Some files need to be copied/linked manually (possibly as roo
 - windows_terminal.json -> via Windows Terminal
 
 WARNING: some files were copied (not linked) and should be handled accordingly.
-INFO: remember to correctly set WSLENV (should include 'USERPROFILE/p').
-INFO: if using WSL, you might want to sync SSH keys too.
-INFO: put this in crontab!\n"
+WARNING: remember to correctly set WSLENV (should include 'USERPROFILE/p').\n"
 
 # "Commit mode". Commits current changes before pushing.
 # Allows for finer control of the sync (current state vs. staged state).
