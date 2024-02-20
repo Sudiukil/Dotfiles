@@ -7,48 +7,17 @@
             "command": 
             {
                 "action": "splitPane",
-                "split": "down"
+                "split": "down",
+                "splitMode": "duplicate"
             },
             "keys": "ctrl+shift+*"
         },
         {
-            "command": "unbound",
-            "keys": "alt+shift+plus"
-        },
-        {
-            "command": "unbound",
-            "keys": "alt+shift+6"
-        },
-        {
-            "command": 
-            {
-                "action": "copy",
-                "singleLine": false
-            },
-            "keys": "ctrl+c"
-        },
-        {
-            "command": "paste",
-            "keys": "ctrl+v"
-        },
-        {
-            "command": "find",
-            "keys": "ctrl+shift+f"
-        },
-        {
             "command": 
             {
                 "action": "splitPane",
-                "split": "auto",
+                "split": "right",
                 "splitMode": "duplicate"
-            },
-            "keys": "alt+shift+d"
-        },
-        {
-            "command": 
-            {
-                "action": "splitPane",
-                "split": "right"
             },
             "keys": "ctrl+*"
         }
