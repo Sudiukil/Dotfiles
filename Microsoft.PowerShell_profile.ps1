@@ -26,6 +26,14 @@ function which {
   (Get-Command $Command).path
 }
 
+# Start a Windows app
+function Start-WindowsApp {
+  param (
+    [Parameter(Mandatory)] [String] $AppName
+  )
+  Start-Process shell:$("AppsFolder\" + (Get-AppxPackage | ?{$_.PackageFamilyName -like "*$AppName*"}).PackageFamilyName + "!App")
+}
+
 # Aliases
 Set-Alias -name grep -Value Select-String
 Set-Alias -name clip -Value Set-Clipboard

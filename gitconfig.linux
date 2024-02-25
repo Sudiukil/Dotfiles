@@ -2,3 +2,6 @@
   path = .gitconfig.global
 [core]
   editor = vim
+[user]
+	email = contact@sudiukil.dev
+	name = Sudiukil
