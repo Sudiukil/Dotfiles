@@ -1,0 +1,146 @@
+{
+    "[markdown]": {
+        "files.encoding": "utf8"
+    },
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "[ruby]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "editor.insertSpaces": true,
+        "editor.rulers": [
+            120
+        ],
+        "editor.semanticHighlighting.enabled": true,
+        "files.insertFinalNewline": true,
+        "files.trimFinalNewlines": true,
+        "files.trimTrailingWhitespace": true
+    },
+    "debug.allowBreakpointsEverywhere": true,
+    "debug.internalConsoleOptions": "neverOpen",
+    "debug.onTaskErrors": "prompt",
+    "debug.toolBarLocation": "docked",
+    "diffEditor.renderSideBySide": false,
+    "direnv.restart.automatic": true,
+    "editor.accessibilitySupport": "off",
+    "editor.bracketPairColorization.enabled": false,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.sortJSON": "never"
+    },
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 13,
+    "editor.inlineSuggest.enabled": true,
+    "editor.largeFileOptimizations": false,
+    "editor.minimap.enabled": false,
+    "editor.rulers": [
+        100
+    ],
+    "editor.tabSize": 2,
+    "explorer.compactFolders": false,
+    "explorer.confirmDragAndDrop": false,
+    "extensions.ignoreRecommendations": true,
+    "files.associations": {
+        ".env": "dotenv"
+    },
+    "files.eol": "\n",
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "git.enableSmartCommit": true,
+    "git.ignoreLegacyWarning": true,
+    "git.openRepositoryInParentFolders": "never",
+    "git.pruneOnFetch": true,
+    "github.copilot.enable": {
+        "*": true,
+        "markdown": false,
+        "plaintext": false,
+        "scminput": false
+    },
+    "http.experimental.systemCertificatesV2": true,
+    "java.debug.settings.hotCodeReplace": "never",
+    "java.saveActions.organizeImports": true,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "markdown.preview.fontFamily": "Fira Sans",
+    "peacock.affectActivityBar": false,
+    "peacock.affectSashHover": false,
+    "peacock.affectStatusBar": false,
+    "projectManager.openInCurrentWindowIfEmpty": "never",
+    "projectManager.sortList": "Recent",
+    "redhat.telemetry.enabled": false,
+    "search.searchOnType": false,
+    "security.workspace.trust.enabled": false,
+    "security.workspace.trust.untrustedFiles": "open",
+    "shellcheck.customArgs": [
+        "-x"
+    ],
+    "shellcheck.exclude": [
+        "1091"
+    ],
+    "shellcheck.ignorePatterns": {
+        "**/zshenv": false,
+        "**/zshrc": false
+    },
+    "shellcheck.useWorkspaceRootAsCwd": true,
+    "task.problemMatchers.neverPrompt": {
+        "shell": true
+    },
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "terminal.integrated.fontFamily": "FiraCode Nerd Font",
+    "terminal.integrated.fontSize": 13,
+    "terminal.integrated.profiles.linux": {
+        "bash": null,
+        "bash (2)": null,
+        "pwsh": null,
+        "tmux": null,
+        "JavaScript Debug Terminal": null,
+        "dash": null,
+        "dash (2)": null,
+        "rbash": null,
+        "rbash (2)": null,
+        "screen": null,
+        "sh": null,
+        "sh (2)": null,
+        "zsh (2)": null,
+    },
+    "terminal.integrated.profiles.windows": {
+        "Command Prompt": null,
+        "Git Bash": null,
+        "JavaScript Debug Terminal": null,
+        "Windows PowerShell": null
+    },
+    "terminal.integrated.scrollback": 10000,
+    "terminal.integrated.shellIntegration.decorationsEnabled": "overviewRuler",
+    "terminal.integrated.showExitAlert": false,
+    "terminal.integrated.useWslProfiles": false,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "update.mode": "none",
+    "window.commandCenter": false,
+    "window.newWindowDimensions": "inherit",
+    "window.openFoldersInNewWindow": "on",
+    "window.restoreWindows": "none",
+    "workbench.colorTheme": "Monokai Pro (Filter Octagon)",
+    "workbench.editor.closeEmptyGroups": false,
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.highlightModifiedTabs": true,
+    "workbench.iconTheme": "Monokai Pro (Filter Octagon) Icons",
+    "workbench.layoutControl.enabled": false,
+    "workbench.settings.applyToAllProfiles": [
+        "files.eol"
+    ],
+    "workbench.startupEditor": "none",
+    "remote.autoForwardPortsSource": "hybrid",
+    "editor.stickyScroll.enabled": false,
+    "powershell.integratedConsole.startInBackground": true,
+    "github.copilot.editor.enableAutoCompletions": true,
+    "explorer.confirmDelete": false,
+    "json.schemas": [],
+    "files.exclude": {
+        "**/.git": false
+    },
+    "editor.formatOnSave": true,
+    "dotnet.codeLens.enableReferencesCodeLens": false,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "explorer.excludeGitIgnore": true
+}
