@@ -16,7 +16,6 @@ ln -sf "$PWD/zshenv" "$HOME/.zshenv"
 ln -sf "$PWD/aliases" "$HOME/.aliases"
 ln -sf "$PWD/functions" "$HOME/.functions"
 ln -sf "$PWD/gitconfig.linux" "$HOME/.gitconfig"
-ln -sf "$PWD/rvmrc" "$HOME/.rvmrc"
 
 if [ -d "$USERPROFILE" ]; then
   # Windows only files
