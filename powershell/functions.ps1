@@ -1,7 +1,10 @@
 function Update-Path {
   $MachinePath = @([System.Environment]::GetEnvironmentVariable("Path", "Machine").Split(";"))
   $UserPath = @([System.Environment]::GetEnvironmentVariable("Path", "User").Split(";"))
-  $ShellPath = @("$env:USERPROFILE\.bin")
+  $ShellPath = @(
+    "$env:USERPROFILE\.bin",
+    "$env:USERPROFILE\.dotfiles\bin"
+  )
   $env:Path = ($MachinePath + $UserPath + $ShellPath | Select-Object -Unique) -Join ";"
 }
 
