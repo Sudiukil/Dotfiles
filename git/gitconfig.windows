@@ -3,6 +3,6 @@
 [core]
   editor = code
 [diff]
-  tool = vscode
+  tool = code
 [difftool]
   cmd = code --wait --diff $LOCAL $REMOTE

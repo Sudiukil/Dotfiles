@@ -3,7 +3,8 @@ function Update-Path {
   $UserPath = @([System.Environment]::GetEnvironmentVariable("Path", "User").Split(";"))
   $ShellPath = @(
     "$env:USERPROFILE\.bin",
-    "$env:USERPROFILE\.dotfiles\bin"
+    "$env:USERPROFILE\.dotfiles\bin",
+    "$env:USERPROFILE\.opt\Vim\vim91"
   )
   $env:Path = ($MachinePath + $UserPath + $ShellPath | Select-Object -Unique) -Join ";"
 }
