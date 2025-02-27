@@ -4,7 +4,8 @@
 # Deploys the Dotfiles
 function deploy {
   $DotfilesRoot = Split-Path -Parent (Split-Path -Parent $PSCommandPath)
-  $ProfileDir = Split-Path $PROFILE -Parent
+  $PSProfileDir = Split-Path $PROFILE -Parent
+  $VSCodeUserDir = "$env:USERPROFILE\AppData\Roaming\Code\User"
 
   # Create config directory if it doesn't exist
   if (!(Test-Path "$env:USERPROFILE/.config")) {
@@ -14,8 +15,12 @@ function deploy {
   # PowerShell config
   New-Item -ItemType SymbolicLink -Path $PROFILE -Target "$DotfilesRoot/powershell/profile.ps1" -Force
   Get-ChildItem -Path "$DotfilesRoot/powershell" -Exclude "profile.ps1" | ForEach-Object {
-    New-Item -ItemType SymbolicLink -Path "$ProfileDir\$($_.Name)" -Target "$DotfilesRoot/powershell/$($_.Name)" -Force
+    New-Item -ItemType SymbolicLink -Path "$PSProfileDir\$($_.Name)" -Target "$DotfilesRoot/powershell/$($_.Name)" -Force
   }
+
+  # VSCode config
+  New-Item -ItemType SymbolicLink -Path "$VSCodeUserDir/settings.json" -Target "$DotfilesRoot/vscode/settings.jsonc" -Force
+  New-Item -ItemType SymbolicLink -Path "$VSCodeUserDir/keybindings.json" -Target "$DotfilesRoot/vscode/keybindings.jsonc" -Force
 
   # Git config
   New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE/.gitconfig" -Target "$DotfilesRoot/misc/gitconfig" -Force
