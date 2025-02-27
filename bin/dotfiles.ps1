@@ -28,36 +28,24 @@ function deploy {
 # Meant to be run as a scheduled task or in the background to avoid shell hangs
 function checkStatus {
   $CurrentBranch = git rev-parse --abbrev-ref HEAD
-  $UncommitedChanges = $true
-  $UnpushedCommits = $true
-  $UnpulledCommits = $true
+  $Changes = $false
 
   Set-Location "$env:USERPROFILE\.dotfiles"
 
   # Check for local uncommitted changes
-  if (-Not (git status -s)) {
-    $UncommitedChanges = $false
-  }
+  if (git status -s) { $Changes = $true }
 
   # Fetch the latest changes from the remote repository
   git fetch
 
   # Check for local unpushed commits
-  if (-Not (git log origin/$CurrentBranch..HEAD --oneline)) {
-    $UnpushedCommits = $false
-  }
+  if (git log origin/$CurrentBranch..HEAD) { $Changes = $true }
 
   # Check for remote changes that need to be pulled
-  if (-Not (git log HEAD..origin/$CurrentBranch --oneline)) {
-    $UnpulledCommits = $false
-  }
+  if (git log HEAD..origin/$CurrentBranch) { $Changes = $true }
 
-  if ($UncommitedChanges -or $UnpushedCommits -or $UnpulledCommits) {
-    Set-Content -Path C:\Temp\dotfiles_status.txt -Value "SYNCED"
-  }
-  else {
-    Set-Content -Path C:\Temp\dotfiles_status.txt -Value "OUTDATED"
-  }
+  if ($Changes) { Set-Content -Path C:\Temp\dotfiles_status.txt -Value "OUTDATED" }
+  else { Set-Content -Path C:\Temp\dotfiles_status.txt -Value "SYNCED" }
 }
 
 # Show a warning if the dotfiles are outdated
@@ -76,4 +64,10 @@ elseif ($args[0] -eq "-c") {
 }
 elseif ($args[0] -eq "-w") {
   statusWarning
+}
+else {
+  Write-Host "Usage: dotfiles.ps1 [-d | -c | -w]"
+  Write-Host "  -d: Deploy the dotfiles"
+  Write-Host "  -c: Check the status of the dotfiles"
+  Write-Host "  -w: Show a warning if the dotfiles are outdated"
 }
