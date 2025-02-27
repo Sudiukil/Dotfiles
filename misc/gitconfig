@@ -2,6 +2,7 @@
   whitespace = -trailing-space
   eol = lf
   autocrlf = true
+  editor = vim
 [format]
   pretty = format:%Cred%h %Cblue%as %Cgreen%<(21,trunc)%an %Creset%s %Cred%d
 [fetch]

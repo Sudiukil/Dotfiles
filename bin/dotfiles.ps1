@@ -18,8 +18,7 @@ function deploy {
   }
 
   # Git config
-  New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE/.gitconfig" -Target "$DotfilesRoot/git/gitconfig.windows" -Force
-  New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE/.gitconfig.global" -Target "$DotfilesRoot/git/gitconfig.global" -Force
+  New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE/.gitconfig" -Target "$DotfilesRoot/misc/gitconfig" -Force
 
   # Starship config
   New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE/.config/starship.toml" -Target "$DotfilesRoot/misc/starship.toml" -Force
