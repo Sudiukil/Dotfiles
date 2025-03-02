@@ -4,6 +4,7 @@ function Update-Path {
   $ShellPath = @(
     "$env:USERPROFILE\.bin",
     "$env:USERPROFILE\.dotfiles\bin\windows",
+    "$env:USERPROFILE\.scripts\bin\windows",
     "$env:USERPROFILE\.opt\Vim\vim91"
   )
   $env:Path = ($MachinePath + $UserPath + $ShellPath | Select-Object -Unique) -Join ";"
