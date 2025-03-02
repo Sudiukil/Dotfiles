@@ -47,7 +47,7 @@ function statusCheck {
   $CurrentBranch = git rev-parse --abbrev-ref HEAD
   $Changes = $false
 
-  Set-Location "$env:USERPROFILE\.dotfiles"
+  Set-Location (resolveDotfilesRoot)
 
   # Check for local uncommitted changes
   if (git status -s) { $Changes = $true }
