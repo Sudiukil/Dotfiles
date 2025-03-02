@@ -20,9 +20,8 @@ bindkey '^P' fzf-file-widget
 . /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Aliases and functions
-[ -f "$HOME/.aliases" ] && . "$HOME/.aliases"
-[ -f "$HOME/.aliases.local" ] && . "$HOME/.aliases.local"
-[ -f "$HOME/.functions" ] && . "$HOME/.functions"
+[ -f "$HOME/.aliases.sh" ] && . "$HOME/.aliases.sh"
+[ -f "$HOME/.functions.sh" ] && . "$HOME/.functions.sh"
 
 # Tools
 eval "$(starship init zsh)" # Starship
@@ -35,3 +34,7 @@ eval "$(keychain --eval --agents "ssh" --quiet)" # Keychain
 
 # Current machine only
 [ -f "$HOME/.zshrc.local" ] && . "$HOME/.zshrc.local"
+
+# Check Dotfiles changes in the background
+(&>/dev/null dotfiles.sh -c &)
+dotfiles.sh -w
