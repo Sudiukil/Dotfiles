@@ -14,9 +14,9 @@ deploy() {
   # ZSH config
   ln -sf "$DOTFILES_ROOT/zsh/zshrc" "$HOME/.zshrc"
   ln -sf "$DOTFILES_ROOT/zsh/zshenv" "$HOME/.zshenv"
+  ln -sf "$DOTFILES_ROOT/zshrc.wsl" "$HOME/.zshrc.wsl"
   ln -sf "$DOTFILES_ROOT/zsh/aliases.sh" "$HOME/.aliases.sh"
   ln -sf "$DOTFILES_ROOT/zsh/functions.sh" "$HOME/.functions.sh"
-  ln -sf "$DOTFILES_ROOT/zshrc.wsl" "$HOME/.zshrc.wsl"
 
   # Git config
   ln -sf "$DOTFILES_ROOT/misc/gitconfig" "$HOME/.gitconfig"

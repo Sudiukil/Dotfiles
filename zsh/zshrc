@@ -29,10 +29,8 @@ eval "$(direnv hook zsh)" # Direnv
 eval "$(keychain --eval --agents "ssh" --quiet)" # Keychain
 . /usr/share/doc/fzf/examples/key-bindings.zsh # FZF
 
-# WSL specific
+# Machine/setup specific config
 [ -f "$HOME/.zshrc.wsl" ] && . "$HOME/.zshrc.wsl"
-
-# Current machine only
 [ -f "$HOME/.zshrc.local" ] && . "$HOME/.zshrc.local"
 
 # Check Dotfiles changes in the background
