@@ -34,5 +34,5 @@ eval "$(keychain --eval --agents "ssh" --quiet)" # Keychain
 [ -f "$HOME/.zshrc.local" ] && . "$HOME/.zshrc.local"
 
 # Check Dotfiles changes in the background
-(&>/dev/null dotfiles.sh -c &)
-dotfiles.sh -w
+(&>/dev/null dotfiles -c &)
+dotfiles -w
