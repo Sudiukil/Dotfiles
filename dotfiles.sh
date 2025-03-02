@@ -6,7 +6,7 @@ STATUS_FILE="/tmp/dotfiles_status.txt"
 
 # Deploys the Dotfiles
 deploy() {
-  DOTFILES_ROOT="$(dirname "$(dirname "$(realpath "$0")")")"
+  DOTFILES_ROOT="$(dirname "$(realpath "$0")")"
 
   # Create config directory if it doesn't exist
   mkdir -p "$HOME/.config"
