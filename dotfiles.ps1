@@ -3,9 +3,19 @@
 
 $StatusFile = "$env:TEMP\dotfiles_status.txt"
 
+function resolveDotfilesRoot {
+  $Script = Get-Item $PSCommandPath
+
+  if ($Script.Target -ne $null) {
+    $Script = Resolve-Path (Join-Path -Path (Split-Path -Parent $Script) -ChildPath $Script.Target)
+  }
+
+  return Split-Path -Parent $Script
+}
+
 # Deploys the Dotfiles
 function deploy {
-  $DotfilesRoot = Split-Path -Parent (Split-Path -Parent $PSCommandPath)
+  $DotfilesRoot = (resolveDotfilesRoot)
   $PSProfileDir = Split-Path $PROFILE -Parent
   $VSCodeUserDir = "$env:USERPROFILE\AppData\Roaming\Code\User"
 
