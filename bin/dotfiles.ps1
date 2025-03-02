@@ -1,6 +1,8 @@
 # Dotfiles management script for Windows installations
 # Note: requires developer mode to be enabled in Windows settings
 
+$StatusFile = "$env:TEMP\dotfiles_status.txt"
+
 # Deploys the Dotfiles
 function deploy {
   $DotfilesRoot = Split-Path -Parent (Split-Path -Parent $PSCommandPath)
@@ -31,7 +33,7 @@ function deploy {
 
 # Checks the status of the dotfiles and writes it to a file
 # Meant to be run as a scheduled task or in the background to avoid shell hangs
-function checkStatus {
+function statusCheck {
   $CurrentBranch = git rev-parse --abbrev-ref HEAD
   $Changes = $false
 
@@ -49,13 +51,19 @@ function checkStatus {
   # Check for remote changes that need to be pulled
   if (git log HEAD..origin/$CurrentBranch) { $Changes = $true }
 
-  if ($Changes) { Set-Content -Path C:\Temp\dotfiles_status.txt -Value "OUTDATED" }
-  else { Set-Content -Path C:\Temp\dotfiles_status.txt -Value "SYNCED" }
+  # Create the file if it doesn't exist
+  if (!(Test-Path $StatusFile)) {
+    New-Item -ItemType File -Path $StatusFile
+  }
+
+  # Write the status to the file
+  if ($Changes) { Set-Content -Path $StatusFile -Value "OUTDATED" }
+  else { Set-Content -Path $StatusFile -Value "SYNCED" }
 }
 
 # Show a warning if the dotfiles are outdated
 function statusWarning {
-  $Status = Get-Content -Path C:\Temp\dotfiles_status.txt
+  $Status = Get-Content -Path $StatusFile
   if ($Status -eq "OUTDATED") {
     Write-Host "WARN: Dotfiles are outdated." -ForegroundColor Yellow
   }
@@ -65,7 +73,8 @@ if ($args[0] -eq "-d") {
   deploy
 }
 elseif ($args[0] -eq "-c") {
-  checkStatus
+  statusCheck
+
 }
 elseif ($args[0] -eq "-w") {
   statusWarning
