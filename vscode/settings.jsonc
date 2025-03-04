@@ -21,8 +21,10 @@
     "debug.internalConsoleOptions": "neverOpen",
     "debug.onTaskErrors": "prompt",
     "debug.toolBarLocation": "docked",
+    "diffEditor.ignoreTrimWhitespace": true,
     "diffEditor.renderSideBySide": false,
     "direnv.restart.automatic": true,
+    "dotnet.codeLens.enableReferencesCodeLens": false,
     "editor.accessibilitySupport": "off",
     "editor.bracketPairColorization.enabled": false,
     "editor.codeActionsOnSave": {
@@ -31,26 +33,34 @@
     "editor.fontFamily": "Fira Code",
     "editor.fontLigatures": true,
     "editor.fontSize": 13,
+    "editor.formatOnSave": true,
     "editor.inlineSuggest.enabled": true,
     "editor.largeFileOptimizations": false,
     "editor.minimap.enabled": false,
     "editor.rulers": [
         100
     ],
+    "editor.stickyScroll.enabled": false,
     "editor.tabSize": 2,
     "explorer.compactFolders": false,
+    "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
+    "explorer.excludeGitIgnore": true,
     "extensions.ignoreRecommendations": true,
     "files.associations": {
         ".env": "dotenv"
     },
     "files.eol": "\n",
+    "files.exclude": {
+        "**/.git": false
+    },
     "git.autofetch": true,
     "git.confirmSync": false,
     "git.enableSmartCommit": true,
     "git.ignoreLegacyWarning": true,
     "git.openRepositoryInParentFolders": "never",
     "git.pruneOnFetch": true,
+    "github.copilot.editor.enableAutoCompletions": true,
     "github.copilot.enable": {
         "*": true,
         "markdown": false,
@@ -61,13 +71,16 @@
     "java.debug.settings.hotCodeReplace": "never",
     "java.saveActions.organizeImports": true,
     "javascript.updateImportsOnFileMove.enabled": "always",
+    "json.schemas": [],
     "markdown.preview.fontFamily": "Fira Sans",
     "peacock.affectActivityBar": false,
     "peacock.affectSashHover": false,
     "peacock.affectStatusBar": false,
+    "powershell.integratedConsole.startInBackground": true,
     "projectManager.openInCurrentWindowIfEmpty": "never",
     "projectManager.sortList": "Recent",
     "redhat.telemetry.enabled": false,
+    "remote.autoForwardPortsSource": "hybrid",
     "search.searchOnType": false,
     "security.workspace.trust.enabled": false,
     "security.workspace.trust.untrustedFiles": "open",
@@ -90,27 +103,27 @@
     "terminal.integrated.fontFamily": "FiraCode Nerd Font",
     "terminal.integrated.fontSize": 13,
     "terminal.integrated.profiles.linux": {
+        "JavaScript Debug Terminal": null,
         "bash": null,
         "bash (2)": null,
-        "pwsh": null,
-        "tmux": null,
-        "JavaScript Debug Terminal": null,
         "dash": null,
         "dash (2)": null,
+        "pwsh": null,
         "rbash": null,
         "rbash (2)": null,
         "screen": null,
         "sh": null,
         "sh (2)": null,
+        "tmux": null,
         "zsh (2)": null
     },
     "terminal.integrated.profiles.windows": {
-        "PowerShell": null,
         "Command Prompt": null,
         "Git Bash": null,
+        "PowerShell": null,
         "Windows PowerShell": null,
         "pwsh": {
-            "path": "C:\\Users\\qsonrel\\AppData\\Local\\Microsoft\\WinGet\\Links\\pwsh.exe",
+            "path": "C:\\Users\\qsonrel\\AppData\\Local\\Microsoft\\WinGet\\Links\\pwsh.exe"
         }
     },
     "terminal.integrated.scrollback": 10000,
@@ -127,23 +140,16 @@
     "workbench.editor.closeEmptyGroups": false,
     "workbench.editor.enablePreview": false,
     "workbench.editor.highlightModifiedTabs": true,
+    "workbench.editorAssociations": {
+        "*.copilotmd": "vscode.markdown.preview.editor",
+        "*.markdown": "default",
+        "*.md": "default",
+        "{git,gitlens,git-graph}:/**/*.{md,csv,svg}": "default"
+    },
     "workbench.iconTheme": "Monokai Pro (Filter Octagon) Icons",
     "workbench.layoutControl.enabled": false,
     "workbench.settings.applyToAllProfiles": [
         "files.eol"
     ],
-    "workbench.startupEditor": "none",
-    "remote.autoForwardPortsSource": "hybrid",
-    "editor.stickyScroll.enabled": false,
-    "powershell.integratedConsole.startInBackground": true,
-    "github.copilot.editor.enableAutoCompletions": true,
-    "explorer.confirmDelete": false,
-    "json.schemas": [],
-    "files.exclude": {
-        "**/.git": false
-    },
-    "editor.formatOnSave": true,
-    "dotnet.codeLens.enableReferencesCodeLens": false,
-    "diffEditor.ignoreTrimWhitespace": false,
-    "explorer.excludeGitIgnore": true
+    "workbench.startupEditor": "none"
 }
