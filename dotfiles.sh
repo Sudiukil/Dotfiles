@@ -31,7 +31,7 @@ status_check() {
   CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
   CHANGES=false
 
-  cd "$(dirname "$(realpath "$0")")" || exit
+  cd "$(dirname "$(realpath "$(which "$0")")")" || exit
 
   # Check for local uncommitted changes
   if [ -n "$(git status -s)" ]; then CHANGES=true; fi
