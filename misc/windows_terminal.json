@@ -12,16 +12,8 @@
             "keys": "ctrl+*"
         },
         {
-            "id": null,
-            "keys": "alt+shift+plus"
-        },
-        {
             "id": "Terminal.DuplicatePaneDown",
             "keys": "ctrl+shift+*"
-        },
-        {
-            "id": null,
-            "keys": "alt+shift+6"
         }
     ],
     "newTabMenu": [
@@ -57,7 +49,7 @@
             },
             {
                 "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
-                "hidden": false,
+                "hidden": true,
                 "name": "Git Bash",
                 "source": "Git"
             }
