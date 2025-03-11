@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# shellcheck disable=SC1094
+# shellcheck disable=SC3020
+
 # Modules
 autoload -U compinit promptinit colors
 compinit
@@ -34,5 +37,7 @@ eval "$(keychain --eval --agents "ssh" --quiet)" # Keychain
 [ -f "$HOME/.zshrc.local" ] && . "$HOME/.zshrc.local"
 
 # Check Dotfiles changes in the background
-(&>/dev/null dotfiles -c &)
-dotfiles -w
+if [ "$(id -u)" -ne "0" ]; then
+  (&>/dev/null dotfiles -c &)
+  dotfiles -w
+fi
