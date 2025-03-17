@@ -21,7 +21,7 @@
     "debug.internalConsoleOptions": "neverOpen",
     "debug.onTaskErrors": "prompt",
     "debug.toolBarLocation": "docked",
-    "diffEditor.ignoreTrimWhitespace": true,
+    "diffEditor.ignoreTrimWhitespace": false,
     "diffEditor.renderSideBySide": false,
     "direnv.restart.automatic": true,
     "dotnet.codeLens.enableReferencesCodeLens": false,
@@ -67,7 +67,6 @@
         "plaintext": false,
         "scminput": false
     },
-    "http.experimental.systemCertificatesV2": true,
     "java.debug.settings.hotCodeReplace": "never",
     "java.saveActions.organizeImports": true,
     "javascript.updateImportsOnFileMove.enabled": "always",

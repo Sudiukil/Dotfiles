@@ -1,6 +1,6 @@
 #!/bin/sh
 
- # Used for Starship
+# Used for Starship
 [ -n "$WSL_DISTRO_NAME" ] && export OSNAME="WSL/$WSL_DISTRO_NAME"
 
 # Fix for Screen not working out-of-the-box

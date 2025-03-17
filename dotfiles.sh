@@ -3,18 +3,16 @@
 # Dotfiles management script for Linux installations
 
 STATUS_FILE="/tmp/dotfiles_status.txt"
+DOTFILES_ROOT="$(dirname "$(realpath "$(which "$0")")")"
 
 # Deploys the Dotfiles
 deploy() {
-  DOTFILES_ROOT="$(dirname "$(realpath "$0")")"
-
   # Create config directory if it doesn't exist
   mkdir -p "$HOME/.config"
 
   # ZSH config
   ln -sf "$DOTFILES_ROOT/zsh/zshrc" "$HOME/.zshrc"
   ln -sf "$DOTFILES_ROOT/zsh/zshenv" "$HOME/.zshenv"
-  ln -sf "$DOTFILES_ROOT/zshrc.wsl" "$HOME/.zshrc.wsl"
   ln -sf "$DOTFILES_ROOT/zsh/aliases.sh" "$HOME/.aliases.sh"
   ln -sf "$DOTFILES_ROOT/zsh/functions.sh" "$HOME/.functions.sh"
 
@@ -28,10 +26,10 @@ deploy() {
 # Checks the status of the dotfiles and writes it to a file
 # Meant to be run as a scheduled task or in the background to avoid shell hangs
 status_check() {
+  cd $DOTFILES_ROOT || exit
+
   CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
   CHANGES=false
-
-  cd "$(dirname "$(realpath "$(which "$0")")")" || exit
 
   # Check for local uncommitted changes
   if [ -n "$(git status -s)" ]; then CHANGES=true; fi
