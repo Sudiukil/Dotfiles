@@ -150,5 +150,6 @@
     "workbench.settings.applyToAllProfiles": [
         "files.eol"
     ],
-    "workbench.startupEditor": "none"
+    "workbench.startupEditor": "none",
+    "workbench.editor.pinnedTabsOnSeparateRow": true
 }
