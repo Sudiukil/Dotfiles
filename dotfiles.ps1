@@ -6,7 +6,7 @@ $StatusFile = "$env:TEMP\dotfiles_status.txt"
 function resolveDotfilesRoot {
   $Script = Get-Item $PSCommandPath
 
-  if ($Script.Target -ne $null) {
+  if ($null -ne $Script.Target) {
     $Script = Resolve-Path (Join-Path -Path (Split-Path -Parent $Script) -ChildPath $Script.Target)
   }
 
@@ -44,10 +44,10 @@ function deploy {
 # Checks the status of the dotfiles and writes it to a file
 # Meant to be run as a scheduled task or in the background to avoid shell hangs
 function statusCheck {
+  Set-Location (resolveDotfilesRoot)
+
   $CurrentBranch = git rev-parse --abbrev-ref HEAD
   $Changes = $false
-
-  Set-Location (resolveDotfilesRoot)
 
   # Check for local uncommitted changes
   if (git status -s) { $Changes = $true }

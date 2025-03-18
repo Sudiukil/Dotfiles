@@ -26,7 +26,7 @@ deploy() {
 # Checks the status of the dotfiles and writes it to a file
 # Meant to be run as a scheduled task or in the background to avoid shell hangs
 status_check() {
-  cd $DOTFILES_ROOT || exit
+  cd "$DOTFILES_ROOT" || exit
 
   CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
   CHANGES=false
