@@ -25,7 +25,7 @@ deploy() {
 
 # Checks the status of the dotfiles and displays it
 # Also caches the status in a file, so it can be ran in background and checked later
-status_check() {
+check_status() {
   cd "$DOTFILES_ROOT" || exit
 
   CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
@@ -54,11 +54,11 @@ status_check() {
   fi
 
   # Print the status
-  status_warning -v
+  show_status -v
 }
 
 # Show a warning if the dotfiles are outdated
-status_warning() {
+show_status() {
   if [ ! -f "$STATUS_FILE" ]; then return; fi
   
   STATUS=$(cat "$STATUS_FILE")
@@ -77,10 +77,10 @@ case "$1" in
     deploy
     ;;
   -c)
-    status_check
+    check_status
     ;;
   -w)
-    status_warning
+    show_status
     ;;
   *)
     echo "Usage: dotfiles.sh [-d | -c | -w]"
