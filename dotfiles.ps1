@@ -41,9 +41,9 @@ function deploy {
   New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE/.config/starship.toml" -Target "$DotfilesRoot/misc/starship.toml" -Force
 }
 
-# Checks the status of the dotfiles and writes it to a file
-# Meant to be run as a scheduled task or in the background to avoid shell hangs
-function statusCheck {
+# Checks the status of the dotfiles and displays it
+# Also caches the status in a file, so it can be ran in background and checked later
+function checkStatus {
   Set-Location (resolveDotfilesRoot)
 
   $CurrentBranch = git rev-parse --abbrev-ref HEAD
@@ -61,7 +61,7 @@ function statusCheck {
   # Check for remote changes that need to be pulled
   if (git log HEAD..origin/$CurrentBranch) { $Changes = $true }
 
-  # Create the file if it doesn't exist
+  # Create the status file if it doesn't exist
   if (!(Test-Path $StatusFile)) {
     New-Item -ItemType File -Path $StatusFile
   }
@@ -69,13 +69,23 @@ function statusCheck {
   # Write the status to the file
   if ($Changes) { Set-Content -Path $StatusFile -Value "OUTDATED" }
   else { Set-Content -Path $StatusFile -Value "SYNCED" }
+
+  # Print the status
+  showStatus -Verbose
 }
 
 # Show a warning if the dotfiles are outdated
-function statusWarning {
+function showStatus {
+  Param(
+    [switch]$Verbose
+  )
+  
   $Status = Get-Content -Path $StatusFile
   if ($Status -eq "OUTDATED") {
     Write-Host "WARN: Dotfiles are outdated." -ForegroundColor Yellow
+  }
+  else {
+    if ($Verbose) { Write-Host "Dotfiles are up to date." -ForegroundColor Green }
   }
 }
 
@@ -83,11 +93,11 @@ if ($args[0] -eq "-d") {
   deploy
 }
 elseif ($args[0] -eq "-c") {
-  statusCheck
+  checkStatus
 
 }
 elseif ($args[0] -eq "-w") {
-  statusWarning
+  showStatus
 }
 else {
   Write-Host "Usage: dotfiles.ps1 [-d | -c | -w]"
