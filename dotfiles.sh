@@ -23,10 +23,10 @@ deploy() {
   ln -sf "$DOTFILES_ROOT/misc/starship.toml" "$HOME/.config/starship.toml"
 }
 
-# Checks the status of the dotfiles and writes it to a file
-# Meant to be run as a scheduled task or in the background to avoid shell hangs
-status_check() {
-  cd $DOTFILES_ROOT || exit
+# Checks the status of the dotfiles and displays it
+# Also caches the status in a file, so it can be ran in background and checked later
+check_status() {
+  cd "$DOTFILES_ROOT" || exit
 
   CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
   CHANGES=false
@@ -43,7 +43,7 @@ status_check() {
   # Check for remote changes that need to be pulled
   if [ -n "$(git log HEAD..origin/"$CURRENT_BRANCH")" ]; then CHANGES=true; fi
 
-  # Create the file if it doesn't exist
+  # Create the status file if it doesn't exist
   touch "$STATUS_FILE"
 
   # Write the status to the file
@@ -52,16 +52,23 @@ status_check() {
   else
     echo "SYNCED" > "$STATUS_FILE"
   fi
+
+  # Print the status
+  show_status -v
 }
 
 # Show a warning if the dotfiles are outdated
-status_warning() {
+show_status() {
   if [ ! -f "$STATUS_FILE" ]; then return; fi
   
   STATUS=$(cat "$STATUS_FILE")
   
   if [ "$STATUS" = "OUTDATED" ]; then
     printf "\e[33mWARN: Dotfiles are outdated.\n\e[0m"
+  else
+    if [ "$1" = "-v" ]; then
+      printf "\e[32mDotfiles are up to date.\n\e[0m"
+    fi
   fi
 }
 
@@ -70,10 +77,10 @@ case "$1" in
     deploy
     ;;
   -c)
-    status_check
+    check_status
     ;;
   -w)
-    status_warning
+    show_status
     ;;
   *)
     echo "Usage: dotfiles.sh [-d | -c | -w]"
