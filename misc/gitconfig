@@ -18,5 +18,6 @@
   makepatch = "format-patch -1"
   patch = "apply --reject"
   unpatch = "apply -R"
-  branches = "!git branch -a | tr -s ' '  | cut -d ' ' -f 2 | grep -v "remotes/origin/HEAD" | sed -e 's;remotes/origin/;;g' | sort | uniq"
+  # branches = "!git branch -a | tr -s ' '  | cut -d ' ' -f 2 | grep -v "remotes/origin/HEAD" | sed -e 's;remotes/origin/;;g' | sort | uniq"
+  branches = "branch -vv"
   head = "branch --show-current"
