@@ -3,9 +3,12 @@
     "$schema": "https://aka.ms/terminal-profiles-schema",
     "actions": [],
     "alwaysShowNotificationIcon": true,
+    "autoHideWindow": false,
     "copyFormatting": "none",
     "copyOnSelect": false,
     "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+    "initialCols": 157,
+    "initialRows": 41,
     "keybindings": [
         {
             "id": "Terminal.DuplicatePaneRight",
