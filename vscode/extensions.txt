@@ -1,7 +1,9 @@
 alefragnani.project-manager
 bierner.markdown-preview-github-styles
 dbaeumer.vscode-eslint
+docker.docker
 editorconfig.editorconfig
+esbenp.prettier-vscode
 github.copilot
 github.copilot-chat
 johnpapa.vscode-peacock
@@ -22,7 +24,6 @@ ms-vscode.powershell
 redhat.java
 redhat.vscode-xml
 redhat.vscode-yaml
-richie5um2.vscode-sort-json
 timonwong.shellcheck
 visualstudioexptteam.intellicode-api-usage-examples
 visualstudioexptteam.vscodeintellicode
