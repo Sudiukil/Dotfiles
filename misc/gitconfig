@@ -15,6 +15,7 @@
   uncommit = "reset --soft HEAD~1" # Undoes last commit
   unstage = "reset HEAD" # Unstages all changes
   snip = "!git branch -v | grep --fixed-strings '[gone]' | tr -s ' ' | cut -d ' ' -f 2 | xargs -r git branch -d" # Removes "gone" branches
+  fsnip = "!git branch -v | grep --fixed-strings '[gone]' | tr -s ' ' | cut -d ' ' -f 2 | xargs -r git branch -D"
   makepatch = "format-patch -1"
   patch = "apply --reject"
   unpatch = "apply -R"
