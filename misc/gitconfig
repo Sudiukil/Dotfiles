@@ -21,3 +21,4 @@
   # branches = "!git branch -a | tr -s ' '  | cut -d ' ' -f 2 | grep -v "remotes/origin/HEAD" | sed -e 's;remotes/origin/;;g' | sort | uniq"
   branches = "branch -vv"
   head = "branch --show-current"
+  compare = "!f() { git -P log \"$1\"..HEAD; printf \"\n\n\"; git -P diff --stat \"$1\"..HEAD; }; f"
