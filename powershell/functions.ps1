@@ -26,12 +26,3 @@ function which {
 
   (Get-Command $Command).path
 }
-
-function sudo {
-  param(
-    [Parameter(Mandatory, ValueFromRemainingArguments = $true)] [string[]] $Command
-  )
-
-  $Command = $Command -join " "
-  Start-Process -FilePath "pwsh" -ArgumentList "-NoProfile -Command $Command; Start-Sleep 5" -Verb RunAs
-}
