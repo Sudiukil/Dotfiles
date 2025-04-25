@@ -26,3 +26,11 @@ function which {
 
   (Get-Command $Command).path
 }
+
+function stun {
+  param(
+    [Parameter(Mandatory)] [string] $Hostname
+  )
+
+  ssh -vTND 2222 $Hostname
+}
