@@ -2,7 +2,7 @@
   whitespace = -trailing-space
   eol = lf
   autocrlf = false
-  editor = vim
+  editor = code --wait
 [format]
   pretty = format:%Cred%h %Cblue%as %Cgreen%<(21,trunc)%an %Creset%s %Cred%d
 [fetch]
@@ -17,9 +17,8 @@
   snip = "!git branch -v | grep --fixed-strings '[gone]' | tr -s ' ' | cut -d ' ' -f 2 | xargs -r git branch -d" # Removes "gone" branches
   fsnip = "!git branch -v | grep --fixed-strings '[gone]' | tr -s ' ' | cut -d ' ' -f 2 | xargs -r git branch -D"
   makepatch = "format-patch -1"
-  patch = "apply --reject"
+  patch = "apply"
   unpatch = "apply -R"
-  # branches = "!git branch -a | tr -s ' '  | cut -d ' ' -f 2 | grep -v "remotes/origin/HEAD" | sed -e 's;remotes/origin/;;g' | sort | uniq"
   branches = "branch -vv"
   head = "branch --show-current"
   compare = "!f() { git -P log \"$1\"..HEAD; printf \"\n\n\"; git -P diff --stat \"$1\"..HEAD; }; f"
