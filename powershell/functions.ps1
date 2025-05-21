@@ -7,7 +7,7 @@ function Update-Path {
     "$env:USERPROFILE\.scripts\bin\windows",
     "$env:USERPROFILE\.opt\Vim\vim91"
   )
-  $env:Path = ($MachinePath + $UserPath + $ShellPath | Select-Object -Unique) -Join ";"
+  $env:Path = ($ShellPath + $UserPath + $MachinePath | Select-Object -Unique) -Join ";"
 }
 
 function ln {
