@@ -1,4 +1,10 @@
 {
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[markdown]": {
     "files.encoding": "utf8"
   },
@@ -11,7 +17,6 @@
   "debug.toolBarLocation": "docked",
   "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.renderSideBySide": false,
-  "direnv.restart.automatic": true,
   "dotnet.codeLens.enableReferencesCodeLens": false,
   "editor.accessibilitySupport": "off",
   "editor.bracketPairColorization.enabled": false,
@@ -37,20 +42,19 @@
   "git.ignoreLegacyWarning": true,
   "git.openRepositoryInParentFolders": "never",
   "git.pruneOnFetch": true,
-  "github.copilot.editor.enableAutoCompletions": true,
   "github.copilot.enable": {
     "*": true,
     "markdown": false,
     "plaintext": false,
     "scminput": false
   },
-  "java.debug.settings.hotCodeReplace": "never",
-  "java.saveActions.organizeImports": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "markdown.preview.fontFamily": "Fira Sans",
   "peacock.affectActivityBar": false,
   "peacock.affectSashHover": false,
   "peacock.affectStatusBar": false,
+  "powershell.integratedConsole.showOnStartup": false,
+  "powershell.promptToUpdatePowerShell": false,
   "projectManager.openInCurrentWindowIfEmpty": "never",
   "projectManager.sortList": "Recent",
   "redhat.telemetry.enabled": false,
@@ -92,10 +96,11 @@
     "PowerShell": null,
     "Windows PowerShell": null,
     "pwsh": {
-      "path": "C:\\Users\\qsonrel\\AppData\\Local\\Microsoft\\WinGet\\Links\\pwsh.exe"
+      "path": "C:\\program files\\powershell\\7\\pwsh.exe"
     }
   },
   "terminal.integrated.scrollback": 10000,
+  "terminal.integrated.shellIntegration.decorationsEnabled": "never",
   "terminal.integrated.showExitAlert": false,
   "terminal.integrated.useWslProfiles": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
@@ -108,6 +113,7 @@
   "workbench.editor.closeEmptyGroups": false,
   "workbench.editor.enablePreview": false,
   "workbench.editor.highlightModifiedTabs": true,
+  "workbench.editor.pinnedTabsOnSeparateRow": true,
   "workbench.editorAssociations": {
     "*.copilotmd": "vscode.markdown.preview.editor",
     "*.markdown": "default",
@@ -116,14 +122,5 @@
   },
   "workbench.iconTheme": "Monokai Pro (Filter Octagon) Icons",
   "workbench.layoutControl.enabled": false,
-  "workbench.startupEditor": "none",
-  "workbench.editor.pinnedTabsOnSeparateRow": true,
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "powershell.integratedConsole.showOnStartup": false,
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "powershell.promptToUpdatePowerShell": false
+  "workbench.startupEditor": "none"
 }
