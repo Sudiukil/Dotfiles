@@ -71,34 +71,8 @@
   "task.problemMatchers.neverPrompt": {
     "shell": true
   },
-  "terminal.integrated.defaultProfile.linux": "zsh",
-  "terminal.integrated.defaultProfile.windows": "pwsh",
   "terminal.integrated.fontFamily": "FiraCode Nerd Font",
   "terminal.integrated.fontSize": 13,
-  "terminal.integrated.profiles.linux": {
-    "JavaScript Debug Terminal": null,
-    "bash": null,
-    "bash (2)": null,
-    "dash": null,
-    "dash (2)": null,
-    "pwsh": null,
-    "rbash": null,
-    "rbash (2)": null,
-    "screen": null,
-    "sh": null,
-    "sh (2)": null,
-    "tmux": null,
-    "zsh (2)": null
-  },
-  "terminal.integrated.profiles.windows": {
-    "Command Prompt": null,
-    "Git Bash": null,
-    "PowerShell": null,
-    "Windows PowerShell": null,
-    "pwsh": {
-      "path": "C:\\program files\\powershell\\7\\pwsh.exe"
-    }
-  },
   "terminal.integrated.scrollback": 10000,
   "terminal.integrated.shellIntegration.decorationsEnabled": "never",
   "terminal.integrated.showExitAlert": false,
