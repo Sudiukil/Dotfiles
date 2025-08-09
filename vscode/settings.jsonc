@@ -96,5 +96,6 @@
   },
   "workbench.iconTheme": "Monokai Pro (Filter Octagon) Icons",
   "workbench.layoutControl.enabled": false,
-  "workbench.startupEditor": "none"
+  "workbench.startupEditor": "none",
+  "github.copilot.nextEditSuggestions.enabled": true
 }
