@@ -2,21 +2,32 @@
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
   "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.json-language-features"
   },
   "[markdown]": {
     "files.encoding": "utf8"
   },
-  "[python]": {
-    "editor.formatOnType": true
+  "[sql]": {
+    "editor.formatOnSave": false
+  },
+  "[xml]": {
+    "editor.formatOnSave": false
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": false
   },
   "debug.allowBreakpointsEverywhere": true,
   "debug.internalConsoleOptions": "neverOpen",
-  "debug.onTaskErrors": "prompt",
+  "debug.onTaskErrors": "abort",
   "debug.toolBarLocation": "docked",
   "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.renderSideBySide": false,
+  "docker.extension.enableComposeLanguageServer": false,
   "dotnet.codeLens.enableReferencesCodeLens": false,
   "editor.accessibilitySupport": "off",
   "editor.bracketPairColorization.enabled": false,
@@ -26,7 +37,9 @@
   "editor.formatOnSave": true,
   "editor.inlineSuggest.enabled": true,
   "editor.minimap.enabled": false,
-  "editor.rulers": [100],
+  "editor.rulers": [
+    100
+  ],
   "editor.stickyScroll.enabled": false,
   "editor.tabSize": 2,
   "explorer.compactFolders": false,
@@ -55,19 +68,12 @@
   "peacock.affectStatusBar": false,
   "powershell.integratedConsole.showOnStartup": false,
   "powershell.promptToUpdatePowerShell": false,
-  "projectManager.openInCurrentWindowIfEmpty": "never",
+  "projectManager.openInCurrentWindowIfEmpty": "always",
   "projectManager.sortList": "Recent",
   "redhat.telemetry.enabled": false,
   "search.searchOnType": false,
   "security.workspace.trust.enabled": false,
   "security.workspace.trust.untrustedFiles": "open",
-  "shellcheck.customArgs": ["-x"],
-  "shellcheck.exclude": ["1091"],
-  "shellcheck.ignorePatterns": {
-    "**/zshenv": false,
-    "**/zshrc": false
-  },
-  "shellcheck.useWorkspaceRootAsCwd": true,
   "task.problemMatchers.neverPrompt": {
     "shell": true
   },
@@ -96,6 +102,5 @@
   },
   "workbench.iconTheme": "Monokai Pro (Filter Octagon) Icons",
   "workbench.layoutControl.enabled": false,
-  "workbench.startupEditor": "none",
-  "github.copilot.nextEditSuggestions.enabled": true
+  "workbench.startupEditor": "none"
 }
