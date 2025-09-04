@@ -34,3 +34,7 @@ function stun {
 
   ssh -vTND 2222 $Hostname
 }
+
+function ctu {
+  Invoke-WebRequest -useb "https://christitus.com/win" | Invoke-Expression
+}
