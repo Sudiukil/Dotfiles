@@ -227,7 +227,7 @@
     "key": "shift+alt+p",
     "command": "-projectManager.listProjects"
   },
-  // Ctrl-T chords are tasks actions
+  // Ctrl+T chords are tasks actions
   {
     "key": "ctrl+t r",
     "command": "workbench.action.tasks.runTask"
@@ -249,6 +249,10 @@
   {
     "key": "ctrl+t shift+r",
     "command": "workbench.action.tasks.restartTask"
+  },
+  {
+    "key": "ctrl+t k",
+    "command": "workbench.action.tasks.terminate"
   },
   // Ctrl+Shift+ù switches active terminal
   {
@@ -307,7 +311,7 @@
     "key": "ctrl+pageup",
     "command": "-workbench.action.previousEditor"
   },
-  // Ctrl-Shift-* splits editor horizontaly
+  // Ctrl+Shift+* splits editor horizontaly
   {
     "key": "ctrl+shift+oem_5",
     "command": "-editor.action.jumpToBracket",
@@ -346,7 +350,7 @@
     "command": "-workbench.debug.action.toggleRepl",
     "when": "workbench.panel.repl.view.active"
   },
-  // Ctrl-^ maximizes terminal panel
+  // Ctrl+^ maximizes terminal panel
   {
     "key": "ctrl+oem_6",
     "command": "-editor.action.indentLines",
@@ -356,7 +360,7 @@
     "key": "ctrl+oem_6",
     "command": "workbench.action.toggleMaximizedPanel"
   },
-  // Ctrl-$ maximizes group panel size
+  // Ctrl+$ maximizes group panel size
   {
     "key": "ctrl+oem_1 ctrl+a",
     "command": "-testing.debugAll"
@@ -466,5 +470,17 @@
   {
     "key": "ctrl+alt+b",
     "command": "-workbench.action.toggleAuxiliaryBar"
+  },
+  // Ctrl+M chords are for markdown snippets
+  {
+    "key": "ctrl+m",
+    "command": "-editor.action.toggleTabFocusMode"
+  },
+  {
+    "key": "ctrl+m c",
+    "command": "editor.action.insertSnippet",
+    "args": {
+      "name": "md.checkbox"
+    }
   }
 ]
