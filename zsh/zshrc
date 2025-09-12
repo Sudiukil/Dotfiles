@@ -20,7 +20,10 @@ zle -N fzf-file-widget
 bindkey '^P' fzf-file-widget
 
 # Plugins
-. /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+ZSH_SYN_HIG_DEB=/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+ZSH_SYN_HIG_ARCH=usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[ -f "$ZSH_SYN_HIG_DEB" ] && . "$ZSH_SYN_HIG_DEB"
+[ -f "$ZSH_SYN_HIG_ARCH" ] && . "$ZSH_SYN_HIG_ARCH"
 
 # Aliases and functions
 [ -f "$HOME/.aliases.sh" ] && . "$HOME/.aliases.sh"
@@ -29,8 +32,13 @@ bindkey '^P' fzf-file-widget
 # Tools
 eval "$(starship init zsh)" # Starship
 eval "$(direnv hook zsh)" # Direnv
-eval "$(keychain --eval --agents "ssh" --quiet)" # Keychain
-. /usr/share/doc/fzf/examples/key-bindings.zsh # FZF
+#eval "$(keychain --eval --agents "ssh" --quiet)" # Keychain (disable for now)
+
+# FZF
+FZF_DEB_PATH=/usr/share/doc/fzf/examples/key-bindings.zsh
+FZF_ARCH_PATH=/usr/share/fzf/key-bindings.zsh
+[ -f "$FZF_DEB_PATH" ] && . "$FZF_DEB_PATH"
+[ -f "$FZF_ARCH_PATH" ] && . "$FZF_ARCH_PATH"
 
 # Machine/setup specific config
 [ -f "$HOME/.zshrc.wsl" ] && . "$HOME/.zshrc.wsl"
