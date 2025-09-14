@@ -1,22 +1,29 @@
 {
     "$help": "https://aka.ms/terminal-documentation",
-    "$schema": "https://aka.ms/terminal-profiles-schema",
+    "$schema": "https://raw.githubusercontent.com/microsoft/terminal/main/doc/cascadia/profiles.schema.json",
     "actions": [],
-    "alwaysShowNotificationIcon": true,
-    "autoHideWindow": false,
     "copyFormatting": "none",
     "copyOnSelect": false,
     "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
-    "initialCols": 157,
-    "initialRows": 41,
+    "disabledProfileSources": [
+        "Windows.Terminal.Azure",
+        "Git",
+        "Windows.Terminal.SSH",
+        "Windows.Terminal.VisualStudio",
+        "Windows.Terminal.Wsl"
+    ],
     "keybindings": [
         {
-            "id": "Terminal.DuplicatePaneRight",
-            "keys": "ctrl+*"
+            "id": "Terminal.CopyToClipboard",
+            "keys": "ctrl+c"
         },
         {
-            "id": "Terminal.DuplicatePaneDown",
-            "keys": "ctrl+shift+*"
+            "id": "Terminal.PasteFromClipboard",
+            "keys": "ctrl+v"
+        },
+        {
+            "id": "Terminal.DuplicatePaneAuto",
+            "keys": "alt+shift+d"
         }
     ],
     "newTabMenu": [
@@ -26,35 +33,31 @@
     ],
     "profiles": {
         "defaults": {
-            "bellStyle": "none",
-            "closeOnExit": "always",
             "colorScheme": "Monokai Pro (Filter Octagon)",
+            "cursorShape": "filledBox",
             "font": {
-                "face": "FiraCode Nerd Font",
+                "face": "FiraCode Nerd Font Mono",
                 "size": 10
             },
-            "intenseTextStyle": "all",
-            "scrollbarState": "hidden"
+            "intenseTextStyle": "all"
         },
         "list": [
             {
-                "commandline": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\" -NoLogo",
+                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "hidden": true,
+                "name": "Windows PowerShell"
+            },
+            {
+                "commandline": "%SystemRoot%\\System32\\cmd.exe",
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "hidden": true
+            },
+            {
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
                 "name": "PowerShell",
                 "source": "Windows.Terminal.PowershellCore"
-            },
-            {
-                "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
-                "hidden": false,
-                "name": "Ubuntu",
-                "source": "Windows.Terminal.Wsl"
-            },
-            {
-                "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
-                "hidden": true,
-                "name": "Git Bash",
-                "source": "Git"
             }
         ]
     },
