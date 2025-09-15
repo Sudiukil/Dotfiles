@@ -197,7 +197,7 @@
   {
     "key": "ctrl+e",
     "command": "mssql.runCurrentStatement",
-    "when": "editorLangId == 'sql'"
+    "when": "editorTextFocus && editorLangId == 'sql'"
   },
   // Ctrl+Shift+, opens keybindings settings
   {
@@ -220,12 +220,12 @@
   },
   // Ctrl+Alt+P opens Project Manager's list of projects
   {
-    "key": "ctrl+alt+p",
-    "command": "projectManager.listProjects"
-  },
-  {
     "key": "shift+alt+p",
     "command": "-projectManager.listProjects"
+  },
+  {
+    "key": "ctrl+alt+p",
+    "command": "projectManager.listProjectsNewWindow"
   },
   // Ctrl+T chords are tasks actions
   {
@@ -482,5 +482,5 @@
     "args": {
       "name": "md.checkbox"
     }
-  }
+  },
 ]
