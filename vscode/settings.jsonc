@@ -61,6 +61,8 @@
     "plaintext": false,
     "scminput": false
   },
+  "gitlab.duoCodeSuggestions.enabled": false,
+  "gitlab.ignoreCertificateErrors": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "markdown.preview.fontFamily": "Fira Sans",
   "peacock.affectActivityBar": false,
@@ -68,7 +70,6 @@
   "peacock.affectStatusBar": false,
   "powershell.integratedConsole.showOnStartup": false,
   "powershell.promptToUpdatePowerShell": false,
-  "projectManager.openInCurrentWindowIfEmpty": "always",
   "projectManager.sortList": "Recent",
   "redhat.telemetry.enabled": false,
   "search.searchOnType": false,
@@ -87,7 +88,6 @@
   "update.mode": "none",
   "window.commandCenter": false,
   "window.newWindowDimensions": "inherit",
-  "window.openFoldersInNewWindow": "on",
   "window.restoreWindows": "none",
   "workbench.colorTheme": "Monokai Pro (Filter Octagon)",
   "workbench.editor.closeEmptyGroups": false,
@@ -102,5 +102,6 @@
   },
   "workbench.iconTheme": "Monokai Pro (Filter Octagon) Icons",
   "workbench.layoutControl.enabled": false,
+  "workbench.secondarySideBar.showLabels": false,
   "workbench.startupEditor": "none"
 }
