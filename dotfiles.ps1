@@ -32,7 +32,7 @@ function deploy {
 
   # VSCode config
   New-Item -ItemType SymbolicLink -Path "$VSCodeUserDir/settings.json" -Target "$DotfilesRoot/vscode/settings.jsonc" -Force
-  New-Item -ItemType SymbolicLink -Path "$VSCodeUserDir/keybindings.json" -Target "$DotfilesRoot/vscode/keybindings.jsonc" -Force
+  New-Item -ItemType SymbolicLink -Path "$VSCodeUserDir/keybindings.json" -Target "$DotfilesRoot/vscode/keybindings-windows.jsonc" -Force
 
   # Git config
   New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE/.gitconfig" -Target "$DotfilesRoot/misc/gitconfig" -Force

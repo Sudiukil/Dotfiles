@@ -21,6 +21,10 @@ deploy() {
 
   # Starship config
   ln -sf "$DOTFILES_ROOT/misc/starship.toml" "$HOME/.config/starship.toml"
+
+  # VSCode config
+  ln -sf "$DOTFILES_ROOT/vscode/settings.jsonc" "$HOME/.config/Code/User/settings.json"
+  ln -sf "$DOTFILES_ROOT/vscode/keybindings-linux.jsonc" "$HOME/.config/Code/User/keybindings.json"
 }
 
 # Checks the status of the dotfiles and displays it
