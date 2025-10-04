@@ -103,5 +103,6 @@
   "workbench.iconTheme": "Monokai Pro (Filter Octagon) Icons",
   "workbench.layoutControl.enabled": false,
   "workbench.secondarySideBar.showLabels": false,
-  "workbench.startupEditor": "none"
+  "workbench.startupEditor": "none",
+  "terminal.integrated.stickyScroll.enabled": false
 }
