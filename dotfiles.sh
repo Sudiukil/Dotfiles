@@ -25,6 +25,12 @@ deploy() {
   # VSCode config
   ln -sf "$DOTFILES_ROOT/vscode/settings.jsonc" "$HOME/.config/Code/User/settings.json"
   ln -sf "$DOTFILES_ROOT/vscode/keybindings-linux.jsonc" "$HOME/.config/Code/User/keybindings.json"
+
+  # Kitty config
+  mkdir -p "$HOME/.config/kitty"
+  ln -sf "$DOTFILES_ROOT/kitty/kitty.conf" "$HOME/.config/kitty/kitty.conf"
+  ln -sf "$DOTFILES_ROOT/kitty/monokai-pro-octagon.conf" "$HOME/.config/kitty/monokai-pro-octagon.conf"
+  ln -sf "$DOTFILES_ROOT/kitty/quick-access-terminal.conf" "$HOME/.config/kitty/quick-access-terminal.conf"
 }
 
 # Checks the status of the dotfiles and displays it
