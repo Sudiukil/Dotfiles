@@ -88,8 +88,7 @@
   },
   {
     "key": "ctrl+alt+r",
-    "command": "workbench.action.reloadWindow",
-    "when": "isDevelopment"
+    "command": "workbench.action.reloadWindow"
   },
   {
     "key": "ctrl+r",
@@ -327,5 +326,9 @@
   {
     "key": "ctrl+alt+b",
     "command": "-workbench.action.toggleAuxiliaryBar"
+  },
+  {
+    "key": "ctrl+[Quote]",
+    "command": "workbench.action.terminal.toggleTerminal"
   },
 ]

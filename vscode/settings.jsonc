@@ -104,5 +104,6 @@
   "workbench.layoutControl.enabled": false,
   "workbench.secondarySideBar.showLabels": false,
   "workbench.startupEditor": "none",
-  "terminal.integrated.stickyScroll.enabled": false
+  "terminal.integrated.stickyScroll.enabled": false,
+  "github.copilot.nextEditSuggestions.enabled": true
 }
