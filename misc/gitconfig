@@ -18,10 +18,11 @@
   makepatch = "format-patch -1"
   patch = "apply"
   unpatch = "apply -R"
-  branches = "branch -vv"
+  branches = "!git fetch -p && git branch -vv"
   head = "branch --show-current"
   compare = "!f() { git -P log \"$1\"..HEAD; printf \"\n\n\"; git -P diff --stat \"$1\"..HEAD; }; f"
   url = "!git remote -v | head -1 | sed -e 's/\t/ /g' | tr -s ' ' | cut -d ' ' -f 2"
   tags = "tag -l --sort=v:refname"
   ltag = "!git tag -l --sort=v:refname | tail -1"
   bring = "merge --no-ff"
+
