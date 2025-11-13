@@ -1,8 +1,8 @@
 [core]
-  whitespace = -trailing-space
   eol = lf
   autocrlf = false
   editor = code --wait
+  ignorecase = false
 [format]
   pretty = format:%Cred%h %Cblue%as %Cgreen%<(21,trunc)%an %Creset%s %Cred%d
 [fetch]
@@ -11,7 +11,6 @@
   aliases = "config --get-regexp alias"
   slog = "log -n 10"
   root = "rev-parse --show-toplevel"
-  rollback = "revert HEAD -n" # Reverts last commit without commiting
   uncommit = "reset --soft HEAD~1" # Undoes last commit
   unstage = "reset HEAD" # Unstages all changes
   snip = "!git branch -v | grep --fixed-strings '[gone]' | tr -s ' ' | cut -d ' ' -f 2 | xargs -r git branch -d" # Removes "gone" branches
@@ -22,3 +21,7 @@
   branches = "branch -vv"
   head = "branch --show-current"
   compare = "!f() { git -P log \"$1\"..HEAD; printf \"\n\n\"; git -P diff --stat \"$1\"..HEAD; }; f"
+  url = "!git remote -v | head -1 | sed -e 's/\t/ /g' | tr -s ' ' | cut -d ' ' -f 2"
+  tags = "tag -l --sort=v:refname"
+  ltag = "!git tag -l --sort=v:refname | tail -1"
+  bring = "merge --no-ff"
