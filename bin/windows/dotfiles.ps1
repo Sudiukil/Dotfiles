@@ -1,1 +1,1 @@
-../../dotfiles.ps1
+C:/Users/Quentin/.dotfiles/dotfiles.ps1
