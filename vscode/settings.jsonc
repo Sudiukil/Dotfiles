@@ -105,5 +105,6 @@
   "workbench.secondarySideBar.showLabels": false,
   "workbench.startupEditor": "none",
   "terminal.integrated.stickyScroll.enabled": false,
-  "github.copilot.nextEditSuggestions.enabled": true
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "terminal.integrated.fontLigatures.enabled": true
 }
