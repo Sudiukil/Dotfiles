@@ -7,31 +7,6 @@ function Update-Path {
   $env:Path = ($ShellPath + $UserPath + $MachinePath | Select-Object -Unique) -Join ";"
 }
 
-function ln {
-  param(
-    [Parameter(Mandatory)] [string] $Target,
-    [Parameter(Mandatory)] [string] $Symlink
-  )
-
-  New-Item -ItemType SymbolicLink -Path "$Symlink" -Target "$Target" -Force
-}
-
-function which {
-  param(
-    [Parameter(Mandatory)] [string] $Command
-  )
-
-  (Get-Command $Command).path
-}
-
-function stun {
-  param(
-    [Parameter(Mandatory)] [string] $Hostname
-  )
-
-  ssh -vTND 2222 $Hostname
-}
-
 function ctu {
   Invoke-WebRequest -useb "https://christitus.com/win" | Invoke-Expression
 }
