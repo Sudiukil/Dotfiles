@@ -49,6 +49,10 @@ function Install-Script {
   $DotfilesScriptName = $PSCommandPath | Split-Path -Leaf
   $BinDir = "$env:USERPROFILE\.bin"
 
+  if (!(Test-Path "$BinDir")) {
+    New-Item -ItemType Directory -Path "$BinDir"
+  }
+
   New-Item -Type SymbolicLink -Path "$BinDir\$DotfilesScriptName" -Target "$DotfilesRoot/$DotfilesScriptName" -Force
 }
 
