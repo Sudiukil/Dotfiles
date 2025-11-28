@@ -7,7 +7,7 @@ function Update-Path {
   $env:Path = ($ShellPath + $UserPath + $MachinePath | Select-Object -Unique) -Join ";"
 }
 
-function ctu {
+function Start-ChrisTitusWinUtil {
   Invoke-WebRequest -useb "https://christitus.com/win" | Invoke-Expression
 }
 
