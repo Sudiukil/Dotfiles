@@ -10,3 +10,11 @@ function Update-Path {
 function ctu {
   Invoke-WebRequest -useb "https://christitus.com/win" | Invoke-Expression
 }
+
+function Get-CheatSheet {
+  param(
+    [string]$Topic
+  )
+
+  curl "https://cheat.sh/$Topic"
+}

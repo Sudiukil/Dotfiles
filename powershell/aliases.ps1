@@ -1,0 +1,1 @@
+Set-Alias -Name cs -Value Get-CheatSheet
