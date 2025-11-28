@@ -31,14 +31,6 @@ eval "$(starship init zsh)" # Starship
 eval "$(direnv hook zsh)" # Direnv
 . /usr/share/fzf/key-bindings.zsh # FZF
 
-# SSH Agent
-if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-    #ssh-agent > "$XDG_RUNTIME_DIR/ssh-agent.env"
-fi
-if [ ! -f "$SSH_AUTH_SOCK" ]; then
-    #source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
-fi
-
 # Machine/setup specific config
 [ -f "$HOME/.zshrc.wsl" ] && . "$HOME/.zshrc.wsl"
 [ -f "$HOME/.zshrc.local" ] && . "$HOME/.zshrc.local"
