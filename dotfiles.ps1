@@ -1,6 +1,8 @@
 # Dotfiles management script for Windows installations
 # Note: requires developer mode to be enabled in Windows settings
 
+$SCRIPT_NAME = $PSCommandPath | Split-Path -Leaf
+
 # Resolves the root directory of the script, with relative symlink support
 function Resolve-DotfilesRoot {
   $Script = Get-Item $PSCommandPath
@@ -46,14 +48,13 @@ function Install-Dotfiles {
 # Create a symlink to this script in the user's .bin directory
 function Install-Script {
   $DotfilesRoot = Resolve-DotfilesRoot
-  $DotfilesScriptName = $PSCommandPath | Split-Path -Leaf
   $BinDir = "$env:USERPROFILE\.bin"
 
   if (!(Test-Path "$BinDir")) {
     New-Item -ItemType Directory -Path "$BinDir"
   }
 
-  New-Item -Type SymbolicLink -Path "$BinDir\$DotfilesScriptName" -Target "$DotfilesRoot/$DotfilesScriptName" -Force
+  New-Item -Type SymbolicLink -Path "$BinDir\$SCRIPT_NAME" -Target "$DotfilesRoot/$SCRIPT_NAME" -Force
 }
 
 # Main script logic
