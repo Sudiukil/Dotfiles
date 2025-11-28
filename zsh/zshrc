@@ -42,9 +42,3 @@ fi
 # Machine/setup specific config
 [ -f "$HOME/.zshrc.wsl" ] && . "$HOME/.zshrc.wsl"
 [ -f "$HOME/.zshrc.local" ] && . "$HOME/.zshrc.local"
-
-# Check Dotfiles changes in the background
-if [ "$(id -u)" -ne "0" ]; then
-  (&>/dev/null dotfiles -c &)
-  dotfiles -w
-fi
