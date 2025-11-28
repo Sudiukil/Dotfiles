@@ -4,7 +4,6 @@
   "debug.onTaskErrors": "abort",
   "debug.toolBarLocation": "docked",
   "diffEditor.ignoreTrimWhitespace": false,
-  "diffEditor.renderSideBySide": false,
   "dotnet.codeLens.enableReferencesCodeLens": false,
   "editor.accessibilitySupport": "off",
   "editor.bracketPairColorization.enabled": false,
@@ -75,5 +74,6 @@
   "workbench.iconTheme": "Monokai Pro (Filter Octagon) Icons",
   "workbench.layoutControl.enabled": false,
   "workbench.secondarySideBar.showLabels": false,
-  "workbench.startupEditor": "none"
+  "workbench.startupEditor": "none",
+  "terminal.integrated.shellIntegration.enabled": false
 }
