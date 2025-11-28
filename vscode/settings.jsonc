@@ -1,33 +1,10 @@
 {
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
-  "[markdown]": {
-    "files.encoding": "utf8"
-  },
-  "[sql]": {
-    "editor.formatOnSave": false
-  },
-  "[xml]": {
-    "editor.formatOnSave": false
-  },
-  "[yaml]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": false
-  },
   "debug.allowBreakpointsEverywhere": true,
   "debug.internalConsoleOptions": "neverOpen",
   "debug.onTaskErrors": "abort",
   "debug.toolBarLocation": "docked",
   "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.renderSideBySide": false,
-  "docker.extension.enableComposeLanguageServer": false,
   "dotnet.codeLens.enableReferencesCodeLens": false,
   "editor.accessibilitySupport": "off",
   "editor.bracketPairColorization.enabled": false,
@@ -61,8 +38,7 @@
     "plaintext": false,
     "scminput": false
   },
-  "gitlab.duoCodeSuggestions.enabled": false,
-  "gitlab.ignoreCertificateErrors": true,
+  "github.copilot.nextEditSuggestions.enabled": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "markdown.preview.fontFamily": "Fira Sans",
   "peacock.affectActivityBar": false,
@@ -79,10 +55,12 @@
     "shell": true
   },
   "terminal.integrated.fontFamily": "FiraCode Nerd Font",
+  "terminal.integrated.fontLigatures.enabled": true,
   "terminal.integrated.fontSize": 13,
   "terminal.integrated.scrollback": 10000,
   "terminal.integrated.shellIntegration.decorationsEnabled": "never",
   "terminal.integrated.showExitAlert": false,
+  "terminal.integrated.stickyScroll.enabled": false,
   "terminal.integrated.useWslProfiles": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "update.mode": "none",
@@ -94,17 +72,8 @@
   "workbench.editor.enablePreview": false,
   "workbench.editor.highlightModifiedTabs": true,
   "workbench.editor.pinnedTabsOnSeparateRow": true,
-  "workbench.editorAssociations": {
-    "*.copilotmd": "vscode.markdown.preview.editor",
-    "*.markdown": "default",
-    "*.md": "default",
-    "{git,gitlens,git-graph}:/**/*.{md,csv,svg}": "default"
-  },
   "workbench.iconTheme": "Monokai Pro (Filter Octagon) Icons",
   "workbench.layoutControl.enabled": false,
   "workbench.secondarySideBar.showLabels": false,
-  "workbench.startupEditor": "none",
-  "terminal.integrated.stickyScroll.enabled": false,
-  "github.copilot.nextEditSuggestions.enabled": true,
-  "terminal.integrated.fontLigatures.enabled": true
+  "workbench.startupEditor": "none"
 }
