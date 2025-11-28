@@ -1,27 +1,29 @@
 # Dotfiles management script for Windows installations
 # Note: requires developer mode to be enabled in Windows settings
 
-$StatusFile = "$env:TEMP\dotfiles_status.txt"
-
-function resolveDotfilesRoot {
+# Resolves the root directory of the script, with relative symlink support
+function Resolve-DotfilesRoot {
   $Script = Get-Item $PSCommandPath
 
+  # If the script is a symlink, resolve its target and return its parent directory
   if ($null -ne $Script.Target) {
-    $Script = Resolve-Path (Join-Path -Path (Split-Path -Parent $Script) -ChildPath $Script.Target)
+    return $Script.Target | Resolve-Path | Split-Path -Parent
   }
 
-  return Split-Path -Parent $Script
+  # Otherwise, return the parent directory of the script
+  return $Script | Split-Path -Parent
 }
 
 # Deploys the Dotfiles
-function deploy {
-  $DotfilesRoot = (resolveDotfilesRoot)
+function Install-Dotfiles {
+  $DotfilesRoot = Resolve-DotfilesRoot
   $PSProfileDir = Split-Path $PROFILE -Parent
+  $ConfigDir = "$env:USERPROFILE\.config"
   $VSCodeUserDir = "$env:USERPROFILE\AppData\Roaming\Code\User"
 
   # Create config directory if it doesn't exist
-  if (!(Test-Path "$env:USERPROFILE/.config")) {
-    New-Item -ItemType Directory -Path "$env:USERPROFILE/.config"
+  if (!(Test-Path "$ConfigDir")) {
+    New-Item -ItemType Directory -Path "$ConfigDir"
   }
 
   # PowerShell config
@@ -38,70 +40,25 @@ function deploy {
   New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE/.gitconfig" -Target "$DotfilesRoot/misc/gitconfig" -Force
 
   # Starship config
-  New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE/.config/starship.toml" -Target "$DotfilesRoot/misc/starship.toml" -Force
+  New-Item -ItemType SymbolicLink -Path "$ConfigDir/starship.toml" -Target "$DotfilesRoot/misc/starship.toml" -Force
 }
 
-# Checks the status of the dotfiles and displays it
-# Also caches the status in a file, so it can be ran in background and checked later
-function checkStatus {
-  Set-Location (resolveDotfilesRoot)
+# Create a symlink to this script in the user's .bin directory
+function Install-Script {
+  $DotfilesRoot = Resolve-DotfilesRoot
+  $DotfilesScriptName = $PSCommandPath | Split-Path -Leaf
+  $BinDir = "$env:USERPROFILE\.bin"
 
-  $CurrentBranch = git rev-parse --abbrev-ref HEAD
-  $Changes = $false
-
-  # Check for local uncommitted changes
-  if (git status -s) { $Changes = $true }
-
-  # Fetch the latest changes from the remote repository
-  git fetch
-
-  # Check for local unpushed commits
-  if (git log origin/$CurrentBranch..HEAD) { $Changes = $true }
-
-  # Check for remote changes that need to be pulled
-  if (git log HEAD..origin/$CurrentBranch) { $Changes = $true }
-
-  # Create the status file if it doesn't exist
-  if (!(Test-Path $StatusFile)) {
-    New-Item -ItemType File -Path $StatusFile
-  }
-
-  # Write the status to the file
-  if ($Changes) { Set-Content -Path $StatusFile -Value "OUTDATED" }
-  else { Set-Content -Path $StatusFile -Value "SYNCED" }
-
-  # Print the status
-  showStatus -Verbose
+  New-Item -Type SymbolicLink -Path "$BinDir\$DotfilesScriptName" -Target "$DotfilesRoot/$DotfilesScriptName" -Force
 }
 
-# Show a warning if the dotfiles are outdated
-function showStatus {
-  Param(
-    [switch]$Verbose
-  )
-  
-  $Status = Get-Content -Path $StatusFile
-  if ($Status -eq "OUTDATED") {
-    Write-Host "WARN: Dotfiles are outdated." -ForegroundColor Yellow
-  }
-  else {
-    if ($Verbose) { Write-Host "Dotfiles are up to date." -ForegroundColor Green }
-  }
-}
+# Main script logic
 
 if ($args[0] -eq "-d") {
-  deploy
-}
-elseif ($args[0] -eq "-c") {
-  checkStatus
-
-}
-elseif ($args[0] -eq "-w") {
-  showStatus
+  Install-Dotfiles
+  Install-Script
 }
 else {
-  Write-Host "Usage: dotfiles.ps1 [-d | -c | -w]"
+  Write-Host "Usage: dotfiles.ps1 [-d]"
   Write-Host "  -d: Deploy the dotfiles"
-  Write-Host "  -c: Check the status of the dotfiles"
-  Write-Host "  -w: Show a warning if the dotfiles are outdated"
 }
