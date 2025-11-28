@@ -2,11 +2,11 @@
 
 # Dotfiles management script for Linux installations
 
-STATUS_FILE="/tmp/dotfiles_status.txt"
 DOTFILES_ROOT="$(dirname "$(realpath "$(which "$0")")")"
+SCRIPT_NAME="$(basename "$0")"
 
 # Deploys the Dotfiles
-deploy() {
+install_dotfiles() {
   # Create config directory if it doesn't exist
   mkdir -p "$HOME/.config"
 
@@ -33,69 +33,22 @@ deploy() {
   ln -sf "$DOTFILES_ROOT/kitty/quick-access-terminal.conf" "$HOME/.config/kitty/quick-access-terminal.conf"
 }
 
-# Checks the status of the dotfiles and displays it
-# Also caches the status in a file, so it can be ran in background and checked later
-check_status() {
-  cd "$DOTFILES_ROOT" || exit
+# Create a symlink to this script in the user's .bin directory
+install_script() {
+  BIN_DIR="$HOME/.bin"
 
-  CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
-  CHANGES=false
+  mkdir -p "$BIN_DIR"
 
-  # Check for local uncommitted changes
-  if [ -n "$(git status -s)" ]; then CHANGES=true; fi
-
-  # Fetch the latest changes from the remote repository
-  git fetch
-
-  # Check for local unpushed commits
-  if [ -n "$(git log origin/"$CURRENT_BRANCH"..HEAD)" ]; then CHANGES=true; fi
-
-  # Check for remote changes that need to be pulled
-  if [ -n "$(git log HEAD..origin/"$CURRENT_BRANCH")" ]; then CHANGES=true; fi
-
-  # Create the status file if it doesn't exist
-  touch "$STATUS_FILE"
-
-  # Write the status to the file
-  if [ "$CHANGES" = true ]; then
-    echo "OUTDATED" > "$STATUS_FILE"
-  else
-    echo "SYNCED" > "$STATUS_FILE"
-  fi
-
-  # Print the status
-  show_status -v
-}
-
-# Show a warning if the dotfiles are outdated
-show_status() {
-  if [ ! -f "$STATUS_FILE" ]; then return; fi
-  
-  STATUS=$(cat "$STATUS_FILE")
-  
-  if [ "$STATUS" = "OUTDATED" ]; then
-    printf "\e[33mWARN: Dotfiles are outdated.\n\e[0m"
-  else
-    if [ "$1" = "-v" ]; then
-      printf "\e[32mDotfiles are up to date.\n\e[0m"
-    fi
-  fi
+  ln -sf "$DOTFILES_ROOT/$SCRIPT_NAME" "$BIN_DIR/$SCRIPT_NAME"
 }
 
 case "$1" in
   -d)
-    deploy
-    ;;
-  -c)
-    check_status
-    ;;
-  -w)
-    show_status
+    install_dotfiles
+    install_script
     ;;
   *)
-    echo "Usage: dotfiles.sh [-d | -c | -w]"
+    echo "Usage: dotfiles.sh [-d]"
     echo "  -d: Deploy the dotfiles"
-    echo "  -c: Check the status of the dotfiles"
-    echo "  -w: Show a warning if the dotfiles are outdated"
     ;;
 esac
