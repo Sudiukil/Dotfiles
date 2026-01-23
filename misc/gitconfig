@@ -20,9 +20,8 @@
   unpatch = "apply -R"
   branches = "!git fetch -p && git branch -vv"
   head = "branch --show-current"
-  compare = "!f() { git -P log \"$1\"..HEAD; printf \"\n\n\"; git -P diff --stat \"$1\"..HEAD; }; f"
   url = "!git remote -v | head -1 | sed -e 's/\t/ /g' | tr -s ' ' | cut -d ' ' -f 2"
-  tags = "tag -l --sort=v:refname"
-  ltag = "!git tag -l --sort=v:refname | tail -1"
+  semtag = "!powershell.exe -Command git-semver.ps1" # FIXME: not platform agnostic
   bring = "merge --no-ff"
-
+  complog = "log --no-merges"
+  compdiff = "diff --stat"
