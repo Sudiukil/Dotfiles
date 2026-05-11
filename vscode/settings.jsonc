@@ -75,5 +75,6 @@
   "workbench.layoutControl.enabled": false,
   "workbench.secondarySideBar.showLabels": false,
   "workbench.startupEditor": "none",
-  "terminal.integrated.shellIntegration.enabled": false
+  "terminal.integrated.shellIntegration.enabled": false,
+  "dotnet.diagnostics.reportInformationAsHint": false
 }
