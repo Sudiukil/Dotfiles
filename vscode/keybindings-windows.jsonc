@@ -71,7 +71,7 @@
     "when": "chatEdits.hasEditorModifications && chatIsEnabled && editorFocus || chatEdits.hasEditorModifications && chatIsEnabled && notebookCellListFocused"
   },
   {
-    "key": "alt+f5",
+    "key": "ctrl+shift+f5",
     "command": "workbench.action.debug.disconnect"
   },
   // Ctrl+Alt+R reloads window
@@ -483,4 +483,35 @@
       "name": "md.checkbox"
     }
   },
+  // Ctrl + e runs SQL document queries
+  {
+    "key": "ctrl+e",
+    "command": "sqlite.runDocumentQuery",
+    "when": "editorLangId == 'sqlite'"
+  },
+  {
+    "key": "ctrl+shift+q",
+    "command": "-sqlite.runDocumentQuery",
+    "when": "editorLangId =~ /(sql|sqlite)/"
+  },
+  // Alt+F5 selects and starts debug config
+  {
+    "key": "alt+f5",
+    "command": "workbench.action.debug.selectandstart"
+  },
+  {
+    "key": "alt+f5",
+    "command": "-multiDiffEditor.goToNextChange",
+    "when": "activeEditor == 'multiDiffEditor'"
+  },
+  // Ctrl+F9 toggles exception breakpoints
+  {
+    "key": "ctrl+f9",
+    "command": "-workbench.action.chat.nextFileTree",
+    "when": "chatIsEnabled && inChat"
+  },
+  {
+    "key": "ctrl+f9",
+    "command": "debug.toggleExceptionBreakpoints"
+  }
 ]
