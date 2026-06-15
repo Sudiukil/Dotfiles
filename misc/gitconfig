@@ -16,7 +16,8 @@
   unstage = "reset HEAD" # Unstages all changes
   snip = "!git branch -v | grep --fixed-strings '[gone]' | tr -s ' ' | cut -d ' ' -f 2 | xargs -r git branch -d" # Removes "gone" branches
   fsnip = "!git branch -v | grep --fixed-strings '[gone]' | tr -s ' ' | cut -d ' ' -f 2 | xargs -r git branch -D" # Same as above, but forced
-  branches = "!git fetch -p --all && git branch -vv" # Displays an up-to-date state of branches
+  sync = "!git fetch -p; git branch -r | cut -d ' ' -f 3 | sed -e 's;origin/;;g' | sed -E '/(HEAD|main|develop)/d' | while read i; do git branch --track \"$i\" \"origin/$i\" 2> /dev/null; done"
+  branches = "!git sync; git branch -vv" # Displays an up-to-date state of branches
   head = "branch --show-current" # Shows the current branch
   url = "!git remote -v | head -1 | sed -e 's/\t/ /g' | tr -s ' ' | cut -d ' ' -f 2" # Gets the URL of the (first) remote
   semtag = "!powershell.exe -Command git-semver.ps1" # Lists tags, parsed and sorted as semver FIXME: not platform agnostic
