@@ -1,27 +1,25 @@
+[user]
+	name = SONREL Quentin (PRESTA EXT)
+	email = quentin.sonrel@externe.e-i.com
 [core]
-  eol = lf
-  autocrlf = false
+	ignorecase = false
   editor = code --wait
-  ignorecase = false
 [format]
   pretty = format:%Cred%h %Cblue%as %Cgreen%<(21,trunc)%an %Creset%s %Cred%d
 [fetch]
   prune = true
 [alias]
-  aliases = "config --get-regexp alias"
-  slog = "log -n 10"
-  root = "rev-parse --show-toplevel"
+  aliases = "config --get-regexp alias" # Lists aliases
+  slog = "log -n 10" # Short log
+  root = "rev-parse --show-toplevel" # Root of the repo
   uncommit = "reset --soft HEAD~1" # Undoes last commit
   unstage = "reset HEAD" # Unstages all changes
   snip = "!git branch -v | grep --fixed-strings '[gone]' | tr -s ' ' | cut -d ' ' -f 2 | xargs -r git branch -d" # Removes "gone" branches
-  fsnip = "!git branch -v | grep --fixed-strings '[gone]' | tr -s ' ' | cut -d ' ' -f 2 | xargs -r git branch -D"
-  makepatch = "format-patch -1"
-  patch = "apply"
-  unpatch = "apply -R"
-  branches = "!git fetch -p && git branch -vv"
-  head = "branch --show-current"
-  url = "!git remote -v | head -1 | sed -e 's/\t/ /g' | tr -s ' ' | cut -d ' ' -f 2"
-  semtag = "!powershell.exe -Command git-semver.ps1" # FIXME: not platform agnostic
-  bring = "merge --no-ff"
-  complog = "log --no-merges"
-  compdiff = "diff --stat"
+  fsnip = "!git branch -v | grep --fixed-strings '[gone]' | tr -s ' ' | cut -d ' ' -f 2 | xargs -r git branch -D" # Same as above, but forced
+  branches = "!git fetch -p --all && git branch -vv" # Displays an up-to-date state of branches
+  head = "branch --show-current" # Shows the current branch
+  url = "!git remote -v | head -1 | sed -e 's/\t/ /g' | tr -s ' ' | cut -d ' ' -f 2" # Gets the URL of the (first) remote
+  semtag = "!powershell.exe -Command git-semver.ps1" # Lists tags, parsed and sorted as semver FIXME: not platform agnostic
+  bring = "merge --no-ff" # Merges with a forced merge commit
+  complog = "log --no-merges" # Lists commits, excluding merge commits
+  compdiff = "diff --stat" # Shows condensed diff
