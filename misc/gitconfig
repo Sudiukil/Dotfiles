@@ -24,3 +24,5 @@
   bring = "merge --no-ff" # Merges with a forced merge commit
   complog = "log --no-merges" # Lists commits, excluding merge commits
   compdiff = "diff --stat" # Shows condensed diff
+  tmp = "!git branch -D tmp; git checkout -b tmp"
+  unravelto = "!f() { git reset --mixed $(git merge-base HEAD \"$1\"); }; f"
