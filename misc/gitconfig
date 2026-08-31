@@ -1,6 +1,3 @@
-[user]
-	name = SONREL Quentin (PRESTA EXT)
-	email = quentin.sonrel@externe.e-i.com
 [core]
 	ignorecase = false
   editor = code --wait
