@@ -1,5 +1,5 @@
 [core]
-	ignorecase = false
+  ignorecase = false
   editor = code --wait
 [format]
   pretty = format:%Cred%h %Cblue%as %Cgreen%<(21,trunc)%an %Creset%s %Cred%d
