@@ -1,8 +1,6 @@
 alefragnani.project-manager
 bierner.markdown-preview-github-styles
 editorconfig.editorconfig
-github.copilot
-github.copilot-chat
 johnpapa.vscode-peacock
 kamikillerto.vscode-colorize
 mikestead.dotenv

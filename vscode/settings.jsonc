@@ -76,5 +76,13 @@
   "workbench.secondarySideBar.showLabels": false,
   "workbench.startupEditor": "none",
   "terminal.integrated.shellIntegration.enabled": false,
-  "dotnet.diagnostics.reportInformationAsHint": false
+  "dotnet.diagnostics.reportInformationAsHint": false,
+  "extensions.supportAgentsWindow": {
+    "monokai.theme-monokai-pro-vscode": true
+  },
+  "workbench.experimental.modernUI": false,
+  "projectManager.git.baseFolders": [
+    "C:\\Users\\Quentin\\Projects"
+  ],
+  "chat.titleBar.openInAgentsWindow.enabled": false
 }
